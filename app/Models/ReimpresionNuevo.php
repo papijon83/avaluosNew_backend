@@ -2745,7 +2745,15 @@ class ReimpresionNuevo
         if($tipoDeAvaluo ==  "Catastral"){
             $infoReimpresion['Edad_Aproximada_Construccion'] = $descripcionInmueble['EdadPonderadaDelInmueble'];
         }
-        $infoReimpresion['Vida_Util_Remanente'] = $descripcionInmueble['VidaUtilRemanentePonderadaDelInmueble'];
+
+        if(isset($descripcionInmueble['VidaMinimaRemanentePonderadaDelInmueble']) && !is_array($descripcionInmueble['VidaMinimaRemanentePonderadaDelInmueble'])){
+            $infoReimpresion['Vida_Util_Remanente'] = $descripcionInmueble['VidaMinimaRemanentePonderadaDelInmueble'];
+        }
+
+        if(isset($descripcionInmueble['VidaUtilRemanentePonderadaDelInmueble']) && !is_array($descripcionInmueble['VidaUtilRemanentePonderadaDelInmueble'])){
+            $infoReimpresion['Vida_Util_Remanente'] = $descripcionInmueble['VidaUtilRemanentePonderadaDelInmueble'];
+        }
+        
 
         /************************************************************************************************************************************************************************/
 
