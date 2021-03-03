@@ -3175,9 +3175,15 @@ class ReimpresionNuevo
                 $infoReimpresion['Terrenos']['Terrenos_Residuales'] = array();                
                 $terrenosResidual = $terrenos['TerrenosResidual'];
 
-                $infoReimpresion['Terrenos']['Terrenos_Residuales']['Tipo_Producto_Inmoviliario_Propuesto'] = $terrenosResidual['TipoDeProductoInmobiliarioPropuesto'];
-                $infoReimpresion['Terrenos']['Terrenos_Residuales']['Numero_Unidades_Vendibles'] = $terrenosResidual['NumeroDeUnidadesVendibles'];
-                $infoReimpresion['Terrenos']['Terrenos_Residuales']['Superficie_Vendible_Unidad'] = $terrenosResidual['SuperficieVendiblePorUnidad'];
+                if(isset($terrenosResidual['TipoDeProductoInmobiliarioPropuesto']) && !is_array($terrenosResidual['TipoDeProductoInmobiliarioPropuesto'])){
+                    $infoReimpresion['Terrenos']['Terrenos_Residuales']['Tipo_Producto_Inmoviliario_Propuesto'] = $terrenosResidual['TipoDeProductoInmobiliarioPropuesto'];
+                }
+                if(isset($terrenosResidual['NumeroDeUnidadesVendibles']) && !is_array($terrenosResidual['NumeroDeUnidadesVendibles'])){
+                    $infoReimpresion['Terrenos']['Terrenos_Residuales']['Numero_Unidades_Vendibles'] = $terrenosResidual['NumeroDeUnidadesVendibles'];
+                }
+                if(isset($terrenosResidual['SuperficieVendiblePorUnidad']) && !is_array($terrenosResidual['SuperficieVendiblePorUnidad'])){
+                    $infoReimpresion['Terrenos']['Terrenos_Residuales']['Superficie_Vendible_Unidad'] = $terrenosResidual['SuperficieVendiblePorUnidad'];
+                }
 
                 $infoReimpresion['Terrenos']['Terrenos_Residuales']['Investigacion_Productos_Comparables'] = array();
                 $infoReimpresion['Terrenos']['Terrenos_Residuales']['Investigacion_Productos_Comparables_2'] = array();
