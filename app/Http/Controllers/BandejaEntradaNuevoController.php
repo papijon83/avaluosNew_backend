@@ -839,7 +839,7 @@ class BandejaEntradaNuevoController extends Controller
             if (!file_exists($xsd)) {
                 //$relacionErrores[] = "Archivo <b>$xsd</b> no existe.";
                 return false;
-            }
+            } //echo $contents; exit();
             $this->doc->loadXML($contents, LIBXML_NOBLANKS);
             if (!$this->doc->schemaValidate($xsd)) {
                 //Recupera un array de errores
@@ -915,13 +915,13 @@ class BandejaEntradaNuevoController extends Controller
     function guardarAvaluo(Request $request){
         try{
 
-            /* $authToken = $request->header('Authorization');
+            $authToken = $request->header('Authorization');
             if (!$authToken) {
                 return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
             } 
             $resToken = Crypt::decrypt($authToken);
             
-            $idPersona = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior']; */ $idPersona = 264;
+            $idPersona = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior']; //$idPersona = 264;
 
             $file = $request->file('files');
 
@@ -1725,7 +1725,7 @@ class BandejaEntradaNuevoController extends Controller
             //$camposFexavaAvaluo['PROPOSITO'] = (String)($infoXmlPropositoDelAvaluo[0]);
         }
                 
-        print_r($camposFexavaAvaluo); exit();
+        //print_r($camposFexavaAvaluo); exit();
         /************************************************************/
 
         $infoXmlObjetoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//ObjetoDelAvaluo[@id="b.5"]');        
@@ -3237,7 +3237,7 @@ class BandejaEntradaNuevoController extends Controller
         }
 
         if(isset($arrIdsDescripcionDelInmueble['e.5'])){
-            $vidaUtilRemanentePonderadaDelInmueble = $infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//VidaMinimaRemanentePonderadaDelInmueble[@id="e.5"]');
+            $vidaUtilRemanentePonderadaDelInmueble = $infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//VidaUtilRemanentePonderadaDelInmueble[@id="e.5"]');
             
             if(trim($vidaUtilRemanentePonderadaDelInmueble[0]) != ''){
                 $camposFexavaAvaluo['DIVIDAUTILREMANENTEPONDERADA'] = (String)($vidaUtilRemanentePonderadaDelInmueble[0]);

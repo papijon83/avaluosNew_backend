@@ -4336,7 +4336,7 @@
           </xs:simpleContent>
         </xs:complexType>
       </xs:element>
-      <xs:element name="VidaMinimaRemanentePonderadaDelInmueble">
+      <xs:element name="VidaUtilRemanentePonderadaDelInmueble">
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="NullableDecimalPositivo">
@@ -4456,7 +4456,7 @@
           </xs:simpleContent>
         </xs:complexType>
       </xs:element>
-      <xs:element name="VidaMinimaRemanentePonderadaDelInmueble">
+      <xs:element name="VidaUtilRemanentePonderadaDelInmueble">
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="NullableDecimalPositivo">

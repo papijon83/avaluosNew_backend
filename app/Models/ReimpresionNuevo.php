@@ -1142,49 +1142,56 @@ class ReimpresionNuevo
         /*********************************************************************************************************************/
 
         if(isset($elementoPrincipal['EnfoqueDeMercado'])){
-            $infoReimpresion['Terrenos']  = array();
-            $infoReimpresion['Terrenos']['Terrenos_Directos'] = array();
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'] = array();
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'] = array();
 
+            $infoReimpresion['Terrenos']  = array();
             $enfoqueMercado = $elementoPrincipal['EnfoqueDeMercado'];
             $terrenos = $enfoqueMercado['Terrenos'];
-            $terrenosDirectos = $terrenos['TerrenosDirectos'];
+
+            if(isset($terrenos['TerrenosDirectos'])){
+                $infoReimpresion['Terrenos']['Terrenos_Directos'] = array();
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'] = array();
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'] = array();
+
+                
+                $terrenosDirectos = $terrenos['TerrenosDirectos'];       
+                
+                
+                $control = 0; 
+                foreach($terrenosDirectos as $terrenoDirecto){
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Ubicacion'] = $terrenoDirecto['Calle'].". ".$terrenoDirecto['Colonia'].". ".$terrenoDirecto['CodigoPostal'].".";
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Descripcion'] = $terrenoDirecto['DescripcionDelPredio'];
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['C_U_S'] = $terrenoDirecto['CUS'];
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Uso_Suelo'] = $terrenoDirecto['UsoDelSuelo'];
+
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_Negociacion'] = $terrenoDirecto['FactorDeNegociacion'];
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Superficie'] = $terrenoDirecto['Superficie'];
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fzo'] = $terrenoDirecto['Fzo'];
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fub'] = $terrenoDirecto['Fub'];
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['FFr'] = $terrenoDirecto['FFr'];
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Ffo'] = $terrenoDirecto['Ffo'];
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fsu'] = $terrenoDirecto['Fsu'];
+                    if(isset($terrenoDirecto['Fot'])){
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = $terrenoDirecto['Fot']['Valor'];                    
+                    }else{
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = '';
+                    }                
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fre'] = $terrenoDirecto['Fre'];
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Precio_Solicitado'] = $terrenoDirecto['PrecioSolicitado'];
+
+                    $control = $control + 1;
+                } //print_r($infoReimpresion); exit();
+
+                $conclusionHomologacionTerrenos = $terrenos['ConclusionesHomologacionTerrenos'];
+
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos'] = array();
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Promedio'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Homologado'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraHomologado'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMinimo'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMaximo'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMinimo'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMaximo'];
+            }
             
-            $control = 0; 
-            foreach($terrenosDirectos as $terrenoDirecto){
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Ubicacion'] = $terrenoDirecto['Calle'].". ".$terrenoDirecto['Colonia'].". ".$terrenoDirecto['CodigoPostal'].".";
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Descripcion'] = $terrenoDirecto['DescripcionDelPredio'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['C_U_S'] = $terrenoDirecto['CUS'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Uso_Suelo'] = $terrenoDirecto['UsoDelSuelo'];
-
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_Negociacion'] = $terrenoDirecto['FactorDeNegociacion'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Superficie'] = $terrenoDirecto['Superficie'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fzo'] = $terrenoDirecto['Fzo'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fub'] = $terrenoDirecto['Fub'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['FFr'] = $terrenoDirecto['FFr'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Ffo'] = $terrenoDirecto['Ffo'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fsu'] = $terrenoDirecto['Fsu'];
-                if(isset($terrenoDirecto['Fot'])){
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = $terrenoDirecto['Fot']['Valor'];                    
-                }else{
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = '';
-                }                
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fre'] = $terrenoDirecto['Fre'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Precio_Solicitado'] = $terrenoDirecto['PrecioSolicitado'];
-
-                $control = $control + 1;
-            } //print_r($infoReimpresion); exit();
-
-            $conclusionHomologacionTerrenos = $terrenos['ConclusionesHomologacionTerrenos'];
-
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos'] = array();
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Promedio'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Homologado'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraHomologado'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMinimo'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMaximo'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMinimo'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMaximo'];
 
             /************************************************************************************************************************************************************************/
 
@@ -3055,97 +3062,104 @@ class ReimpresionNuevo
         /*********************************************************************************************************************/
 
         if(isset($elementoPrincipal['EnfoqueDeMercado'])){
-            $infoReimpresion['Terrenos']  = array();
-            $infoReimpresion['Terrenos']['Terrenos_Directos'] = array();
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'] = array();
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'] = array();
+            $infoReimpresion['Terrenos']  = array();        
 
             $enfoqueMercado = $elementoPrincipal['EnfoqueDeMercado'];
-            $terrenos = $enfoqueMercado['Terrenos'];
-            $terrenosDirectos = $terrenos['TerrenosDirectos'];
-            
-            if(isset($terrenosDirectos[0])){
+            $terrenos = $enfoqueMercado['Terrenos'];            
 
-                $control = 0; 
-                foreach($terrenosDirectos as $terrenoDirecto){
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Ubicacion'] = $terrenoDirecto['Calle'].". ".$terrenoDirecto['Colonia'].". ".$terrenoDirecto['CodigoPostal'].".";
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Descripcion'] = $terrenoDirecto['DescripcionDelPredio'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['C_U_S'] = $terrenoDirecto['CUS'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Uso_Suelo'] = $terrenoDirecto['UsoDelSuelo'];
+            if(isset($terrenos['TerrenosDirectos'])){
+                $infoReimpresion['Terrenos']['Terrenos_Directos'] = array();
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'] = array();
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'] = array();
 
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_Negociacion'] = $terrenoDirecto['FactorDeNegociacion'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Superficie'] = $terrenoDirecto['Superficie'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1']['Titulo'] = $terrenoDirecto['Factor1']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1']['Valor'] = $terrenoDirecto['Factor1']['Valor'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2']['Titulo'] = $terrenoDirecto['Factor2']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2']['Valor'] = $terrenoDirecto['Factor2']['Valor'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3']['Titulo'] = $terrenoDirecto['Factor3']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3']['Valor'] = $terrenoDirecto['Factor3']['Valor'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4']['Titulo'] = $terrenoDirecto['Factor4']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4']['Valor'] = $terrenoDirecto['Factor4']['Valor'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5']['Titulo'] = $terrenoDirecto['Factor5']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5']['Valor'] = $terrenoDirecto['Factor5']['Valor'];
-                    /*if(isset($terrenoDirecto['Fot'])){
-                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = $terrenoDirecto['Fot']['Valor'];                    
-                    }else{
-                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = '';
-                    } */               
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fre'] = $terrenoDirecto['Fre'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Precio_Solicitado'] = $terrenoDirecto['PrecioSolicitado'];
+                $terrenosDirectos = $terrenos['TerrenosDirectos'];
 
-                    $control = $control + 1;
-                } //print_r($infoReimpresion); exit();
+                if(isset($terrenosDirectos[0])){
 
-            }else{
-
-                $control = 0;
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Ubicacion'] = $terrenosDirectos['Calle'].". ".$terrenosDirectos['Colonia'].". ".$terrenosDirectos['CodigoPostal'].".";
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Descripcion'] = $terrenosDirectos['DescripcionDelPredio'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['C_U_S'] = $terrenosDirectos['CUS'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Uso_Suelo'] = $terrenosDirectos['UsoDelSuelo'];
-
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_Negociacion'] = $terrenosDirectos['FactorDeNegociacion'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Superficie'] = $terrenosDirectos['Superficie'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1']['Titulo'] = $terrenosDirectos['Factor1']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1']['Valor'] = $terrenosDirectos['Factor1']['Valor'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2']['Titulo'] = $terrenosDirectos['Factor2']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2']['Valor'] = $terrenosDirectos['Factor2']['Valor'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3']['Titulo'] = $terrenosDirectos['Factor3']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3']['Valor'] = $terrenosDirectos['Factor3']['Valor'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4']['Titulo'] = $terrenosDirectos['Factor4']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4']['Valor'] = $terrenosDirectos['Factor4']['Valor'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5'] = array();
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5']['Titulo'] = $terrenosDirectos['Factor5']['Siglas'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5']['Valor'] = $terrenosDirectos['Factor5']['Valor'];
-                    /*if(isset($terrenoDirecto['Fot'])){
-                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = $terrenoDirecto['Fot']['Valor'];                    
-                    }else{
-                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = '';
-                    } */               
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fre'] = $terrenosDirectos['Fre'];
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Precio_Solicitado'] = $terrenosDirectos['PrecioSolicitado'];
+                    $control = 0; 
+                    foreach($terrenosDirectos as $terrenoDirecto){
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Ubicacion'] = $terrenoDirecto['Calle'].". ".$terrenoDirecto['Colonia'].". ".$terrenoDirecto['CodigoPostal'].".";
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Descripcion'] = $terrenoDirecto['DescripcionDelPredio'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['C_U_S'] = $terrenoDirecto['CUS'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Uso_Suelo'] = $terrenoDirecto['UsoDelSuelo'];
+    
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_Negociacion'] = $terrenoDirecto['FactorDeNegociacion'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Superficie'] = $terrenoDirecto['Superficie'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1']['Titulo'] = $terrenoDirecto['Factor1']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1']['Valor'] = $terrenoDirecto['Factor1']['Valor'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2']['Titulo'] = $terrenoDirecto['Factor2']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2']['Valor'] = $terrenoDirecto['Factor2']['Valor'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3']['Titulo'] = $terrenoDirecto['Factor3']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3']['Valor'] = $terrenoDirecto['Factor3']['Valor'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4']['Titulo'] = $terrenoDirecto['Factor4']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4']['Valor'] = $terrenoDirecto['Factor4']['Valor'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5']['Titulo'] = $terrenoDirecto['Factor5']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5']['Valor'] = $terrenoDirecto['Factor5']['Valor'];
+                        /*if(isset($terrenoDirecto['Fot'])){
+                            $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = $terrenoDirecto['Fot']['Valor'];                    
+                        }else{
+                            $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = '';
+                        } */               
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fre'] = $terrenoDirecto['Fre'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Precio_Solicitado'] = $terrenoDirecto['PrecioSolicitado'];
+    
+                        $control = $control + 1;
+                    } //print_r($infoReimpresion); exit();
+    
+                }else{
+    
+                    $control = 0;
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Ubicacion'] = $terrenosDirectos['Calle'].". ".$terrenosDirectos['Colonia'].". ".$terrenosDirectos['CodigoPostal'].".";
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Descripcion'] = $terrenosDirectos['DescripcionDelPredio'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['C_U_S'] = $terrenosDirectos['CUS'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaUno'][$control]['Uso_Suelo'] = $terrenosDirectos['UsoDelSuelo'];
+    
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_Negociacion'] = $terrenosDirectos['FactorDeNegociacion'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Superficie'] = $terrenosDirectos['Superficie'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1']['Titulo'] = $terrenosDirectos['Factor1']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor1']['Valor'] = $terrenosDirectos['Factor1']['Valor'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2']['Titulo'] = $terrenosDirectos['Factor2']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor2']['Valor'] = $terrenosDirectos['Factor2']['Valor'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3']['Titulo'] = $terrenosDirectos['Factor3']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor3']['Valor'] = $terrenosDirectos['Factor3']['Valor'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4']['Titulo'] = $terrenosDirectos['Factor4']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor4']['Valor'] = $terrenosDirectos['Factor4']['Valor'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5'] = array();
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5']['Titulo'] = $terrenosDirectos['Factor5']['Siglas'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Factor5']['Valor'] = $terrenosDirectos['Factor5']['Valor'];
+                        /*if(isset($terrenoDirecto['Fot'])){
+                            $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = $terrenoDirecto['Fot']['Valor'];                    
+                        }else{
+                            $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = '';
+                        } */               
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fre'] = $terrenosDirectos['Fre'];
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Precio_Solicitado'] = $terrenosDirectos['PrecioSolicitado'];
+    
+                }
+                
+    
+                $conclusionHomologacionTerrenos = $terrenos['ConclusionesHomologacionTerrenos'];
+    
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos'] = array();
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Promedio'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Homologado'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraHomologadoPromedio'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMinimo'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMaximo'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMinimo'];
+                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMaximo'];
 
             }
             
-
-            $conclusionHomologacionTerrenos = $terrenos['ConclusionesHomologacionTerrenos'];
-
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos'] = array();
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Promedio'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Homologado'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraHomologadoPromedio'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMinimo'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMaximo'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMinimo'];
-            $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMaximo'];
+            
 
             /************************************************************************************************************************************************************************/
 
