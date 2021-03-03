@@ -3502,7 +3502,15 @@ class ReimpresionNuevo
                 $infoReimpresion['Calculo_Valor_Construcciones']['Comunes']['Uso'] = $tiposContruccion['ConstruccionesComunes']['ClaveUso'];
                 $infoReimpresion['Calculo_Valor_Construcciones']['Comunes']['Clase'] = $this->modelFis->getClase($tiposContruccion['ConstruccionesComunes']['ClaveClase']);
                 $infoReimpresion['Calculo_Valor_Construcciones']['Comunes']['Superficie_m2'] = $tiposContruccion['ConstruccionesComunes']['Superficie'];
-                $infoReimpresion['Calculo_Valor_Construcciones']['Comunes']['Valor_Unitario'] = $tiposContruccion['ConstruccionesComunes']['CostoUnitarioDeReposicionNuevo'];
+
+                if(isset($tiposContruccion['ConstruccionesComunes']['CostoUnitarioDeReposicionNuevo']) && isset($tiposContruccion['ConstruccionesComunes']['CostoUnitarioDeReposicionNuevo'])){
+                    $infoReimpresion['Calculo_Valor_Construcciones']['Comunes']['Valor_Unitario'] = $tiposContruccion['ConstruccionesComunes']['CostoUnitarioDeReposicionNuevo'];
+                }
+
+                if(isset($tiposContruccion['ConstruccionesComunes']['ValorunitariodereposicionNuevo']) && isset($tiposContruccion['ConstruccionesComunes']['ValorunitariodereposicionNuevo'])){
+                    $infoReimpresion['Calculo_Valor_Construcciones']['Comunes']['Valor_Unitario'] = $tiposContruccion['ConstruccionesComunes']['ValorunitariodereposicionNuevo'];
+                }
+                
                 if($tipoDeAvaluo ==  "Catastral"){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Comunes']['Edad'] = $tiposContruccion['ConstruccionesComunes']['Edad'];
                 }
