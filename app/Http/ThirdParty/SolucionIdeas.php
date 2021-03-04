@@ -17,7 +17,7 @@ class SolucionIdeas
     public function recibeAvaluo($file, $folio_Interno, $idUsuario, $usuario, $password)
     {  
         $myfile = fopen($file, "r");
-        $contents = fread($myfile, filesize($file));   
+        $contents = fread($myfile, filesize($file));   echo $contents; exit();
         fclose($myfile);
 
         $client = new \nusoap_client(env("WSDL_SOLUCION"), 'wsdl');
