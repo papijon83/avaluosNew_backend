@@ -6247,10 +6247,17 @@ class BandejaEntradaNuevoController extends Controller
     public function reimprimeSV(Request $request){
         try{
 
-            $numero_unico = trim($request->query('no_unico'));
+            if($request->query('idAvaluo')){
+                $id_avaluo = trim($request->query('idAvaluo'));
+            }else{
+                $numero_unico = trim($request->query('no_unico'));      
 
-            $this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
-            $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);
+                $this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
+                $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);
+                
+                
+            }
+           
             
             $fechaAvaluo = DB::select("SELECT to_char(FECHA,'YYYY-MM-DD') as FECHA_AVALUO FROM DOC.DOC_DOCUMENTODIGITAL WHERE IDDOCUMENTODIGITAL = '".$id_avaluo."'");
             $arr_fechaAvaluo = convierte_a_arreglo($fechaAvaluo);
