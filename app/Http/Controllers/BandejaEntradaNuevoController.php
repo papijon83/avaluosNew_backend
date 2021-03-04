@@ -6374,7 +6374,21 @@ class BandejaEntradaNuevoController extends Controller
     public function reimprimeSVPost(Request $request){
         try{
 
-            $numero_unico = trim($request->input('no_unico'));
+            $idAvaluo = $request->input('idAvaluo');
+            if(isset($idAvaluo)){
+                Log::info($idAvaluo);
+                $id_avaluo = trim($idAvaluo);
+                $this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
+                $numero_unico = $this->modelDocumentos->get_numero_unico_db($id_avaluo);
+            }else{
+                $numero_unico = trim($request->input('no_unico'));      
+
+                $this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
+                $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);
+                
+                
+            }
+            //$numero_unico = trim($request->input('no_unico'));
           
 
             $this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
