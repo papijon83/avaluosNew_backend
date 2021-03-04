@@ -16,17 +16,25 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('reimprime', 'BandejaEntradaNuevoController@reimprimeSV');
-$router->post('reimprime', 'BandejaEntradaNuevoController@reimprimeSVPost');
-$router->get('acuse', 'FormatosController@generaAcusePDFSV');
-$router->post('acuse', 'FormatosController@generaAcusePDFSVPost');
-$router->get('obtenXML', 'BandejaEntradaNuevoController@obtenXML');
 
-$router->post('guardarxml', 'BandejaEntradaNuevoController@guardarAvaluoPNet');
-$router->post('insertSuperficie', 'BandejaEntradaNuevoController@insertSuperficieAuxPNet');
+    $router->get('reimprime', 'BandejaEntradaNuevoController@reimprimeSV');
+    $router->post('reimprime', 'BandejaEntradaNuevoController@reimprimeSVPost');
+    $router->get('acuse', 'FormatosController@generaAcusePDFSV');
+    $router->post('acuse', 'FormatosController@generaAcusePDFSVPost');
+    $router->get('obtenXML', 'BandejaEntradaNuevoController@obtenXML');
 
-$router->get('guardarxml', 'BandejaEntradaNuevoController@guardarAvaluoPNet');
-$router->get('insertSuperficie', 'BandejaEntradaNuevoController@insertSuperficieAuxPNet');
+    $router->post('guardarxml', 'BandejaEntradaNuevoController@guardarAvaluoPNet');
+    $router->post('insertSuperficie', 'BandejaEntradaNuevoController@insertSuperficieAuxPNet');
+
+    $router->get('guardarxml', 'BandejaEntradaNuevoController@guardarAvaluoPNet');
+    $router->get('insertSuperficie', 'BandejaEntradaNuevoController@insertSuperficieAuxPNet');
+
+    $router->group(['prefix' => 'WsSolucionIdeas'], function () use ($router) {
+        $router->post('wsRecibeAvaluo', 'WsSolucionIdeas@wsRecibeAvaluo');
+        $router->post('getToken', 'WsSolucionIdeas@getToken');
+    });
+
+
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->group(['prefix' => 'v1'], function () use ($router) {
