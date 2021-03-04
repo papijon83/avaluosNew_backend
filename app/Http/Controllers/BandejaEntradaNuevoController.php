@@ -6250,6 +6250,8 @@ class BandejaEntradaNuevoController extends Controller
             if(isset($idAvaluo)){
                 Log::info($idAvaluo);
                 $id_avaluo = trim($idAvaluo);
+                $this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
+                $numero_unico = $this->modelDocumentos->get_numero_unico_db($id_avaluo);
             }else{
                 $numero_unico = trim($request->query('no_unico'));      
 
