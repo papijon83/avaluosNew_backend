@@ -1165,17 +1165,30 @@ class ReimpresionNuevo
 
                     $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_Negociacion'] = $terrenoDirecto['FactorDeNegociacion'];
                     $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Superficie'] = $terrenoDirecto['Superficie'];
+                    
+                    if(isset($terrenoDirecto['Fzo']) && !is_array($terrenoDirecto['Fzo'])){
                     $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fzo'] = $terrenoDirecto['Fzo'];
+                    }
+                    if(isset($terrenoDirecto['Fub']) && !is_array($terrenoDirecto['Fub'])){
                     $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fub'] = $terrenoDirecto['Fub'];
+                    }
+                    if(isset($terrenoDirecto['FFr']) && !is_array($terrenoDirecto['FFr'])){
                     $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['FFr'] = $terrenoDirecto['FFr'];
+                    }
+                    if(isset($terrenoDirecto['Ffo']) && !is_array($terrenoDirecto['Ffo'])){
                     $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Ffo'] = $terrenoDirecto['Ffo'];
+                    }
+                    if(isset($terrenoDirecto['Fsu']) && !is_array($terrenoDirecto['Fsu'])){
                     $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fsu'] = $terrenoDirecto['Fsu'];
+                    }
                     if(isset($terrenoDirecto['Fot'])){
                         $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = $terrenoDirecto['Fot']['Valor'];                    
                     }else{
                         $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['F_otro'] = '';
                     }                
-                    $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fre'] = $terrenoDirecto['Fre'];
+                    if(isset($terrenoDirecto['Fre']) && !is_array($terrenoDirecto['Fre'])){
+                        $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Fre'] = $terrenoDirecto['Fre'];
+                    }                    
                     $infoReimpresion['Terrenos']['Terrenos_Directos']['TablaDos'][$control]['Precio_Solicitado'] = $terrenoDirecto['PrecioSolicitado'];
 
                     $control = $control + 1;
