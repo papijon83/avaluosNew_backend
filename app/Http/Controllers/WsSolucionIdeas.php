@@ -40,21 +40,16 @@ class WsSolucionIdeas extends Controller
 
         $idUsuario = $resToken['idUsuario'];
 
-        $file = $request->file('files');
-        $myfile = fopen($file, "r");
-        $contents = fread($myfile, filesize($file));   
-        fclose($myfile);
+        $file = $request->file('files');   
 
         /*$file = $request->input('files');
         $contents = base64_decode($file);*/
         $folio_Interno =$resToken['numeroUnico'];
         $usuario = base64_encode(env("USUSOLUCION"));
-        $password = base64_encode(env("PASSOLUCION"));
-
-        $pregunta = ['AvaluoXML' => $file,'Folio_Interno' => $folio_Interno, 'Folio_usuario' => $idUsuario];
+        $password = base64_encode(env("PASSOLUCION"));    
 
         $solucion = new SolucionIdeas;
-        $response = $solucion->recibeAvaluo($pregunta,$usuario,$password);
+        $response = $solucion->recibeAvaluo($file, $folio_Interno, $idUsuario, $usuario, $password);
 
         return response()->json(['Estado' => $response], 200);
        /*echo $contents."<<>>".$folio_Interno."<<>>".$idUsuario."<<>>".$usuario."<<>>".$password;

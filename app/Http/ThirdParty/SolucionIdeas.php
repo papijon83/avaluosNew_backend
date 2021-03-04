@@ -14,15 +14,30 @@ class SolucionIdeas
         //
     }
 
-    public function recibeAvaluo($pregunta,$usuario,$password)
+    public function recibeAvaluo($file, $folio_Interno, $idUsuario, $usuario, $password)
     {  
+        $myfile = fopen($file, "r");
+        $contents = fread($myfile, filesize($file));   
+        fclose($myfile);
+
         $client = new \nusoap_client(env("WSDL_SOLUCION"), 'wsdl');
-        //$authHeaders = $client->getHeader();
-        $client->setCredentials($usuario,$password,'basic');
+        
+        $authHeaders = $client->getHeader(); //var_dump($authHeaders); exit();
+        if(isset($authHeaders['usuario']) && isset($authHeaders['contrasenia'])){
+            $header = '<usuario>'.$usuario.'</usuario>';
+            $header .= '<contrasenia>'.$password.'</contrasenia>'; //echo $header; exit();
+            $client->setHeaders($header);
+        }
+        else{   
+            $client->setCredentials($usuario,$password,'basic');
+        }        
+
+        $client->setCredentials($usuario,$password);
         $client->soap_defencoding = 'UTF-8';
         $client->decode_utf8 = FALSE;
-        $res = $client->call('WS_Recibe_Avaluo', $pregunta);
-        error_log(json_encode($res));
+        //$res = $client->call('WS_Recibe_Avaluo', array('AvaluoXML'=>$contents,'Folio_Interno'=>$folio_Interno,'Folio_Usuario'=>$idUsuario));
+        $res = $client->call('BandejaAvaluoXML', array('AvaluoXML'=>$contents,'Folio_Interno'=>$folio_Interno,'Folio_Usuario'=>$idUsuario));
+        error_log(json_encode($res)); echo "SOY LA RESPUESTA ".var_dump($res); exit();
         return $res;
     }    
 }
