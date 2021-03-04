@@ -17,11 +17,11 @@ class SolucionIdeas
     public function recibeAvaluo($file, $folio_Interno, $idUsuario, $usuario, $password)
     {  
         $myfile = fopen($file, "r");
-        $contents = fread($myfile, filesize($file));   echo $contents; exit();
+        $contents = fread($myfile, filesize($file));
         fclose($myfile);
 
         $client = new \nusoap_client(env("WSDL_SOLUCION"), 'wsdl');
-        
+        var_dump($client); exit();
         $authHeaders = $client->getHeader(); //var_dump($authHeaders); exit();
         if(isset($authHeaders['usuario']) && isset($authHeaders['contrasenia'])){
             $header = '<usuario>'.$usuario.'</usuario>';

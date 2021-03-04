@@ -29,10 +29,13 @@ $router->get('/', function () use ($router) {
     $router->get('guardarxml', 'BandejaEntradaNuevoController@guardarAvaluoPNet');
     $router->get('insertSuperficie', 'BandejaEntradaNuevoController@insertSuperficieAuxPNet');
 
-    $router->group(['prefix' => 'WsSolucionIdeas'], function () use ($router) {
+    $router->post('wsRecibeAvaluo', 'WsSolucionIdeas@wsRecibeAvaluo');
+    $router->post('getToken', 'WsSolucionIdeas@getToken');
+
+    /*$router->group(['prefix' => 'WsSolucionIdeas'], function () use ($router) {
         $router->post('wsRecibeAvaluo', 'WsSolucionIdeas@wsRecibeAvaluo');
         $router->post('getToken', 'WsSolucionIdeas@getToken');
-    });
+    });*/
 
 
 
