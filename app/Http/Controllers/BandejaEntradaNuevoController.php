@@ -6246,8 +6246,8 @@ class BandejaEntradaNuevoController extends Controller
 
     public function reimprimeSV(Request $request){
         try{
-            $idAvaluo = $request->input('idAvaluo');
-            Log::info("SOY IDAVALUO ".$idAvaluo);
+            
+            $idAvaluo = $request->query('IdAvaluo');            
             if(isset($idAvaluo)){
                 Log::info($idAvaluo);
                 $id_avaluo = trim($idAvaluo);
