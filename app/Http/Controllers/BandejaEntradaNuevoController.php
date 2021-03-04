@@ -6246,8 +6246,8 @@ class BandejaEntradaNuevoController extends Controller
 
     public function reimprimeSV(Request $request){
         try{
-
-            if($request->query('idAvaluo')){
+            $idAvaluo = $request->query('idAvaluo');
+            if($idAvaluo){
                 $id_avaluo = trim($request->query('idAvaluo'));
             }else{
                 $numero_unico = trim($request->query('no_unico'));      
