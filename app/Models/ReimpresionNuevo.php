@@ -1197,7 +1197,7 @@ class ReimpresionNuevo
                 $conclusionHomologacionTerrenos = $terrenos['ConclusionesHomologacionTerrenos'];
 
                 $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos'] = array();
-                
+
                 if(isset($conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio']) && !is_array($conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio'])){
                     $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Promedio'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio'];
                 }
@@ -1515,15 +1515,33 @@ class ReimpresionNuevo
                 $control = 0;
                 foreach($tiposContruccion['ConstruccionesPrivativas'] as $construccionPrivativa){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Fracc'] = $control + 1;
-                    $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Descripcion'] = $construccionPrivativa['Descripcion'];
+                    if(isset($construccionPrivativa['Descripcion']) && !is_array($construccionPrivativa['Descripcion'])){
+                        $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Descripcion'] = $construccionPrivativa['Descripcion'];
+                    }
+                    if(isset($construccionPrivativa['ClaveUso']) && !is_array($construccionPrivativa['ClaveUso'])){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Uso'] = $construccionPrivativa['ClaveUso'];
+                    }
+                    if(isset($construccionPrivativa['ClaveClase']) && !is_array($construccionPrivativa['ClaveClase'])){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Clase'] = $this->modelFis->getClase($construccionPrivativa['ClaveClase']);
+                    }
+                    if(isset($construccionPrivativa['Superficie']) && !is_array($construccionPrivativa['Superficie'])){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Superficie_m2'] = $construccionPrivativa['Superficie'];
+                    }
+                    if(isset($construccionPrivativa['ValorunitariodereposicionNuevo']) && !is_array($construccionPrivativa['ValorunitariodereposicionNuevo'])){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Valor_Unitario'] = $construccionPrivativa['ValorunitariodereposicionNuevo'];
+                    }
+                    if(isset($construccionPrivativa['Edad']) && !is_array($construccionPrivativa['Edad'])){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Edad'] = $construccionPrivativa['Edad'];
+                    }
+                    if(isset($construccionPrivativa['ClaveConservacion']) && !is_array($construccionPrivativa['ClaveConservacion'])){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Fco'] = $construccionPrivativa['ClaveConservacion'];
+                    }
+                    if(isset($construccionPrivativa['FactorResultante']) && !is_array($construccionPrivativa['FactorResultante'])){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['FRe'] = $construccionPrivativa['FactorResultante'];
+                    }
+                    if(isset($construccionPrivativa['ValorDeLaFraccionN']) && !is_array($construccionPrivativa['ValorDeLaFraccionN'])){
                     $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Valor_Fraccion'] = $construccionPrivativa['ValorDeLaFraccionN'];
+                    }
                                     
                     $control = $control + 1;
                 }
