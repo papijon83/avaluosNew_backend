@@ -1197,12 +1197,25 @@ class ReimpresionNuevo
                 $conclusionHomologacionTerrenos = $terrenos['ConclusionesHomologacionTerrenos'];
 
                 $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos'] = array();
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Promedio'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Homologado'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraHomologado'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMinimo'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMaximo'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMinimo'];
-                $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMaximo'];
+                
+                if(isset($conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio']) && !is_array($conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio'])){
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Promedio'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraPromedio'];
+                }
+                if(isset($conclusionHomologacionTerrenos['ValorUnitarioDeTierraHomologado']) && !is_array($conclusionHomologacionTerrenos['ValorUnitarioDeTierraHomologado'])){
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Tierra_Homologado'] = $conclusionHomologacionTerrenos['ValorUnitarioDeTierraHomologado'];
+                }
+                if(isset($conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMinimo']) && !is_array($conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMinimo'])){
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMinimo'];
+                }
+                if(isset($conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMaximo']) && !is_array($conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMaximo'])){
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Sin_Homologar_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioSinHomologarMaximo'];
+                }
+                if(isset($conclusionHomologacionTerrenos['ValorUnitarioHomologadoMinimo']) && !is_array($conclusionHomologacionTerrenos['ValorUnitarioHomologadoMinimo'])){
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Minimo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMinimo'];
+                }
+                if(isset($conclusionHomologacionTerrenos['ValorUnitarioHomologadoMaximo']) && !is_array($conclusionHomologacionTerrenos['ValorUnitarioHomologadoMaximo'])){
+                    $infoReimpresion['Terrenos']['Terrenos_Directos']['Conclusiones_Homologacion_Terrenos']['Valor_Unitario_Homologado_Maximo'] = $conclusionHomologacionTerrenos['ValorUnitarioHomologadoMaximo'];
+                }
             }
             
 
