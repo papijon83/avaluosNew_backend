@@ -20,8 +20,7 @@ class SolucionIdeas
         $contents = fread($myfile, filesize($file));
         fclose($myfile);
 
-        $client = new \nusoap_client(env("WSDL_SOLUCION"), 'wsdl');
-        var_dump($client); exit();
+        $client = new \nusoap_client(env("WSDL_SOLUCION"), 'wsdl');    
         $authHeaders = $client->getHeader(); //var_dump($authHeaders); exit();
         if(isset($authHeaders['usuario']) && isset($authHeaders['contrasenia'])){
             $header = '<usuario>'.$usuario.'</usuario>';
@@ -37,7 +36,7 @@ class SolucionIdeas
         $client->decode_utf8 = FALSE;
         //$res = $client->call('WS_Recibe_Avaluo', array('AvaluoXML'=>$contents,'Folio_Interno'=>$folio_Interno,'Folio_Usuario'=>$idUsuario));
         $res = $client->call('BandejaAvaluoXML', array('AvaluoXML'=>$contents,'Folio_Interno'=>$folio_Interno,'Folio_Usuario'=>$idUsuario));
-        error_log(json_encode($res)); echo "SOY LA RESPUESTA ".var_dump($res); exit();
+        //error_log(json_encode($res)); //echo "SOY LA RESPUESTA ".var_dump($res); exit();
         return $res;
     }    
 }
