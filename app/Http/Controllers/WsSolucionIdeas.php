@@ -27,6 +27,45 @@ class WsSolucionIdeas extends Controller
 
     public function wsRecibeAvaluo(Request $request)
     {
+        try{
+
+            $authToken = $request->header('Authorization');
+            if (!$authToken) {
+                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+            }
+
+            $resToken = Crypt::decrypt($authToken); 
+
+            if (empty($resToken['idUsuario'])) {
+                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+            }
+
+            $idUsuario = $resToken['idUsuario'];
+
+            $file = $request->file('files');   
+
+            /*$file = $request->input('files');
+            $contents = base64_decode($file);*/
+            $folio_Interno =$resToken['numeroUnico'];            
+
+            $solucion = new SolucionIdeas;
+            $response = $solucion->recibeAvaluo($file, $folio_Interno, $idUsuario);
+
+            return response()->json(['Estado' => $response], 200);
+            /*echo $contents."<<>>".$folio_Interno."<<>>".$idUsuario."<<>>".$usuario."<<>>".$password;
+            exit();*/
+
+        }catch (\Throwable $th){
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+        }
+        
+        
+    }
+
+    public function wsActualizarEnAvaluoXML(Request $request)
+    {
         $authToken = $request->header('Authorization');
         if (!$authToken) {
             return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
@@ -45,11 +84,13 @@ class WsSolucionIdeas extends Controller
         /*$file = $request->input('files');
         $contents = base64_decode($file);*/
         $folio_Interno =$resToken['numeroUnico'];
-        $usuario = base64_encode(env("USUSOLUCION"));
-        $password = base64_encode(env("PASSOLUCION"));    
+        $fecha_Pago =$resToken['fechaPago'];
+        $monto_Pago =$resToken['montoPago'];
+        $folio_Usuario =$resToken['idUsuario'];
+        $linea_Captura =$resToken['lineaCaptura'];
 
         $solucion = new SolucionIdeas;
-        $response = $solucion->recibeAvaluo($file, $folio_Interno, $idUsuario, $usuario, $password);
+        $response = $solucion->recibeAvaluo($folio_Interno, $fecha_Pago, $monto_Pago, $folio_Usuario, $linea_Captura);
 
         return response()->json(['Estado' => $response], 200);
        /*echo $contents."<<>>".$folio_Interno."<<>>".$idUsuario."<<>>".$usuario."<<>>".$password;
@@ -60,7 +101,18 @@ class WsSolucionIdeas extends Controller
     public function getToken(Request $request){    
         $idUsuario = $request->input('idUsuario');
         $numeroUnico = $request->input('numeroUnico');
-        $token = Crypt::encrypt(['numeroUnico'=>$idUsuario,'idUsuario'=>$numeroUnico]);
+        $fecha_Pago = $request->input('fechaPago');
+        $monto_Pago = $request->input('montoPago');    
+        $linea_Captura = $request->input('lineaCaptura');
+
+        if(isset($idUsuario) && isset($numeroUnico)){
+            $token = Crypt::encrypt(['numeroUnico'=>$idUsuario,'idUsuario'=>$numeroUnico]);
+        }
+
+        if(isset($idUsuario) && isset($numeroUnico) && isset($fecha_Pago) && isset($monto_Pago) && isset($linea_Captura)){
+            $token = Crypt::encrypt(['numeroUnico'=>$idUsuario,'idUsuario'=>$numeroUnico, 'fechaPago'=>$fecha_Pago, 'montoPago'=>$monto_Pago, 'lineaCaptura'=>$linea_Captura]);
+        }
+        
         return response()->json($token, 200);
     }
 }

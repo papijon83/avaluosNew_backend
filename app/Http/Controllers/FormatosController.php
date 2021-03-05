@@ -159,7 +159,7 @@ class FormatosController extends Controller
             //Log::info(json_encode($infoAcuse));
             return $infoAcuse;
         }catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error en el servidor'], 500);
         }    
