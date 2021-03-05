@@ -4219,11 +4219,35 @@ class ReimpresionNuevo
 
             $control = 0;
             foreach($fotosRenta as $fotoRenta){ //echo $fotoRenta['FotosInmuebleAvaluo']['Foto']."\n";
-                $foto = $this->modelDocumentos->get_fichero_foto($fotoRenta['FotosInmuebleAvaluo']['Foto']);
-                $infoReimpresion['Inmueble_Renta'][$control]['Foto'] = $foto == base64_encode(base64_decode($foto)) ? $foto : base64_encode($foto);
-                $infoReimpresion['Inmueble_Renta'][$control]['Cuenta_Catastral'] = $fotoRenta['CuentaCatastral']['Region']."-".$fotoRenta['CuentaCatastral']['Manzana']."-".$fotoRenta['CuentaCatastral']['Lote']."-".$fotoRenta['CuentaCatastral']['Localidad'];
-                $infoReimpresion['Inmueble_Renta'][$control]['Interior_O_Exterior'] = $fotoRenta['FotosInmuebleAvaluo']['InteriorOExterior'];
-                $control = $control + 1;
+
+                if(isset($fotoRenta['FotosInmuebleAvaluo'][0])){
+
+                    foreach($fotoRenta['FotosInmuebleAvaluo'] as $fotoDet){
+
+                        if(isset($fotoDet['Foto']) && !is_array($fotoDet['Foto'])){
+                            $foto = $this->modelDocumentos->get_fichero_foto($fotoDet['Foto']);
+                        }    
+                        $infoReimpresion['Inmueble_Renta'][$control]['Foto'] = $foto == base64_encode(base64_decode($foto)) ? $foto : base64_encode($foto);
+                        $infoReimpresion['Inmueble_Renta'][$control]['Cuenta_Catastral'] = $fotoRenta['CuentaCatastral']['Region']."-".$fotoRenta['CuentaCatastral']['Manzana']."-".$fotoRenta['CuentaCatastral']['Lote']."-".$fotoRenta['CuentaCatastral']['Localidad'];
+                        if(isset($fotoDet['InteriorOExterior']) && !is_array($fotoDet['InteriorOExterior'])){
+                            $infoReimpresion['Inmueble_Renta'][$control]['Interior_O_Exterior'] = $fotoDet['InteriorOExterior'];
+                        }else{
+                            $infoReimpresion['Inmueble_Renta'][$control]['Interior_O_Exterior'] = '';
+                        }
+
+                        $control = $control + 1;
+
+                    }
+
+                }else{
+
+                    $foto = $this->modelDocumentos->get_fichero_foto($fotoRenta['FotosInmuebleAvaluo']['Foto']);
+                    $infoReimpresion['Inmueble_Renta'][$control]['Foto'] = $foto == base64_encode(base64_decode($foto)) ? $foto : base64_encode($foto);
+                    $infoReimpresion['Inmueble_Renta'][$control]['Cuenta_Catastral'] = $fotoRenta['CuentaCatastral']['Region']."-".$fotoRenta['CuentaCatastral']['Manzana']."-".$fotoRenta['CuentaCatastral']['Lote']."-".$fotoRenta['CuentaCatastral']['Localidad'];
+                    $infoReimpresion['Inmueble_Renta'][$control]['Interior_O_Exterior'] = $fotoRenta['FotosInmuebleAvaluo']['InteriorOExterior'];
+                    $control = $control + 1;
+
+                }
             }
             }        
             
