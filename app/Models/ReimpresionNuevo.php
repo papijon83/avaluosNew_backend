@@ -4179,7 +4179,11 @@ class ReimpresionNuevo
                 }    
                 $infoReimpresion['Inmueble_Venta'][$control]['Foto'] = $foto == base64_encode(base64_decode($foto)) ? $foto : base64_encode($foto);
                 $infoReimpresion['Inmueble_Venta'][$control]['Cuenta_Catastral'] = $fotoVenta['CuentaCatastral']['Region']."-".$fotoVenta['CuentaCatastral']['Manzana']."-".$fotoVenta['CuentaCatastral']['Lote']."-".$fotoVenta['CuentaCatastral']['Localidad'];
-                $infoReimpresion['Inmueble_Venta'][$control]['Interior_O_Exterior'] = $fotoVenta['FotosInmuebleAvaluo']['InteriorOExterior'];
+                if(isset($fotoVenta['FotosInmuebleAvaluo']['InteriorOExterior']) && !is_array($fotoVenta['FotosInmuebleAvaluo']['InteriorOExterior'])){
+                    $infoReimpresion['Inmueble_Venta'][$control]['Interior_O_Exterior'] = $fotoVenta['FotosInmuebleAvaluo']['InteriorOExterior'];
+                }else{
+                    $infoReimpresion['Inmueble_Venta'][$control]['Interior_O_Exterior'] = '';
+                }
                 $control = $control + 1;
             }
         }
