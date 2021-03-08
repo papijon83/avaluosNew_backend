@@ -10,6 +10,7 @@
         "econea/nusoap": "^0.9.11",
         "laravel/lumen-framework": "^8.0",
         "league/flysystem": " ~1.0",
+        "twilio/sdk": "^6.18",
         "yajra/laravel-oci8": "^8.0"
     },
     "require-dev": {

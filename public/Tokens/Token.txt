@@ -1,0 +1,3 @@
+null{"id":"1","folio_avaluo":"A-COM-2021-10206","token":"8B14CDD1-7113-4F73-84F5-1924DBB490F2"}{"id":"1","folio_avaluo":"A-COM-2021-10206","token":"8B14CDD1-7113-4F73-84F5-1924DBB490F2"}{"id":"1","folio_avaluo":"A-COM-2021-10206","token":"8B14CDD1-7113-4F73-84F5-1924DBB490F2"}
+{"id":"1","folio_avaluo":"A-COM-2021-10206","token":"8B14CDD1-7113-4F73-84F5-1924DBB490F2"}
+{"id":"1","folio_avaluo":"A-COM-2021-10206","token":"8B14CDD1-7113-4F73-84F5-1924DBB490F2"}
