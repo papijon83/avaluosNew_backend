@@ -2916,9 +2916,15 @@ class ReimpresionNuevo
         $infoReimpresion['Instalaciones_Hidraulicas_Sanitrias'] = array();
         $hidraulicasSanitarias = $elementosConstruccion['InstalacionesHidraulicasYSanitrias'];
 
-        $infoReimpresion['Instalaciones_Hidraulicas_Sanitrias']['Muebles_Banio'] = $hidraulicasSanitarias['MueblesDeBanno'];
-        $infoReimpresion['Instalaciones_Hidraulicas_Sanitrias']['Ramaleos_Hidraulicos'] = $hidraulicasSanitarias['RamaleosHidraulicos'];
-        $infoReimpresion['Instalaciones_Hidraulicas_Sanitrias']['Ramaleos_Sanitarios'] = $hidraulicasSanitarias['RamaleosSanitarios'];
+        if(isset($hidraulicasSanitarias['MueblesDeBanno']) && !is_array($hidraulicasSanitarias['MueblesDeBanno'])){
+            $infoReimpresion['Instalaciones_Hidraulicas_Sanitrias']['Muebles_Banio'] = $hidraulicasSanitarias['MueblesDeBanno'];
+        }
+        if(isset($hidraulicasSanitarias['RamaleosHidraulicos']) && !is_array($hidraulicasSanitarias['RamaleosHidraulicos'])){
+            $infoReimpresion['Instalaciones_Hidraulicas_Sanitrias']['Ramaleos_Hidraulicos'] = $hidraulicasSanitarias['RamaleosHidraulicos'];
+        }
+        if(isset($hidraulicasSanitarias['RamaleosSanitarios']) && !is_array($hidraulicasSanitarias['RamaleosSanitarios'])){
+            $infoReimpresion['Instalaciones_Hidraulicas_Sanitrias']['Ramaleos_Sanitarios'] = $hidraulicasSanitarias['RamaleosSanitarios'];
+        }
         if(isset($elementosConstruccion['InstalacionesElectricasYAlumbrado'])){
             $infoReimpresion['Instalaciones_Electricas_Alumbrados'] = $elementosConstruccion['InstalacionesElectricasYAlumbrado'];
         }    
