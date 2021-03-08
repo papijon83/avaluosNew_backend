@@ -50,13 +50,15 @@ class SolucionIdeas
             $client = new \nusoap_client(env("WSDL_SOLUCION"), 'wsdl');            
             /*$authHeaders = $client->getHeader(); 
             if(isset($authHeaders['usuario']) && isset($authHeaders['contrasenia'])){*/
-                $header = '<soapenv:Header><usuario xmlns="IDEAS.Avametrica">'.$usuario.'</usuario>';
-                $header .= '<contrasenia xmlns="http://IDEAS.Avametrica">'.$password.'</contrasenia></soapenv:Header>'; 
+                $header = '<usuario xmlns="http://IDEAS.Avametrica">'.$usuario.'</usuario>';
+                $header .= '<contrasenia xmlns="http://IDEAS.Avametrica">'.$password.'</contrasenia>'; 
                 $client->setHeaders($header);
             /*}
             else{    
                 $client->setCredentials($usuario,$password,'basic');
             }*/
+
+            $token = "8B14CDD1-7113-4F73-84F5-1924DBB490F2";
 
             $client->soap_defencoding = 'UTF-8';
             $client->decode_utf8 = FALSE;

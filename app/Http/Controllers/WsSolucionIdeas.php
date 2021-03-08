@@ -29,6 +29,52 @@ class WsSolucionIdeas extends Controller
     {
         try{
             
+            /*$authToken = $request->header('Authorization');
+            if (!$authToken) {
+                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+            }
+
+            $resToken = Crypt::decrypt($authToken); 
+
+            if (empty($resToken['idUsuario'])) {
+                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+            }
+           
+            $idUsuario = $resToken['idUsuario'];
+
+            $file = $request->file('files');   */
+            $folio_Interno = $request->input('numeroUnico');
+            $idUsuario = $request->input('idUsuario');
+            $file = $request->input('files');
+            $contents = base64_decode($file);
+            
+            $nombreArchivo = $folio_Interno.".txt";
+            $rutaArchivos = getcwd()."/XMLS/";
+            $fileXml = fopen($rutaArchivos."/".$nombreArchivo, "w");
+            fwrite($fileXml,$contents);
+            fclose($fileXml);
+
+            return response()->json(['Estado' => 'Recibido'], 200);
+
+            /*$solucion = new SolucionIdeas;
+            $response = $solucion->recibeAvaluo($file, $folio_Interno, $idUsuario);
+
+            return response()->json(['Estado' => $response], 200);*/
+            
+        }catch (\Throwable $th){
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => 'Error en el consumo del servicio BandejaAvaluoXML'], 500);
+        }
+        
+        
+    }
+
+
+    public function wsRecibeAvaluoMi(Request $request)
+    {
+        try{
+            
             $authToken = $request->header('Authorization');
             if (!$authToken) {
                 return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
