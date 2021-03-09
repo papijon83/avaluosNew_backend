@@ -25,7 +25,7 @@ class WebhookController extends Controller
     }
 
     public function recibeToken(Request $request)
-    { Log::info(json_encode($request));
+    { Log::info($request);
         try{  
             $arrayRes = array();
             foreach($request as $id => $req){
