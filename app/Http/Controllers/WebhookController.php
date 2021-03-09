@@ -25,16 +25,16 @@ class WebhookController extends Controller
     }
 
     public function recibeToken(Request $request)
-    { Log::info($request);
+    { 
         try{  
             $arrayRes = array();
             $arrayRes['id'] = $request->input('id');
             $arrayRes['folio_avaluo'] = $request->input('folio_avaluo');
             $arrayRes['token'] = $request->input('token');
 
-            $arrayRes['idq'] = $request->query('id');
+            /*$arrayRes['idq'] = $request->query('id');
             $arrayRes['folio_avaluoq'] = $request->query('folio_avaluo');
-            $arrayRes['tokenq'] = $request->query('token');
+            $arrayRes['tokenq'] = $request->query('token');*/
             /*foreach($request as $id => $req){
                 if($id == "query" || $id == "input"){
                     foreach($req as $idInput => $elementoInput){
