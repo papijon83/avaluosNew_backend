@@ -158,4 +158,24 @@ class WsSolucionIdeas extends Controller
         
         return response()->json($token, 200);
     }
+
+    public function obtenerTokenGuardado(Request $request){
+        $folio_Interno = $request->input('folio_Interno');
+        $nombreArchivo = "Token".date('Ymd').".txt";
+        $rutaArchivos = getcwd()."/Tokens/".$nombreArchivo; 
+        $contenidoTokens = file($rutaArchivos);
+        
+        foreach($contenidoTokens as $contenidoToken){
+            //$arrToken = json_decode($contenidoTokens);
+            if(trim($contenidoToken) != ''){
+                $objToken = json_decode($contenidoToken);                        
+                if($objToken->folio_avaluo == $folio_Interno){
+                    $token = $objToken->token;
+                }
+            }    
+                              
+        }
+
+        return response()->json($token, 200);
+    }
 }
