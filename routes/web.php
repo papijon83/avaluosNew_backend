@@ -33,7 +33,7 @@ $router->get('/', function () use ($router) {
         $router->post('wsRecibeAvaluo', 'WsSolucionIdeas@wsRecibeAvaluo');
         $router->post('getToken', 'WsSolucionIdeas@getToken');
         $router->post('webhooktoken', 'WebhookController@recibeToken');
-        
+        $router->post('wsRecibeAvaluoMi', 'WsSolucionIdeas@wsRecibeAvaluoMi');
     });
 
 

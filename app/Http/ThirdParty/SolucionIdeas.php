@@ -50,8 +50,11 @@ class SolucionIdeas
             $client = new \nusoap_client(env("WSDL_SOLUCION"), 'wsdl');            
             /*$authHeaders = $client->getHeader(); 
             if(isset($authHeaders['usuario']) && isset($authHeaders['contrasenia'])){*/
-                $header = '<usuario xmlns="http://IDEAS.Avametrica">'.$usuario.'</usuario>';
-                $header .= '<contrasenia xmlns="http://IDEAS.Avametrica">'.$password.'</contrasenia>'; 
+                
+                /*$header = '<usuario xmlns="http://IDEAS.Avametrica">'.$usuario.'</usuario>';
+                $header .= '<contrasenia xmlns="http://IDEAS.Avametrica">'.$password.'</contrasenia>';*/
+                
+                $header = '<SecurityHeader xmlns=\"http://IDEAS.Avametrica\"><usuario>'.$usuario.'</usuario><contrasenia>'.$password.'</contrasenia></SecurityHeader>';
                 $client->setHeaders($header);
             /*}
             else{    
@@ -64,7 +67,7 @@ class SolucionIdeas
             $client->decode_utf8 = FALSE;
             //$res = $client->call('WS_Recibe_Avaluo', array('AvaluoXML'=>$contents,'Folio_Interno'=>$folio_Interno,'Folio_Usuario'=>$idUsuario));
             $datos = array('AvaluoXML'=>$contents,'Folio_Interno'=>$folio_Interno,'Folio_Usuario'=>$idUsuario,'token'=>$token);
-            $res = $client->call('BandejaAvaluoXML', array($datos));
+            $res = $client->call('BandejaAvaluoXML', array('datos'=>$datos));
             //error_log(json_encode($res)); 
             return $res;
         }catch (\Throwable $th){

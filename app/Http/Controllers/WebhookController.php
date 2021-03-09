@@ -25,7 +25,7 @@ class WebhookController extends Controller
     }
 
     public function recibeToken(Request $request)
-    {
+    { Log::info(json_encode($request));
         try{  
             $arrayRes = array();
             foreach($request as $id => $req){
@@ -39,7 +39,7 @@ class WebhookController extends Controller
             $nombreArchivo = "Token".date('Ymd').".txt";
             $rutaArchivos = getcwd()."/Tokens/";
             $file = fopen($rutaArchivos."/".$nombreArchivo, "a+");
-            fwrite($file,json_encode($arrayRes)."\n");
+            fwrite($file,json_encode($request)."\n");
             fclose($file);
 
             return response()->json(['Estado' => 'Correcto'], 200);
