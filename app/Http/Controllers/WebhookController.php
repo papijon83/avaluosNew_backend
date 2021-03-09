@@ -28,18 +28,25 @@ class WebhookController extends Controller
     { Log::info($request);
         try{  
             $arrayRes = array();
-            foreach($request as $id => $req){
+            $arrayRes['id'] = $request->input('id');
+            $arrayRes['folio_avaluo'] = $request->input('folio_avaluo');
+            $arrayRes['token'] = $request->input('token');
+
+            $arrayRes['idq'] = $request->query('id');
+            $arrayRes['folio_avaluoq'] = $request->query('folio_avaluo');
+            $arrayRes['tokenq'] = $request->query('token');
+            /*foreach($request as $id => $req){
                 if($id == "query" || $id == "input"){
                     foreach($req as $idInput => $elementoInput){
                         $arrayRes[$idInput] = $elementoInput;
                     }
                 }    
-            }            
+            } */           
             //echo json_encode($arrayRes); exit();
             $nombreArchivo = "Token".date('Ymd').".txt";
             $rutaArchivos = getcwd()."/Tokens/";
             $file = fopen($rutaArchivos."/".$nombreArchivo, "a+");
-            fwrite($file,json_encode($request)."\n");
+            fwrite($file,json_encode($arrayRes)."\n");
             fclose($file);
 
             return response()->json(['Estado' => 'Correcto'], 200);
