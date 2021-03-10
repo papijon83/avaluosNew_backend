@@ -23,7 +23,7 @@ class Fis
                 :par_periodo,
                 :c_vuc
             ); END;';
-            $conn = oci_connect(env("DB_USERNAME_FIS"), env("DB_PASSWORD"), env("DB_TNS"));
+            $conn = oci_connect(env("DB_USERNAME_FIS"), env("DB_PASSWORD_FIS"), env("DB_TNS"));
             oci_execute(oci_parse($conn,"ALTER SESSION SET NLS_NUMERIC_CHARACTERS = '.,'"));
             $stmt = oci_parse($conn, $procedure);
             oci_bind_by_name($stmt, ':par_coduso', $codUso,3);
@@ -65,7 +65,7 @@ class Fis
                 :IDRANGO
             ); END;';
             
-            $conn = oci_connect(env("DB_USERNAME_FIS"), env("DB_PASSWORD"), env("DB_TNS"));            
+            $conn = oci_connect(env("DB_USERNAME_FIS"), env("DB_PASSWORD_FIS"), env("DB_TNS"));            
             $stmt = oci_parse($conn, $procedure);
             oci_bind_by_name($stmt, ':PAR_FECHA', $fecha, 10);
             oci_bind_by_name($stmt, ':PAR_CODTIPO', $cod, 3);

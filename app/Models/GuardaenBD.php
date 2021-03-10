@@ -686,7 +686,7 @@ class GuardaenBD
     }
 
     public function pruebaCat(){
-        $conn = oci_connect(env("DB_USERNAME_CAS"), env("DB_PASSWORD"), env("DB_TNS"));        
+        $conn = oci_connect(env("DB_USERNAME_CAS"), env("DB_PASSWORD_CAS"), env("DB_TNS"));        
         $sqlcadena = oci_parse($conn, "SELECT * FROM CAS.CAS_CATINSTESPECIALES WHERE CODINSTESPECIALES = '30'");
         oci_execute($sqlcadena);
 

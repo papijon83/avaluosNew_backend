@@ -20,7 +20,7 @@ class Ava
                 :par_codAreaValor,
                 :c_servAvaluo
             ); END;';
-            $conn = oci_connect(env("DB_USERNAME_AVA"), env("DB_PASSWORD"), env("DB_TNS"));
+            $conn = oci_connect(env("DB_USERNAME_AVA"), env("DB_PASSWORD_AVA"), env("DB_TNS"));
             $stmt = oci_parse($conn, $procedure);
             oci_bind_by_name($stmt, ':par_region', $region,3);
             oci_bind_by_name($stmt, ':par_manzana', $manzana, 3);
