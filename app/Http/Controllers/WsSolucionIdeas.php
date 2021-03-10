@@ -170,7 +170,7 @@ class WsSolucionIdeas extends Controller
             if(trim($contenidoToken) != ''){
                 $objToken = json_decode($contenidoToken);                        
                 if($objToken->folio_avaluo == $folio_Interno){
-                    $token = $objToken->token;
+                    $token = str_replace('"','',$objToken->token);
                 }
             }    
                               
