@@ -30,6 +30,7 @@ $router->get('/', function () use ($router) {
     $router->get('insertSuperficie', 'BandejaEntradaNuevoController@insertSuperficieAuxPNet');
 
     $router->group(['prefix' => 'WsSolucionIdeas'], function () use ($router) {
+        $router->get('wsRecibeAvaluo/{folio}', 'ClienteWSController@sendAvaluo');
         $router->post('wsRecibeAvaluo', 'WsSolucionIdeas@wsRecibeAvaluo');
         $router->post('getToken', 'WsSolucionIdeas@getToken');
         $router->post('webhooktoken', 'WebhookController@recibeToken');
