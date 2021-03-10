@@ -177,7 +177,11 @@ class WsSolucionIdeas extends Controller
             }    
                               
         }
-
-        return $token;
+        
+        if($token){
+            return response()->json(['token'=>$token], 200);
+        }else{
+            return response()->json(['mensaje'=>'No se encontró un token para ese folio'], 404);
+        }
     }
 }
