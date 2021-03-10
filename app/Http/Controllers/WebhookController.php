@@ -26,8 +26,9 @@ class WebhookController extends Controller
 
     public function recibeToken(Request $request)
     { 
-        try{  
-            $arrayRes = array();
+        try{
+            //  Log::info($request);
+            //echo $request;
             $arrayRes['id'] = $request->input('id');
             $arrayRes['folio_avaluo'] = $request->input('folio_avaluo');
             $arrayRes['token'] = $request->input('token');
