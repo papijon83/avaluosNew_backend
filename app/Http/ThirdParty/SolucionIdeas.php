@@ -15,7 +15,7 @@ class SolucionIdeas
         //
     }
 
-    public function recibeAvaluo($file, $folio_Interno, $idUsuario)
+    /*public function recibeAvaluo($file, $folio_Interno, $idUsuario)
     {  
         try{
             
@@ -88,33 +88,13 @@ class SolucionIdeas
             if ($err) {
                 Log::info("cURL Error #:".json_encode($err));
             }
-            return $response;
-            /* $usuario = base64_encode(env("USUSOLUCIONQA"));
-            $password = base64_encode(env("PASSOLUCIONQA"));
-
-            $myfile = fopen($file, "r");
-            $contents = fread($myfile, filesize($file));
-            fclose($myfile); 
-
-            $client = new \nusoap_client(env("WSDL_SOLUCION"), 'wsdl');    
-                
-                $header = '<SecurityHeader xmlns=\"http://IDEAS.Avametrica\"><usuario>'.$usuario.'</usuario><contrasenia>'.$password.'</contrasenia></SecurityHeader>';
-                $client->setHeaders($header);    
-
-            $token = "8B14CDD1-7113-4F73-84F5-1924DBB490F2";
-
-            $client->soap_defencoding = 'UTF-8';
-            $client->decode_utf8 = FALSE;            
-            $datos = array('AvaluoXML'=>$contents,'Folio_Interno'=>$folio_Interno,'Folio_Usuario'=>$idUsuario,'token'=>$token);
-            $res = $client->call('BandejaAvaluoXML', array('datos'=>$datos)); */
-            //error_log(json_encode($res)); 
-            //return $res;
+            return $response;    
         }catch (\Throwable $th){
             Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error en el servidor'], 500);
         }
-    }
+    }*/
     
     public function actualizarEnAvaluoXML($folio_Interno, $fecha_Pago, $monto_Pago, $folio_Usuario, $linea_Captura){
 
@@ -141,7 +121,7 @@ class SolucionIdeas
         return $res;
     }
 
-    public function obtenTokenIdeas($folio_Interno){
+    /* public function obtenTokenIdeas($folio_Interno){
 
         $curl = curl_init();
 
@@ -182,42 +162,6 @@ class SolucionIdeas
         }
         
         return "OK";
-
-        //try{
-            /*$wsdl = "https://serviciosqa.solucionideas.com/WS_Recibe_Avaluo.svc?wsdl";
-            
-            $headerVar = new \SoapVar('<usuario xmlns="IDEAS.Avametrica">VXNycHJ1ZWJhcw==</usuario><contrasenia xmlns="IDEAS.Avametrica">cWE3MzUwcjNybGFjNm14LTQ1</contrasenia><wsa:Action>http://tempuri.org/IWS_Recibe_Avaluo/obtenertoken</wsa:Action><wsa:MessageID>uuid:627096bd-4441-4ae9-b62c-c8d6aabfa3ed</wsa:MessageID><wsa:To>https://serviciosqa.solucionideas.com/WS_Recibe_Avaluo.svc</wsa:To>',XSD_ANYXML);
-            $header = new \SoapHeader('http://tempuri.org/','Header',$headerVar);
-            
-            $client = new \SoapClient($wsdl, array("trace" => 1, "exception" => 0));
-            
-            $client->__setSoapHeaders($header);
-            try{
-                $response = $client->__soapCall("obtenertoken", ['obtenertoken'=>['folio_avaluo' => $folio_Interno]]);
-                dd($response);
-            }catch(Exception $e){
-                dd($client);
-            }*/
-
-            /*$usuario = base64_encode(env("USUSOLUCIONQA"));
-            $password = base64_encode(env("PASSOLUCIONQA"));
-
-            $client = new \nusoap_client(env("WSDL_SOLUCION"), 'wsdl');
-
-            $header = "<usuario xmlns=\"IDEAS.Avametrica\">VXNycHJ1ZWJhcw==</usuario><contrasenia xmlns=\"IDEAS.Avametrica\">cWE3MzUwcjNybGFjNm14LTQ1</contrasenia>";
-            $client->setHeaders($header);
-
-            
-            $client->soap_defencoding = 'UTF-8';
-            $client->decode_utf8 = FALSE;
-            
-            $res = $client->call('obtenertoken', array('Folio_Interno'=>$folio_Interno));
-            
-            return 'OK'; 
-        }catch (\Throwable $th){
-            Log::info($th);
-            error_log($th);
-            return response()->json(['mensaje' => 'Error al obtener el token'], 500);
-        }*/
-    }
+        
+    } */
 }

@@ -27,53 +27,64 @@ class WsSolucionIdeas extends Controller
 
     public function wsRecibeAvaluo(Request $request)
     {
-        try{
-            
-            /*$authToken = $request->header('Authorization');
-            if (!$authToken) {
-                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
-            }
-
-            $resToken = Crypt::decrypt($authToken); 
-
-            if (empty($resToken['idUsuario'])) {
-                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
-            }
-           
-            $idUsuario = $resToken['idUsuario'];
-
-            $file = $request->file('files');   */
             $folio_Interno = $request->input('numeroUnico');
             $idUsuario = $request->input('idUsuario');
             $file = $request->input('files');
             $contents = base64_decode($file);
             
-            $nombreArchivo = $folio_Interno.".txt";
+            /* $nombreArchivo = $folio_Interno.".txt";
             $rutaArchivos = getcwd()."/XMLS/";
             $fileXml = fopen($rutaArchivos."/".$nombreArchivo, "w");
             fwrite($fileXml,$contents);
             fclose($fileXml);
 
-            return response()->json(['Estado' => 'Recibido'], 200);
-
-            /*$solucion = new SolucionIdeas;
-            $response = $solucion->recibeAvaluo($file, $folio_Interno, $idUsuario);
-
-            return response()->json(['Estado' => $response], 200);*/
-            
-        }catch (\Throwable $th){
-            Log::info($th);
-            error_log($th);
-            return response()->json(['mensaje' => 'Error en el consumo del servicio BandejaAvaluoXML'], 500);
-        }
+            return response()->json(['Estado' => 'Recibido'], 200); */
         
+            $auth = '<usuario xmlns="IDEAS.Avametrica">' . env('USUARIO_WSDL') . '</usuario>';
+            $auth .= '<contrasenia xmlns="IDEAS.Avametrica">' . env('PASS_WSDL') . '</contrasenia>';
+            
+            $client = new \SoapClient(env('WSDL_RECIBE_AVALUO'), ["debug" => true, "trace" => true, "exception" => true]);
+            $auth_block = new \SoapVar($auth, XSD_ANYXML, NULL, NULL, NULL, NULL);
+            $header = new \SoapHeader('http://schemas.xmlsoap.org/soap/envelope/', 'Header', $auth_block);
+            $client->__setSoapHeaders($header);
+            try {
+                $client->__soapCall('obtenertoken', ['obtenertoken' => ['folio_avaluo' => $folio_Interno]]);
+            } catch (\Exception $e) {
+            }
+            $restClient = new \GuzzleHttp\Client();
+            $response = $restClient->request('POST', env('API_WEBHOOK') . $folio_Interno);
+    
+            if ($response->getStatusCode() == 200) {
+                try {
+                    $res = json_decode($response->getBody());
+    
+                    $enviado = $client->__soapCall('BandejaAvaluoXML', ['BandejaAvaluoXML' => [
+                        'datos' => [
+                            'AvaluoXML' => (String)($contents), //$xml->asXML(),
+                            'Folio_Interno' => $folio_Interno,
+                            'Folio_Usuario' => $idUsuario,
+                            'token' => $res->token,
+                        ]
+                    ]]);
+                    if($enviado->BandejaAvaluoXMLResult){
+                        return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja'], 200);
+                    }else{
+                        return response()->json(['mensaje' => 'El avalúo no pudo ser entregado'], 400);
+                    }
+                    
+                } catch (\Exception $e) {    
+                    return response()->json(['mensaje' => $e], 500);
+                }
+            } else {
+                return response()->json($response->getBody(), $response->getStatusCode());
+            }
         
     }
 
 
     public function wsRecibeAvaluoMi(Request $request)
     {
-        try{
+        
             
             $authToken = $request->header('Authorization');
             if (!$authToken) {
@@ -94,17 +105,55 @@ class WsSolucionIdeas extends Controller
             $contents = base64_decode($file);*/
             $folio_Interno =$resToken['numeroUnico'];            
 
-            $solucion = new SolucionIdeas;
-            $response = $solucion->recibeAvaluo($file, $folio_Interno, $idUsuario);
+            /*$solucion = new SolucionIdeas;
+            $response = $solucion->recibeAvaluo($file, $folio_Interno, $idUsuario);*/
 
-            return response()->json(['Estado' => $response], 200);
-            
-        }catch (\Throwable $th){
-            Log::info($th);
-            error_log($th);
-            return response()->json(['mensaje' => 'Error en el consumo del servicio BandejaAvaluoXML'], 500);
+            $myfile = fopen($file, "r");
+            $contents = fread($myfile, filesize($file));
+            fclose($myfile);
+
+        //$usuario = "U4566";
+        $auth = '<usuario xmlns="IDEAS.Avametrica">' . env('USUARIO_WSDL') . '</usuario>';
+        $auth .= '<contrasenia xmlns="IDEAS.Avametrica">' . env('PASS_WSDL') . '</contrasenia>';
+        /*$file = storage_path('app/24042020_PRUEBA SAF.xml');
+        $xml = simplexml_load_file($file);*/
+        $client = new \SoapClient(env('WSDL_RECIBE_AVALUO'), ["debug" => true, "trace" => true, "exception" => true]);
+        $auth_block = new \SoapVar($auth, XSD_ANYXML, NULL, NULL, NULL, NULL);
+        $header = new \SoapHeader('http://schemas.xmlsoap.org/soap/envelope/', 'Header', $auth_block);
+        $client->__setSoapHeaders($header);
+        try {
+            $client->__soapCall('obtenertoken', ['obtenertoken' => ['folio_avaluo' => $folio_Interno]]);
+        } catch (\Exception $e) {
         }
-        
+        $restClient = new \GuzzleHttp\Client();
+        $response = $restClient->request('POST', env('API_WEBHOOK') . $folio_Interno);
+
+        if ($response->getStatusCode() == 200) {
+            try {
+                $res = json_decode($response->getBody());
+
+                $enviado = $client->__soapCall('BandejaAvaluoXML', ['BandejaAvaluoXML' => [
+                    'datos' => [
+                        'AvaluoXML' => (String)($contents), //$xml->asXML(),
+                        'Folio_Interno' => $folio_Interno,
+                        'Folio_Usuario' => $idUsuario,
+                        'token' => $res->token,
+                    ]
+                ]]);
+                if($enviado->BandejaAvaluoXMLResult){
+                    return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja'], 200);
+                }else{
+                    return response()->json(['mensaje' => 'El avalúo no pudo ser entregado'], 400);
+                }
+                //print_r($enviado->BandejaAvaluoXMLResult);
+                //dd($client);
+            } catch (\Exception $e) {
+                //dd($client);
+                return response()->json(['mensaje' => $e], 500);
+            }
+        } else {
+            return response()->json($response->getBody(), $response->getStatusCode());
+        }    
         
     }
 
