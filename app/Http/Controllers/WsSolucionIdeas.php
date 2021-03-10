@@ -161,8 +161,10 @@ class WsSolucionIdeas extends Controller
 
     public function obtenerTokenGuardado(Request $request){
         $folio_Interno = $request->input('folio_Interno');
+        $path = storage_path();
+        $rutaArchivos = $path."/Tokens/";
         $nombreArchivo = "Token".date('Ymd').".txt";
-        $rutaArchivos = getcwd()."/Tokens/".$nombreArchivo; 
+        $rutaArchivos = $rutaArchivos.$nombreArchivo; 
         $contenidoTokens = file($rutaArchivos);
         
         foreach($contenidoTokens as $contenidoToken){

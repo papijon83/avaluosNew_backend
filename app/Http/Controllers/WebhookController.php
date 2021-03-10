@@ -44,8 +44,10 @@ class WebhookController extends Controller
                 }    
             } */           
             //echo json_encode($arrayRes); exit();
-            $nombreArchivo = "Token".date('Ymd').".txt";
-            $rutaArchivos = getcwd()."/Tokens/";
+            $nombreArchivo = "Token".date('Ymd').".txt";            
+           // $rutaArchivos = getcwd()."/Tokens/";
+            $path = storage_path();
+            $rutaArchivos = $path."/Tokens/";
             $file = fopen($rutaArchivos."/".$nombreArchivo, "a+");
             fwrite($file,json_encode($arrayRes)."\n");
             fclose($file);
