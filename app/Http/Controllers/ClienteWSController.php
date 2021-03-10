@@ -51,10 +51,8 @@ class ClienteWSController extends Controller
                 }else{
                     return response()->json(['mensaje' => 'El avalúo no pudo ser entregado'], 400);
                 }
-                print_r($enviado->BandejaAvaluoXMLResult);
-                dd($client);
+                
             } catch (\Exception $e) {
-                dd($client);
                 return response()->json(['mensaje' => $e], 500);
             }
         } else {
