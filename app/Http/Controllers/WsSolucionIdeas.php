@@ -32,7 +32,11 @@ class WsSolucionIdeas extends Controller
             $folio_Interno = $request->input('numeroUnico');
             $idUsuario = $request->input('idUsuario');
             $file = $request->input('files');
-            $contents = base64_decode($file);        
+            $fileContents = base64_decode($file);
+            
+            $myfile = fopen($fileContents, "r");
+            $contents = fread($myfile, filesize($fileContents));
+            fclose($fileContents);
             
             $nombreArchivo = $folio_Interno.".txt";
             $path = storage_path();
