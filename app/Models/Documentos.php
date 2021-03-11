@@ -475,7 +475,11 @@ class Documentos
 
     public function guardaResultado($idAvaluo, $idUsuario, $estatus, $mensajeRespuesta){
 
-        echo "INFORMACION ".$idAvaluo." ".$idUsuario." ".$estatus." ".$mensajeRespuesta; //print_r($estatus); exit();
+        
+        if(trim($estatus) == ''){
+            $estatus = 0;
+        }
+        //echo "INFORMACION ".$idAvaluo." ".$idUsuario." ".$estatus." ".$mensajeRespuesta; //print_r($estatus); exit();
         $resCod = '';
         $resDesc = '';        
         $procedure = 'BEGIN
@@ -494,14 +498,13 @@ class Documentos
         $stmt->bindParam(':PAR_ESTATUS_ENVIO_WS', $estatus, \PDO::PARAM_INT);
         $stmt->bindParam(':PAR_MENSAJE_RESPUESTA_WS', $mensajeRespuesta, \PDO::PARAM_STR);
         $stmt->bindParam(':P_COD', $resCod, \PDO::PARAM_INT);
-        $stmt->bindParam(':P_DESC', $resDesc, \PDO::PARAM_STR); 
+        $stmt->bindParam(':P_DESC', $resDesc, \PDO::PARAM_STR,4000);
         $stmt->execute();
         $stmt->closeCursor();
         $pdo->commit();
         $pdo->close();
         DB::commit();
-        DB::reconnect();
-        echo "RESULTADO PROCEDURE ".$resCod." ".$resDesc; exit();
+        DB::reconnect();    
         return $resCod." ".$resDesc;
     }
     

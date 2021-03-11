@@ -75,17 +75,17 @@ class WsSolucionIdeas extends Controller
                     $idAvaluo = $this->modelDocumentos->get_idavaluo_db($folio_Interno);
 
                     if($enviado->BandejaAvaluoXMLResult){                        
-                        $solucion = new SolucionIdeas;
-                        $response = $solucion->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo fue entregado a la bandeja');
+                        $response = $this->modelDocumentos->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo fue entregado a la bandeja');
                         return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja '.$response], 200);
-                    }else{
-                        $solucion = new SolucionIdeas;
-                        $response = $solucion->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo no pudo ser entregado');
+                    }else{                        
+                        $response = $this->modelDocumentos->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo no pudo ser entregado');
                         return response()->json(['mensaje' => 'El avalúo no pudo ser entregado '.$response], 400);
                     }
                     
-                } catch (\Exception $e) {    
-                    return response()->json(['mensaje' => $e], 500);
+                } catch (\Throwable $th) {
+                    error_log($th);
+                    
+                    return response()->json(['mensaje' => 'Error al consumir el servicio'], 500);
                 }
             } else {
                 return response()->json($response->getBody(), $response->getStatusCode());
@@ -164,9 +164,10 @@ class WsSolucionIdeas extends Controller
                     }
                 //print_r($enviado->BandejaAvaluoXMLResult);
                 //dd($client);
-            } catch (\Exception $e) {
-                //dd($client);
-                return response()->json(['mensaje' => $e], 500);
+            } catch (\Throwable $th) {
+                error_log($th);
+                
+                return response()->json(['mensaje' => 'Error al consumir el servicio'], 500);
             }
         } else {
             return response()->json($response->getBody(), $response->getStatusCode());
