@@ -1,4 +1,0 @@
-{"id":"1","folio_avaluo":"A-COM-2021-10220","token":"8B14CDD1-7113-4F73-84F5-1924DBB490F2"}
-{"id":"1","folio_avaluo":"A-COM-2021-10220","token":"8B14CDD1-7113-4F73-84F5-1924DBB490F2"}
-{"id":"1","folio_avaluo":"A-COM-2021-10221","token":"8B14CDD1-7113-4F73-84F5-1924DBB490F2"}
-{"id":"1","folio_avaluo":"A-COM-2021-10222","token":"8B14CDD1-7113-4F73-84F5-1924DBB490F2"}
