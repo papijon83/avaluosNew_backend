@@ -32,19 +32,19 @@ class WsSolucionIdeas extends Controller
             $folio_Interno = $request->input('numeroUnico');
             $idUsuario = $request->input('idUsuario');
             $file = $request->input('files');
-            $fileContents = base64_decode($file);
-            
-            $myfile = fopen($fileContents, "r");
-            $contents = fread($myfile, filesize($fileContents));
-            fclose($fileContents);
-            
-            $nombreArchivo = $folio_Interno.".txt";
+            $contents = base64_decode($file);
+                   
+            $nombreArchivo = $folio_Interno.".xml";
             $path = storage_path();
             $rutaArchivos = $path."/XMLS/";
             //$rutaArchivos = getcwd()."/XMLS/";
             $fileXml = fopen($rutaArchivos."/".$nombreArchivo, "w");
             fwrite($fileXml,$contents);
             fclose($fileXml);
+
+            $myfile = fopen($rutaArchivos."/".$nombreArchivo, "r");
+            $contents = fread($myfile, filesize($file));
+            fclose($myfile);
 
             //return response()->json(['Estado' => 'Recibido'], 200);
         
