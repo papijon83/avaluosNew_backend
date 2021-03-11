@@ -34,13 +34,12 @@ class WsSolucionIdeas extends Controller
             $file = $request->input('files');
             $contents = base64_decode($file);       
                    
-            $nombreArchivo = $folio_Interno.".xml";
+            /*$nombreArchivo = $folio_Interno.".xml";
             $path = storage_path();
-            $rutaArchivos = $path."/XMLS/";
-            //$rutaArchivos = getcwd()."/XMLS/";
+            $rutaArchivos = $path."/XMLS/";        
             $fileXml = fopen($rutaArchivos."/".$nombreArchivo, "w");
             fwrite($fileXml,$contents);
-            fclose($fileXml);
+            fclose($fileXml);*/
 
             /*$myfile = fopen($rutaArchivos."/".$nombreArchivo, "r");
             $contents = fread($myfile, filesize($file));
