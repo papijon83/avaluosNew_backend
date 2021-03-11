@@ -32,13 +32,16 @@ class WsSolucionIdeas extends Controller
             $file = $request->input('files');
             $contents = base64_decode($file);
             
-            /* $nombreArchivo = $folio_Interno.".txt";
-            $rutaArchivos = getcwd()."/XMLS/";
+
+            $nombreArchivo = $folio_Interno.".txt";
+            $path = storage_path();
+            $rutaArchivos = $path."/XMLS/";
+            //$rutaArchivos = getcwd()."/XMLS/";
             $fileXml = fopen($rutaArchivos."/".$nombreArchivo, "w");
             fwrite($fileXml,$contents);
             fclose($fileXml);
 
-            return response()->json(['Estado' => 'Recibido'], 200); */
+            //return response()->json(['Estado' => 'Recibido'], 200);
         
             $auth = '<usuario xmlns="IDEAS.Avametrica">' . env('USUARIO_WSDL') . '</usuario>';
             $auth .= '<contrasenia xmlns="IDEAS.Avametrica">' . env('PASS_WSDL') . '</contrasenia>';
@@ -183,7 +186,7 @@ class WsSolucionIdeas extends Controller
         $linea_Captura =$resToken['lineaCaptura'];
 
         $solucion = new SolucionIdeas;
-        $response = $solucion->recibeAvaluo($folio_Interno, $fecha_Pago, $monto_Pago, $folio_Usuario, $linea_Captura);
+        //$response = $solucion->recibeAvaluo($folio_Interno, $fecha_Pago, $monto_Pago, $folio_Usuario, $linea_Captura);
 
         return response()->json(['Estado' => $response], 200);
        
