@@ -472,5 +472,37 @@ class Documentos
 
         return $nombre;
     }
+
+    public function guardaResultado($idAvaluo, $idUsuario, $estatus, $mensajeRespuesta){
+
+        echo "INFORMACION ".$idAvaluo." ".$idUsuario." ".$estatus." ".$mensajeRespuesta; //print_r($estatus); exit();
+        $resCod = '';
+        $resDesc = '';        
+        $procedure = 'BEGIN
+        FEXAVA.FEXAVA_AVALUOS_PKG.FEXAVA_INSERT_AVALU_ENVIOXML_P(
+            :PAR_IDAVALUO,
+            :PAR_IDPERSONAPERITO,
+            :PAR_ESTATUS_ENVIO_WS,
+            :PAR_MENSAJE_RESPUESTA_WS,
+            :P_COD,
+            :P_DESC
+        ); END;';
+        $pdo = DB::getPdo();
+        $stmt = $pdo->prepare($procedure);
+        $stmt->bindParam(':PAR_IDAVALUO', $idAvaluo, \PDO::PARAM_INT);
+        $stmt->bindParam(':PAR_IDPERSONAPERITO',$idUsuario, \PDO::PARAM_INT);
+        $stmt->bindParam(':PAR_ESTATUS_ENVIO_WS', $estatus, \PDO::PARAM_INT);
+        $stmt->bindParam(':PAR_MENSAJE_RESPUESTA_WS', $mensajeRespuesta, \PDO::PARAM_STR);
+        $stmt->bindParam(':P_COD', $resCod, \PDO::PARAM_INT);
+        $stmt->bindParam(':P_DESC', $resDesc, \PDO::PARAM_STR); 
+        $stmt->execute();
+        $stmt->closeCursor();
+        $pdo->commit();
+        $pdo->close();
+        DB::commit();
+        DB::reconnect();
+        echo "RESULTADO PROCEDURE ".$resCod." ".$resDesc; exit();
+        return $resCod." ".$resDesc;
+    }
     
 }

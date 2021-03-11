@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\ThirdParty;
 use Log;
 
@@ -164,4 +163,5 @@ class SolucionIdeas
         return "OK";
         
     } */
+    
 }

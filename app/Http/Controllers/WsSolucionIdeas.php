@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Hamcrest\Arrays\IsArray;
+use App\Models\Documentos;
 use Log;
 
 class WsSolucionIdeas extends Controller
@@ -19,10 +20,11 @@ class WsSolucionIdeas extends Controller
     private $errors;
     private $doc;
     private $fileXML;
+    protected $modelDocumentos;
 
     public function __construct()
     {
-        //
+        
     }
 
     public function wsRecibeAvaluo(Request $request)
@@ -30,9 +32,8 @@ class WsSolucionIdeas extends Controller
             $folio_Interno = $request->input('numeroUnico');
             $idUsuario = $request->input('idUsuario');
             $file = $request->input('files');
-            $contents = base64_decode($file);
+            $contents = base64_decode($file);        
             
-
             $nombreArchivo = $folio_Interno.".txt";
             $path = storage_path();
             $rutaArchivos = $path."/XMLS/";
@@ -69,10 +70,18 @@ class WsSolucionIdeas extends Controller
                             'token' => $res->token,
                         ]
                     ]]);
-                    if($enviado->BandejaAvaluoXMLResult){
-                        return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja'], 200);
+
+                    $this->modelDocumentos = new Documentos();
+                    $idAvaluo = $this->modelDocumentos->get_idavaluo_db($folio_Interno);
+
+                    if($enviado->BandejaAvaluoXMLResult){                        
+                        $solucion = new SolucionIdeas;
+                        $response = $solucion->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo fue entregado a la bandeja');
+                        return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja '.$response], 200);
                     }else{
-                        return response()->json(['mensaje' => 'El avalúo no pudo ser entregado'], 400);
+                        $solucion = new SolucionIdeas;
+                        $response = $solucion->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo no pudo ser entregado');
+                        return response()->json(['mensaje' => 'El avalúo no pudo ser entregado '.$response], 400);
                     }
                     
                 } catch (\Exception $e) {    
@@ -143,11 +152,16 @@ class WsSolucionIdeas extends Controller
                         'token' => $res->token,
                     ]
                 ]]);
-                if($enviado->BandejaAvaluoXMLResult){
-                    return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja'], 200);
-                }else{
-                    return response()->json(['mensaje' => 'El avalúo no pudo ser entregado'], 400);
-                }
+                    $this->modelDocumentos = new Documentos();
+                    $idAvaluo = $this->modelDocumentos->get_idavaluo_db($folio_Interno);
+
+                    if($enviado->BandejaAvaluoXMLResult){                        
+                        $response = $this->modelDocumentos->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo fue entregado a la bandeja');
+                        return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja '.$response], 200);
+                    }else{                        
+                        $response = $this->modelDocumentos->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo no pudo ser entregado');
+                        return response()->json(['mensaje' => 'El avalúo no pudo ser entregado '.$response], 400);
+                    }
                 //print_r($enviado->BandejaAvaluoXMLResult);
                 //dd($client);
             } catch (\Exception $e) {
