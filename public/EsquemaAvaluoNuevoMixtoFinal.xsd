@@ -505,7 +505,7 @@
   <xs:simpleType name="Cat-PropositoAvaluo">
     <xs:restriction base="xs:nonNegativeInteger">
       <xs:minInclusive value="1"/>
-      <xs:maxInclusive value="3"/>
+      <xs:maxInclusive value="4"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -772,13 +772,18 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="Cat-TipoInmueble">
+  <!-- <xs:simpleType name="Cat-TipoInmueble">
     <xs:restriction base="xs:string">
+      <xs:enumeration value="P" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="B" />      
+    </xs:restriction>
+  </xs:simpleType> -->
+
+  <xs:simpleType name="Cat-TipoInmueble">
+    <xs:restriction base="xs:nonNegativeInteger">
       <xs:minInclusive value="1"/>
       <xs:maxInclusive value="19"/>
-      <!-- <xs:enumeration value="P" />
-      <xs:enumeration value="C" />
-      <xs:enumeration value="B" />   -->
     </xs:restriction>
   </xs:simpleType>
 

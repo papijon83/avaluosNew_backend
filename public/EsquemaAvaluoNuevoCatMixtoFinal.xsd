@@ -504,7 +504,8 @@
 
   <xs:simpleType name="Cat-PropositoAvaluo">
     <xs:restriction base="xs:nonNegativeInteger">
-      <xs:enumeration value="4" />
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="4"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -771,13 +772,18 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="Cat-TipoInmueble">
+  <!-- <xs:simpleType name="Cat-TipoInmueble">
     <xs:restriction base="xs:string">
+      <xs:enumeration value="P" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="B" />      
+    </xs:restriction>
+  </xs:simpleType> -->
+
+  <xs:simpleType name="Cat-TipoInmueble">
+    <xs:restriction base="xs:nonNegativeInteger">
       <xs:minInclusive value="1"/>
       <xs:maxInclusive value="19"/>
-      <!-- <xs:enumeration value="P" />
-      <xs:enumeration value="C" />
-      <xs:enumeration value="B" />   -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -2403,35 +2409,43 @@
           <xs:attribute fixed="b.3" name="id" type="NonEmptyString" use="required" />
         </xs:complexType>
       </xs:element>
-      <xs:element name="PropositoDelAvaluo">
+
+      <!-- <xs:element name="PropositoDelAvaluo">
         <xs:complexType>
-            <xs:sequence>
-                <xs:element name='PropositoDelAvaluo' minOccurs="1" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:simpleContent>
-                            <xs:extension base="Cat-PropositoAvaluo">
-                                <xs:attribute fixed="b.4.1" name="id" type="xs:string" use="required" />
-                            </xs:extension>
-                        </xs:simpleContent>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name='Otro' minOccurs="1" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:simpleContent>
-                            <xs:extension base="NonEmptyString">
-                                <xs:attribute fixed="b.4.2" name="id" type="xs:string" use="required" />
-                            </xs:extension>
-                        </xs:simpleContent>
-                    </xs:complexType>
-                </xs:element>
-            </xs:sequence>
           <xs:simpleContent>
             <xs:extension  base="NonEmptyString70">
               <xs:attribute fixed="b.4" name="id" type="xs:string" use="required" />
             </xs:extension>
           </xs:simpleContent>
         </xs:complexType>
-      </xs:element>
+      </xs:element> -->
+
+              <xs:element name="PropositoDelAvaluo">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ClavePropositoAvaluo">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="Cat-PropositoAvaluo">
+                            <xs:attribute fixed="b.4.1" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Otros">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="NonEmptyString70">
+                            <xs:attribute fixed="b.4.2" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute fixed="b.4" name="id" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>      
+
       <xs:element name="ObjetoDelAvaluo">
         <xs:complexType>
           <xs:simpleContent>
@@ -2451,7 +2465,7 @@
         </xs:complexType>
       </xs:element>
       <!-- Descomentar para nuevo XML -->
-      <xs:element name="TipoDeInmueble">
+      <!-- <xs:element name="TipoDeInmueble">
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="Cat-TipoInmueble">
@@ -2459,7 +2473,35 @@
             </xs:extension>
           </xs:simpleContent>
         </xs:complexType>
-      </xs:element>
+      </xs:element> -->
+
+              <xs:element name="TipoDeInmueble">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ClaveTipoInmueble">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="Cat-TipoInmueble">
+                            <xs:attribute fixed="b.7.1" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Otros">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="NonEmptyString70">
+                            <xs:attribute fixed="b.7.2" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute fixed="b.7" name="id" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+
+
     </xs:sequence>
     <xs:attribute fixed="b" name="id" type="NonEmptyString" use="required" />
   </xs:complexType>
@@ -2804,7 +2846,8 @@
           <xs:attribute fixed="b.3" name="id" type="NonEmptyString" use="required" />
         </xs:complexType>
       </xs:element>
-      <xs:element name="PropositoDelAvaluo">
+
+     <!-- <xs:element name="PropositoDelAvaluo">
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension  base="NonEmptyString70">
@@ -2812,7 +2855,34 @@
             </xs:extension>
           </xs:simpleContent>
         </xs:complexType>
-      </xs:element>
+      </xs:element> -->
+  
+              <xs:element name="PropositoDelAvaluo">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ClavePropositoAvaluo">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="Cat-PropositoAvaluo">
+                            <xs:attribute fixed="b.4.1" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Otros">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="NonEmptyString70">
+                            <xs:attribute fixed="b.4.2" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute fixed="b.4" name="id" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+
       <xs:element name="ObjetoDelAvaluo">
         <xs:complexType>
           <xs:simpleContent>
@@ -2831,7 +2901,8 @@
           </xs:simpleContent>
         </xs:complexType>
       </xs:element>
-      <xs:element name="TipoDeInmueble">
+
+      <!-- <xs:element name="TipoDeInmueble">
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="Cat-TipoInmueble">
@@ -2839,7 +2910,35 @@
             </xs:extension>
           </xs:simpleContent>
         </xs:complexType>
-      </xs:element> 
+      </xs:element> -->
+
+              <xs:element name="TipoDeInmueble">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ClaveTipoInmueble">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="Cat-TipoInmueble">
+                            <xs:attribute fixed="b.7.1" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Otros">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="NonEmptyString70">
+                            <xs:attribute fixed="b.7.2" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute fixed="b.7" name="id" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+
+
     </xs:sequence>
     <xs:attribute fixed="b" name="id" type="NonEmptyString" use="required" />
   </xs:complexType>
@@ -6044,9 +6143,9 @@
         <xs:complexType>
           <xs:sequence>
             <xs:choice >
-              <!-- <xs:group  ref="SUB-TerrenosDirectos"></xs:group>
-              <xs:group  ref="SUB-TerrenosResiduales"></xs:group> -->              
-              <xs:group  ref="SUB-TerrenosMixtos"></xs:group>
+              <xs:group  ref="SUB-TerrenosDirectos"></xs:group>
+              <xs:group  ref="SUB-TerrenosResiduales"></xs:group>              
+              <!-- <xs:group  ref="SUB-TerrenosMixtos"></xs:group> -->
             </xs:choice>
             <xs:element name="ValorUnitarioDeTierraAplicableAlAvaluo" type="SUB-ValorUnitarioDeTierraAplicableAlAvaluo" />
           </xs:sequence>

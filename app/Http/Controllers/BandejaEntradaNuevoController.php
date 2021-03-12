@@ -821,13 +821,13 @@ class BandejaEntradaNuevoController extends Controller
                 }
             }else{
                 if(isset($arrXML[$elementoPrincipal]['EnfoqueDeMercado']['Terrenos']['TerrenosDirectos']) && isset($arrXML[$elementoPrincipal]['EnfoqueDeMercado']['Terrenos']['TerrenosResidual'])){
-                    if(is_array($arrXML[$elementoPrincipal]['Antecedentes']['PropositoDelAvaluo']) && isset($arrXML[$elementoPrincipal]['Antecedentes']['PropositoDelAvaluo']['Otro'])){                        
+                    if(is_array($arrXML[$elementoPrincipal]['Antecedentes']['PropositoDelAvaluo']) && isset($arrXML[$elementoPrincipal]['Antecedentes']['PropositoDelAvaluo']['Otros'])){                        
                         $xsd = 'EsquemaAvaluoNuevoCatMixtoFinal.xsd';
                     }else{
                         $xsd = 'EsquemaAvaluoNuevoMixtoFinal.xsd';
                     }                    
                 }else{
-                    if(is_array($arrXML[$elementoPrincipal]['Antecedentes']['PropositoDelAvaluo']) && isset($arrXML[$elementoPrincipal]['Antecedentes']['PropositoDelAvaluo']['Otro'])){
+                    if(is_array($arrXML[$elementoPrincipal]['Antecedentes']['PropositoDelAvaluo']) && isset($arrXML[$elementoPrincipal]['Antecedentes']['PropositoDelAvaluo']['Otros'])){
                         $xsd = 'EsquemaAvaluoNuevoCatFinal.xsd';
                     }else{
                         $xsd = 'EsquemaAvaluoNuevoFinal.xsd';
@@ -862,7 +862,7 @@ class BandejaEntradaNuevoController extends Controller
             return true;
         }catch (\Throwable $th) {
             Log::info($th);
-            //error_log($th);
+            error_log($th);
             //return response()->json(['mensaje' => 'Error al comprimir archivo'], 500);
             return $th;
         }
@@ -915,13 +915,13 @@ class BandejaEntradaNuevoController extends Controller
     function guardarAvaluo(Request $request){
         try{
 
-            $authToken = $request->header('Authorization');
+            /*$authToken = $request->header('Authorization');
             if (!$authToken) {
                 return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
             } 
             $resToken = Crypt::decrypt($authToken);
             
-            $idPersona = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior']; //$idPersona = 264;
+            $idPersona = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];*/ $idPersona = 264;
 
             $file = $request->file('files');
 
@@ -1718,9 +1718,9 @@ class BandejaEntradaNuevoController extends Controller
 
         $infoXmlPropositoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//PropositoDelAvaluo[@id="b.4"]');
         $infoXmlPropositoDelAvaluo = convierte_a_arreglo($infoXmlPropositoDelAvaluo); //print_r($infoXmlPropositoDelAvaluo); exit();
-        if(isset($infoXmlPropositoDelAvaluo[0]['PropositoDelAvaluo']) && $infoXmlPropositoDelAvaluo[0]['PropositoDelAvaluo'] == 4){
-            $camposFexavaAvaluo['PROPOSITO'] = $infoXmlPropositoDelAvaluo[0]['Otro'];
-        }else{
+        if(isset($infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo']) && $infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo'] == 4){
+            $camposFexavaAvaluo['PROPOSITO'] = $infoXmlPropositoDelAvaluo[0]['Otros'];
+        }else{    
             $camposFexavaAvaluo['PROPOSITO'] = getPropositoAvaluo($infoXmlPropositoDelAvaluo[0][0]);
             //$camposFexavaAvaluo['PROPOSITO'] = (String)($infoXmlPropositoDelAvaluo[0]);
         }
