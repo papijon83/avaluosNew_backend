@@ -29,13 +29,16 @@ $router->get('/', function () use ($router) {
     $router->get('guardarxml', 'BandejaEntradaNuevoController@guardarAvaluoPNet');
     $router->get('insertSuperficie', 'BandejaEntradaNuevoController@insertSuperficieAuxPNet');
 
+    $router->post('estadoEnvio', 'WsSolucionIdeas@estadoEnvio');
+    $router->get('estadoEnvio', 'WsSolucionIdeas@estadoEnvio');
+
     $router->group(['prefix' => 'WsSolucionIdeas'], function () use ($router) {
         $router->get('wsRecibeAvaluo/{folio}', 'ClienteWSController@sendAvaluo');
         $router->post('wsRecibeAvaluo', 'WsSolucionIdeas@wsRecibeAvaluo');
         $router->post('getToken', 'WsSolucionIdeas@getToken');
         $router->post('webhooktoken', 'WebhookController@recibeToken');
         $router->post('wsRecibeAvaluoMi', 'WsSolucionIdeas@wsRecibeAvaluoMi');
-        $router->post('tokenG', 'WsSolucionIdeas@obtenerTokenGuardado');
+        $router->post('tokenG', 'WsSolucionIdeas@obtenerTokenGuardado');    
     });
 
 

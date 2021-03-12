@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Hamcrest\Arrays\IsArray;
 use App\Models\Documentos;
+use Illuminate\Support\Facades\DB;
 use Log;
 
 class WsSolucionIdeas extends Controller
@@ -252,6 +253,21 @@ class WsSolucionIdeas extends Controller
             return response()->json(['token'=>$token], 200);
         }else{
             return response()->json(['mensaje'=>'No se encontró un token para ese folio'], 404);
+        }
+    }
+
+    public function estadoEnvio(Request $request){
+        $folio_Interno = $request->query('numeroUnico');
+        $this->modelDocumentos = new Documentos();
+        $idAvaluo = $this->modelDocumentos->get_idavaluo_db($folio_Interno);
+        //echo "SOY IDASVALUO ".$idAvaluo."\n";
+        if($idAvaluo){
+            $registroRes = convierte_a_arreglo(DB::select("SELECT MENSAJE_RESPUESTA_WS FROM FEXAVA_ENVIOXMLWS WHERE IDAVALUO = ".$idAvaluo));
+            if($registroRes){
+                return "RESPUESTA: ".trim($registroRes[0]['mensaje_respuesta_ws']);
+            }else{
+                return "NO SE ENCUENTRA INFORMACION PARA EL NUMEROUNICO ".$folio_Interno;
+            }
         }
     }
 }
