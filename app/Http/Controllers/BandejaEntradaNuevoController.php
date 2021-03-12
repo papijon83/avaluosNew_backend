@@ -915,13 +915,13 @@ class BandejaEntradaNuevoController extends Controller
     function guardarAvaluo(Request $request){
         try{
 
-            /*$authToken = $request->header('Authorization');
+            $authToken = $request->header('Authorization');
             if (!$authToken) {
                 return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
             } 
             $resToken = Crypt::decrypt($authToken);
             
-            $idPersona = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];*/ $idPersona = 264;
+            $idPersona = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior']; //$idPersona = 264;
 
             $file = $request->file('files');
 
