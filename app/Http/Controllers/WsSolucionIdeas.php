@@ -213,21 +213,24 @@ class WsSolucionIdeas extends Controller
     }
 
     public function getToken(Request $request){ 
-        $idUsuario = $request->input('idUsuario');
-        $numeroUnico = $request->input('numeroUnico');
-        $fecha_Pago = $request->input('fechaPago');
-        $monto_Pago = $request->input('montoPago');    
-        $linea_Captura = $request->input('lineaCaptura');
 
-        if(isset($idUsuario) && isset($numeroUnico)){
-            $token = Crypt::encrypt(['numeroUnico'=>$numeroUnico,'idUsuario'=>$idUsuario]);
-        }
-
-        if(isset($idUsuario) && isset($numeroUnico) && isset($fecha_Pago) && isset($monto_Pago) && isset($linea_Captura)){
-            $token = Crypt::encrypt(['numeroUnico'=>$numeroUnico,'idUsuario'=>$idUsuario, 'fechaPago'=>$fecha_Pago, 'montoPago'=>$monto_Pago, 'lineaCaptura'=>$linea_Captura]);
-        }
+        $numero_Unico = $request->query('Numero_Unico');
+        $cuenta_Catast = $request->query('Cuenta_Catast');
+        $usuario = $request->query('Usuario');
+        $contrasenia = $request->query('Contrasenia');
         
-        return response()->json($token, 200);
+        
+        if(isset($numero_Unico) && trim($numero_Unico) != '' && isset($cuenta_Catast) && isset($usuario) && trim($usuario) != '' && isset($contrasenia) && trim($contrasenia) != '' ){
+            if(base64_decode($usuario) == env('USUCONSULTAVA') && base64_decode($contrasenia) == env('PASSCONSULTAVA')){
+                $token = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia]);
+                return response()->json($token, 200);
+            }else{
+                return response()->json(['mensaje'=>'Usuario o contraseña incorrectos'], 404);
+            }
+            
+        }
+
+        
     }
 
     public function obtenerTokenGuardado(Request $request){

@@ -41,6 +41,10 @@ $router->get('/', function () use ($router) {
         $router->post('tokenG', 'WsSolucionIdeas@obtenerTokenGuardado');    
     });
 
+    $router->group(['prefix' => 'WsConsultaAvaluo'], function () use ($router) {    
+        $router->post('consultaVista', 'WsConsultaAvaluo@avaluosVista');        
+    });
+
 
 
 $router->group(['prefix' => 'api'], function () use ($router) {
