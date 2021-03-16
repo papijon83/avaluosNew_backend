@@ -324,7 +324,7 @@ class ReimpresionNuevo
         $infoReimpresion['Ubicacion_Inmueble']['CP'] = $ubicacionInmueble['CodigoPostal'];
         $infoReimpresion['Ubicacion_Inmueble']['Delegacion'] = isset($ubicacionInmueble['Delegacion']) ? $ubicacionInmueble['Delegacion'] : $ubicacionInmueble['Alcaldia'];
         $infoReimpresion['Ubicacion_Inmueble']['Edificio'] = "-";
-        $infoReimpresion['Ubicacion_Inmueble']['Lote'] = 0;
+        $infoReimpresion['Ubicacion_Inmueble']['Lote'] = isset($ubicacionInmueble['Lote']) && !is_array($ubicacionInmueble['Lote']) ? $ubicacionInmueble['Lote'] : 0;
         if(isset($ubicacionInmueble['CuentaDeAgua']) && !is_array($ubicacionInmueble['CuentaDeAgua'])){
             $infoReimpresion['Ubicacion_Inmueble']['Cuenta_agua'] = $ubicacionInmueble['CuentaDeAgua'];
         }else{
@@ -2481,7 +2481,7 @@ class ReimpresionNuevo
         $infoReimpresion['Ubicacion_Inmueble']['CP'] = $ubicacionInmueble['CodigoPostal'];
         $infoReimpresion['Ubicacion_Inmueble']['Delegacion'] = isset($ubicacionInmueble['Delegacion']) ? $ubicacionInmueble['Delegacion'] : $ubicacionInmueble['Alcaldia'];
         $infoReimpresion['Ubicacion_Inmueble']['Edificio'] = "-";
-        $infoReimpresion['Ubicacion_Inmueble']['Lote'] = 0;
+        $infoReimpresion['Ubicacion_Inmueble']['Lote'] = isset($ubicacionInmueble['Lote']) && !is_array($ubicacionInmueble['Lote']) ? $ubicacionInmueble['Lote'] : 0;
         $infoReimpresion['Ubicacion_Inmueble']['Cuenta_agua'] = $ubicacionInmueble['CuentaDeAgua'];
 
         $infoReimpresion['Clasificacion_de_la_zona'] = $this->modelDocumentos->get_clasificacion_zona($arrFexava['cucodclasificacionzona']);
