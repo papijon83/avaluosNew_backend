@@ -319,7 +319,7 @@ class BandejaEntradaNuevoController extends Controller
                 elseif(isset($fi) && $year->gt($fi)){
 
                     //$idPerito = 264; 
-                    $idPerito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+                    $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; 
 
                     if ($idPerito) {
                         $table->where('FEXAVA_AVALUO.idpersonaperito', $idPerito);
@@ -356,7 +356,7 @@ class BandejaEntradaNuevoController extends Controller
                         } else {
                             return response()->json(['mensaje' => 'Formato de cuenta predial incorrecta'], 400);
                         }
-                        $idPerito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+                        $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona'];
                         if ($idPerito) {
                             $table->where('FEXAVA_AVALUO.idpersonaperito', $idPerito);
                         }
@@ -368,7 +368,7 @@ class BandejaEntradaNuevoController extends Controller
             }
 
             //$idPerito = 264;
-            $idPerito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+            $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; error_log("EL ID ANTERIOR ".$resToken['id_persona']." EL ID USUARIO ".$resToken['id_usuario']);
 
             //$table->where('FEXAVA_AVALUO.idpersonaperito', $resToken['id_anterior']);
             //COMENTADO PRQUE YA ESTA ABAJO $table->where('FEXAVA_AVALUO.idpersonaperito', $idPerito);
@@ -921,7 +921,7 @@ class BandejaEntradaNuevoController extends Controller
             } 
             $resToken = Crypt::decrypt($authToken);
             
-            $idPersona = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior']; //$idPersona = 264;
+            $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; //$idPersona = 264;
 
             $file = $request->file('files');
 
