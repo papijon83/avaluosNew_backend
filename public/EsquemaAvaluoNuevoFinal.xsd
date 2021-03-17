@@ -476,22 +476,23 @@
 
   <xs:simpleType name="Cat-Delegacion">
     <xs:restriction base="NonEmptyString50">
-      <xs:enumeration value="2" />
-      <xs:enumeration value="3" />
-      <xs:enumeration value="4" />
-      <xs:enumeration value="5" />
-      <xs:enumeration value="6" />
-      <xs:enumeration value="7" />
-      <xs:enumeration value="8" />
-      <xs:enumeration value="9" />
-      <xs:enumeration value="10" />
-      <xs:enumeration value="11" />
-      <xs:enumeration value="12" />
-      <xs:enumeration value="13" />
-      <xs:enumeration value="14" />
-      <xs:enumeration value="15" />
-      <xs:enumeration value="16" />
-      <xs:enumeration value="17" />
+      <xs:enumeration value="002" />
+      <xs:enumeration value="003" />
+      <xs:enumeration value="004" />
+      <xs:enumeration value="005" />
+      <xs:enumeration value="006" />
+      <xs:enumeration value="007" />
+      <xs:enumeration value="008" />
+      <xs:enumeration value="009" />
+      <xs:enumeration value="010" />
+      <xs:enumeration value="011" />
+      <xs:enumeration value="012" />
+      <xs:enumeration value="013" />
+      <xs:enumeration value="014" />
+      <xs:enumeration value="015" />
+      <xs:enumeration value="016" />
+      <xs:enumeration value="017" />
+      <xs:enumeration value="018" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -2156,8 +2157,17 @@
                     </xs:extension>
                   </xs:simpleContent>
                 </xs:complexType>
-              </xs:element>
+              </xs:element>              
               <xs:element name="TipoPersona" type="SUB-TipoPersona"></xs:element>
+              <xs:element name="Otros" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="NonEmptyString100">
+                      <xs:attribute fixed="b.1.11" name="id" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
             </xs:sequence>
             <!--<xs:choice minOccurs="1" maxOccurs="1">
               <xs:group  ref="SUB-DatosMoral"></xs:group>
@@ -2252,6 +2262,15 @@
               </xs:complexType>
             </xs:element>
             <xs:element name="TipoPersona" type="SUB-TipoPersonaProp"></xs:element>
+            <xs:element name="Otros" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="NonEmptyString100">
+                    <xs:attribute fixed="b.2.11" name="id" type="xs:string" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
             <!--<xs:choice minOccurs="1" maxOccurs="1">
               <xs:group ref="SUB-DatosMoralProp"></xs:group>
               <xs:group ref="SUB-DatosFisicaProp"></xs:group>
@@ -2539,6 +2558,15 @@
                 </xs:complexType>
               </xs:element>
               <xs:element name="TipoPersona" type="SUB-TipoPersona"></xs:element>
+              <xs:element name="Otros" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="NonEmptyString100">
+                      <xs:attribute fixed="b.1.11" name="id" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
             </xs:sequence>
             <!--<xs:choice >
               <xs:group  ref="SUB-DatosMoral"></xs:group>
@@ -2633,6 +2661,15 @@
               </xs:complexType>
             </xs:element>
             <xs:element name="TipoPersona" type="SUB-TipoPersonaProp"></xs:element>
+            <xs:element name="Otros" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="NonEmptyString100">
+                    <xs:attribute fixed="b.2.11" name="id" type="xs:string" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
             <!--<xs:choice >
               <xs:group  ref="SUB-DatosMoralProp"></xs:group>
               <xs:group  ref="SUB-DatosFisicaProp"></xs:group>
