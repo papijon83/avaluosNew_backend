@@ -915,13 +915,13 @@ class BandejaEntradaNuevoController extends Controller
     function guardarAvaluo(Request $request){
         try{
 
-            $authToken = $request->header('Authorization');
+            /*$authToken = $request->header('Authorization');
             if (!$authToken) {
                 return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
             } 
             $resToken = Crypt::decrypt($authToken);
             
-            $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; //$idPersona = 264;
+            $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona'];*/ $idPersona = 264;
 
             $file = $request->file('files');
 
@@ -972,9 +972,9 @@ class BandejaEntradaNuevoController extends Controller
             $fechaAvaluoCompara = new Carbon($fechaAvaluo);
             $fechaMaxima = new Carbon('2020-12-31');  
             if($fechaAvaluoCompara->lte($fechaMaxima)){
-                return $this->guardarAvaluoV($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo);
+                return $this->guardarAvaluoV($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo,$contents);
             }else{
-                return $this->guardarAvaluoN($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo);
+                return $this->guardarAvaluoN($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo,$contents);
             }
             
 
@@ -1086,7 +1086,7 @@ class BandejaEntradaNuevoController extends Controller
         } 
     }
 
-    function guardarAvaluoN($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo){
+    function guardarAvaluoN($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo,$contents){
         try{       
             
             $this->modelPeritoSociedad = new PeritoSociedad();
@@ -1200,14 +1200,15 @@ class BandejaEntradaNuevoController extends Controller
             
             $archivoComprimido = $this->comprimir($file);
             $ficheroAvaluo = $this->modelDocumentos->tran_InsertFicheroAvaluo($idDocumentoDigital, $nombreXMLAvaluo, null, $archivoComprimido);
-            $resInsert = $this->modelGuardaenBD->insertAvaluo($camposFexavaAvaluo);
+            $resInsert = $this->modelGuardaenBD->insertAvaluo($camposFexavaAvaluo);            
+            $this->guardaDatosExtra($xml,$elementoPrincipal,$camposFexavaAvaluo['IDAVALUO']);
             $this->guardaAvance($nombreArchivo,100);
                     
             
             if($resInsert == TRUE){
                
-                $numeroUnico = $this->modelDocumentos->get_numero_unico_db($camposFexavaAvaluo['IDAVALUO']);               
-                
+                $numeroUnico = $this->modelDocumentos->get_numero_unico_db($camposFexavaAvaluo['IDAVALUO']);
+                //$this->recibeAvaluo($idPersona,$numeroUnico,$contents);    
                 return response()->json(['Estado' => $resInsert,'numeroUnico' => $numeroUnico], 200);
             }else{
                 return response()->json(['mensaje' => $resInsert], 500);
@@ -1227,7 +1228,56 @@ class BandejaEntradaNuevoController extends Controller
         
     }
 
-    function guardarAvaluoV($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo){
+    public function recibeAvaluo($idUsuario,$folio_Interno,$contents){
+        $auth = '<usuario xmlns="IDEAS.Avametrica">' . env('USUARIO_WSDL') . '</usuario>';
+        $auth .= '<contrasenia xmlns="IDEAS.Avametrica">' . env('PASS_WSDL') . '</contrasenia>';
+        
+        $client = new \SoapClient(env('WSDL_RECIBE_AVALUO'), ["debug" => true, "trace" => true, "exception" => true]);
+        $auth_block = new \SoapVar($auth, XSD_ANYXML, NULL, NULL, NULL, NULL);
+        $header = new \SoapHeader('http://schemas.xmlsoap.org/soap/envelope/', 'Header', $auth_block);
+        $client->__setSoapHeaders($header);
+        try {
+            $client->__soapCall('obtenertoken', ['obtenertoken' => ['folio_avaluo' => $folio_Interno]]);
+        } catch (\Exception $e) {
+        }
+        $restClient = new \GuzzleHttp\Client();
+        $response = $restClient->request('POST', env('API_WEBHOOK') . $folio_Interno);
+
+        if ($response->getStatusCode() == 200) {
+            try {
+                $res = json_decode($response->getBody());
+
+                $enviado = $client->__soapCall('BandejaAvaluoXML', ['BandejaAvaluoXML' => [
+                    'datos' => [
+                        'AvaluoXML' => (String)($contents), //$xml->asXML(),
+                        'Folio_Interno' => $folio_Interno,
+                        'Folio_Usuario' => $idUsuario,
+                        'token' => $res->token,
+                    ]
+                ]]);
+
+                $this->modelDocumentos = new Documentos();
+                $idAvaluo = $this->modelDocumentos->get_idavaluo_db($folio_Interno);
+
+                if($enviado->BandejaAvaluoXMLResult){                        
+                    $response = $this->modelDocumentos->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo fue entregado a la bandeja');
+                    return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja '.$response], 200);
+                }else{                        
+                    $response = $this->modelDocumentos->guardaResultado($idAvaluo, $idUsuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo no pudo ser entregado');
+                    return response()->json(['mensaje' => 'El avalúo no pudo ser entregado '.$response], 400);
+                }
+                
+            } catch (\Throwable $th) {
+                error_log($th);
+                
+                return response()->json(['mensaje' => 'Error al consumir el servicio'], 500);
+            }
+        } else {
+            return response()->json($response->getBody(), $response->getStatusCode());
+        }    
+    }    
+
+    function guardarAvaluoV($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo,$contents){
         try{
             //echo "ENTRE AL VIEJO"; exit();
             $this->modelPeritoSociedad = new PeritoSociedad();
@@ -1352,7 +1402,7 @@ class BandejaEntradaNuevoController extends Controller
             if($resInsert == TRUE){
                
                 $numeroUnico = $this->modelDocumentos->get_numero_unico_db($camposFexavaAvaluo['IDAVALUO']);               
-                
+                //$this->recibeAvaluo($idPersona,$numeroUnico,$contents);
                 return response()->json(['Estado' => $resInsert,'numeroUnico' => $numeroUnico], 200);
             }else{
                 return response()->json(['mensaje' => $resInsert], 500);
@@ -1534,7 +1584,8 @@ class BandejaEntradaNuevoController extends Controller
         return $camposFexavaAvaluo;
     }
 
-    public function guardarAvaluoAntecedentes($infoXmlAntecedentes, $camposFexavaAvaluo,$elementoPrincipal){        
+    public function guardarAvaluoAntecedentes($infoXmlAntecedentes, $camposFexavaAvaluo,$elementoPrincipal){
+                
         $infoXmlSolicitante = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//Solicitante[@id="b.1"]');
         $errores = valida_AvaluoAntecedentes($infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]'), $elementoPrincipal);
         if(count($errores) > 0){
@@ -1740,6 +1791,70 @@ class BandejaEntradaNuevoController extends Controller
         }
 
         return $camposFexavaAvaluo;
+    }
+
+    public function guardaDatosExtra($infoXmlAntecedentes,$elementoPrincipal,$idAvaluo){
+        $infoEstra = convierte_a_arreglo($infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]'));
+        
+        $cuenta_agua = !is_array($infoEstra[0]['InmuebleQueSeValua']['CuentaDeAgua']) ? $infoEstra[0]['InmuebleQueSeValua']['CuentaDeAgua'] : '';
+        $folio_real = 'Definir';
+        $antecedente_registral = 'Definir';
+        $calle = !is_array($infoEstra[0]['InmuebleQueSeValua']['Calle']) ? $infoEstra[0]['InmuebleQueSeValua']['Calle'] : '';
+        $manzana = !is_array($infoEstra[0]['InmuebleQueSeValua']['Manzana']) ? $infoEstra[0]['InmuebleQueSeValua']['Manzana'] : '';
+        $lote = !is_array($infoEstra[0]['InmuebleQueSeValua']['Lote']) ? $infoEstra[0]['InmuebleQueSeValua']['Lote'] : '';
+        $numero_exterior = !is_array($infoEstra[0]['InmuebleQueSeValua']['NumeroExterior']) ? $infoEstra[0]['InmuebleQueSeValua']['NumeroExterior'] : '';
+        $numero_interior = !is_array($infoEstra[0]['InmuebleQueSeValua']['NumeroInterior']) ? $infoEstra[0]['InmuebleQueSeValua']['NumeroInterior'] : '';
+        $colonia = !is_array($infoEstra[0]['InmuebleQueSeValua']['Colonia']) ? $infoEstra[0]['InmuebleQueSeValua']['Colonia'] : '';
+        $codigo_postal = !is_array($infoEstra[0]['InmuebleQueSeValua']['CodigoPostal']) ? $infoEstra[0]['InmuebleQueSeValua']['CodigoPostal'] : '';
+        $alcaldia_municipio = !is_array($infoEstra[0]['InmuebleQueSeValua']['Alcaldia']) ? $infoEstra[0]['InmuebleQueSeValua']['Alcaldia'] : '';
+
+        $p_cod = '';
+        $p_desc = '';
+
+        $procedure = 'BEGIN
+        FEXAVA.FEXAVA_AVALUOS_PKG.FEXAVA_INSERT_INFODGPC_P(
+            :PAR_IDAVALUO,
+            :PAR_CUENTA_AGUA,
+            :PAR_FOLIO_REAL,
+            :PAR_ANTECEDENTE_REGISTRAL,        
+            :PAR_CALLE,
+            :PAR_MANZANA,
+            :PAR_LOTE,
+            :PAR_NUMERO_EXTERIOR,
+            :PAR_NUMERO_INTERIOR,
+            :PAR_COLONIA,
+            :PAR_CODIGO_POSTAL,
+            :PAR_ALCALDIA_MUNICIPIO,
+            :P_COD,
+            :P_DESC
+        ); END;';
+        $pdo = DB::getPdo();
+        $stmt = $pdo->prepare($procedure);
+        $stmt->bindParam(':PAR_IDAVALUO', $idAvaluo, \PDO::PARAM_INT);
+        $stmt->bindParam(':PAR_CUENTA_AGUA',$cuenta_agua,\PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_FOLIO_REAL',$folio_real, \PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_ANTECEDENTE_REGISTRAL',$antecedente_registral,\PDO::PARAM_STR);        
+        $stmt->bindParam(':PAR_CALLE',$calle,\PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_MANZANA',$manzana,\PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_LOTE',$lote,\PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_NUMERO_EXTERIOR',$numero_exterior,\PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_NUMERO_INTERIOR',$numero_interior,\PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_COLONIA',$colonia,\PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_CODIGO_POSTAL',$codigo_postal,\PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_ALCALDIA_MUNICIPIO',$alcaldia_municipio,\PDO::PARAM_STR);
+        $stmt->bindParam(':P_COD',$p_cod,\PDO::PARAM_INT);
+        $stmt->bindParam(':P_DESC',$p_desc,\PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();
+        $pdo->commit();
+        $pdo->close();
+        DB::commit();
+        DB::reconnect();
+        if($p_cod != '' && $p_desc != ''){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function guardarAvaluoAntecedentesV($infoXmlAntecedentes, $camposFexavaAvaluo,$elementoPrincipal){    
@@ -6160,7 +6275,8 @@ class BandejaEntradaNuevoController extends Controller
             
                         
         }catch (\Throwable $th) {
-            Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
+            //Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error al obtener la información del avalúo'], 500);
         }    
@@ -6366,7 +6482,8 @@ class BandejaEntradaNuevoController extends Controller
             
                         
         }catch (\Throwable $th) {
-            Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
+            //Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error al obtener la información del avalúo'], 500);
         }    
@@ -6506,7 +6623,8 @@ class BandejaEntradaNuevoController extends Controller
             
                         
         }catch (\Throwable $th) {
-            Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
+            //Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error al obtener la información del avalúo'], 500);
         }    
