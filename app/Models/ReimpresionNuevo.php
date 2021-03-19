@@ -2482,7 +2482,7 @@ class ReimpresionNuevo
         $infoReimpresion['Ubicacion_Inmueble']['Delegacion'] = isset($ubicacionInmueble['Delegacion']) ? $ubicacionInmueble['Delegacion'] : $ubicacionInmueble['Alcaldia'];
         $infoReimpresion['Ubicacion_Inmueble']['Edificio'] = "-";
         $infoReimpresion['Ubicacion_Inmueble']['Lote'] = isset($ubicacionInmueble['Lote']) && !is_array($ubicacionInmueble['Lote']) ? $ubicacionInmueble['Lote'] : 0;
-        $infoReimpresion['Ubicacion_Inmueble']['Cuenta_agua'] = $ubicacionInmueble['CuentaDeAgua'];
+        $infoReimpresion['Ubicacion_Inmueble']['Cuenta_agua'] = isset($ubicacionInmueble['CuentaDeAgua']) && !is_array($ubicacionInmueble['CuentaDeAgua']) ? $ubicacionInmueble['CuentaDeAgua'] : '';
 
         $infoReimpresion['Clasificacion_de_la_zona'] = $this->modelDocumentos->get_clasificacion_zona($arrFexava['cucodclasificacionzona']);
         $infoReimpresion['Indice_Saturacion_Zona'] = $arrFexava['cuindicesaturacionzona'] <= 1 ? $arrFexava['cuindicesaturacionzona'] * 100 : $arrFexava['cuindicesaturacionzona'];
