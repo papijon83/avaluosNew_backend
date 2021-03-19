@@ -3861,6 +3861,43 @@ class ReimpresionNuevo
             }
         }
 
+        /***************************************************************************************************************************************************/
+        if(isset($instalacionesEspeciales['Privativas']['@attributes'])){  
+            $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'IE';
+            $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionesEspeciales['Privativas']['ClaveInstalacionEspecial'];
+            $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionesEspeciales['Privativas']['DescripcionInstalacionEspecial'];
+            $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $instalacionesEspeciales['Privativas']['CantidadInstalacionEspecial'];
+            if(isset($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'])){
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'];
+            }
+            if(isset($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'])){
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'];
+            }
+            if(isset($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'])){
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'];
+            }    
+            $control = $control + 1;            
+        }
+
+        if(isset($instalacionesEspeciales['Privativas'][0])){   
+            foreach($instalacionesEspeciales['Privativas'] as $instalacionEspeciales){
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'IE';
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionEspeciales['ClaveInstalacionEspecial'];
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionEspeciales['DescripcionInstalacionEspecial'];
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $instalacionEspeciales['CantidadInstalacionEspecial'];
+                if(isset($instalacionEspeciales['CostoUnitarioInstalacionEspecial'])){
+                    $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $instalacionEspeciales['CostoUnitarioInstalacionEspecial'];
+                }
+                if(isset($instalacionEspeciales['EdadInstalacionEspecial'])){
+                    $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $instalacionEspeciales['EdadInstalacionEspecial'];
+                }
+                if(isset($instalacionEspeciales['ImporteInstalacionEspecial'])){
+                    $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $instalacionEspeciales['ImporteInstalacionEspecial'];                
+                }    
+                $control = $control + 1;
+            }
+        }
+
         /******************************************************************************************************************************************************************/
 
         if(isset($elementosAccesorios['Comunes']['@attributes'])){
