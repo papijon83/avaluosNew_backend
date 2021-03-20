@@ -87,7 +87,7 @@ class WsConsultaAvaluo extends Controller
         $arrayRes['AVALUOS_CONSULTA_GETAVALUOS_p'] = $infoAvaluos;
         $arrayRes['AVALUO'] = $infoDatos;    
         
-        return $arrayRes;
+        return response()->json($arrayRes, 200);    
         
 
     }
