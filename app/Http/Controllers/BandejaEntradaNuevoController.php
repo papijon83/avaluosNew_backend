@@ -915,13 +915,13 @@ class BandejaEntradaNuevoController extends Controller
     function guardarAvaluo(Request $request){
         try{
 
-            /*$authToken = $request->header('Authorization');
+            $authToken = $request->header('Authorization');
             if (!$authToken) {
                 return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
             } 
             $resToken = Crypt::decrypt($authToken);
             
-            $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona'];*/ $idPersona = 264;
+            $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; //$idPersona = 264;
 
             $file = $request->file('files');
 
@@ -1830,20 +1830,20 @@ class BandejaEntradaNuevoController extends Controller
         ); END;';
         $pdo = DB::getPdo();
         $stmt = $pdo->prepare($procedure);
-        $stmt->bindParam(':PAR_IDAVALUO', $idAvaluo, \PDO::PARAM_INT);
-        $stmt->bindParam(':PAR_CUENTA_AGUA',$cuenta_agua,\PDO::PARAM_STR);
-        $stmt->bindParam(':PAR_FOLIO_REAL',$folio_real, \PDO::PARAM_STR);
-        $stmt->bindParam(':PAR_ANTECEDENTE_REGISTRAL',$antecedente_registral,\PDO::PARAM_STR);        
-        $stmt->bindParam(':PAR_CALLE',$calle,\PDO::PARAM_STR);
-        $stmt->bindParam(':PAR_MANZANA',$manzana,\PDO::PARAM_STR);
-        $stmt->bindParam(':PAR_LOTE',$lote,\PDO::PARAM_STR);
-        $stmt->bindParam(':PAR_NUMERO_EXTERIOR',$numero_exterior,\PDO::PARAM_STR);
-        $stmt->bindParam(':PAR_NUMERO_INTERIOR',$numero_interior,\PDO::PARAM_STR);
-        $stmt->bindParam(':PAR_COLONIA',$colonia,\PDO::PARAM_STR);
-        $stmt->bindParam(':PAR_CODIGO_POSTAL',$codigo_postal,\PDO::PARAM_STR);
-        $stmt->bindParam(':PAR_ALCALDIA_MUNICIPIO',$alcaldia_municipio,\PDO::PARAM_STR);
-        $stmt->bindParam(':P_COD',$p_cod,\PDO::PARAM_INT);
-        $stmt->bindParam(':P_DESC',$p_desc,\PDO::PARAM_STR);
+        $stmt->bindParam(':PAR_IDAVALUO', $idAvaluo, \PDO::PARAM_INT,20);
+        $stmt->bindParam(':PAR_CUENTA_AGUA',$cuenta_agua,\PDO::PARAM_STR,50);
+        $stmt->bindParam(':PAR_FOLIO_REAL',$folio_real, \PDO::PARAM_STR,20);
+        $stmt->bindParam(':PAR_ANTECEDENTE_REGISTRAL',$antecedente_registral,\PDO::PARAM_STR,50);        
+        $stmt->bindParam(':PAR_CALLE',$calle,\PDO::PARAM_STR,50);
+        $stmt->bindParam(':PAR_MANZANA',$manzana,\PDO::PARAM_STR,50);
+        $stmt->bindParam(':PAR_LOTE',$lote,\PDO::PARAM_STR,50);
+        $stmt->bindParam(':PAR_NUMERO_EXTERIOR',$numero_exterior,\PDO::PARAM_STR,25);
+        $stmt->bindParam(':PAR_NUMERO_INTERIOR',$numero_interior,\PDO::PARAM_STR,30);
+        $stmt->bindParam(':PAR_COLONIA',$colonia,\PDO::PARAM_STR,50);
+        $stmt->bindParam(':PAR_CODIGO_POSTAL',$codigo_postal,\PDO::PARAM_STR,5);
+        $stmt->bindParam(':PAR_ALCALDIA_MUNICIPIO',$alcaldia_municipio,\PDO::PARAM_STR,50);
+        $stmt->bindParam(':P_COD',$p_cod,\PDO::PARAM_INT,20);
+        $stmt->bindParam(':P_DESC',$p_desc,\PDO::PARAM_STR,200);
         $stmt->execute();
         $stmt->closeCursor();
         $pdo->commit();
@@ -3116,9 +3116,11 @@ class BandejaEntradaNuevoController extends Controller
                         
                        }
         
-                       if(isset($arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.10'])){                               
+                       /*if(isset($arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.10'])){                               
                         $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$i]['CODESTADOCONSERVACION'] = (String)($arrConstruccionesPrivativas['arrElementos'][$i][$arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.10']]);
-                       }
+                       }*/
+                       
+                       $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$i]['CODESTADOCONSERVACION'] = 3;
         
                        if(isset($arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.11'])){                               
                         $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$i]['SUPERFICIE'] = (String)($arrConstruccionesPrivativas['arrElementos'][$i][$arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.11']]);
@@ -3333,16 +3335,26 @@ class BandejaEntradaNuevoController extends Controller
                     $camposFexavaAvaluo['DIVALORTOTALCONSTCOMUNES'] = (String)($valorTotalDeConstruccionesComunes[0]);
                 }
             }        
-        }
+        }        
 
-        if(isset($arrIdsDescripcionDelInmueble['e.3'])){
-            $vidaUtilTotalPonderadaDelInmueble = $infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//VidaUtilTotalPonderadaDelInmueble[@id="e.3"]');
-
-            if(trim($vidaUtilTotalPonderadaDelInmueble[0]) != ''){
-                $camposFexavaAvaluo['DIVIDAUTILPONDERADA'] = (String)($vidaUtilTotalPonderadaDelInmueble[0]);
+        if($esComercial == true){
+            if(isset($arrIdsDescripcionDelInmueble['e.3'])){
+                $vidaUtilTotalPonderadaDelInmueble = $infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//VidaMinimaRemanente[@id="e.3"]');
+    
+                if(trim($vidaUtilTotalPonderadaDelInmueble[0]) != ''){
+                    $camposFexavaAvaluo['DIVIDAUTILPONDERADA'] = (String)($vidaUtilTotalPonderadaDelInmueble[0]);
+                }
+            }
+        }else{
+            if(isset($arrIdsDescripcionDelInmueble['e.3'])){
+                $vidaUtilTotalPonderadaDelInmueble = $infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//VidaUtilTotalPonderadaDelInmueble[@id="e.3"]');
+    
+                if(trim($vidaUtilTotalPonderadaDelInmueble[0]) != ''){
+                    $camposFexavaAvaluo['DIVIDAUTILPONDERADA'] = (String)($vidaUtilTotalPonderadaDelInmueble[0]);
+                }
             }
         }
-
+        
         if(isset($arrIdsDescripcionDelInmueble['e.4'])){
             $edadPonderadaDelInmueble = $infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//EdadPonderadaDelInmueble[@id="e.4"]');
             
@@ -3352,7 +3364,7 @@ class BandejaEntradaNuevoController extends Controller
         }
 
         if(isset($arrIdsDescripcionDelInmueble['e.5'])){
-            $vidaUtilRemanentePonderadaDelInmueble = $infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//VidaUtilRemanentePonderadaDelInmueble[@id="e.5"]');
+            $vidaUtilRemanentePonderadaDelInmueble = $infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//VidaMinimaRemanentePonderadaDelInmueble[@id="e.5"]');
             
             if(trim($vidaUtilRemanentePonderadaDelInmueble[0]) != ''){
                 $camposFexavaAvaluo['DIVIDAUTILREMANENTEPONDERADA'] = (String)($vidaUtilRemanentePonderadaDelInmueble[0]);

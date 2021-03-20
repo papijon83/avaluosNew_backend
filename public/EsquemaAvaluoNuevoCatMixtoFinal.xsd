@@ -308,6 +308,15 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- DecimalPositivo14: Decimales positivos con 2 digito en la parte entera y 2 decimales (No admite cadenas texto vacÃ­as) -->
+  <xs:simpleType name="DecimalPositivo14">
+    <xs:restriction base="DecimalPositivo">
+      <xs:totalDigits value="3"/>
+      <xs:fractionDigits value="2"/>
+      <xs:pattern value="[0-9]{1}(\.[0-9]{1,2})?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <!-- DecimalPositivo12: Decimales positivos con 1 en la parte entera (0,1) y 2 decimales (No admite cadenas texto vacÃ­as) -->
   <xs:simpleType name="DecimalPositivo12">
     <xs:restriction base="DecimalPositivo">
@@ -1167,13 +1176,13 @@
     </xs:simpleContent>
   </xs:complexType>
 
-  <xs:complexType name="SUB-ValorTotalDeLasConstruccionesProIndiviso">
+  <!-- <xs:complexType name="SUB-ValorTotalDeLasConstruccionesProIndiviso">
     <xs:simpleContent>
       <xs:extension base="NullableDecimalPositivo">
         <xs:attribute fixed="e.2.4" name="id" type="xs:string" use="required"/>
       </xs:extension>
     </xs:simpleContent>
-  </xs:complexType>
+  </xs:complexType> -->
 
   <xs:complexType name="SUB-ValorTotalDeLasConstruccionesProIndivisoComunes">
     <xs:simpleContent>
@@ -4361,7 +4370,7 @@
 
   <xs:complexType name="SUB-Fre">
     <xs:simpleContent>
-      <xs:extension base="DoublePositivo">
+      <xs:extension base="DecimalPositivo14">
         <xs:attribute fixed="d.5.n.10" name="id" type="xs:string" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -4417,7 +4426,7 @@
             <!--Totales construcciones privativas-->
             <xs:element name="SuperficieTotalDeConstruccionesPrivativas" type="SUB-SuperficieTotalDeConstruccionesPrivativas" />
             <xs:element name="ValorTotalDeConstruccionesPrivativas" type="SUB-ValorTotalDeConstruccionesPrivativas" />
-            <xs:element name="ValorTotalDeLasConstruccionesProIndiviso" type="SUB-ValorTotalDeLasConstruccionesProIndiviso" />
+            <!-- <xs:element name="ValorTotalDeLasConstruccionesProIndiviso" type="SUB-ValorTotalDeLasConstruccionesProIndiviso" /> -->
 
 
             <!--Construcciones comunes-->
@@ -4454,7 +4463,7 @@
           <xs:attribute fixed="e.2" name="id" type="xs:string" use="required" />
         </xs:complexType>
       </xs:element>
-      <xs:element name="VidaUtilTotalPonderadaDelInmueble">
+      <xs:element name="VidaMinimaRemanente">
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="NullableDecimalPositivo">
@@ -4463,7 +4472,7 @@
           </xs:simpleContent>
         </xs:complexType>
       </xs:element>
-      <xs:element name="EdadPonderadaDelInmueble">
+      <!-- <xs:element name="EdadPonderadaDelInmueble">
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="NullableDecimalPositivo">
@@ -4471,8 +4480,8 @@
             </xs:extension>
           </xs:simpleContent>
         </xs:complexType>
-      </xs:element>
-      <xs:element name="VidaUtilRemanentePonderadaDelInmueble">
+      </xs:element> -->
+      <xs:element name="VidaMinimaRemanentePonderadaDelInmueble">
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="NullableDecimalPositivo">
@@ -4537,7 +4546,7 @@
             <!--Totales construcciones privativas-->
             <xs:element name="SuperficieTotalDeConstruccionesPrivativas" type="SUB-SuperficieTotalDeConstruccionesPrivativas" />
             <xs:element name="ValorTotalDeConstruccionesPrivativas" type="SUB-ValorTotalDeConstruccionesPrivativas" />
-            <xs:element name="ValorTotalDeLasConstruccionesProIndiviso" type="SUB-ValorTotalDeLasConstruccionesProIndiviso" />
+            <!-- <xs:element name="ValorTotalDeLasConstruccionesProIndiviso" type="SUB-ValorTotalDeLasConstruccionesProIndiviso" /> -->
 
 
             <!--Construcciones comunes-->
@@ -4553,7 +4562,7 @@
                   <xs:element name="Edad" type="SUB-EdadComunes"/>
                   <xs:element name="VidaUtilTotalDelTipo" type ="SUB-VidaUtilTipoComunes"/>
                   <xs:element name="VidaMinimaRemanente" type="SUB-VidaUtilRemanenteComunes"/>
-                  <xs:element name="ClaveConservacion" type="SUB-ClaveConservacionComunes"/>
+                  <!-- <xs:element name="ClaveConservacion" type="SUB-ClaveConservacionComunes"/> -->
                   <xs:element name="Superficie" type="SUB-SuperficieComunes"/>
                   <xs:element name="CostoDeLaFraccionN" type="SUB-ValorDeLaFraccionNDescInmuebleComunes"/>
                   <xs:element name="ValorUnitarioCatastral" type="SUB-ValorUnitarioCatastralComunes"/>
@@ -4592,7 +4601,7 @@
           </xs:simpleContent>
         </xs:complexType>
       </xs:element>
-      <xs:element name="VidaUtilRemanentePonderadaDelInmueble">
+      <xs:element name="VidaMinimaRemanentePonderadaDelInmueble">
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="NullableDecimalPositivo">

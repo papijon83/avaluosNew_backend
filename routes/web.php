@@ -42,7 +42,8 @@ $router->get('/', function () use ($router) {
     });
 
     $router->group(['prefix' => 'WsConsultaAvaluo'], function () use ($router) {    
-        $router->post('consultaVista', 'WsConsultaAvaluo@avaluosVista');        
+        $router->post('consultaVista', 'WsConsultaAvaluo@avaluosVista');
+        $router->post('WS_ConsultaAvaluo', 'WsConsultaAvaluo@WS_ConsultaAvaluo');    
     });
 
 
