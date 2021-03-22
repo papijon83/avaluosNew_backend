@@ -144,7 +144,7 @@ class DatosExtrasAvaluo
             WHERE TO_DATE('$fecha','DD/MM/YYYY') BETWEEN fe.fechainicio AND fe.fechafin
             AND upper (crne.codclase) = '$codClase'";
 
-            $conn = oci_connect("FIS", env("DB_PASSWORD"), env("DB_TNS")); 
+            $conn = oci_connect(env("DB_USERNAME_FIS"), env("DB_PASSWORD_FIS"), env("DB_TNS")); 
             $sqlcadena = oci_parse($conn, $query);            
             oci_execute($sqlcadena);         
             $fila = oci_fetch_array($sqlcadena, OCI_ASSOC+OCI_RETURN_NULLS);            
