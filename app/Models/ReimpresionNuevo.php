@@ -2496,7 +2496,16 @@ class ReimpresionNuevo
         $infoReimpresion['Sociedad_Participa']['Solicitante']['Colonia'] = $arrSolicitante['Colonia'];
         $infoReimpresion['Sociedad_Participa']['Solicitante']['CP'] = $arrSolicitante['CodigoPostal'];
         if(isset($arrSolicitante['Alcaldia'])){
-            $infoReimpresion['Sociedad_Participa']['Solicitante']['Delegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrSolicitante['Alcaldia']);
+            if(isset($arrSolicitante['Alcaldia']['ClaveAlcaldia'])){
+                if($arrSolicitante['Alcaldia']['ClaveAlcaldia'] == '018'){
+                    $infoReimpresion['Sociedad_Participa']['Solicitante']['Delegacion'] = $arrSolicitante['Alcaldia']['Otros'];    
+                }else{
+                    $infoReimpresion['Sociedad_Participa']['Solicitante']['Delegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                }    
+            }else{
+                $infoReimpresion['Sociedad_Participa']['Solicitante']['Delegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrSolicitante['Alcaldia']);
+            }
+            
         }
         if(isset($arrSolicitante['Delegacion'])){
             $infoReimpresion['Sociedad_Participa']['Solicitante']['Delegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrSolicitante['Delegacion']);
@@ -2530,7 +2539,15 @@ class ReimpresionNuevo
         $infoReimpresion['Sociedad_Participa']['Propietario']['Colonia'] = $arrPropietario['Colonia'];
         $infoReimpresion['Sociedad_Participa']['Propietario']['CP'] = $arrPropietario['CodigoPostal'];
         if(isset($arrPropietario['Alcaldia'])){
-            $infoReimpresion['Sociedad_Participa']['Propietario']['Delegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrPropietario['Alcaldia']);    
+            if(isset($arrPropietario['Alcaldia']['ClaveAlcaldia'])){
+                if($arrPropietario['Alcaldia']['ClaveAlcaldia'] == '018'){
+                    $infoReimpresion['Sociedad_Participa']['Propietario']['Delegacion'] = $arrPropietario['Alcaldia']['Otros'];    
+                }else{
+                    $infoReimpresion['Sociedad_Participa']['Propietario']['Delegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrPropietario['Alcaldia']['ClaveAlcaldia']);
+                }    
+            }else{
+                $infoReimpresion['Sociedad_Participa']['Propietario']['Delegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrPropietario['Alcaldia']);    
+            }
         }else{
             $infoReimpresion['Sociedad_Participa']['Propietario']['Delegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrPropietario['Delegacion']);        
         }    
