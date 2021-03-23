@@ -84,8 +84,9 @@ class WsConsultaAvaluo extends Controller
 
             DB::commit();
             DB::reconnect();
-            unset($infoAvaluos['FOLIO_REAL']);
-            unset($infoAvaluos['ANTECEDENTE_REGISTRAL']);
+            //print_r($infoAvaluos); exit();
+            unset($infoAvaluos[0]['FOLIO_REAL']);
+            unset($infoAvaluos[0]['ANTECEDENTE_REGISTRAL']);
             $arrayRes['AVALUOS_CONSULTA_GETAVALUOS_p'] = $infoAvaluos;
             $arrayRes['AVALUO'] = $infoDatos;    
             
