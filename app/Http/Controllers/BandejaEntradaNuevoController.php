@@ -1772,7 +1772,7 @@ class BandejaEntradaNuevoController extends Controller
         if(isset($infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo']) && $infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo'] == 4){
             $camposFexavaAvaluo['PROPOSITO'] = $infoXmlPropositoDelAvaluo[0]['Otros'];
         }else{    
-            $camposFexavaAvaluo['PROPOSITO'] = getPropositoAvaluo($infoXmlPropositoDelAvaluo[0][0]);
+            $camposFexavaAvaluo['PROPOSITO'] = getPropositoAvaluo($infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo']);
             //$camposFexavaAvaluo['PROPOSITO'] = (String)($infoXmlPropositoDelAvaluo[0]);
         }
                 
@@ -1788,6 +1788,15 @@ class BandejaEntradaNuevoController extends Controller
         $datab = array_map("convierte_a_arreglo",$arrAntecedentes);
         if(isset($datab[0]['RegimenDePropiedad'])){
             $camposFexavaAvaluo['CODREGIMENPROPIEDAD'] = $datab[0]['RegimenDePropiedad'];
+        }
+
+        if(isset($datab[0]['TipoDeInmueble'])){
+            if($datab[0]['TipoDeInmueble']['ClaveTipoInmueble'] == 19){
+                $camposFexavaAvaluo['TIPOCONDOMINIO'] = $datab[0]['TipoDeInmueble']['Otros'];
+            }else{
+                $camposFexavaAvaluo['TIPOCONDOMINIO'] = getTipoDeInmueble($datab[0]['TipoDeInmueble']['ClaveTipoInmueble']);
+            }
+            
         }
 
         return $camposFexavaAvaluo;
@@ -3276,7 +3285,10 @@ class BandejaEntradaNuevoController extends Controller
                     }
 
                     if(isset($arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.10'])){
-                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['CODESTADOCONSERVACION'] = (String)($arrConstruccionesComunes['arrElementos'][$i][$arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.10']]);
+                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['CODESTADOCONSERVACION'] = 3;
+                        //$camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['CODESTADOCONSERVACION'] = (String)($arrConstruccionesComunes['arrElementos'][$i][$arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.10']]);
+                    }else{
+                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['CODESTADOCONSERVACION'] = 3;
                     }
 
                     if(isset($arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.11'])){
@@ -3541,7 +3553,10 @@ class BandejaEntradaNuevoController extends Controller
                        }
         
                        if(isset($arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.10'])){                               
-                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$i]['CODESTADOCONSERVACION'] = (String)($arrConstruccionesPrivativas['arrElementos'][$i][$arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.10']]);
+                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$i]['CODESTADOCONSERVACION'] = 3;
+                        //$camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$i]['CODESTADOCONSERVACION'] = (String)($arrConstruccionesPrivativas['arrElementos'][$i][$arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.10']]);
+                       }else{
+                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$i]['CODESTADOCONSERVACION'] = 3;
                        }
         
                        if(isset($arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.11'])){                               
@@ -3696,7 +3711,10 @@ class BandejaEntradaNuevoController extends Controller
                     }
 
                     if(isset($arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.10'])){
-                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['CODESTADOCONSERVACION'] = (String)($arrConstruccionesComunes['arrElementos'][$i][$arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.10']]);
+                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['CODESTADOCONSERVACION'] = 3;
+                        //$camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['CODESTADOCONSERVACION'] = (String)($arrConstruccionesComunes['arrElementos'][$i][$arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.10']]);
+                    }else{
+                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['CODESTADOCONSERVACION'] = 3;
                     }
 
                     if(isset($arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.11'])){

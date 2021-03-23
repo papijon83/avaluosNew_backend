@@ -176,7 +176,7 @@ class GuardaenBD
                             }                            
                         }                            
                     }                    
-                }
+                } 
             break;
             
             case 'FEXAVA_ENFOQUECOSTESCAT':
@@ -657,7 +657,7 @@ class GuardaenBD
             if(strpos($resInsert, 'Error') != FALSE){
                 return $resInsert;
             }else{
-                //echo "SELECT IDCONSTRUCCIONESMERCADO  FROM FEXAVA_CONSTRUCCIONESMER WHERE VALORUNITARIOPROMEDIO = '".$elementosTabla['VALORUNITARIOPROMEDIO']."' AND VALORUNITARIOHOMOLOGADO = '".$elementosTabla['VALORUNITARIOHOMOLOGADO']."' AND VALORUNITARIOAPLICABLE = '".$elementosTabla['VALORUNITARIOAPLICABLE']."' AND IDMODOCONSTRUCCION = '".$elementosTabla['IDMODOCONSTRUCCION']."' AND IDAVALUO = $idAvaluo";                
+                //error_log(json_encode("SELECT IDCONSTRUCCIONESMERCADO  FROM FEXAVA_CONSTRUCCIONESMER WHERE VALORUNITARIOPROMEDIO = '".$elementosTabla['VALORUNITARIOPROMEDIO']."' AND VALORUNITARIOHOMOLOGADO = '".$elementosTabla['VALORUNITARIOHOMOLOGADO']."' AND VALORUNITARIOAPLICABLE = '".$elementosTabla['VALORUNITARIOAPLICABLE']."' AND IDMODOCONSTRUCCION = '".$elementosTabla['IDMODOCONSTRUCCION']."' AND IDAVALUO = $idAvaluo"));                
                 $resConstruccionMer = DB::select("SELECT IDCONSTRUCCIONESMERCADO  FROM FEXAVA_CONSTRUCCIONESMER WHERE VALORUNITARIOPROMEDIO = '".$elementosTabla['VALORUNITARIOPROMEDIO']."' AND VALORUNITARIOHOMOLOGADO = '".$elementosTabla['VALORUNITARIOHOMOLOGADO']."' AND VALORUNITARIOAPLICABLE = '".$elementosTabla['VALORUNITARIOAPLICABLE']."' AND IDMODOCONSTRUCCION = '".$elementosTabla['IDMODOCONSTRUCCION']."' AND IDAVALUO = $idAvaluo");                 
                 //print_r($resConstruccionMer); exit();
                 return $resConstruccionMer[0]->idconstruccionesmercado;                

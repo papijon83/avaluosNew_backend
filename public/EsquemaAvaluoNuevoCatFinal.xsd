@@ -2158,7 +2158,7 @@
                   </xs:simpleContent>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="Alcaldia">
+              <!-- <xs:element name="Alcaldia">
                 <xs:complexType>
                   <xs:simpleContent>
                     <xs:extension base="Cat-Delegacion">
@@ -2166,17 +2166,34 @@
                     </xs:extension>
                   </xs:simpleContent>
                 </xs:complexType>
-              </xs:element>
-              <xs:element name="TipoPersona" type="SUB-TipoPersona"></xs:element>
-              <xs:element name="Otros" minOccurs="0" maxOccurs="1">
+              </xs:element> -->
+              <xs:element name="Alcaldia">
                 <xs:complexType>
-                  <xs:simpleContent>
-                    <xs:extension base="NonEmptyString100">
-                      <xs:attribute fixed="b.1.11" name="id" type="xs:string" />
-                    </xs:extension>
-                  </xs:simpleContent>
+                  <xs:sequence>
+                    <xs:element name="ClaveAlcaldia">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="Cat-Delegacion">
+                            <xs:attribute fixed="b.1.9.1" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Otros">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="String500">
+                            <xs:attribute fixed="b.1.9.2" name="id" type="xs:string" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute fixed="b.1.9" name="id" type="xs:string" use="required" />                
                 </xs:complexType>
               </xs:element>
+              <xs:element name="TipoPersona" type="SUB-TipoPersona"></xs:element>
+              
             </xs:sequence>
             <!--<xs:choice minOccurs="1" maxOccurs="1">
               <xs:group  ref="SUB-DatosMoral"></xs:group>
@@ -2261,7 +2278,7 @@
                 </xs:simpleContent>
               </xs:complexType>
             </xs:element>
-            <xs:element name="Alcaldia">
+            <!-- <xs:element name="Alcaldia">
               <xs:complexType>
                 <xs:simpleContent>
                   <xs:extension base="Cat-Delegacion">
@@ -2269,17 +2286,33 @@
                   </xs:extension>
                 </xs:simpleContent>
               </xs:complexType>
-            </xs:element>
-            <xs:element name="TipoPersona" type="SUB-TipoPersonaProp"></xs:element>
-            <xs:element name="Otros" minOccurs="0" maxOccurs="1">
-              <xs:complexType>
-                <xs:simpleContent>
-                  <xs:extension base="NonEmptyString100">
-                    <xs:attribute fixed="b.2.11" name="id" type="xs:string" />
-                  </xs:extension>
-                </xs:simpleContent>
-              </xs:complexType>
-            </xs:element>
+            </xs:element> -->
+              <xs:element name="Alcaldia">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ClaveAlcaldia">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="Cat-Delegacion">
+                            <xs:attribute fixed="b.2.9.1" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Otros">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="String500">
+                            <xs:attribute fixed="b.2.9.2" name="id" type="xs:string" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute fixed="b.2.9" name="id" type="xs:string" use="required" />                
+                </xs:complexType>
+              </xs:element>
+            <xs:element name="TipoPersona" type="SUB-TipoPersonaProp"></xs:element>            
             <!--<xs:choice minOccurs="1" maxOccurs="1">
               <xs:group ref="SUB-DatosMoralProp"></xs:group>
               <xs:group ref="SUB-DatosFisicaProp"></xs:group>
@@ -2464,7 +2497,7 @@
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="NonEmptyString70">
-                            <xs:attribute fixed="b.4.2" name="id" type="xs:string" use="required" />
+                            <xs:attribute fixed="b.4.2" name="id" type="xs:string" />
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
@@ -2518,8 +2551,8 @@
                     <xs:element name="Otros">
                       <xs:complexType>
                         <xs:simpleContent>
-                          <xs:extension base="NonEmptyString70">
-                            <xs:attribute fixed="b.7.2" name="id" type="xs:string" use="required" />
+                          <xs:extension base="String500">
+                            <xs:attribute fixed="b.7.2" name="id" type="xs:string" />
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
@@ -2613,7 +2646,7 @@
                   </xs:simpleContent>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="Alcaldia">
+              <!-- <xs:element name="Alcaldia">
                 <xs:complexType>
                   <xs:simpleContent>
                     <xs:extension base="Cat-Delegacion">
@@ -2621,17 +2654,33 @@
                     </xs:extension>
                   </xs:simpleContent>
                 </xs:complexType>
-              </xs:element>
-              <xs:element name="TipoPersona" type="SUB-TipoPersona"></xs:element>
-              <xs:element name="Otros" minOccurs="0" maxOccurs="1">
+              </xs:element> -->
+              <xs:element name="Alcaldia">
                 <xs:complexType>
-                  <xs:simpleContent>
-                    <xs:extension base="NonEmptyString100">
-                      <xs:attribute fixed="b.1.11" name="id" type="xs:string" />
-                    </xs:extension>
-                  </xs:simpleContent>
+                  <xs:sequence>
+                    <xs:element name="ClaveAlcaldia">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="Cat-Delegacion">
+                            <xs:attribute fixed="b.1.9.1" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Otros">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="String500">
+                            <xs:attribute fixed="b.1.9.2" name="id" type="xs:string" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute fixed="b.1.9" name="id" type="xs:string" use="required" />                
                 </xs:complexType>
               </xs:element>
+              <xs:element name="TipoPersona" type="SUB-TipoPersona"></xs:element>              
             </xs:sequence>
             <!--<xs:choice >
               <xs:group  ref="SUB-DatosMoral"></xs:group>
@@ -2716,7 +2765,7 @@
                 </xs:simpleContent>
               </xs:complexType>
             </xs:element>
-            <xs:element name="Alcaldia">
+            <!-- <xs:element name="Alcaldia">
               <xs:complexType>
                 <xs:simpleContent>
                   <xs:extension base="Cat-Delegacion">
@@ -2724,17 +2773,33 @@
                   </xs:extension>
                 </xs:simpleContent>
               </xs:complexType>
-            </xs:element>
-            <xs:element name="TipoPersona" type="SUB-TipoPersonaProp"></xs:element>
-            <xs:element name="Otros" minOccurs="0" maxOccurs="1">
-              <xs:complexType>
-                <xs:simpleContent>
-                  <xs:extension base="NonEmptyString100">
-                    <xs:attribute fixed="b.2.11" name="id" type="xs:string" />
-                  </xs:extension>
-                </xs:simpleContent>
-              </xs:complexType>
-            </xs:element>
+            </xs:element> -->
+              <xs:element name="Alcaldia">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ClaveAlcaldia">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="Cat-Delegacion">
+                            <xs:attribute fixed="b.2.9.1" name="id" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Otros">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="String500">
+                            <xs:attribute fixed="b.2.9.2" name="id" type="xs:string" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute fixed="b.2.9" name="id" type="xs:string" use="required" />                
+                </xs:complexType>
+              </xs:element>
+            <xs:element name="TipoPersona" type="SUB-TipoPersonaProp"></xs:element>            
             <!--<xs:choice >
               <xs:group  ref="SUB-DatosMoralProp"></xs:group>
               <xs:group  ref="SUB-DatosFisicaProp"></xs:group>
@@ -2919,7 +2984,7 @@
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="NonEmptyString70">
-                            <xs:attribute fixed="b.4.2" name="id" type="xs:string" use="required" />
+                            <xs:attribute fixed="b.4.2" name="id" type="xs:string" />
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
@@ -2973,8 +3038,8 @@
                     <xs:element name="Otros">
                       <xs:complexType>
                         <xs:simpleContent>
-                          <xs:extension base="NonEmptyString70">
-                            <xs:attribute fixed="b.7.2" name="id" type="xs:string" use="required" />
+                          <xs:extension base="String500">
+                            <xs:attribute fixed="b.7.2" name="id" type="xs:string" />
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>

@@ -458,7 +458,11 @@ class Documentos
     }
 
     public function ObtenerNombreDelegacionPorClave($clave)
-    {        
+    {
+        if(strlen($clave) == 3){
+            $clave = substr($clave,1,2);
+        }
+
         $rowsDelegaciones = DB::select("SELECT nombre FROM CAS.CAS_DELEGACION WHERE CLAVE = '$clave'");
 
         if (count($rowsDelegaciones) > 0)

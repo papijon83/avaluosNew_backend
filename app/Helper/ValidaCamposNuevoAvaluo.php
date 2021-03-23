@@ -1489,23 +1489,31 @@ function valida_AvaluoIdentificacion($data){
 }
 
 function valida_AvaluoAntecedentes($data, $elementoPrincipal){
-    $arrIDS = array('PropositoDelAvaluo' => 'b.4', 'ObjetoDelAvaluo' => 'b.5', 'RegimenDePropiedad' => 'b.6','A.Paterno' => 'b.1.1','A.Materno' => 'b.1.2','Nombre' => 'b.1.3','Calle' => 'b.1.4','NumeroInterior' => 'b.1.5', 'NumeroExterior' => 'b.1.6','Colonia' =>'b.1.7', 'CodigoPostal' => 'b.1.8', 'Alcaldia' => 'b.1.9','TipoPersona' => 'b.1.10',
+    $arrIDS = array('PropositoDelAvaluo' => 'b.4', 'ObjetoDelAvaluo' => 'b.5', 'RegimenDePropiedad' => 'b.6','A.Paterno' => 'b.1.1','A.Materno' => 'b.1.2','Nombre' => 'b.1.3','Calle' => 'b.1.4','NumeroInterior' => 'b.1.5', 'NumeroExterior' => 'b.1.6','Colonia' =>'b.1.7', 'CodigoPostal' => 'b.1.8', 'Alcaldia' => 'b.1.9', 'ClaveAlcaldia' => 'b.1.9.1', 'TipoPersona' => 'b.1.10',
     'Calle' => 'b.3.1','NumeroInterior' => 'b.3.2','NumeroExterior' => 'b.3.3','Manzana' => 'b.3.4','Lote' => 'b.3.5', 'Edificio' => 'b.3.6','Colonia' =>'b.3.7', 'CodigoPostal' => 'b.3.8', 'Alcaldia' => 'b.3.9', 'CuentaCatastral' => 'b.3.10', 'CuentaDeAgua' => 'b.3.11',
-    'Region' => 'b.3.10.1', 'Manzana' => 'b.3.10.2', 'Lote' => 'b.3.10.3', 'Localidad' => 'b.3.10.4', 'DigitoVerificador' => 'b.3.10.5');
+    'Region' => 'b.3.10.1', 'Manzana' => 'b.3.10.2', 'Lote' => 'b.3.10.3', 'Localidad' => 'b.3.10.4', 'DigitoVerificador' => 'b.3.10.5', 'ClavePropositoAvaluo' => 'b.4.1', 'ClaveTipoInmueble' => 'b.7.1');
 
-    $arrIDSb2 = array('A.Paterno' => 'b.2.1','A.Materno' => 'b.2.2','Nombre' => 'b.2.3','Calle' => 'b.2.4','NumeroInterior' => 'b.2.5', 'NumeroExterior' => 'b.2.6','Colonia' =>'b.2.7', 'CodigoPostal' => 'b.2.8', 'Alcaldia' => 'b.2.9','TipoPersona' => 'b.2.10');
+    $arrIDSb2 = array('A.Paterno' => 'b.2.1','A.Materno' => 'b.2.2','Nombre' => 'b.2.3','Calle' => 'b.2.4','NumeroInterior' => 'b.2.5', 'NumeroExterior' => 'b.2.6','Colonia' =>'b.2.7', 'CodigoPostal' => 'b.2.8', 'Alcaldia' => 'b.2.9', 'ClaveAlcaldia' => 'b.2.9.1', 'TipoPersona' => 'b.2.10');
 
     if($elementoPrincipal == '//Comercial'){
-        $validacionesb = array('PropositoDelAvaluo' => 'nonEmptyString_70', 'ObjetoDelAvaluo' => 'nonEmptyString_70', 'RegimenDePropiedad' => 'catRegimen');    
-        $validacionesb1 = array('A.Paterno' => 'string_35','A.Materno' => 'string_35','Nombre' => 'nonEmptyString_50','Calle' => 'nonEmptyString_50','NumeroInterior' => 'nonEmptyString_30', 'NumeroExterior' => 'nonEmptyString_25','Colonia' =>'catColonia', 'CodigoPostal' => 'nonEmptyString_5', 'Alcaldia' => 'catDelegacion','TipoPersona' => 'subTipoPersona');
-        $validacionesb2 = array('A.Paterno' => 'string_35','A.Materno' => 'string_35','Nombre' => 'nonEmptyString_50','Calle' => 'nonEmptyString_50','NumeroInterior' => 'nonEmptyString_30', 'NumeroExterior' => 'nonEmptyString_25','Colonia' =>'catColonia', 'CodigoPostal' => 'nonEmptyString_5', 'Alcaldia' => 'catDelegacion','TipoPersona' => 'subTipoPersona');
+        $validacionesb = array('ObjetoDelAvaluo' => 'nonEmptyString_70', 'RegimenDePropiedad' => 'catRegimen');    
+        $validacionesb1 = array('A.Paterno' => 'string_35','A.Materno' => 'string_35','Nombre' => 'nonEmptyString_50','Calle' => 'nonEmptyString_50','NumeroInterior' => 'nonEmptyString_30', 'NumeroExterior' => 'nonEmptyString_25','Colonia' =>'catColonia', 'CodigoPostal' => 'nonEmptyString_5','TipoPersona' => 'subTipoPersona');
+        $validacionesb19 = array('ClaveAlcaldia' => 'catDelegacion');
+        $validacionesb2 = array('A.Paterno' => 'string_35','A.Materno' => 'string_35','Nombre' => 'nonEmptyString_50','Calle' => 'nonEmptyString_50','NumeroInterior' => 'nonEmptyString_30', 'NumeroExterior' => 'nonEmptyString_25','Colonia' =>'catColonia', 'CodigoPostal' => 'nonEmptyString_5','TipoPersona' => 'subTipoPersona');
+        $validacionesb29 = array('ClaveAlcaldia' => 'catDelegacion');
         $validacionesb3 = array('Calle' => 'nonEmptyString_50','NumeroInterior' => 'nonEmptyString_30','NumeroExterior' => 'nonEmptyString_25','Manzana' => 'string_50','Lote' => 'string_50', 'Edificio' => 'string_50','Colonia' =>'catColonia', 'CodigoPostal' => 'nonEmptyString_5', 'Alcaldia' => 'catDelegacion', 'CuentaCatastral' => 'validacionesb310', 'CuentaDeAgua' => '');
+        $validacionesb4 = array('ClavePropositoAvaluo' => 'nonEmptyString');
+        $validacionesb7 = array('ClaveTipoInmueble' => 'nonEmptyString');
         $validacionesb310 = array('Region' => 'regionManzanaUp', 'Manzana' => 'regionManzanaUp', 'Lote' => 'lote', 'Localidad' => 'regionManzanaUp', 'DigitoVerificador' => 'digitoVerificador');
     }else{
-        $validacionesb = array('PropositoDelAvaluo' => 'nonEmptyString_70', 'ObjetoDelAvaluo' => 'nonEmptyString_70', 'RegimenDePropiedad' => 'catRegimen');
+        $validacionesb = array('ObjetoDelAvaluo' => 'nonEmptyString_70', 'RegimenDePropiedad' => 'catRegimen');
         $validacionesb1 = array('A.Paterno' => 'string_35','A.Materno' => 'string_35','Nombre' => 'nonEmptyString_50','Calle' => 'nonEmptyString_50','NumeroInterior' => 'nonEmptyString_30', 'NumeroExterior' => 'nonEmptyString_25','Colonia' =>'catColonia', 'CodigoPostal' => 'nonEmptyString_5', 'Alcaldia' => 'catDelegacion','TipoPersona' => 'subTipoPersona');
+        $validacionesb19 = array('ClaveAlcaldia' => 'catDelegacion');
         $validacionesb2 = array('A.Paterno' => 'string_35','A.Materno' => 'string_35','Nombre' => 'nonEmptyString_50','Calle' => 'nonEmptyString_50','NumeroInterior' => 'nonEmptyString_30', 'NumeroExterior' => 'nonEmptyString_25','Colonia' =>'catColonia', 'CodigoPostal' => 'nonEmptyString_5', 'Alcaldia' => 'catDelegacion','TipoPersona' => 'subTipoPersonaProp');
+        $validacionesb29 = array('ClaveAlcaldia' => 'catDelegacion');
         $validacionesb3 = array('Calle' => 'nonEmptyString_50','NumeroInterior' => 'nonEmptyString_30','NumeroExterior' => 'nonEmptyString_25','Manzana' => 'string_50','Lote' => 'string_50', 'Edificio' => 'string_50','Colonia' =>'catColonia', 'CodigoPostal' => 'nonEmptyString_5', 'Alcaldia' => 'catDelegacion', 'CuentaCatastral' => 'validacionesb310', 'CuentaDeAgua' => '');
+        $validacionesb4 = array('ClavePropositoAvaluo' => 'nonEmptyString');
+        $validacionesb7 = array('ClaveTipoInmueble' => 'nonEmptyString');
         $validacionesb310 = array('Region' => 'regionManzanaUp', 'Manzana' => 'regionManzanaUp', 'Lote' => 'lote', 'Localidad' => 'regionManzanaUp', 'DigitoVerificador' => 'digitoVerificador');
     }
     
@@ -1527,6 +1535,23 @@ function valida_AvaluoAntecedentes($data, $elementoPrincipal){
                 }                
             }
         }
+
+        foreach($validacionesb19 as $etiqueta => $validacion){
+            if(!isset($data[0]['Solicitante']['Alcaldia'][$etiqueta])){
+                $errores[] = $arrIDS[$etiqueta]." - Falta ".$etiqueta." en Antecedentes (Solicitante)";
+            }else{                   
+                $resValidacionSolicitante = define_validacion($validacion, $data[0]['Solicitante']['Alcaldia'][$etiqueta]);                
+                if($resValidacionSolicitante != 'correcto'){
+                    $errores[] = $arrIDS[$etiqueta]." - El campo ".$etiqueta." ".$resValidacionSolicitante;
+                }else{
+                    if($etiqueta == 'ClaveAlcaldia' && $data[0]['Solicitante']['Alcaldia'][$etiqueta] == '018'){
+                        if(!isset($data[0]['Solicitante']['Alcaldia']['Otros']) || is_array($data[0]['Solicitante']['Alcaldia']['Otros']) || trim($data[0]['Solicitante']['Alcaldia']['Otros']) == ''){
+                            $errores[] = $arrIDS[$etiqueta]." - El campo Otros es requerido en Antecedentes (Solicitante)";
+                        }
+                    }
+                }              
+            }
+        }
         
         foreach($validacionesb2 as $etiqueta => $validacion){
             if(!isset($data[0]['Propietario'][$etiqueta])){
@@ -1536,6 +1561,23 @@ function valida_AvaluoAntecedentes($data, $elementoPrincipal){
                 if($resValidacionPropietario != 'correcto'){
                     $errores[] = $arrIDSb2[$etiqueta]." -El campo ".$etiqueta." ".$resValidacionPropietario;
                 }
+            }
+        }
+
+        foreach($validacionesb29 as $etiqueta => $validacion){
+            if(!isset($data[0]['Propietario']['Alcaldia'][$etiqueta])){
+                $errores[] = $arrIDSb2[$etiqueta]." - Falta ".$etiqueta." en Antecedentes (Propietario)";
+            }else{                   
+                $resValidacionPropietario = define_validacion($validacion, $data[0]['Propietario']['Alcaldia'][$etiqueta]);                
+                if($resValidacionPropietario != 'correcto'){
+                    $errores[] = $arrIDSb2[$etiqueta]." - El campo ".$etiqueta." ".$resValidacionPropietario;
+                }else{
+                    if($etiqueta == 'ClaveAlcaldia' && $data[0]['Propietario']['Alcaldia'][$etiqueta] == '018'){
+                        if(!isset($data[0]['Propietario']['Alcaldia']['Otros']) || is_array($data[0]['Propietario']['Alcaldia']['Otros']) || trim($data[0]['Propietario']['Alcaldia']['Otros']) == ''){
+                            $errores[] = $arrIDSb2[$etiqueta]." - El campo Otros es requerido en Antecedentes (Propietario)";
+                        }
+                    }
+                }              
             }
         }
 
@@ -1564,6 +1606,40 @@ function valida_AvaluoAntecedentes($data, $elementoPrincipal){
                     }
                 }
                 
+            }
+        }
+
+        foreach($validacionesb4 as $etiqueta => $validacion){
+            if(!isset($data[0]['PropositoDelAvaluo'][$etiqueta])){
+                $errores[] = $arrIDS[$etiqueta]." -Falta ".$etiqueta." en PropositoDelAvaluo";
+            }else{
+                $resValidacion = define_validacion($validacion, $data[0]['PropositoDelAvaluo'][$etiqueta]);                
+                if($resValidacion != 'correcto'){
+                    $errores[] = $arrIDS[$etiqueta]." -El campo ".$etiqueta." ".$resValidacion;
+                }else{
+                    if($etiqueta == "PropositoDelAvaluo" && $data[0]['PropositoDelAvaluo'][$etiqueta] == 4){
+                        if(!isset($data[0]['PropositoDelAvaluo']['Otros']) || is_array($data[0]['PropositoDelAvaluo']['Otros']) || trim($data[0]['PropositoDelAvaluo']['Otros']) == ''){
+                            $errores[] = "b.4.2 - El campo Otros es requerido en PropositoDelAvaluo";
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach($validacionesb7 as $etiqueta => $validacion){
+            if(!isset($data[0]['TipoDeInmueble'][$etiqueta])){
+                $errores[] = $arrIDS[$etiqueta]." -Falta ".$etiqueta." en TipoDeInmueble";
+            }else{
+                $resValidacion = define_validacion($validacion, $data[0]['TipoDeInmueble'][$etiqueta]);                
+                if($resValidacion != 'correcto'){
+                    $errores[] = $arrIDS[$etiqueta]." -El campo ".$etiqueta." ".$resValidacion;
+                }else{
+                    if($etiqueta == 'ClaveTipoInmueble' && $data[0]['TipoDeInmueble'][$etiqueta] == 19){
+                        if(!isset($data[0]['TipoDeInmueble']['Otros']) || is_array($data[0]['TipoDeInmueble']['Otros']) || trim($data[0]['TipoDeInmueble']['Otros']) == ''){
+                            $errores[] = "b.7.2 - El campo Otros es requerido en TipoDeInmueble";
+                        }
+                    }
+                }
             }
         }
 
@@ -4931,6 +5007,29 @@ function getPropositoAvaluo($id){
     $arr = array('1'=>'Establecer la base gravable para el pago de Impuesto sobre adquisición de inmuebles.',
                 '2'=>'Establecer la base gravable para el pago de Impuesto predial.',
                 '3'=>'Establecer la base gravable para el pago de derechos y contribuciones inmobiliarias.');
+    return $arr[$id];
+}
+
+function getTipoDeInmueble($id){
+    $arr = array('1'=>'BODEGA',
+                '2'=>'CAJON DE ESTACIONAMIENTO',
+                '3'=>'CASA HABITACION',
+                '4'=>'CASA HABITACION EN CONDOMINIO',
+                '5'=>'CENTRO COMERCIAL',
+                '6'=>'DEPARTAMENTO EN CONDOMINIO',
+                '7'=>'EDIFICIO DE DEPARTAMENTOS',
+                '8'=>'EDIFICIO DE ESTACIONAMIENTO',
+                '9'=>'EDIFICIO DE PRODUCTOS',
+                '10'=>'ESCUELA',
+                '11'=>'HOSPITAL',
+                '12'=>'HOTEL',
+                '13'=>'LOCAL COMERCIAL',
+                '14'=>'NAVE INDUSTRIAL',
+                '15'=>'OFICINA AISLADA',
+                '16'=>'OFICINA EN CONDOMINIO',
+                '17'=>'TERRENO CON USO COMERCIAL',
+                '18'=>'TERRENO HABITACIONAL',
+                '19'=>'');
     return $arr[$id];
 }
 
