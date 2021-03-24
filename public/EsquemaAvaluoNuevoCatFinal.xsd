@@ -2496,7 +2496,7 @@
                     <xs:element name="Otros">
                       <xs:complexType>
                         <xs:simpleContent>
-                          <xs:extension base="NonEmptyString70">
+                          <xs:extension base="String500">
                             <xs:attribute fixed="b.4.2" name="id" type="xs:string" />
                           </xs:extension>
                         </xs:simpleContent>
@@ -2983,7 +2983,7 @@
                     <xs:element name="Otros">
                       <xs:complexType>
                         <xs:simpleContent>
-                          <xs:extension base="NonEmptyString70">
+                          <xs:extension base="String500">
                             <xs:attribute fixed="b.4.2" name="id" type="xs:string" />
                           </xs:extension>
                         </xs:simpleContent>

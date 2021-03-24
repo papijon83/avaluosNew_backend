@@ -102,6 +102,10 @@ class DatosExtrasAvaluo
 
     public function ObtenerIdColoniaPorNombreyDelegacion($nombreColonia, $codDelegacion)
     {
+        if(strlen($codDelegacion) == 3){
+            $codDelegacion = substr($codDelegacion,1,2);
+        }
+        
         $nombreColonia = strtoupper($nombreColonia);
 
         $rowsDelegaciones = DB::select("SELECT * FROM CAS.CAS_DELEGACION WHERE CLAVE = '$codDelegacion'");
