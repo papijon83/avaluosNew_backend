@@ -5244,8 +5244,8 @@
           <xs:attribute fixed="f.11" name="id" type="xs:string" use="required" />
         </xs:complexType>
       </xs:element>
-      <xs:element minOccurs="0" maxOccurs="1" name="SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas" type="SUB-ImporteTotalInstalacionesAccesoriosComplementariasPrivativas" />
-      <xs:element minOccurs="0" maxOccurs="1" name="SumatoriaTotalInstalacionesAccesoriosComplementariasComunes" type="SUB-ImporteTotalInstalacionesAccesoriosComplementariasComunes"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas" type="SUB-ImporteTotalInstalacionesAccesoriosComplementariasPrivativas" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes" type="SUB-ImporteTotalInstalacionesAccesoriosComplementariasComunes"/>
       <xs:element minOccurs="0" maxOccurs="1" name="ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes" type="SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes" />
       <xs:element minOccurs="0" maxOccurs="1" name="ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas" type="SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas" />
     </xs:sequence>
@@ -6255,7 +6255,7 @@
           <xs:sequence>
             <xs:choice >
               <!-- <xs:group  ref="SUB-TerrenosDirectos"></xs:group>
-              <xs:group  ref="SUB-TerrenosResiduales"></xs:group> -->
+              <xs:group  ref="SUB-TerrenosResiduales"></xs:group> -->            
               <xs:group  ref="SUB-TerrenosMixtos"></xs:group>
             </xs:choice>
             <xs:element name="ValorUnitarioDeTierraAplicableAlAvaluo" type="SUB-ValorUnitarioDeTierraAplicableAlAvaluo" />
