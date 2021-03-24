@@ -6189,7 +6189,7 @@
               </xs:complexType>
             </xs:element>
 
-            <xs:element name="MemoriaTecnicaExposicionDeMotivos">
+            <xs:element name="MemoriaTecnicaEXPOSICIONDEMOTIVOS">
               <xs:complexType>
                 <xs:simpleContent>
                   <xs:extension base="String10000">
@@ -6199,7 +6199,7 @@
               </xs:complexType>
             </xs:element>
 
-            <xs:element name="MemoriaTecnicaDesgloceDeInformacion">
+            <xs:element name="MemoriaTecnicaDESGLOSEDEINFORMACION">
               <xs:complexType>
                 <xs:simpleContent>
                   <xs:extension base="String10000">
@@ -6209,7 +6209,7 @@
               </xs:complexType>
             </xs:element>
 
-            <xs:element name="MemoriaTecnicaDescripcionDeCalculosRealizados">
+            <xs:element name="MemoriaTecnicaDESCRIPCIONDECALCULOSREALIZADOS">
               <xs:complexType>
                 <xs:simpleContent>
                   <xs:extension base="String10000">
@@ -6219,7 +6219,7 @@
               </xs:complexType>
             </xs:element>
 
-            <xs:element name="MemoriaTecnicaOtrosParaSustento">
+            <xs:element name="MemoriaTecnicaOTROSPARASUSTENTO">
               <xs:complexType>
                 <xs:simpleContent>
                   <xs:extension base="String10000">
