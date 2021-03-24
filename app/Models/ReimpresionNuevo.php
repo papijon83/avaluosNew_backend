@@ -2584,11 +2584,22 @@ class ReimpresionNuevo
         $infoReimpresion['Tipo_Construccion_Dominante'] = $this->modelFis->getClase($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona']);
         $infoReimpresion['Densidad_Poblacion'] = $this->modelDocumentos->get_densidad_poblacion($arrFexava['cucoddensidadpoblacion']);
         $infoReimpresion['Nivel_Socioeconomico_Zona'] = $this->modelDocumentos->get_nivel_socioeconomico_zona($arrFexava['cucodnivelsocioeconomico']);
-        $infoReimpresion['Contaminacion_Medio_Ambiente'] = $caracterisiticasUrbanas['ContaminacionAmbientalEnLaZona'];
-        $infoReimpresion['Clase_General_De_Inmuebles_Zona'] = $this->modelFis->getClase($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona']);
-        $infoReimpresion['Uso_Suelo'] = $arrFexava['cuuso'];
-        $infoReimpresion['Area_Libre_Obligatoria'] = $arrFexava['cuarealibreobligatorio'];
-        $infoReimpresion['Vias_Acceso_E_Importancia'] = $caracterisiticasUrbanas['ViasDeAccesoEImportancia'];
+        if(isset($caracterisiticasUrbanas['ContaminacionAmbientalEnLaZona']) && !is_array($caracterisiticasUrbanas['ContaminacionAmbientalEnLaZona'])){
+            $infoReimpresion['Contaminacion_Medio_Ambiente'] = $caracterisiticasUrbanas['ContaminacionAmbientalEnLaZona'];
+        }
+        
+        if(isset($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona']) && !is_array($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona'])){
+            $infoReimpresion['Clase_General_De_Inmuebles_Zona'] = $this->modelFis->getClase($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona']);
+        }
+        if(isset($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona']) && !is_array($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona'])){
+            $infoReimpresion['Uso_Suelo'] = $arrFexava['cuuso'];
+        }
+        if(isset($caracterisiticasUrbanas['cuarealibreobligatorio']) && !is_array($caracterisiticasUrbanas['cuarealibreobligatorio'])){
+            $infoReimpresion['Area_Libre_Obligatoria'] = $arrFexava['cuarealibreobligatorio'];
+        }
+        if(isset($caracterisiticasUrbanas['ViasDeAccesoEImportancia']) && !is_array($caracterisiticasUrbanas['ViasDeAccesoEImportancia'])){
+            $infoReimpresion['Vias_Acceso_E_Importancia'] = $caracterisiticasUrbanas['ViasDeAccesoEImportancia'];
+        }
         
         /************************************************************************************************************************************************************************/
 
