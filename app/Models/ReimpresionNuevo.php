@@ -12,7 +12,8 @@ class ReimpresionNuevo
     protected $modelDocumentos;
     protected $modelFis;
 
-    public function infoAcuse($idavaluo){        
+    public function infoAcuse($idavaluo){
+        $this->modelDocumentos = new Documentos();      
         //echo "SELECT NOMBRE, BINARIODATOS FROM DOC.DOC_FICHERODOCUMENTO WHERE IDDOCUMENTODIGITAL = $idavaluo AND NOMBRE LIKE 'Avaluo_%'"; exit();
         $infoArchivo = DB::select("SELECT NOMBRE, BINARIODATOS FROM DOC.DOC_FICHERODOCUMENTO WHERE IDDOCUMENTODIGITAL = $idavaluo AND NOMBRE LIKE 'Avaluo_%'");
         //$arrInfoArchivo = convierte_a_arreglo($infoArchivo);
