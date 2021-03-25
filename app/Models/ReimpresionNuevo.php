@@ -92,7 +92,7 @@ class ReimpresionNuevo
         $arrInfoAcuse['Ubicacion_Inmueble']['No_Interior'] = $ubicacionInmueble['NumeroInterior'];
         $arrInfoAcuse['Ubicacion_Inmueble']['Colonia'] = $ubicacionInmueble['Colonia'];
         $arrInfoAcuse['Ubicacion_Inmueble']['CP'] = $ubicacionInmueble['CodigoPostal'];
-        $arrInfoAcuse['Ubicacion_Inmueble']['Delegacion'] = isset($ubicacionInmueble['Delegacion']) ? $ubicacionInmueble['Delegacion'] : $ubicacionInmueble['Alcaldia'];
+        $arrInfoAcuse['Ubicacion_Inmueble']['Delegacion'] = isset($ubicacionInmueble['Delegacion']) ? $this->modelDocumentos->ObtenerNombreDelegacionPorClave($ubicacionInmueble['Delegacion']) : $this->modelDocumentos->ObtenerNombreDelegacionPorClave($ubicacionInmueble['Alcaldia']);
         $arrInfoAcuse['Ubicacion_Inmueble']['Edificio'] = isset($ubicacionInmueble['Edificio']) && !is_array($ubicacionInmueble['Edificio']) ? $ubicacionInmueble['Edificio'] : '-';
         $arrInfoAcuse['Ubicacion_Inmueble']['Lote'] = isset($ubicacionInmueble['Lote']) && !is_array($ubicacionInmueble['Lote']) ? $ubicacionInmueble['Lote'] : 0;
         if(isset($ubicacionInmueble['CuentaDeAgua']) && !is_array($ubicacionInmueble['CuentaDeAgua'])){
