@@ -459,11 +459,14 @@ class Documentos
 
     public function ObtenerNombreDelegacionPorClave($clave)
     {
+
         if(strlen($clave) == 3){
             $clave = substr($clave,1,2);
         }
 
-        $rowsDelegaciones = DB::select("SELECT nombre FROM CAS.CAS_DELEGACION WHERE CLAVE = '$clave'");
+        $arr = array('02' => 'AZCAPOTZALCO', '03' => 'COYOACÁN', '04' => 'CUAJIMALPA DE MORELOS', '05' => 'GUSTAVO A. MADERO', '06' => 'IZTACALCO', '07' => 'IZTAPALAPA', '08' => 'MAGDALENA CONTRERAS', '09' => 'MILPA ALTA', '10' => 'ÁLVARO OBREGON', '11' => 'TLÁHUAC', '12' => 'TLALPAN', '13' => 'XOCHIMILCO', '14' => 'BENITO JUÁREZ', '15' => 'CUAUHTÉMOC', '16' => 'MIGUEL HIDALGO', '17' => 'VENUSTIANO CARRANZA', '18' => 'OTROS');
+        return $arr[$clave];
+        /*$rowsDelegaciones = DB::select("SELECT nombre FROM CAS.CAS_DELEGACION WHERE CLAVE = '$clave'");
 
         if (count($rowsDelegaciones) > 0)
         {
@@ -474,7 +477,7 @@ class Documentos
             return $clave;
         }
 
-        return $nombre;
+        return $nombre;*/
     }
 
     public function guardaResultado($idAvaluo, $idUsuario, $estatus, $mensajeRespuesta){
