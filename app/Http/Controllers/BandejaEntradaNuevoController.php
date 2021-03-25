@@ -1749,7 +1749,7 @@ class BandejaEntradaNuevoController extends Controller
                 $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRECOLONIA'] = '';
             }else{
                 //aqui se obtendria el idColonia por el nombre
-                $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Alcaldia']);
+                $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Alcaldia']['ClaveAlcaldia']);
                 if($idColonia != -1){
                     $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDCOLONIA'] = $idColonia;
                 }
@@ -1841,7 +1841,7 @@ class BandejaEntradaNuevoController extends Controller
             if($datab[0]['TipoDeInmueble']['ClaveTipoInmueble'] == 19){
                 $camposFexavaAvaluo['TIPOCONDOMINIO'] = $datab[0]['TipoDeInmueble']['Otros'];
             }else{
-                $camposFexavaAvaluo['TIPOCONDOMINIO'] = getTipoDeInmueble($datab[0]['TipoDeInmueble']['ClaveTipoInmueble']);
+                $camposFexavaAvaluo['TIPOCONDOMINIO'] = getTipoDeInmueble(trim($datab[0]['TipoDeInmueble']['ClaveTipoInmueble']));
             }
             
         }
@@ -5740,7 +5740,7 @@ class BandejaEntradaNuevoController extends Controller
         }
         $datad13 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//Terreno[@id="d"]//ValorTotalDelTerrenoProporcional[@id="d.13"]');
         $datae2 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//TiposDeConstruccion[@id="e.2"]');
-        $dataf12 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//ElementosDeLaConstruccion[@id="f"]//SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas[@id="f.12"]');
+        $dataf12 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//ElementosDeLaConstruccion[@id="f"]//SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas[@id="f.12"]');
         $dataf14 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//ElementosDeLaConstruccion[@id="f"]//ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes[@id="f.14"]');
 
         $errores = valida_AvaluoEnfoqueCostosComercial($xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]'), $elementoPrincipal, $datad13, $datae2, $dataf12, $dataf14);    

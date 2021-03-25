@@ -2134,6 +2134,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             $calc_f_9_1_n_9 = $elemento['CantidadInstalacionEspecial'] * $elemento['CostoUnitarioInstalacionEspecial'] * $f_9_1_n_8;
                             $sumatoriaf_9_1_n_9 = $sumatoriaf_9_1_n_9 + $f_9_1_n_9;
 
+                            /*$f_9_1_n_10 = $elemento['PorcentajeIndivisoInstalacionEspecial'];
+                            $para_f_14 = $para_f_14 + ($f_9_1_n_9 * $f_9_1_n_10);*/
+
                             if(truncate($calc_f_9_1_n_9,2) != truncate($f_9_1_n_9,2)){
                                 $mensajesf[] =  "f.9.1.n.9 - El cálculo de ImporteInstalacionEspecial es erróneo ";
                             }
@@ -2524,9 +2527,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
         /***********************************************************************************************/
         /***********************************************************************************************/
 
-        if(isset($data[0]['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas'])){
+        if(isset($data[0]['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'])){
 
-            $f_12 = $data[0]['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas'];
+            $f_12 = $data[0]['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];
                 //echo "SOY "; print_r($data[0]['InstalacionesEspeciales']); echo" ".$data[0]['InstalacionesEspeciales']['ImporteTotalInstalacionesEspecialesPrivativas']; exit();
                 if(!isset($data[0]['InstalacionesEspeciales']['ImporteTotalInstalacionesEspecialesPrivativas']) == true || trim($data[0]['InstalacionesEspeciales']['ImporteTotalInstalacionesEspecialesPrivativas']) == ''){
                     $importeTotalInstalacionesEspecialesPrivativas = 0;
@@ -2548,7 +2551,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                 //$calc_f_12 = $data[0]['InstalacionesEspeciales']['ImporteTotalInstalacionesEspecialesPrivativas'] + $data[0]['ElementosAccesorios']['ImporteTotalElementosAccesoriosPrivativas'] + $data[0]['ObrasComplementarias']['ImporteTotalObrasComplementariasPrivativas'];
                 $calc_f_12 = $importeTotalInstalacionesEspecialesPrivativas + $importeTotalElementosAccesoriosPrivativas + $importeTotalObrasComplementariasPrivativas;
                 if(truncate($f_12,2) != truncate($calc_f_12,2)){
-                    $mensajesf[] =  "f.12 - El cálculo de SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas es erróneo ";
+                    $mensajesf[] =  "f.12 - El cálculo de SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas es erróneo ";                                                                                                                      
                 }
             
             
@@ -2601,7 +2604,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
 
         if(isset($data[0]['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'])){
             $f_15 = $data[0]['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];
-            $calc_f_15 = $data[0]['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas'] * $dataextra[0]['Indiviso'];
+            $calc_f_15 = $data[0]['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'] * $dataextra[0]['Indiviso'];
             if(truncate($f_15,2) != truncate($calc_f_15,2)){ //echo truncate($f_15,2)." != ".truncate($calc_f_15,2)."\n";
                 $mensajesf[] =  "f.15 - El cálculo de ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas es erróneo ";
             }
@@ -3494,7 +3497,7 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
 function valida_AvaluoElementosDeLaConstruccion($data, $elementoPrincipal, $datad = false, $b_6 = false){
     
     if($elementoPrincipal == '//Comercial'){
-        $validacionesf = array('InstalacionesElectricasYAlumbrado' => 'string_250', 'Vidreria' => 'string_250', 'Cerrajeria' => 'string_250', 'Fachadas' => 'string_250', 'SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas' => 'SUB-ImporteTotalInstalacionesAccesoriosComplementariasPrivativas', 'SumatoriaTotalInstalacionesAccesoriosComplementariasComunes' => 'SUB-ImporteTotalInstalacionesAccesoriosComplementariasComunes', 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes' => 'SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes', 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas' => 'SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas');
+        $validacionesf = array('InstalacionesElectricasYAlumbrado' => 'string_250', 'Vidreria' => 'string_250', 'Cerrajeria' => 'string_250', 'Fachadas' => 'string_250', 'SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas' => 'SUB-ImporteTotalInstalacionesAccesoriosComplementariasPrivativas', 'SumatoriaTotalInstalacionesAccesoriosComplementariasComunes' => 'SUB-ImporteTotalInstalacionesAccesoriosComplementariasComunes', 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes' => 'SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes', 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas' => 'SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas');
 
         $validacionesf1 = array('Cimentacion' => 'SUB-Cimentacion', 'Estructura' => 'string_250', 'Muros' => 'string_250', 'Entrepisos' => 'string_250', 'Techos' => 'string_250', 'Azoteas' => 'string_250', 'Bardas' => 'string_250');
         $validacionesf2 = array('Aplanados' => 'string_500', 'Plafones' => 'string_500', 'Lambrines' => 'string_500', 'Pisos' => 'string_500', 'Zoclos' => 'string_500', 'Escaleras' => 'string_500', 'Pintura' => 'string_500', 'RecubrimientosEspeciales' => 'string_500');
@@ -3520,7 +3523,7 @@ function valida_AvaluoElementosDeLaConstruccion($data, $elementoPrincipal, $data
 
         $validacionesf112 = array('ClaveObraComplementaria' => 'SUB-ClaveObraComplementaria-ComunesCom', 'DescripcionObraComplementaria' => 'SUB-DescripcionObraComplementaria-ComunesCom', 'UnidadObraComplementaria' => 'SUB-UnidadObraComplementaria-ComunesCom', 'CantidadObraComplementaria' => 'SUB-CantidadObraComplementaria-ComunesCom', 'EdadObraComplementaria' => 'SUB-EdadObraComplementaria-Comunes', 'VidaUtilTotalObraComplementaria' => 'SUB-VidaUtilTotalObraComplementaria-Comunes', 'CostoUnitarioObraComplementaria' => 'SUB-ValorUnitarioObraComplementaria-Comunes', 'FactorDeEdadObraComplementaria' => 'SUB-FactorDeEdadObraComplementaria-Comunes', 'ImporteObraComplementaria' => 'SUB-ImporteObraComplementaria-complementaria', 'PorcentajeIndivisoObraComplementaria' => 'SUB-PorcentajeIndivisoObraComplementaria-complementaria');
     }else{        
-        $validacionesf = array('InstalacionesElectricasYAlumbrado' => 'string_250', 'Vidreria' => 'string_250', 'Cerrajeria' => 'string_250', 'Fachadas' => 'string_250', 'SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas' => 'SUB-ImporteTotalInstalacionesAccesoriosComplementariasPrivativas', 'SumatoriaTotalInstalacionesAccesoriosComplementariasComunes' => 'SUB-ImporteTotalInstalacionesAccesoriosComplementariasComunes', 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes' => 'SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes', 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas' => 'SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas');
+        $validacionesf = array('InstalacionesElectricasYAlumbrado' => 'string_250', 'Vidreria' => 'string_250', 'Cerrajeria' => 'string_250', 'Fachadas' => 'string_250', 'SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas' => 'SUB-ImporteTotalInstalacionesAccesoriosComplementariasPrivativas', 'SumatoriaTotalInstalacionesAccesoriosComplementariasComunes' => 'SUB-ImporteTotalInstalacionesAccesoriosComplementariasComunes', 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes' => 'SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes', 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas' => 'SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas');
         $validacionesf1 = array('Cimentacion' => 'SUB-Cimentacion', 'Estructura' => 'string_250', 'Muros' => 'string_250', 'Entrepisos' => 'string_250', 'Techos' => 'string_250', 'Azoteas' => 'string_250', 'Bardas' => 'string_250');
         $validacionesf2 = array('Aplanados' => 'string_500', 'Plafones' => 'string_500', 'Lambrines' => 'string_500', 'Pisos' => 'string_500', 'Zoclos' => 'string_500', 'Escaleras' => 'string_500', 'Pintura' => 'string_250', 'RecubrimientosEspeciales' => 'string_250');
         $validacionesf3 = array('PuertasInteriores' => 'string_250', 'Guardaropas' => 'string_250', 'MueblesEmpotradosOFijos' => 'string_250');
