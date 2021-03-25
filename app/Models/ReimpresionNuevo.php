@@ -4138,7 +4138,7 @@ class ReimpresionNuevo
                 }else{
                     $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas = $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];
                 }
-                Log::info("CONTENIDOOOO ".json_encode($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']));
+                //Log::info("CONTENIDOOOO ".json_encode($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']));
                 if(is_array($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
                     $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes = 0;
                 }else{
