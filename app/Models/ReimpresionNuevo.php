@@ -4133,7 +4133,19 @@ class ReimpresionNuevo
             }
 
             if(isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
-                $sumatoria = $sumatoria + $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'] + $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'];
+                if(trim($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) == ''){
+                    $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas = 0;
+                }else{
+                    $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas = $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];
+                }
+
+                if(trim($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']) == ''){
+                    $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes = 0;
+                }else{
+                    $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes = $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'];
+                }
+                
+                $sumatoria = $sumatoria + $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas + $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes;
             }
 
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $sumatoria;
