@@ -4133,13 +4133,13 @@ class ReimpresionNuevo
             }
 
             if(isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
-                if(trim($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) == ''){
+                if(trim($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) == '' || is_array($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'])){
                     $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas = 0;
                 }else{
                     $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas = $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];
                 }
-                Log::info("CONTENIDOOOO ".json_encode($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']));
-                if(trim($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']) == ''){
+                //Log::info("CONTENIDOOOO ".json_encode($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']));
+                if(trim($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']) == '' || is_array($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
                     $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes = 0;
                 }else{
                     $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes = $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'];
