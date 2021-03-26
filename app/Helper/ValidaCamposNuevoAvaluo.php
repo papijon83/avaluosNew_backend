@@ -2132,16 +2132,18 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                         if(isset($f_9_1_n_8)){
                             $f_9_1_n_9 = $elemento['ImporteInstalacionEspecial'];
                             $calc_f_9_1_n_9 = $elemento['CantidadInstalacionEspecial'] * $elemento['CostoUnitarioInstalacionEspecial'] * $f_9_1_n_8;
-                            $sumatoriaf_9_1_n_9 = $sumatoriaf_9_1_n_9 + $f_9_1_n_9;
-
-                            /*$f_9_1_n_10 = $elemento['PorcentajeIndivisoInstalacionEspecial'];
-                            $para_f_14 = $para_f_14 + ($f_9_1_n_9 * $f_9_1_n_10);*/
+                            $sumatoriaf_9_1_n_9 = $sumatoriaf_9_1_n_9 + $f_9_1_n_9;                            
 
                             if(truncate($calc_f_9_1_n_9,2) != truncate($f_9_1_n_9,2)){
                                 $mensajesf[] =  "f.9.1.n.9 - El cálculo de ImporteInstalacionEspecial es erróneo ";
                             }
 
-                        }    
+                        }
+                        
+                        /*if(isset($f_9_1_n_9) && isset($elemento['PorcentajeIndivisoInstalacionEspecial'])){
+                            $f_9_1_n_10 = isset($elemento['PorcentajeIndivisoInstalacionEspecial']);
+                            $para_f_14 = $para_f_14 + ($f_9_1_n_9 * $f_9_1_n_10);
+                        }*/
 
                     }else{
                         if(isset($elemento['id']) && $elemento['id'] == 'f.9.1'){
@@ -2162,6 +2164,11 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                                     $mensajesf[] =  "f.9.1.n.9 - El cálculo de ImporteInstalacionEspecial es erróneo ";
                                 }
                             }
+
+                            /*if(isset($f_9_1_n_9) && isset($data[0]['InstalacionesEspeciales']['Privativas']['PorcentajeIndivisoInstalacionEspecial'])){
+                                $f_9_1_n_10 = isset($data[0]['InstalacionesEspeciales']['Privativas']['PorcentajeIndivisoInstalacionEspecial']);
+                                $para_f_14 = $para_f_14 + ($f_9_1_n_9 * $f_9_1_n_10);
+                            }*/
                             
                         }
                     }
@@ -2191,7 +2198,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                         }
 
                         if(isset($f_9_2_n_9) && isset($elemento['PorcentajeIndivisoInstalacionEspecial'])){
-                            $f_9_2_n_10 = isset($elemento['PorcentajeIndivisoInstalacionEspecial']);
+                            $f_9_2_n_10 = $elemento['PorcentajeIndivisoInstalacionEspecial'];
                             $para_f_14 = $para_f_14 + ($f_9_2_n_9 * $f_9_2_n_10);
                         }
 
@@ -2212,7 +2219,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             }
 
                             if(isset($f_9_2_n_9) && isset($data[0]['InstalacionesEspeciales']['Comunes']['PorcentajeIndivisoInstalacionEspecial'])){
-                                $f_9_2_n_10 = isset($data[0]['InstalacionesEspeciales']['Comunes']['PorcentajeIndivisoInstalacionEspecial']);
+                                $f_9_2_n_10 = $data[0]['InstalacionesEspeciales']['Comunes']['PorcentajeIndivisoInstalacionEspecial'];
                                 $para_f_14 = $para_f_14 + ($f_9_2_n_9 * $f_9_2_n_10);
                             }
                         }
@@ -2266,6 +2273,11 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             $mensajesf[] =  "f.10.1.n.9 - El cálculo de ImporteElementoAccesorio es erróneo ";
                         }
 
+                        /*if(isset($f_10_1_n_9) && isset($elemento['PorcentajeIndivisoElementoAccesorio'])){
+                            $f_10_1_n_10 = isset($elemento['PorcentajeIndivisoElementoAccesorio']);
+                            $para_f_14 = $para_f_14 + ($f_10_1_n_9 * $f_10_1_n_10);
+                        }*/
+
                     }else{
                         if(isset($elemento['id']) && $elemento['id'] == 'f.10.1'){
                             if(isset($data[0]['ElementosAccesorios']['Privativas']['FactorDeEdadElementoAccesorio'])){
@@ -2289,6 +2301,11 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                                     $mensajesf[] =  "f.10.1.n.9 - El cálculo de ImporteElementoAccesorio es erróneo ";
                                 }
                             }
+
+                            /*if(isset($f_10_1_n_9) && isset($data[0]['ElementosAccesorios']['Privativas']['PorcentajeIndivisoElementoAccesorio'])){
+                                $f_10_1_n_10 = isset($data[0]['ElementosAccesorios']['Privativas']['PorcentajeIndivisoElementoAccesorio']);
+                                $para_f_14 = $para_f_14 + ($f_10_1_n_9 * $f_10_1_n_10);
+                            }*/
                             
                         }
                     }
@@ -2318,7 +2335,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                         }
 
                         if(isset($f_10_2_n_9) && isset($elemento['PorcentajeIndivisoElementoAccesorio'])){
-                            $f_10_2_n_10 = isset($elemento['PorcentajeIndivisoElementoAccesorio']);
+                            $f_10_2_n_10 = $elemento['PorcentajeIndivisoElementoAccesorio'];
                             $para_f_14 = $para_f_14 + ($f_10_2_n_9 * $f_10_2_n_10);
                         }
 
@@ -2339,7 +2356,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             }
                            
                             if(isset($f_10_2_n_9) && isset($data[0]['ElementosAccesorios']['Comunes']['PorcentajeIndivisoElementoAccesorio'])){
-                                $f_10_2_n_10 = isset($data[0]['ElementosAccesorios']['Comunes']['PorcentajeIndivisoElementoAccesorio']);
+                                $f_10_2_n_10 = $data[0]['ElementosAccesorios']['Comunes']['PorcentajeIndivisoElementoAccesorio'];
                                 $para_f_14 = $para_f_14 + ($f_10_2_n_9 * $f_10_2_n_10);
                             }
                         }
@@ -2403,7 +2420,12 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             if(truncate($f_11_1_n_9,2) != truncate($calc_f_11_1_n_9,2)){
                                 $mensajesf[] =  "f.11.1.N.9 - El cálculo de ImporteObraComplementaria es erróneo ";
                             }
-                        }                        
+                        }
+                        
+                        /*if(isset($f_11_1_n_9) && isset($elemento['PorcentajeIndivisoObraComplementaria'])){
+                            $f_11_1_n_10 = isset($elemento['PorcentajeIndivisoObraComplementaria']);
+                            $para_f_14 = $para_f_14 + ($f_11_1_n_9 * $f_11_1_n_10);
+                        }*/
 
                     }else{
                         if(isset($elemento['id']) && $elemento['id'] == 'f.11.1'){
@@ -2432,7 +2454,12 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                                 if(truncate($f_11_1_n_9,2) != truncate($calc_f_11_1_n_9,2)){
                                     $mensajesf[] =  "f.11.1.N.9 - El cálculo de ImporteObraComplementaria es erróneo ";
                                 }
-                            }                            
+                            }
+                            
+                            /*if(isset($f_11_1_n_9) && isset($data[0]['ObrasComplementarias']['Privativas']['PorcentajeIndivisoObraComplementaria'])){
+                                $f_11_1_n_10 = isset($data[0]['ObrasComplementarias']['Privativas']['PorcentajeIndivisoObraComplementaria']);
+                                $para_f_14 = $para_f_14 + ($f_11_1_n_9 * $f_11_1_n_10);
+                            } */
 
                         }
                     }
@@ -2470,7 +2497,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                         }
 
                         if(isset($f_11_2_n_9) && isset($elemento['PorcentajeIndivisoObraComplementaria'])){
-                            $f_11_2_n_10 = isset($elemento['PorcentajeIndivisoObraComplementaria']);
+                            $f_11_2_n_10 = $elemento['PorcentajeIndivisoObraComplementaria'];
                             $para_f_14 = $para_f_14 + ($f_11_2_n_9 * $f_11_2_n_10);
                         }
 
@@ -2501,7 +2528,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             }
 
                             if(isset($f_11_2_n_9) && isset($data[0]['ObrasComplementarias']['Comunes']['PorcentajeIndivisoObraComplementaria'])){
-                                $f_11_2_n_10 = isset($data[0]['ObrasComplementarias']['Comunes']['PorcentajeIndivisoObraComplementaria']);
+                                $f_11_2_n_10 = $data[0]['ObrasComplementarias']['Comunes']['PorcentajeIndivisoObraComplementaria'];
                                 $para_f_14 = $para_f_14 + ($f_11_2_n_9 * $f_11_2_n_10);
                             }
 
@@ -2631,7 +2658,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                         $calc_h_1_1_n_17 = 1/($elemento['Fzo'] * $elemento['Fub'] * $elemento['FFr'] * $elemento['Ffo'] * $elemento['Fsu']);
                     }*/
                     $calc_h_1_1_n_17 = 1/($elemento['Factor1']['Valor'] * $elemento['Factor2']['Valor'] * $elemento['Factor3']['Valor'] * $elemento['Factor4']['Valor'] * $elemento['Factor5']['Valor']);
-                    if(truncate($h_1_1_n_17,2) != truncate($calc_h_1_1_n_17,2)){
+                    if(truncate($h_1_1_n_17,2) != truncate($calc_h_1_1_n_17,2)){ error_log(truncate($h_1_1_n_17,2)." != ".truncate($calc_h_1_1_n_17,2));
                         return  "h.1.1.n.17 - El cálculo de Fre es erróneo ";
                     }
                 }
