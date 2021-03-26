@@ -466,12 +466,12 @@ class Documentos
 
         $arr = array('02' => 'AZCAPOTZALCO', '03' => 'COYOACÁN', '04' => 'CUAJIMALPA DE MORELOS', '05' => 'GUSTAVO A. MADERO', '06' => 'IZTACALCO', '07' => 'IZTAPALAPA', '08' => 'MAGDALENA CONTRERAS', '09' => 'MILPA ALTA', '10' => 'ÁLVARO OBREGON', '11' => 'TLÁHUAC', '12' => 'TLALPAN', '13' => 'XOCHIMILCO', '14' => 'BENITO JUÁREZ', '15' => 'CUAUHTÉMOC', '16' => 'MIGUEL HIDALGO', '17' => 'VENUSTIANO CARRANZA', '18' => 'OTROS');
 
-        if(!in_array($clave, $arr)){
-            return $clave;
-        }else{
+        if(in_array($clave, $arr)){
             return $arr[$clave];
+        }else{
+           return $clave;
         }
-            
+
         /*$rowsDelegaciones = DB::select("SELECT nombre FROM CAS.CAS_DELEGACION WHERE CLAVE = '$clave'");
 
         if (count($rowsDelegaciones) > 0)
