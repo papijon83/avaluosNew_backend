@@ -893,7 +893,9 @@ class BandejaEntradaNuevoController extends Controller
         "This element is not expected" => "Este elemento no se espera",
         "Missing child element's'. Expected is" => "Falta el elemento secundario",
         "one of" => "uno de",
-        "Character content other than whitespace is not allowed because the content type is 'element-only'" => "No se permite contenido de caracteres que no sean espacios en blanco porque el tipo de contenido es 'element-only'");
+        "Character content other than whitespace is not allowed because the content type is 'element-only'" => "No se permite contenido de caracteres que no sean espacios en blanco porque el tipo de contenido es 'element-only'",
+        "attribute" => "atributo",
+        "does not match the fixed value constraint" => "no coincide con la restricción de valor fijo");
 
         foreach($cadenas as $en => $es){
             $relacionErrores = str_replace($en,$es,$relacionErrores);
