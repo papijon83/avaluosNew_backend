@@ -1214,7 +1214,7 @@ class BandejaEntradaNuevoController extends Controller
             if($resInsert == TRUE){
                
                 $numeroUnico = $this->modelDocumentos->get_numero_unico_db($camposFexavaAvaluo['IDAVALUO']);
-                //$this->recibeAvaluo($idPersona,$numeroUnico,$contents);    
+                $this->recibeAvaluo($idPersona,$numeroUnico,$contents);    
                 return response()->json(['Estado' => $resInsert,'numeroUnico' => $numeroUnico], 200);
             }else{
                 return response()->json(['mensaje' => $resInsert], 500);
@@ -1408,7 +1408,7 @@ class BandejaEntradaNuevoController extends Controller
             if($resInsert == TRUE){
                
                 $numeroUnico = $this->modelDocumentos->get_numero_unico_db($camposFexavaAvaluo['IDAVALUO']);               
-                //$this->recibeAvaluo($idPersona,$numeroUnico,$contents);
+                $this->recibeAvaluo($idPersona,$numeroUnico,$contents);
                 return response()->json(['Estado' => $resInsert,'numeroUnico' => $numeroUnico], 200);
             }else{
                 return response()->json(['mensaje' => $resInsert], 500);
