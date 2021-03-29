@@ -3748,7 +3748,9 @@ class ReimpresionNuevo
                     //$infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Fco'] = $construccionComun['ClaveConservacion'];
                     //$infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['FRe'] = $construccionComun['FactorResultante'];
                     $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Costo_Fraccion'] = $construccionComun['CostoDeLaFraccionN'];
-                    $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Indiviso'] = $construccionComun['PorcentajeIndivisoComunes'];
+                    if(isset($construccionComun['PorcentajeIndivisoComunes']) && !is_array($construccionComun['PorcentajeIndivisoComunes'])){
+                        $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Indiviso'] = $construccionComun['PorcentajeIndivisoComunes'];
+                    }                    
                     
                     $control = $control + 1;
                 }
