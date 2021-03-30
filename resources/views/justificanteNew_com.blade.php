@@ -3467,8 +3467,8 @@
                                 <span class="grises">  {{ number_format($infoAvaluo['Calculo_Valor_Construcciones']['Privativas']['Valor_Unitario'],2) }}</span>
                                 @endisset
                                 </td>
-                                <td>
-                                <!-- @isset($infoAvaluo['Calculo_Valor_Construcciones']['Privativas']['Edad'])
+                                <!--<td>
+                                 @isset($infoAvaluo['Calculo_Valor_Construcciones']['Privativas']['Edad'])
                                 <span class="grises">  {{ number_format($infoAvaluo['Calculo_Valor_Construcciones']['Privativas']['Edad'],2) }}</span>
                                 @endisset
                                 </td>
@@ -3564,7 +3564,7 @@
                                     </td> -->
                                     <td>
                                     @isset($value_valorConstruccionesC['Indiviso'])
-                                        <span class="grises">{{ $value_valorConstruccionesC['Indiviso'] }}%</span>
+                                        <span class="grises">{{ $value_valorConstruccionesC['Indiviso']*100 }}</span>
                                     @endisset
                                     </td>
                                 </tr>
@@ -3609,7 +3609,7 @@
                                 </td> -->
                                 <td>
                                 @isset($infoAvaluo['Calculo_Valor_Construcciones']['Comunes']['Indiviso'])
-                                    <span class="grises">{{ $infoAvaluo['Calculo_Valor_Construcciones']['Comunes']['Indiviso'] }}%</span>
+                                    <span class="grises">{{ $infoAvaluo['Calculo_Valor_Construcciones']['Comunes']['Indiviso']*100 }}</span>
                                 @endisset
                                 </td>
                             </tr>
