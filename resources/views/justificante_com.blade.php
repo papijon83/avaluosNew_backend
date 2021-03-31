@@ -3324,7 +3324,7 @@
                                     </td>
                                     <td>
                                     @isset($value_valorConstruccionesC['Indiviso'])
-                                        <span class="grises">{{ $value_valorConstruccionesC['Indiviso'] }}%</span>
+                                        <span class="grises">{{ $value_valorConstruccionesC['Indiviso']*100 }}</span>
                                     @endisset
                                     </td>
                                 </tr>
@@ -3369,7 +3369,7 @@
                                 </td>
                                 <td>
                                 @isset($infoAvaluo['Calculo_Valor_Construcciones']['Comunes']['Indiviso'])
-                                    <span class="grises">{{ $infoAvaluo['Calculo_Valor_Construcciones']['Comunes']['Indiviso'] }}%</span>
+                                    <span class="grises">{{ $infoAvaluo['Calculo_Valor_Construcciones']['Comunes']['Indiviso']*100 }}</span>
                                 @endisset
                                 </td>
                             </tr>
@@ -3397,9 +3397,22 @@
                             @endisset
                             </th>
                         </tr>
+                    </thead>
+                </table>
+
+                <table class="tabla_gris_valor">
+                    <thead>
+                        <tr>
+                            <th style="width: 80%;">VALOR TOTAL DE LAS CONTRUCCIONES COMUNES POR INDIVISO:</th>
+                            <th>
+                            @isset($infoAvaluo['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'])
+                                <span class="grises">$ {{ number_format($infoAvaluo['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'],2) }}</span>
+                            @endisset
+                            </th>
+                        </tr>
                     </thead> 
                 </table>
-                
+
                 <p><b>c) DE LAS INSTALACIONES ESPECIALES, OBRAS COMPLEMENTARIAS Y ELEMENTOS ACCESORIOS</b></p>
                 <br>
                 <p><b>PRIVATIVAS:</b></p>
@@ -3520,24 +3533,110 @@
 
 
                 <p><b>COMUNES: </b></p>
-                <!-- <table class="tabla_cabeza_gris">
-                    <thead>
-                        <tr>
-                            <th>Fracc.</th>
-                            <th>Descripción</th>
-                            <th>Uso</th>
-                            <th>Clase</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>dato</td>
-                            <td>dato</td>
-                            <td>dato</td>
-                            <td>dato</td>
-                        </tr>
-                    </tbody>
-                </table> -->
+                @if(isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas']))
+                    <table class="tabla_cabeza_gris">
+                        <thead>
+                            <tr>
+                                <th> </th>
+                                <th>Clave</th>
+                                <th>Concepto</th>
+                                <th>Cantidad</th>
+                                <th>Valor unitario</th>
+                                <th>Edad</th>
+                                <th>Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @if(isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][0]))
+                            @foreach($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'] as $valueEA_tablaCom)
+                                <tr>
+                                    <td>
+                                    @isset($valueEA_tablaCom['0'])
+                                        <span class="grises">{{ $valueEA_tablaCom['0'] }}</span>
+                                    @endisset
+                                    </td>
+                                    <td>
+                                    @isset($valueEA_tablaCom['Clave'])
+                                        <span class="grises">{{ $valueEA_tablaCom['Clave'] }}</span>
+                                    @endisset
+                                    </td>
+                                    <td>
+                                    @isset($valueEA_tablaCom['Concepto'])
+                                        <span class="grises">{{ $valueEA_tablaCom['Concepto'] }}</span> 
+                                    @endisset
+                                    </td>
+                                    <td>
+                                    @if(isset($valueEA_tablaCom['Cantidad']))
+                                        @if(!is_array($valueEA_tablaCom['Cantidad']))
+                                            <span class="grises">{{ number_format($valueEA_tablaCom['Cantidad'],2) }}</span>
+                                        @endif
+                                    @endif
+                                    </td>
+                                    <td>
+                                    @if(isset($valueEA_tablaCom['Valor_Unitario']))
+                                        @if(!is_array($valueEA_tablaCom['Valor_Unitario']))
+                                            <span class="grises">{{ number_format($valueEA_tablaCom['Valor_Unitario'],2) }}</span>
+                                        @endif
+                                    @endif
+                                    </td>
+                                    <td>
+                                    @isset($valueEA_tablaCom['Edad'])
+                                        <span class="grises">{{ $valueEA_tablaCom['Edad'] }}</span>
+                                    @endisset
+                                    </td>
+                                    <td>
+                                    @isset($valueEA_tablaCom['Importe'])
+                                        $ <span class="grises">{{ number_format($valueEA_tablaCom['Importe'],2) }}</span>
+                                    @endisset
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td>
+                                @isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['0'])
+                                    <span class="grises">{{ $infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['0'] }}</span>
+                                @endisset
+                                </td>
+                                <td>
+                                @isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Clave'])
+                                    <span class="grises">{{ $infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Clave'] }}</span>
+                                @endisset
+                                </td>
+                                <td>
+                                @isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Concepto'])
+                                    <span class="grises">{{ $infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Concepto'] }}</span> 
+                                @endisset
+                                </td>
+                                <td>
+                                @if(isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Cantidad']))
+                                    @if(!is_array($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Cantidad']))
+                                        <span class="grises">{{ number_format($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Cantidad'],2) }}</span>
+                                    @endif
+                                @endif
+                                </td>
+                                <td>
+                                @if(isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Valor_Unitario']))
+                                    @if(!is_array($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Valor_Unitario']))
+                                        <span class="grises">{{ number_format($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Valor_Unitario'],2) }}</span>
+                                    @endif
+                                @endif
+                                </td>
+                                <td>
+                                @isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Edad'])
+                                    <span class="grises">{{ $infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Edad'] }}</span>
+                                @endisset
+                                </td>
+                                <td>
+                                @isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Importe'])
+                                    <span class="grises">$ {{ number_format($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']['Importe'],2) }}</span>
+                                @endisset
+                                </td>
+                            </tr>
+                        @endif
+                        </tbody>
+                    </table>
+                @endif
                 <br>
                 <p>Indiviso de la unidad que se valúa: 
                 @isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Indiviso_Unidad_Que_Se_Valua'])
@@ -3549,9 +3648,22 @@
                 <table class="tabla_gris_valor">
                     <thead>
                         <tr>
-                            <th style="width: 80%;">TOTAL DE LAS INSTALACIONES:</th>
+                            <th style="width: 80%;">TOTAL DE IE,OC,EA:</th>
                             <th>
                                 <span class="grises">${{ number_format($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'],2) }}</span>
+                            </th>
+                        </tr>
+                    </thead> 
+                </table>
+                @endisset
+
+                @isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'])
+                <table class="tabla_gris_valor">
+                    <thead>
+                        <tr>
+                            <th style="width: 80%;">TOTAL DE IE,OC,EA COMUNES POR INDIVISO:</th>
+                            <th>
+                                <span class="grises">${{ number_format($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'],2) }}</span>
                             </th>
                         </tr>
                     </thead> 
