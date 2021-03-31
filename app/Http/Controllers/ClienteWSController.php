@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Hamcrest\Arrays\IsArray;
+use App\Models\Documentos;
 
 class ClienteWSController extends Controller
 {
@@ -11,6 +15,8 @@ class ClienteWSController extends Controller
      * @return void
      */
 
+    protected $modelDocumentos;
+
     public function __construct()
     {
     }
@@ -18,7 +24,7 @@ class ClienteWSController extends Controller
     public function sendAvaluo($folio)
     {
 
-        $usuario = "U4566";
+        $usuario = "264";
         $auth = '<usuario xmlns="IDEAS.Avametrica">' . env('USUARIO_WSDL') . '</usuario>';
         $auth .= '<contrasenia xmlns="IDEAS.Avametrica">' . env('PASS_WSDL') . '</contrasenia>';
         $file = storage_path('app/A-COM-2021-13869.xml');
@@ -46,10 +52,16 @@ class ClienteWSController extends Controller
                         'token' => $res->token,
                     ]
                 ]]);
-                if($enviado->BandejaAvaluoXMLResult){
-                    return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja'], 200);
-                }else{
-                    return response()->json(['mensaje' => 'El avalúo no pudo ser entregado'], 400);
+
+                $this->modelDocumentos = new Documentos();
+                $idAvaluo = $this->modelDocumentos->get_idavaluo_db($folio);
+               
+                if($enviado->BandejaAvaluoXMLResult){                        
+                    $response = $this->modelDocumentos->guardaResultado($idAvaluo, $usuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo fue entregado a la bandeja');
+                    return response()->json(['mensaje' => 'El avalúo fue entregado a la bandeja '.$response], 200);
+                }else{                        
+                    $response = $this->modelDocumentos->guardaResultado($idAvaluo, $usuario, $enviado->BandejaAvaluoXMLResult, 'El avalúo no pudo ser entregado');
+                    return response()->json(['mensaje' => 'El avalúo no pudo ser entregado '.$response], 400);
                 }
                 
             } catch (\Exception $e) {
