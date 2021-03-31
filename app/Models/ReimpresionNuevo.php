@@ -1628,7 +1628,8 @@ class ReimpresionNuevo
     
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Total_Superficie'] = $tiposContruccion['SuperficieTotalDeConstruccionesComunes'];
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Total_Construcciones_Comunes'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'];
-            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'] + $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
+            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'] + $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];            
+            
             
 
         }else{
@@ -2067,7 +2068,7 @@ class ReimpresionNuevo
 
             $sumatoria = 0;
             if(isset($elementosConstruccion['ImporteTotalInstalacionesAccesoriosComplementariasPrivativas']) && isset($elementosConstruccion['ImporteTotalInstalacionesAccesoriosComplementariasComunes'])){
-                $sumatoria = $sumatoria + $elementosConstruccion['ImporteTotalInstalacionesAccesoriosComplementariasPrivativas'] + $elementosConstruccion['ImporteTotalInstalacionesAccesoriosComplementariasComunes'];
+                $sumatoria = $sumatoria + $elementosConstruccion['ImporteTotalInstalacionesAccesoriosComplementariasPrivativas'] + $elementosConstruccion['ImporteTotalInstalacionesAccesoriosComplementariasComunes'];    
             }
 
             if(isset($elementosConstruccion['ImporteTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) && isset($elementosConstruccion['ImporteTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
@@ -2075,6 +2076,7 @@ class ReimpresionNuevo
             }
 
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $sumatoria;
+            
         }    
 
         $enfoqueCostos = $elementoPrincipal['EnfoqueDeCostos'];
@@ -3758,7 +3760,9 @@ class ReimpresionNuevo
     
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Total_Superficie'] = $tiposContruccion['SuperficieTotalDeConstruccionesComunes'];
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Total_Construcciones_Comunes'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'];
-            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'] + $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
+            //$infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'] + $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
+            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesPrivativas'] + $tiposContruccion['ValorTotalDeConstruccionesComunes'];
+            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'] = $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
             
 
         }else{
@@ -4152,6 +4156,8 @@ class ReimpresionNuevo
             }
 
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $sumatoria;
+
+            $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'] = $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'];
             
             //$infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas'] + $elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasComunes'];
         }
