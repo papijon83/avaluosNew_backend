@@ -3777,7 +3777,10 @@ class ReimpresionNuevo
                 }
                 //$infoReimpresion['Calculo_Valor_Construcciones']['Privativas']['Fco'] = $tiposContruccion['ConstruccionesPrivativas']['ClaveConservacion'];
                 //$infoReimpresion['Calculo_Valor_Construcciones']['Privativas']['FRe'] = $tiposContruccion['ConstruccionesPrivativas']['FactorResultante'];
-                $infoReimpresion['Calculo_Valor_Construcciones']['Privativas']['Costo_Fraccion'] = $tiposContruccion['ConstruccionesPrivativas']['CostoDeLaFraccionN'];            
+                if(isset($tiposContruccion['ConstruccionesPrivativas']['CostoDeLaFraccionN']) && !is_array($tiposContruccion['ConstruccionesPrivativas']['CostoDeLaFraccionN'])){
+                    $infoReimpresion['Calculo_Valor_Construcciones']['Privativas']['Costo_Fraccion'] = $tiposContruccion['ConstruccionesPrivativas']['CostoDeLaFraccionN'];
+                }
+                            
             }
     
             if(isset($tiposContruccion['ConstruccionesPrivativas'][0])){
@@ -3794,7 +3797,9 @@ class ReimpresionNuevo
                     }
                     //$infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Fco'] = $construccionPrivativa['ClaveConservacion'];
                     //$infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['FRe'] = $construccionPrivativa['FactorResultante'];
-                    $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Costo_Fraccion'] = $construccionPrivativa['CostoDeLaFraccionN'];
+                    if(isset($construccionPrivativa['CostoDeLaFraccionN']) && !is_array($construccionPrivativa['CostoDeLaFraccionN'])){
+                        $infoReimpresion['Calculo_Valor_Construcciones']['Privativas'][$control]['Costo_Fraccion'] = $construccionPrivativa['CostoDeLaFraccionN'];
+                    }    
                                     
                     $control = $control + 1;
                 }
@@ -3845,7 +3850,9 @@ class ReimpresionNuevo
                     }
                     //$infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Fco'] = $construccionComun['ClaveConservacion'];
                     //$infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['FRe'] = $construccionComun['FactorResultante'];
-                    $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Costo_Fraccion'] = $construccionComun['CostoDeLaFraccionN'];
+                    if(isset($construccionComun['CostoDeLaFraccionN']) && !is_array($construccionComun['CostoDeLaFraccionN'])){
+                        $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Costo_Fraccion'] = $construccionComun['CostoDeLaFraccionN'];
+                    }                    
                     if(isset($construccionComun['PorcentajeIndivisoComunes']) && !is_array($construccionComun['PorcentajeIndivisoComunes'])){
                         $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Indiviso'] = $construccionComun['PorcentajeIndivisoComunes'];
                     }                    
