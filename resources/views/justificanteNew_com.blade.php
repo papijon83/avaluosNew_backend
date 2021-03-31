@@ -3626,7 +3626,6 @@
                     @endisset
                 @endif
 
-
                 <table class="tabla_gris_valor">
                     <thead>
                         <tr>
@@ -3639,7 +3638,20 @@
                         </tr>
                     </thead> 
                 </table>
-                
+
+                <table class="tabla_gris_valor">
+                    <thead>
+                        <tr>
+                            <th style="width: 80%;">VALOR TOTAL DE LAS CONTRUCCIONES COMUNES POR INDIVISO:</th>
+                            <th>
+                            @isset($infoAvaluo['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'])
+                                <span class="grises">$ {{ number_format($infoAvaluo['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'],2) }}</span>
+                            @endisset
+                            </th>
+                        </tr>
+                    </thead> 
+                </table>
+
                 <p><b>c) DE LAS INSTALACIONES ESPECIALES, OBRAS COMPLEMENTARIAS Y ELEMENTOS ACCESORIOS</b></p>
                 <br>
                 <p><b>PRIVATIVAS:</b></p>
@@ -3865,10 +3877,25 @@
                 <table class="tabla_gris_valor">
                     <thead>
                         <tr>
-                            <th style="width: 80%;">TOTAL DE LAS INSTALACIONES:</th>
+                            <th style="width: 80%;">TOTAL DE IE,OC,EA:</th>
                             <th>
                             
                                 <span class="grises">${{ number_format($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'],2) }}</span>
+                           
+                            </th>
+                        </tr>
+                    </thead> 
+                </table>
+                @endisset
+
+                @isset($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'])
+                <table class="tabla_gris_valor">
+                    <thead>
+                        <tr>
+                            <th style="width: 80%;">TOTAL DE IE,OC,EA COMUNES POR INDIVISO:</th>
+                            <th>
+                            
+                                <span class="grises">${{ number_format($infoAvaluo['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'],2) }}</span>
                            
                             </th>
                         </tr>
