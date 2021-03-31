@@ -3839,12 +3839,24 @@ class ReimpresionNuevo
             if(isset($tiposContruccion['ConstruccionesComunes'][0])){
                 $control = 0;
                 foreach($tiposContruccion['ConstruccionesComunes'] as $construccionComun){
+                
                     $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Fracc'] = $control + 1;
-                    $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Descripcion'] = $construccionComun['Descripcion'];
-                    $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Uso'] = $construccionComun['ClaveUso'];
-                    $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Clase'] = $this->modelFis->getClase($construccionComun['ClaveClase']);
-                    $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Superficie_m2'] = $construccionComun['Superficie'];
-                    $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Valor_Unitario'] = $construccionComun['CostoUnitarioDeReposicionNuevo'];
+                    
+                    if(isset($construccionComun['Descripcion']) && !is_array($construccionComun['Descripcion'])){
+                        $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Descripcion'] = $construccionComun['Descripcion'];
+                    }
+                    if(isset($construccionComun['ClaveUso']) && !is_array($construccionComun['ClaveUso'])){
+                        $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Uso'] = $construccionComun['ClaveUso'];
+                    }
+                    if(isset($construccionComun['ClaveClase']) && !is_array($construccionComun['ClaveClase'])){
+                        $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Clase'] = $this->modelFis->getClase($construccionComun['ClaveClase']);
+                    }
+                    if(isset($construccionComun['Superficie']) && !is_array($construccionComun['Superficie'])){
+                        $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Superficie_m2'] = $construccionComun['Superficie'];
+                    }
+                    if(isset($construccionComun['CostoUnitarioDeReposicionNuevo']) && !is_array($construccionComun['CostoUnitarioDeReposicionNuevo'])){
+                        $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Valor_Unitario'] = $construccionComun['CostoUnitarioDeReposicionNuevo'];
+                    }                    
                     if($tipoDeAvaluo ==  "Catastral"){
                         $infoReimpresion['Calculo_Valor_Construcciones']['Comunes'][$control]['Edad'] = $construccionComun['Edad'];
                     }
