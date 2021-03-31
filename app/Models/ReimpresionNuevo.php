@@ -1833,7 +1833,12 @@ class ReimpresionNuevo
             }
         }
 
-        if(isset($obrasComplementarias['Privativas']['@attributes'])){  
+        if(isset($obrasComplementarias['Privativas']['@attributes'])){
+            
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas']) == 0){
+                $control = 0;
+            }
+
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'O';
             if(isset($obrasComplementarias['Privativas']['ClaveObraComplementaria']) && !is_array($obrasComplementarias['Privativas']['ClaveObraComplementaria'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $obrasComplementarias['Privativas']['ClaveObraComplementaria'];
@@ -1857,7 +1862,12 @@ class ReimpresionNuevo
             $control = $control + 1;            
         }
 
-        if(isset($obrasComplementarias['Privativas'][0])){    
+        if(isset($obrasComplementarias['Privativas'][0])){
+
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas']) == 0){
+                $control = 0;
+            }
+
             foreach($obrasComplementarias['Privativas'] as $obraComplementaria){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'O';
                 if(isset($obraComplementaria['ClaveObraComplementaria']) && !is_array($obraComplementaria['ClaveObraComplementaria'])){
@@ -1883,7 +1893,12 @@ class ReimpresionNuevo
         }
 
         /***************************************************************************************************************************************************/
-        if(isset($instalacionesEspeciales['Privativas']['@attributes'])){  
+        if(isset($instalacionesEspeciales['Privativas']['@attributes'])){
+
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas']) == 0){
+                $control = 0;
+            }
+
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'IE';
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionesEspeciales['Privativas']['ClaveInstalacionEspecial'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionesEspeciales['Privativas']['DescripcionInstalacionEspecial'];
@@ -1900,7 +1915,12 @@ class ReimpresionNuevo
             $control = $control + 1;            
         }
 
-        if(isset($instalacionesEspeciales['Privativas'][0])){   
+        if(isset($instalacionesEspeciales['Privativas'][0])){
+            
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas']) == 0){
+                $control = 0;
+            }
+
             foreach($instalacionesEspeciales['Privativas'] as $instalacionEspeciales){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'IE';
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionEspeciales['ClaveInstalacionEspecial'];
@@ -2008,7 +2028,7 @@ class ReimpresionNuevo
             if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']) == 0){
                 $control = 0;
             }
-                   
+
             foreach($obrasComplementarias['Comunes'] as $obraComplementaria){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control][0] = 'O';
                 if(isset($obraComplementaria['ClaveObraComplementaria']) && !is_array($obraComplementaria['ClaveObraComplementaria'])){
@@ -3956,7 +3976,12 @@ class ReimpresionNuevo
             }
         }
 
-        if(isset($obrasComplementarias['Privativas']['@attributes'])){  
+        if(isset($obrasComplementarias['Privativas']['@attributes'])){
+
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas']) == 0){
+                $control = 0;
+            }
+
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'O';
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $obrasComplementarias['Privativas']['ClaveObraComplementaria'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $obrasComplementarias['Privativas']['DescripcionObraComplementaria'];
@@ -3973,7 +3998,12 @@ class ReimpresionNuevo
             $control = $control + 1;            
         }
 
-        if(isset($obrasComplementarias['Privativas'][0])){    
+        if(isset($obrasComplementarias['Privativas'][0])){
+
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas']) == 0){
+                $control = 0;
+            }
+
             foreach($obrasComplementarias['Privativas'] as $obraComplementaria){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'O';
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $obraComplementaria['ClaveObraComplementaria'];
@@ -3993,7 +4023,12 @@ class ReimpresionNuevo
         }
 
         /***************************************************************************************************************************************************/
-        if(isset($instalacionesEspeciales['Privativas']['@attributes'])){  
+        if(isset($instalacionesEspeciales['Privativas']['@attributes'])){
+
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas']) == 0){
+                $control = 0;
+            }
+
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'IE';
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionesEspeciales['Privativas']['ClaveInstalacionEspecial'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionesEspeciales['Privativas']['DescripcionInstalacionEspecial'];
@@ -4010,7 +4045,12 @@ class ReimpresionNuevo
             $control = $control + 1;            
         }
 
-        if(isset($instalacionesEspeciales['Privativas'][0])){   
+        if(isset($instalacionesEspeciales['Privativas'][0])){
+            
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas']) == 0){
+                $control = 0;
+            }
+
             foreach($instalacionesEspeciales['Privativas'] as $instalacionEspeciales){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control][0] = 'IE';
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionEspeciales['ClaveInstalacionEspecial'];
@@ -4031,7 +4071,8 @@ class ReimpresionNuevo
 
         /******************************************************************************************************************************************************************/
 
-        if(isset($elementosAccesorios['Comunes']['@attributes'])){
+        if(isset($elementosAccesorios['Comunes']['@attributes'])){            
+            
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'] = array();
             $control = 0;            
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control][0] = 'E';
@@ -4074,6 +4115,11 @@ class ReimpresionNuevo
         }
 
         if(isset($obrasComplementarias['Comunes']['@attributes'])){
+
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']) == 0){
+                $control = 0;
+            }
+
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'] = array();
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control][0] = 'O';
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control]['Clave'] = $obrasComplementarias['Comunes']['ClaveObraComplementaria'];
@@ -4092,7 +4138,12 @@ class ReimpresionNuevo
             $control = $control + 1;   
         }
 
-        if(isset($obrasComplementarias['Comunes'][0])){            
+        if(isset($obrasComplementarias['Comunes'][0])){
+            
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']) == 0){
+                $control = 0;
+            }
+
             foreach($obrasComplementarias['Comunes'] as $obraComplementaria){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control][0] = 'O';
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control]['Clave'] = $obraComplementaria['ClaveObraComplementaria'];
@@ -4113,7 +4164,12 @@ class ReimpresionNuevo
         }
 
         /***************************************************************************************************************************************************/
-        if(isset($instalacionesEspeciales['Comunes']['@attributes'])){  
+        if(isset($instalacionesEspeciales['Comunes']['@attributes'])){
+            
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']) == 0){
+                $control = 0;
+            }
+
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control][0] = 'IE';
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control]['Clave'] = $instalacionesEspeciales['Comunes']['ClaveInstalacionEspecial'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control]['Concepto'] = $instalacionesEspeciales['Comunes']['DescripcionInstalacionEspecial'];
@@ -4130,7 +4186,12 @@ class ReimpresionNuevo
             $control = $control + 1;            
         }
 
-        if(isset($instalacionesEspeciales['Comunes'][0])){   
+        if(isset($instalacionesEspeciales['Comunes'][0])){
+            
+            if(count($infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes']) == 0){
+                $control = 0;
+            }
+            
             foreach($instalacionesEspeciales['Comunes'] as $instalacionEspeciales){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control][0] = 'IE';
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Comunes'][$control]['Clave'] = $instalacionEspeciales['ClaveInstalacionEspecial'];

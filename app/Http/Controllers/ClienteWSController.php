@@ -81,7 +81,7 @@ class ClienteWSController extends Controller
 
         if ($response->getStatusCode() == 200) {
             try {
-                echo "ENTREEEEEE"; exit();
+                echo "ENTREEEEEE";
                 
             } catch (\Exception $e) {
                 return response()->json(['mensaje' => $e], 500);
