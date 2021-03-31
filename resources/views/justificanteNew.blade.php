@@ -791,7 +791,7 @@
                         <div style="text-align: right;">
                             <b>SUPERFICIE TOTAL TERRENO: 
                             @isset($infoAvaluo['Superficie_Total_Segun']['Totales']['Superficie_Total_Terreno'])
-                                <span class="grises">$ {{$infoAvaluo['Superficie_Total_Segun']['Totales']['Superficie_Total_Terreno']}}</span>
+                                <span class="grises">{{$infoAvaluo['Superficie_Total_Segun']['Totales']['Superficie_Total_Terreno']}}</span>
                             @endisset                        
                             </b>
                         </div>
