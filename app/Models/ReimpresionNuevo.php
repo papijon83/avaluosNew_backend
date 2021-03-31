@@ -2149,9 +2149,9 @@ class ReimpresionNuevo
                 $sumatoria = $sumatoria + $elementosConstruccion['ImporteTotalInstalacionesAccesoriosComplementariasPrivativas'] + $elementosConstruccion['ImporteTotalInstalacionesAccesoriosComplementariasComunes'];    
             }
 
-            if(isset($elementosConstruccion['ImporteTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) && isset($elementosConstruccion['ImporteTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
+            /*if(isset($elementosConstruccion['ImporteTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) && isset($elementosConstruccion['ImporteTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
                 $sumatoria = $sumatoria + $elementosConstruccion['ImporteTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'] + $elementosConstruccion['ImporteTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];
-            }
+            }*/
 
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $sumatoria;
 
@@ -4292,7 +4292,7 @@ class ReimpresionNuevo
         /***************************************************************************************************************************************************/
 
         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Indiviso_Unidad_Que_Se_Valua'] = $terreno['Indiviso'] <= 1 ? $terreno['Indiviso'] * 100 : $terreno['Indiviso'];
-        if((isset($elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasComunes'])) || (isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']))){
+        /*if((isset($elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasComunes'])) || (isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']))){
         //if(isset($elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasComunes'])){
             $sumatoria = 0;
             if(isset($elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasComunes'])){
@@ -4320,7 +4320,34 @@ class ReimpresionNuevo
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'] = $elementosConstruccion['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'];
             
             //$infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas'] + $elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasComunes'];
-        }
+        }*/
+
+        if(isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
+            
+                $sumatoria = 0;                
+    
+                if(isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas']) && isset($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
+                    if(is_array($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'])){
+                        $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas = 0;
+                    }else{
+                        $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas = $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];
+                    }
+                    //Log::info("CONTENIDOOOO ".json_encode($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']));
+                    if(is_array($elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'])){
+                        $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes = 0;
+                    }else{
+                        $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes = $elementosConstruccion['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'];
+                    }
+    
+                    $sumatoria = $sumatoria + $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas + $sumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes;
+                }
+    
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $sumatoria;
+    
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'] = $elementosConstruccion['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'];
+                
+                //$infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas'] + $elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasComunes'];
+            }
 
         $enfoqueCostos = $elementoPrincipal['EnfoqueDeCostos'];
         if(isset($enfoqueCostos['ImporteTotalDelEnfoqueDeCostos'])){ 
