@@ -21,7 +21,7 @@ class ClienteWSController extends Controller
         $usuario = "U4566";
         $auth = '<usuario xmlns="IDEAS.Avametrica">' . env('USUARIO_WSDL') . '</usuario>';
         $auth .= '<contrasenia xmlns="IDEAS.Avametrica">' . env('PASS_WSDL') . '</contrasenia>';
-        $file = storage_path('app/24042020_PRUEBA SAF.xml');
+        $file = storage_path('app/A-COM-2021-13869.xml');
         $xml = simplexml_load_file($file);
         $client = new \SoapClient(env('WSDL_RECIBE_AVALUO'), ["debug" => true, "trace" => true, "exception" => true]);
         $auth_block = new \SoapVar($auth, XSD_ANYXML, NULL, NULL, NULL, NULL);
