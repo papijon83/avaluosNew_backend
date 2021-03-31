@@ -1628,7 +1628,9 @@ class ReimpresionNuevo
     
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Total_Superficie'] = $tiposContruccion['SuperficieTotalDeConstruccionesComunes'];
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Total_Construcciones_Comunes'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'];
-            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'] + $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];            
+            //$infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'] + $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];            
+            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesPrivativas'] + $tiposContruccion['ValorTotalDeConstruccionesComunes'];
+            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'] = $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
             
             
 
@@ -2076,6 +2078,8 @@ class ReimpresionNuevo
             }
 
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $sumatoria;
+
+            $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'] = $elementosConstruccion['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'];
             
         }    
 
