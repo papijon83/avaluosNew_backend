@@ -3074,14 +3074,30 @@ class ReimpresionNuevo
         $infoReimpresion['Revestimientos_Acabados_Interiores'] = array();
         $revestimientosAcabados = $elementosConstruccion['RevestimientosYAcabadosInteriores'];
 
-        $infoReimpresion['Revestimientos_Acabados_Interiores']['Aplanados'] = $revestimientosAcabados['Aplanados'];
-        $infoReimpresion['Revestimientos_Acabados_Interiores']['Plafones'] = $revestimientosAcabados['Plafones'];
-        $infoReimpresion['Revestimientos_Acabados_Interiores']['Lambrines'] = $revestimientosAcabados['Lambrines'];
-        $infoReimpresion['Revestimientos_Acabados_Interiores']['Pisos'] = $revestimientosAcabados['Pisos'];
-        $infoReimpresion['Revestimientos_Acabados_Interiores']['Zoclos'] = $revestimientosAcabados['Zoclos'];
-        $infoReimpresion['Revestimientos_Acabados_Interiores']['Escaleras'] = $revestimientosAcabados['Escaleras'];
-        $infoReimpresion['Revestimientos_Acabados_Interiores']['Pintura'] = $revestimientosAcabados['Pintura'];
-        $infoReimpresion['Revestimientos_Acabados_Interiores']['Recubrimientos_Especiales'] = $revestimientosAcabados['RecubrimientosEspeciales'];
+        if(isset($revestimientosAcabados['Aplanados']) && !is_array($revestimientosAcabados['Aplanados'])){
+            $infoReimpresion['Revestimientos_Acabados_Interiores']['Aplanados'] = $revestimientosAcabados['Aplanados'];
+        }
+        if(isset($revestimientosAcabados['Plafones']) && !is_array($revestimientosAcabados['Plafones'])){
+            $infoReimpresion['Revestimientos_Acabados_Interiores']['Plafones'] = $revestimientosAcabados['Plafones'];
+        }
+        if(isset($revestimientosAcabados['Lambrines']) && !is_array($revestimientosAcabados['Lambrines'])){
+            $infoReimpresion['Revestimientos_Acabados_Interiores']['Lambrines'] = $revestimientosAcabados['Lambrines'];
+        }
+        if(isset($revestimientosAcabados['Pisos']) && !is_array($revestimientosAcabados['Pisos'])){
+            $infoReimpresion['Revestimientos_Acabados_Interiores']['Pisos'] = $revestimientosAcabados['Pisos'];
+        }
+        if(isset($revestimientosAcabados['Zoclos']) && !is_array($revestimientosAcabados['Zoclos'])){
+            $infoReimpresion['Revestimientos_Acabados_Interiores']['Zoclos'] = $revestimientosAcabados['Zoclos'];
+        }
+        if(isset($revestimientosAcabados['Escaleras']) && !is_array($revestimientosAcabados['Escaleras'])){
+            $infoReimpresion['Revestimientos_Acabados_Interiores']['Escaleras'] = $revestimientosAcabados['Escaleras'];
+        }
+        if(isset($revestimientosAcabados['Pintura']) && !is_array($revestimientosAcabados['Pintura'])){
+            $infoReimpresion['Revestimientos_Acabados_Interiores']['Pintura'] = $revestimientosAcabados['Pintura'];
+        }
+        if(isset($revestimientosAcabados['RecubrimientosEspeciales']) && !is_array($revestimientosAcabados['RecubrimientosEspeciales'])){
+            $infoReimpresion['Revestimientos_Acabados_Interiores']['Recubrimientos_Especiales'] = $revestimientosAcabados['RecubrimientosEspeciales'];
+        }        
 
         /************************************************************************************************************************************************************************/
 
