@@ -254,7 +254,7 @@ class ReimpresionNuevo
         $infoReimpresion['Sociedad_Participa']['Solicitante']['Tipo_persona'] = isset($arrSolicitante['A.Paterno']) && !is_array($arrSolicitante['A.Paterno']) ? "Física" : "Moral";
         if(isset($arrSolicitante['A.Paterno']) && !is_array($arrSolicitante['A.Paterno'])){
             $infoReimpresion['Sociedad_Participa']['Solicitante']['Nombre'] = $arrSolicitante['Nombre']." ".$arrSolicitante['A.Paterno'];
-            if(isset($arrPropietario['A.Materno']) && !is_array($arrPropietario['A.Materno'])){
+            if(isset($arrPropietario['A.Materno']) && !is_array($arrPropietario['A.Materno'])){ 
                 $infoReimpresion['Sociedad_Participa']['Solicitante']['Nombre'] = $infoReimpresion['Sociedad_Participa']['Solicitante']['Nombre']." ".$arrSolicitante['A.Materno'];
             }
             //$infoReimpresion['Sociedad_Participa']['Solicitante']['Nombre'] = $arrSolicitante['Nombre']." ".$arrSolicitante['A.Paterno']." ".isset($arrSolicitante['A.Materno']) && !is_array($arrSolicitante['A.Materno']) ? $arrSolicitante['A.Materno'] : '';
@@ -2563,10 +2563,11 @@ class ReimpresionNuevo
         $infoReimpresion['Sociedad_Participa']['Valuador'] = $identificacion['ClaveValuador'];
         $infoReimpresion['Sociedad_Participa']['Fecha_del_Avaluo'] = $identificacion['FechaAvaluo'];
         $infoReimpresion['Sociedad_Participa']['Solicitante'] = array();
+        
         $infoReimpresion['Sociedad_Participa']['Solicitante']['Tipo_persona'] = isset($arrSolicitante['A.Paterno']) && !is_array($arrSolicitante['A.Paterno']) ? "Física" : "Moral";
         if(isset($arrSolicitante['A.Paterno']) && !is_array($arrSolicitante['A.Paterno'])){
             $infoReimpresion['Sociedad_Participa']['Solicitante']['Nombre'] = $arrSolicitante['Nombre']." ".$arrSolicitante['A.Paterno'];
-            if(isset($arrPropietario['A.Materno']) && !is_array($arrPropietario['A.Materno'])){
+            if(isset($arrSolicitante['A.Materno']) && !is_array($arrSolicitante['A.Materno'])){ 
                 $infoReimpresion['Sociedad_Participa']['Solicitante']['Nombre'] = $infoReimpresion['Sociedad_Participa']['Solicitante']['Nombre']." ".$arrSolicitante['A.Materno'];
             }
             //$infoReimpresion['Sociedad_Participa']['Solicitante']['Nombre'] = $arrSolicitante['Nombre']." ".$arrSolicitante['A.Paterno']." ".isset($arrSolicitante['A.Materno']) && !is_array($arrSolicitante['A.Materno']) ? $arrSolicitante['A.Materno'] : '';
