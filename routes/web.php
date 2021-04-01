@@ -22,6 +22,8 @@ $router->get('/', function () use ($router) {
     $router->get('acuse', 'FormatosController@generaAcusePDFSV');
     $router->post('acuse', 'FormatosController@generaAcusePDFSVPost');
     $router->get('obtenXML', 'BandejaEntradaNuevoController@obtenXML');
+    $router->get('imprimeArreglo', 'BandejaEntradaNuevoController@imprimeArreglo');
+    
 
     $router->post('guardarxml', 'BandejaEntradaNuevoController@guardarAvaluoPNet');
     $router->post('insertSuperficie', 'BandejaEntradaNuevoController@insertSuperficieAuxPNet');

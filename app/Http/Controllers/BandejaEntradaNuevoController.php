@@ -6754,4 +6754,98 @@ class BandejaEntradaNuevoController extends Controller
         return response()->json(['IDDOCUMENTODIGITAL' => $resInsertSuperficie], 200);        
     }
 
+    public function imprimeArreglo(Request $request){
+        try{
+            
+            $idAvaluo = $request->query('IdAvaluo');            
+            if(isset($idAvaluo)){
+                Log::info($idAvaluo);
+                $id_avaluo = trim($idAvaluo);
+                $this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
+                $numero_unico = $this->modelDocumentos->get_numero_unico_db($id_avaluo);
+            }else{
+                $numero_unico = trim($request->query('no_unico'));      
+
+                $this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
+                $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);
+                
+                
+            }
+           
+            
+            $fechaAvaluo = DB::select("SELECT to_char(FECHA,'YYYY-MM-DD') as FECHA_AVALUO FROM DOC.DOC_DOCUMENTODIGITAL WHERE IDDOCUMENTODIGITAL = '".$id_avaluo."'");
+            $arr_fechaAvaluo = convierte_a_arreglo($fechaAvaluo);
+            $dataFechaAvaluo = $arr_fechaAvaluo[0]['fecha_avaluo'];
+            $fechaAvaluoCompara = new Carbon($dataFechaAvaluo);
+
+            /*$fechaPresentacion = DB::select("SELECT to_char(FECHA_PRESENTACION,'YYYY-MM-DD') as FECHA_PRESENTACION FROM FEXAVA_AVALUO WHERE NUMEROUNICO = '".$numero_unico."'");
+            $arr_fechaPresentacion = convierte_a_arreglo($fechaPresentacion);
+            $dataFechaPresentacion = $arr_fechaPresentacion[0]['fecha_presentacion'];
+            $fechaAvaluoCompara = new Carbon($dataFechaPresentacion);*/
+
+            //$fechaCompara = new Carbon('2021-02-28');
+            $anioCompara = Carbon::parse($fechaAvaluoCompara)->format('Y'); //echo "SOY AÑO COMPARA ".$anioCompara; exit();
+
+            $contenido = $this->obtenXMLSV($numero_unico);
+
+            $xml = simplexml_load_string($contenido,'SimpleXMLElement', LIBXML_NOCDATA);
+            $arrXML = convierte_a_arreglo($xml);
+
+            if(isset($arrXML['Comercial'])){
+                $elementoPrincipal = $arrXML['Comercial'];
+                $tipoDeAvaluo =  "Comercial";
+            }
+    
+            if(isset($arrXML['Catastral'])){
+                $elementoPrincipal = $arrXML['Catastral'];
+                $tipoDeAvaluo =  "Catastral";
+            }
+
+            if(isset($elementoPrincipal['Antecedentes']['Solicitante']['Alcaldia'])){
+                $tieneAlcaldia = true;
+                //echo "SOY ALCALDIA ".$elementoPrincipal['Antecedentes']['Solicitante']['Alcaldia'];
+            }
+            if(isset($elementoPrincipal['Antecedentes']['Solicitante']['Delegacion'])){
+                $tieneDelegacion = true;
+                //echo "SOY DELEGACION ".$elementoPrincipal['Antecedentes']['Solicitante']['Delegacion'];
+            }            
+            
+
+            /*$nuevo = 1; //var_dump($fechaPresentacionCompara->lt($fechaCompara)); exit();
+            if($fechaAvaluoCompara->lte($fechaCompara)){
+                $nuevo = 0;
+            }*/
+            if($anioCompara == 2021 && isset($tieneAlcaldia) && $tieneAlcaldia == true){
+                $nuevo = 1;
+            }else{
+                $nuevo = 0;
+            }
+
+            //echo "SOY NUEVO ".$nuevo; exit();
+            if($nuevo == 0){                
+                   
+                $this->modelReimpresionNuevo = new ReimpresionNuevo();
+                $infoAvaluo = $this->modelReimpresionNuevo->infoAvaluo($id_avaluo);
+                if(!is_array($infoAvaluo)){
+                    return $infoAvaluo;
+                }               
+                
+            }else{
+                $numero_unico = trim($request->query('no_unico'));
+
+                    
+                $this->modelReimpresionNuevo = new ReimpresionNuevo();
+                $infoAvaluo = $this->modelReimpresionNuevo->imprimeArreglo($id_avaluo);                
+                
+            }
+            
+                        
+        }catch (\Throwable $th) {
+            //Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => 'Error al obtener la información del avalúo'], 500);
+        }    
+    }
+
 }
