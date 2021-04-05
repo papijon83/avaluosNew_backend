@@ -1630,8 +1630,9 @@ class ReimpresionNuevo
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Total_Construcciones_Comunes'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'];
             //$infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'] + $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];            
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesPrivativas'] + $tiposContruccion['ValorTotalDeConstruccionesComunes'];
-            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'] = $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
-            
+            if(isset($tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso']) && !is_array($tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'])){
+                $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'] = $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
+            }    
             
 
         }else{
@@ -3878,8 +3879,9 @@ class ReimpresionNuevo
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Total_Construcciones_Comunes'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'];
             //$infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'] + $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
             $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesPrivativas'] + $tiposContruccion['ValorTotalDeConstruccionesComunes'];
-            $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'] = $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
-            
+            if(isset($tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso']) && !is_array($tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'])){
+                $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'] = $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
+            }    
 
         }else{
 
@@ -6108,7 +6110,9 @@ class ReimpresionNuevo
                 $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Total_Construcciones_Comunes'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'];
                 //$infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesComunes'] + $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
                 $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones'] = $tiposContruccion['ValorTotalDeConstruccionesPrivativas'] + $tiposContruccion['ValorTotalDeConstruccionesComunes'];
-                $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'] = $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
+                if(isset($tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso']) && !is_array($tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'])){
+                    $infoReimpresion['Calculo_Valor_Construcciones']['Totales_Comunes']['Valor_Total_De_Las_Construcciones_Por_Indiviso'] = $tiposContruccion['ValorTotalDeLasConstruccionesComunesProIndiviso'];
+                }                              
                 
 
             }else{
