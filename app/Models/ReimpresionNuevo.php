@@ -4040,7 +4040,7 @@ class ReimpresionNuevo
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $elementoAccesorio['ClaveElementoAccesorio'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $elementoAccesorio['DescripcionElementoAccesorio'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $elementoAccesorio['CantidadElementoAccesorio'];
-                if(isset($elementoAccesorio['CostoUnitarioElementoAccesorio']) && !is_array($elementoAccesorio['CostoUnitarioElementoAccesorio']){
+                if(isset($elementoAccesorio['CostoUnitarioElementoAccesorio']) && !is_array($elementoAccesorio['CostoUnitarioElementoAccesorio'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $elementoAccesorio['CostoUnitarioElementoAccesorio'];
                 }
                 if(isset($elementoAccesorio['EdadElementoAccesorio']) && !is_array($elementoAccesorio['EdadElementoAccesorio'])){
