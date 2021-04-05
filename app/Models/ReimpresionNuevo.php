@@ -1896,7 +1896,7 @@ class ReimpresionNuevo
                 if(isset($obraComplementaria['EdadObraComplementaria']) && !is_array($obraComplementaria['EdadObraComplementaria'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $obraComplementaria['EdadObraComplementaria'];
                 }
-                if(isset($obraComplementaria['ImporteObraComplementaria']) && !isset($obraComplementaria['ImporteObraComplementaria'])){
+                if(isset($obraComplementaria['ImporteObraComplementaria']) && !is_array($obraComplementaria['ImporteObraComplementaria'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $obraComplementaria['ImporteObraComplementaria'];                
                 }    
                 $control = $control + 1;
@@ -1919,13 +1919,13 @@ class ReimpresionNuevo
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionesEspeciales['Privativas']['ClaveInstalacionEspecial'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionesEspeciales['Privativas']['DescripcionInstalacionEspecial'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $instalacionesEspeciales['Privativas']['CantidadInstalacionEspecial'];
-            if(isset($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'])){
+            if(isset($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial']) && !is_array($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'];
             }
-            if(isset($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'])){
+            if(isset($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial']) && !is_array($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'];
             }
-            if(isset($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'])){
+            if(isset($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'])  && !is_array($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'];
             }    
             $control = $control + 1;            
@@ -1947,13 +1947,13 @@ class ReimpresionNuevo
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionEspeciales['ClaveInstalacionEspecial'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionEspeciales['DescripcionInstalacionEspecial'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $instalacionEspeciales['CantidadInstalacionEspecial'];
-                if(isset($instalacionEspeciales['CostoUnitarioInstalacionEspecial'])){
+                if(isset($instalacionEspeciales['CostoUnitarioInstalacionEspecial']) && !is_array($instalacionEspeciales['CostoUnitarioInstalacionEspecial'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $instalacionEspeciales['CostoUnitarioInstalacionEspecial'];
                 }
-                if(isset($instalacionEspeciales['EdadInstalacionEspecial'])){
+                if(isset($instalacionEspeciales['EdadInstalacionEspecial']) && !is_array($instalacionEspeciales['EdadInstalacionEspecial'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $instalacionEspeciales['EdadInstalacionEspecial'];
                 }
-                if(isset($instalacionEspeciales['ImporteInstalacionEspecial'])){
+                if(isset($instalacionEspeciales['ImporteInstalacionEspecial']) && !is_array($instalacionEspeciales['ImporteInstalacionEspecial'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $instalacionEspeciales['ImporteInstalacionEspecial'];                
                 }    
                 $control = $control + 1;
@@ -4019,13 +4019,13 @@ class ReimpresionNuevo
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $elementosAccesorios['Privativas']['ClaveElementoAccesorio'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $elementosAccesorios['Privativas']['DescripcionElementoAccesorio'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $elementosAccesorios['Privativas']['CantidadElementoAccesorio'];
-            if(isset($elementosAccesorios['Privativas']['CostoUnitarioElementoAccesorio'])){
+            if(isset($elementosAccesorios['Privativas']['CostoUnitarioElementoAccesorio']) && !is_array($elementosAccesorios['Privativas']['CostoUnitarioElementoAccesorio'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $elementosAccesorios['Privativas']['CostoUnitarioElementoAccesorio'];
             }
-            if(isset($elementosAccesorios['Privativas']['EdadElementoAccesorio'])){
+            if(isset($elementosAccesorios['Privativas']['EdadElementoAccesorio']) && !is_array($elementosAccesorios['Privativas']['EdadElementoAccesorio'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $elementosAccesorios['Privativas']['EdadElementoAccesorio'];
             }
-            if(isset($elementosAccesorios['Privativas']['ImporteElementoAccesorio'])){
+            if(isset($elementosAccesorios['Privativas']['ImporteElementoAccesorio']) && !is_array($elementosAccesorios['Privativas']['ImporteElementoAccesorio'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $elementosAccesorios['Privativas']['ImporteElementoAccesorio'];
             }
             
@@ -4040,13 +4040,13 @@ class ReimpresionNuevo
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $elementoAccesorio['ClaveElementoAccesorio'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $elementoAccesorio['DescripcionElementoAccesorio'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $elementoAccesorio['CantidadElementoAccesorio'];
-                if(isset($elementoAccesorio['CostoUnitarioElementoAccesorio'])){
+                if(isset($elementoAccesorio['CostoUnitarioElementoAccesorio']) && !is_array($elementoAccesorio['CostoUnitarioElementoAccesorio']){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $elementoAccesorio['CostoUnitarioElementoAccesorio'];
                 }
-                if(isset($elementoAccesorio['EdadElementoAccesorio'])){
+                if(isset($elementoAccesorio['EdadElementoAccesorio']) && !is_array($elementoAccesorio['EdadElementoAccesorio'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $elementoAccesorio['EdadElementoAccesorio'];
                 }
-                if(isset($elementoAccesorio['ImporteElementoAccesorio'])){
+                if(isset($elementoAccesorio['ImporteElementoAccesorio']) && !is_array($elementoAccesorio['ImporteElementoAccesorio'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $elementoAccesorio['ImporteElementoAccesorio'];
                 }    
                                 
@@ -4069,13 +4069,13 @@ class ReimpresionNuevo
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $obrasComplementarias['Privativas']['ClaveObraComplementaria'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $obrasComplementarias['Privativas']['DescripcionObraComplementaria'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $obrasComplementarias['Privativas']['CantidadObraComplementaria'];
-            if(isset($obrasComplementarias['Privativas']['CostoUnitarioObraComplementaria'])){
+            if(isset($obrasComplementarias['Privativas']['CostoUnitarioObraComplementaria']) && !is_array($obrasComplementarias['Privativas']['CostoUnitarioObraComplementaria'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $obrasComplementarias['Privativas']['CostoUnitarioObraComplementaria'];
             }
-            if(isset($obrasComplementarias['Privativas']['EdadObraComplementaria'])){
+            if(isset($obrasComplementarias['Privativas']['EdadObraComplementaria']) && !is_array($obrasComplementarias['Privativas']['EdadObraComplementaria'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $obrasComplementarias['Privativas']['EdadObraComplementaria'];
             }
-            if(isset($obrasComplementarias['Privativas']['ImporteObraComplementaria'])){
+            if(isset($obrasComplementarias['Privativas']['ImporteObraComplementaria']) && !is_array($obrasComplementarias['Privativas']['ImporteObraComplementaria'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $obrasComplementarias['Privativas']['ImporteObraComplementaria'];
             }    
             $control = $control + 1;            
@@ -4097,13 +4097,13 @@ class ReimpresionNuevo
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $obraComplementaria['ClaveObraComplementaria'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $obraComplementaria['DescripcionObraComplementaria'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $obraComplementaria['CantidadObraComplementaria'];
-                if(isset($obraComplementaria['CostoUnitarioObraComplementaria'])){
+                if(isset($obraComplementaria['CostoUnitarioObraComplementaria']) && !is_array($obraComplementaria['CostoUnitarioObraComplementaria'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $obraComplementaria['CostoUnitarioObraComplementaria'];
                 }
-                if(isset($obraComplementaria['EdadObraComplementaria'])){
+                if(isset($obraComplementaria['EdadObraComplementaria']) && !is_array($obraComplementaria['EdadObraComplementaria'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $obraComplementaria['EdadObraComplementaria'];
                 }
-                if(isset($obraComplementaria['ImporteObraComplementaria'])){
+                if(isset($obraComplementaria['ImporteObraComplementaria']) && !is_array($obraComplementaria['ImporteObraComplementaria'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $obraComplementaria['ImporteObraComplementaria'];                
                 }    
                 $control = $control + 1;
@@ -4126,13 +4126,13 @@ class ReimpresionNuevo
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionesEspeciales['Privativas']['ClaveInstalacionEspecial'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionesEspeciales['Privativas']['DescripcionInstalacionEspecial'];
             $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $instalacionesEspeciales['Privativas']['CantidadInstalacionEspecial'];
-            if(isset($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'])){
+            if(isset($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial']) && !is_array($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'];
             }
-            if(isset($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'])){
+            if(isset($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial']) && !is_array($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'];
             }
-            if(isset($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'])){
+            if(isset($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial']) && !is_array($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'])){
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'];
             }    
             $control = $control + 1;            
@@ -4154,13 +4154,13 @@ class ReimpresionNuevo
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionEspeciales['ClaveInstalacionEspecial'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionEspeciales['DescripcionInstalacionEspecial'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $instalacionEspeciales['CantidadInstalacionEspecial'];
-                if(isset($instalacionEspeciales['CostoUnitarioInstalacionEspecial'])){
+                if(isset($instalacionEspeciales['CostoUnitarioInstalacionEspecial']) && !is_array($instalacionEspeciales['CostoUnitarioInstalacionEspecial'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $instalacionEspeciales['CostoUnitarioInstalacionEspecial'];
                 }
-                if(isset($instalacionEspeciales['EdadInstalacionEspecial'])){
+                if(isset($instalacionEspeciales['EdadInstalacionEspecial']) && !is_array($instalacionEspeciales['EdadInstalacionEspecial'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $instalacionEspeciales['EdadInstalacionEspecial'];
                 }
-                if(isset($instalacionEspeciales['ImporteInstalacionEspecial'])){
+                if(isset($instalacionEspeciales['ImporteInstalacionEspecial']) && !is_array($instalacionEspeciales['ImporteInstalacionEspecial'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $instalacionEspeciales['ImporteInstalacionEspecial'];                
                 }    
                 $control = $control + 1;
@@ -6251,13 +6251,13 @@ class ReimpresionNuevo
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $elementosAccesorios['Privativas']['ClaveElementoAccesorio'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $elementosAccesorios['Privativas']['DescripcionElementoAccesorio'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $elementosAccesorios['Privativas']['CantidadElementoAccesorio'];
-                if(isset($elementosAccesorios['Privativas']['CostoUnitarioElementoAccesorio'])){
+                if(isset($elementosAccesorios['Privativas']['CostoUnitarioElementoAccesorio']) && !is_array($elementosAccesorios['Privativas']['CostoUnitarioElementoAccesorio'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $elementosAccesorios['Privativas']['CostoUnitarioElementoAccesorio'];
                 }
-                if(isset($elementosAccesorios['Privativas']['EdadElementoAccesorio'])){
+                if(isset($elementosAccesorios['Privativas']['EdadElementoAccesorio']) && !is_array($elementosAccesorios['Privativas']['EdadElementoAccesorio'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $elementosAccesorios['Privativas']['EdadElementoAccesorio'];
                 }
-                if(isset($elementosAccesorios['Privativas']['ImporteElementoAccesorio'])){
+                if(isset($elementosAccesorios['Privativas']['ImporteElementoAccesorio']) && !is_array($elementosAccesorios['Privativas']['ImporteElementoAccesorio'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $elementosAccesorios['Privativas']['ImporteElementoAccesorio'];
                 }
                 
@@ -6272,13 +6272,13 @@ class ReimpresionNuevo
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $elementoAccesorio['ClaveElementoAccesorio'];
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $elementoAccesorio['DescripcionElementoAccesorio'];
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $elementoAccesorio['CantidadElementoAccesorio'];
-                    if(isset($elementoAccesorio['CostoUnitarioElementoAccesorio'])){
+                    if(isset($elementoAccesorio['CostoUnitarioElementoAccesorio']) && !is_array($elementoAccesorio['CostoUnitarioElementoAccesorio'])){
                         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $elementoAccesorio['CostoUnitarioElementoAccesorio'];
                     }
-                    if(isset($elementoAccesorio['EdadElementoAccesorio'])){
+                    if(isset($elementoAccesorio['EdadElementoAccesorio']) && !is_array($elementoAccesorio['EdadElementoAccesorio'])){
                         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $elementoAccesorio['EdadElementoAccesorio'];
                     }
-                    if(isset($elementoAccesorio['ImporteElementoAccesorio'])){
+                    if(isset($elementoAccesorio['ImporteElementoAccesorio']) && !is_array($elementoAccesorio['ImporteElementoAccesorio'])){
                         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $elementoAccesorio['ImporteElementoAccesorio'];
                     }    
                                     
@@ -6301,13 +6301,13 @@ class ReimpresionNuevo
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $obrasComplementarias['Privativas']['ClaveObraComplementaria'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $obrasComplementarias['Privativas']['DescripcionObraComplementaria'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $obrasComplementarias['Privativas']['CantidadObraComplementaria'];
-                if(isset($obrasComplementarias['Privativas']['CostoUnitarioObraComplementaria'])){
+                if(isset($obrasComplementarias['Privativas']['CostoUnitarioObraComplementaria']) && !is_array($obrasComplementarias['Privativas']['CostoUnitarioObraComplementaria'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $obrasComplementarias['Privativas']['CostoUnitarioObraComplementaria'];
                 }
-                if(isset($obrasComplementarias['Privativas']['EdadObraComplementaria'])){
+                if(isset($obrasComplementarias['Privativas']['EdadObraComplementaria']) && !is_array($obrasComplementarias['Privativas']['EdadObraComplementaria'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $obrasComplementarias['Privativas']['EdadObraComplementaria'];
                 }
-                if(isset($obrasComplementarias['Privativas']['ImporteObraComplementaria'])){
+                if(isset($obrasComplementarias['Privativas']['ImporteObraComplementaria']) && !is_array($obrasComplementarias['Privativas']['ImporteObraComplementaria'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $obrasComplementarias['Privativas']['ImporteObraComplementaria'];
                 }    
                 $control = $control + 1;            
@@ -6329,13 +6329,13 @@ class ReimpresionNuevo
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $obraComplementaria['ClaveObraComplementaria'];
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $obraComplementaria['DescripcionObraComplementaria'];
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $obraComplementaria['CantidadObraComplementaria'];
-                    if(isset($obraComplementaria['CostoUnitarioObraComplementaria'])){
+                    if(isset($obraComplementaria['CostoUnitarioObraComplementaria']) && !is_array($obraComplementaria['CostoUnitarioObraComplementaria'])){
                         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $obraComplementaria['CostoUnitarioObraComplementaria'];
                     }
-                    if(isset($obraComplementaria['EdadObraComplementaria'])){
+                    if(isset($obraComplementaria['EdadObraComplementaria']) && !is_array($obraComplementaria['EdadObraComplementaria'])){
                         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $obraComplementaria['EdadObraComplementaria'];
                     }
-                    if(isset($obraComplementaria['ImporteObraComplementaria'])){
+                    if(isset($obraComplementaria['ImporteObraComplementaria']) && !is_array($obraComplementaria['ImporteObraComplementaria'])){
                         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $obraComplementaria['ImporteObraComplementaria'];                
                     }    
                     $control = $control + 1;
@@ -6358,13 +6358,13 @@ class ReimpresionNuevo
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionesEspeciales['Privativas']['ClaveInstalacionEspecial'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionesEspeciales['Privativas']['DescripcionInstalacionEspecial'];
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $instalacionesEspeciales['Privativas']['CantidadInstalacionEspecial'];
-                if(isset($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'])){
+                if(isset($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial']) && !is_array($instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $instalacionesEspeciales['Privativas']['CostoUnitarioInstalacionEspecial'];
                 }
-                if(isset($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'])){
+                if(isset($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial']) && !is_array($instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $instalacionesEspeciales['Privativas']['EdadInstalacionEspecial'];
                 }
-                if(isset($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'])){
+                if(isset($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial']) && !is_array($instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'])){
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $instalacionesEspeciales['Privativas']['ImporteInstalacionEspecial'];
                 }    
                 $control = $control + 1;            
@@ -6386,13 +6386,13 @@ class ReimpresionNuevo
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Clave'] = $instalacionEspeciales['ClaveInstalacionEspecial'];
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Concepto'] = $instalacionEspeciales['DescripcionInstalacionEspecial'];
                     $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Cantidad'] = $instalacionEspeciales['CantidadInstalacionEspecial'];
-                    if(isset($instalacionEspeciales['CostoUnitarioInstalacionEspecial'])){
+                    if(isset($instalacionEspeciales['CostoUnitarioInstalacionEspecial']) && !is_array($instalacionEspeciales['CostoUnitarioInstalacionEspecial'])){
                         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Costo_Unitario'] = $instalacionEspeciales['CostoUnitarioInstalacionEspecial'];
                     }
-                    if(isset($instalacionEspeciales['EdadInstalacionEspecial'])){
+                    if(isset($instalacionEspeciales['EdadInstalacionEspecial']) && !is_array($instalacionEspeciales['EdadInstalacionEspecial'])){
                         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Edad'] = $instalacionEspeciales['EdadInstalacionEspecial'];
                     }
-                    if(isset($instalacionEspeciales['ImporteInstalacionEspecial'])){
+                    if(isset($instalacionEspeciales['ImporteInstalacionEspecial']) && !is_array($instalacionEspeciales['ImporteInstalacionEspecial'])){
                         $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Privativas'][$control]['Importe'] = $instalacionEspeciales['ImporteInstalacionEspecial'];                
                     }    
                     $control = $control + 1;
