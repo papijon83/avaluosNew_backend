@@ -2642,7 +2642,7 @@ class ReimpresionNuevo
         
         if(isset($elementoPrincipal['Antecedentes']['TipoDeInmueble']) && !is_array($elementoPrincipal['Antecedentes']['TipoDeInmueble'])) {
             //$tipoDeInmueble = $elementoPrincipal['Antecedentes']['TipoDeInmueble'];
-            $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble($elementoPrincipal['Antecedentes']['TipoDeInmueble']);
+            $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']));
         }else{
             $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = '';
         }
@@ -4873,7 +4873,7 @@ class ReimpresionNuevo
             
             if(isset($elementoPrincipal['Antecedentes']['TipoDeInmueble']) && !is_array($elementoPrincipal['Antecedentes']['TipoDeInmueble'])) {
                 //$tipoDeInmueble = $elementoPrincipal['Antecedentes']['TipoDeInmueble'];
-                $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble($elementoPrincipal['Antecedentes']['TipoDeInmueble']);
+                $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']));
             }else{
                 $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = '';
             }
