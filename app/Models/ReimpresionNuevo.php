@@ -4874,7 +4874,10 @@ class ReimpresionNuevo
             $infoReimpresion['Sociedad_Participa']['Objeto_Avaluo'] = $arrFexava['objeto'];
             $infoReimpresion['Sociedad_Participa']['Proposito_Avaluo'] = $arrFexava['proposito'];
             
-            if(isset($elementoPrincipal['Antecedentes']['TipoDeInmueble']) && !is_array($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble'])) {
+            if(isset($elementoPrincipal['Antecedentes']['TipoDeInmueble']) && !is_array($elementoPrincipal['Antecedentes']['TipoDeInmueble'])) {
+                //$tipoDeInmueble = $elementoPrincipal['Antecedentes']['TipoDeInmueble'];
+                $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']));
+            }elseif(isset($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']) && !is_array($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble'])) {
                 //$tipoDeInmueble = $elementoPrincipal['Antecedentes']['TipoDeInmueble'];
                 $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']));
             }else{
