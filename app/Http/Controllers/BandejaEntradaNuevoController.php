@@ -224,7 +224,7 @@ class BandejaEntradaNuevoController extends Controller
             $avaluos = $table->paginate(15);
             return response()->json($avaluos, 200);
         } catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error en el servidor'], 500);
         }
@@ -416,7 +416,7 @@ class BandejaEntradaNuevoController extends Controller
             //print_r($avaluos); exit();
             return response()->json($avaluos, 200);
         } catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error en el servidor'], 500);
         }
@@ -450,7 +450,7 @@ class BandejaEntradaNuevoController extends Controller
             DB::reconnect();
             return response()->json(['mensaje' => 'Estado Actualizado'], 200);
         } catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error en el servidor'], 500);
         }
@@ -514,7 +514,7 @@ class BandejaEntradaNuevoController extends Controller
                 return response()->json(['mensaje' => 'No se encontraron registros'], 500);
             }
         } catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error en el servidor'], 500);
         }
@@ -616,7 +616,7 @@ class BandejaEntradaNuevoController extends Controller
                 return ['mensaje' => 'No existen resultados para la búsqueda ingresada'];
             }
         } catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error al obtener notario'], 500);
         }    
@@ -655,7 +655,7 @@ class BandejaEntradaNuevoController extends Controller
             $infoNotario = convierte_a_arreglo(DB::select("SELECT * FROM FEXAVA_NOTARIOS_V WHERE IDPERSONA = $id_persona_notario")); //print_r($infoNotario);
             return response()->json(['mensaje' => 'Notario Actualizado a N° '.$infoNotario[0]['numero'].' '.$infoNotario[0]['apellidopaterno'].' '.$infoNotario[0]['apellidomaterno'].' '.$infoNotario[0]['nombre']], 200);
         } catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error en el servidor'], 500);
         }
@@ -749,7 +749,7 @@ class BandejaEntradaNuevoController extends Controller
     
            return $nombreComprimido;
         } catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error al comprimir archivo'], 500);
         }
@@ -767,7 +767,7 @@ class BandejaEntradaNuevoController extends Controller
     
            return $nombreComprimido;
         } catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
             return response()->json(['mensaje' => 'Error al comprimir archivo'], 500);
         }
@@ -1195,7 +1195,7 @@ class BandejaEntradaNuevoController extends Controller
                         $arrn[] = $elementoError;
                     }
                 }
-                //Log::info($arrn);
+                //Log::info($this->reordenaErrores($arrn));
                 return response()->json(['mensaje' => $this->reordenaErrores($arrn)], 500);
             }
             $this->guardaAvance($nombreArchivo,55);
