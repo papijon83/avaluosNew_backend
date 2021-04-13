@@ -2197,9 +2197,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             $mensajesf[] =  "f.9.2.n.9 - El cálculo de ImporteInstalacionEspecial es erróneo ";
                         }
 
-                        if(isset($f_9_2_n_9) && isset($elemento['PorcentajeIndivisoInstalacionEspecial'])){
-                            $f_9_2_n_10 = $elemento['PorcentajeIndivisoInstalacionEspecial'];
-                            $para_f_14 = $para_f_14 + ($f_9_2_n_9 * $f_9_2_n_10);
+                        if(isset($f_9_2_n_9) && isset($elemento['PorcentajeIndivisoEspecial'])){
+                            $f_9_2_n_10 = $elemento['PorcentajeIndivisoEspecial'];
+                            $para_f_14 = $para_f_14 + ($f_9_2_n_9 * $f_9_2_n_10); //error_log("1.- ".$para_f_14);
                         }
 
                     }else{
@@ -2218,9 +2218,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                                 $mensajesf[] =  "f.9.2.n.9- El cálculo de ImporteInstalacionEspecial es erróneo ";
                             }
 
-                            if(isset($f_9_2_n_9) && isset($data[0]['InstalacionesEspeciales']['Comunes']['PorcentajeIndivisoInstalacionEspecial'])){
-                                $f_9_2_n_10 = $data[0]['InstalacionesEspeciales']['Comunes']['PorcentajeIndivisoInstalacionEspecial'];
-                                $para_f_14 = $para_f_14 + ($f_9_2_n_9 * $f_9_2_n_10);
+                            if(isset($f_9_2_n_9) && isset($data[0]['InstalacionesEspeciales']['Comunes']['PorcentajeIndivisoEspecial'])){
+                                $f_9_2_n_10 = $data[0]['InstalacionesEspeciales']['Comunes']['PorcentajeIndivisoEspecial'];
+                                $para_f_14 = $para_f_14 + ($f_9_2_n_9 * $f_9_2_n_10); //error_log("2.- ".$para_f_14);
                             }
                         }
                     }
@@ -2334,9 +2334,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             $mensajesf[] =  "f.10.2.n.9 - El cálculo de ImporteElementoAccesorio es erróneo ";
                         }
 
-                        if(isset($f_10_2_n_9) && isset($elemento['PorcentajeIndivisoElementoAccesorio'])){
-                            $f_10_2_n_10 = $elemento['PorcentajeIndivisoElementoAccesorio'];
-                            $para_f_14 = $para_f_14 + ($f_10_2_n_9 * $f_10_2_n_10);
+                        if(isset($f_10_2_n_9) && isset($elemento['PorcentajeIndivisoAccesorio'])){
+                            $f_10_2_n_10 = $elemento['PorcentajeIndivisoAccesorio'];
+                            $para_f_14 = $para_f_14 + ($f_10_2_n_9 * $f_10_2_n_10); //error_log("3.- ".$para_f_14);
                         }
 
                     }else{
@@ -2355,9 +2355,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                                 $mensajesf[] =  "f.10.2.n.9 - El cálculo de ImporteElementoAccesorio es erróneo ";
                             }
                            
-                            if(isset($f_10_2_n_9) && isset($data[0]['ElementosAccesorios']['Comunes']['PorcentajeIndivisoElementoAccesorio'])){
-                                $f_10_2_n_10 = $data[0]['ElementosAccesorios']['Comunes']['PorcentajeIndivisoElementoAccesorio'];
-                                $para_f_14 = $para_f_14 + ($f_10_2_n_9 * $f_10_2_n_10);
+                            if(isset($f_10_2_n_9) && isset($data[0]['ElementosAccesorios']['Comunes']['PorcentajeIndivisoAccesorio'])){
+                                $f_10_2_n_10 = $data[0]['ElementosAccesorios']['Comunes']['PorcentajeIndivisoAccesorio'];
+                                $para_f_14 = $para_f_14 + ($f_10_2_n_9 * $f_10_2_n_10); //error_log("4.- ".$para_f_14);
                             }
                         }
                     }
@@ -2498,7 +2498,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
 
                         if(isset($f_11_2_n_9) && isset($elemento['PorcentajeIndivisoObraComplementaria'])){
                             $f_11_2_n_10 = $elemento['PorcentajeIndivisoObraComplementaria'];
-                            $para_f_14 = $para_f_14 + ($f_11_2_n_9 * $f_11_2_n_10);
+                            $para_f_14 = $para_f_14 + ($f_11_2_n_9 * $f_11_2_n_10); //error_log("5.- ".$para_f_14);
                         }
 
                     }else{
@@ -2529,7 +2529,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
 
                             if(isset($f_11_2_n_9) && isset($data[0]['ObrasComplementarias']['Comunes']['PorcentajeIndivisoObraComplementaria'])){
                                 $f_11_2_n_10 = $data[0]['ObrasComplementarias']['Comunes']['PorcentajeIndivisoObraComplementaria'];
-                                $para_f_14 = $para_f_14 + ($f_11_2_n_9 * $f_11_2_n_10);
+                                $para_f_14 = $para_f_14 + ($f_11_2_n_9 * $f_11_2_n_10); //error_log("6.- ".$para_f_14);
                             }
 
                         }
@@ -2630,7 +2630,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
         }
 
         if(isset($data[0]['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'])){
-            $f_15 = $data[0]['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];
+            $f_15 = $data[0]['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];                                   
             $calc_f_15 = $data[0]['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'] * $dataextra[0]['Indiviso'];
             if(truncate($f_15,2) != truncate($calc_f_15,2)){ //echo truncate($f_15,2)." != ".truncate($calc_f_15,2)."\n";
                 $mensajesf[] =  "f.15 - El cálculo de ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas es erróneo ";
