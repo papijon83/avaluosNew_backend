@@ -4493,7 +4493,7 @@ function valida_AvaluoEnfoqueCostosCatastral($data, $elementoPrincipal, $datae23
 
 function valida_AvaluoEnfoqueIngresos($data, $elementoPrincipal){
     if($elementoPrincipal == '//Comercial'){
-        $validacionesk = array('RentaBrutaMensual' => 'nullableDecimalPositivo', 'ProductoLiquidoAnual' => 'nullableDecimalPositivo', 'TasaDeCapitalizacionAplicable' => 'porcentaje_10', 'ImporteEnfoqueDeIngresos' => 'SUB-ImporteEnfoqueDeIngresos');
+        $validacionesk = array('RentaBrutaMensual' => 'nullableDecimalPositivo', 'ProductoLiquidoAnual' => 'nullableDecimalPositivo', 'TasaDeCapitalizacionAplicable' => 'decimalPositivo', 'ImporteEnfoqueDeIngresos' => 'SUB-ImporteEnfoqueDeIngresos');
         $validacionesk2 = array('Vacios' => 'decimalPositivo', 'ImpuestoPredial' => 'decimalPositivo', 'ServicioDeAgua' => 'decimalPositivo', 'ConservacionYMantenimiento' => 'decimalPositivo', 'ServicioEnergiaElectrica' => 'decimalPositivo', 'Administracion' => 'decimalPositivo', 'Seguros' => 'decimalPositivo', 'DepreciacionFiscal' => 'decimalPositivo', 'Otros' => 'decimalPositivo', 'DeduccionesFiscales' => 'decimalPositivo', 'ImpuestoSobreLaRenta' => 'decimalPositivo', 'DeduccionesMensuales' => 'decimalPositivo', 'PorcentajeDeduccionesMensuales' => 'porcentaje_04');
         
     }
