@@ -339,7 +339,7 @@
     <xs:restriction base="DecimalPositivo">
       <xs:totalDigits value="6" />
       <xs:fractionDigits value="4" />
-      <xs:pattern value="[0-9]{2}(\.[0-9]{1,4})?"/>
+      <xs:pattern value="[0-9]{1,2}(\.[0-9]{1,4})?"/>
     </xs:restriction>
   </xs:simpleType>
 
