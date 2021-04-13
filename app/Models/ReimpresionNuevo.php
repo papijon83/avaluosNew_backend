@@ -85,13 +85,15 @@ class ReimpresionNuevo
         $arrInfoSolicitante = array_map("convierte_a_arreglo",$infoSolicitante);
 
         $infoSolicitanteXML = $elementoPrincipal['Antecedentes']['Solicitante'];
-        //echo "<pre>"; print_r($infoSolicitanteXML); exit();
+        
         if(isset($infoSolicitanteXML['Alcaldia']['ClaveAlcaldia']) && $infoSolicitanteXML['Alcaldia']['ClaveAlcaldia'] != '018' && $infoSolicitanteXML['Alcaldia']['ClaveAlcaldia'] != '18'){
             $arrInfoSolicitante[0]['nombredelegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($infoSolicitanteXML['Alcaldia']['ClaveAlcaldia']);
         }
         if(isset($infoSolicitanteXML['Alcaldia']['ClaveAlcaldia']) && ($infoSolicitanteXML['Alcaldia']['ClaveAlcaldia'] == '018' || $infoSolicitanteXML['Alcaldia']['ClaveAlcaldia'] == '18')){
             $arrInfoSolicitante[0]['nombredelegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($infoSolicitanteXML['Alcaldia']['Otros']);
-        }     
+        } 
+        
+        Log::info($arrInfoSolicitante);
         
         $arrInfoAcuse['solicitante'] = $arrInfoSolicitante[0];
 
