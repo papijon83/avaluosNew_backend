@@ -83,8 +83,16 @@ class ReimpresionNuevo
         $arrInfoAcuse['propietario'] = $arrInfoPropietario[0];
         $infoSolicitante = DB::select("SELECT * FROM FEXAVA_DATOSPERSONAS WHERE IDAVALUO = $idavaluo AND CODTIPOFUNCION = 'S'");
         $arrInfoSolicitante = array_map("convierte_a_arreglo",$infoSolicitante);
-        $arrInfoSolicitante[0]['nombredelegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrInfoSolicitante[0]['iddelegacion']);
-        //echo "<pre>"; print_r($arrInfoSolicitante[0]); exit();
+
+        $infoSolicitanteXML = $elementoPrincipal['Antecedentes']['Solicitante'];
+        //echo "<pre>"; print_r($infoSolicitanteXML); exit();
+        if(isset($infoSolicitanteXML['Alcaldia']['ClaveAlcaldia']) && $infoSolicitanteXML['Alcaldia']['ClaveAlcaldia'] != '018' && $infoSolicitanteXML['Alcaldia']['ClaveAlcaldia'] != '18'){
+            $arrInfoSolicitante[0]['nombredelegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($infoSolicitanteXML['Alcaldia']['ClaveAlcaldia']);
+        }
+        if(isset($infoSolicitanteXML['Alcaldia']['ClaveAlcaldia']) && ($infoSolicitanteXML['Alcaldia']['ClaveAlcaldia'] == '018' || $infoSolicitanteXML['Alcaldia']['ClaveAlcaldia'] == '18')){
+            $arrInfoSolicitante[0]['nombredelegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($infoSolicitanteXML['Alcaldia']['Otros']);
+        }     
+        
         $arrInfoAcuse['solicitante'] = $arrInfoSolicitante[0];
 
         $arrInfoAcuse['Ubicacion_Inmueble'] = array();
