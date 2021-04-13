@@ -2632,7 +2632,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
         if(isset($data[0]['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'])){
             $f_15 = $data[0]['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];                                   
             $calc_f_15 = $data[0]['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'] * $dataextra[0]['Indiviso'];
-            if(truncate($f_15,2) != truncate($calc_f_15,2)){ //echo truncate($f_15,2)." != ".truncate($calc_f_15,2)."\n";
+            if(truncate($f_15,2) != truncate($calc_f_15,2)){ //error_log(truncate($f_15,2)." != ".truncate($calc_f_15,2));
                 $mensajesf[] =  "f.15 - El cálculo de ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas es erróneo ";
             }
         }
@@ -2704,7 +2704,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
 
         $k_5 = $data[0]['ImporteEnfoqueDeIngresos'];
         $k_4 = $data[0]['TasaDeCapitalizacionAplicable'];
-        $calc_k_5 = $k_3 / $k_4;
+        $calc_k_5 = $k_3 / ($k_4 / 100);
 
         if(truncate($k_5,2) != truncate($calc_k_5,2)){ //echo truncate($k_5,2)." != ".truncate($calc_k_5,2)."\n";
             $mensajesk[] = "k.5 - El cálculo de ImporteEnfoqueDeIngresos es erróneo ";
