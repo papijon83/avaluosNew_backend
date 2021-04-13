@@ -2124,9 +2124,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             $f_9_1_n_8 = $elemento['FactorDeEdadInstalacionEspecial'];
                             $calc_f_9_1_n_8 = 1-($elemento['EdadInstalacionEspecial'] / $elemento['VidaUtilTotalInstalacionEspecial']);
 
-                            if(truncate($calc_f_9_1_n_8,2) != truncate($f_9_1_n_8,2)){
+                            /*if(truncate($calc_f_9_1_n_8,2) != truncate($f_9_1_n_8,2)){
                                 $mensajesf[] =  "f.9.1.n.8 - El cálculo de FactorDeEdadInstalacionEspecial es erróneo ";
-                            }
+                            }*/
                         }
                         
                         if(isset($f_9_1_n_8)){
@@ -2150,9 +2150,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             if(isset($data[0]['InstalacionesEspeciales']['Privativas']['EdadInstalacionEspecial']) && isset($data[0]['InstalacionesEspeciales']['Privativas']['VidaUtilTotalInstalacionEspecial'])){
                                 $f_9_1_n_8 = $data[0]['InstalacionesEspeciales']['Privativas']['FactorDeEdadInstalacionEspecial'];
                                 $calc_f_9_1_n_8 = 1-($data[0]['InstalacionesEspeciales']['Privativas']['EdadInstalacionEspecial'] / $data[0]['InstalacionesEspeciales']['Privativas']['VidaUtilTotalInstalacionEspecial']);
-                                if(truncate($calc_f_9_1_n_8,2) != truncate($f_9_1_n_8,2)){
+                                /*if(truncate($calc_f_9_1_n_8,2) != truncate($f_9_1_n_8,2)){
                                     $mensajesf[] =  "f.9.1.n.8 - El cálculo de FactorDeEdadInstalacionEspecial es erróneo ";
-                                }
+                                }*/
                             }
                             
                             if(isset($f_9_1_n_8)){
@@ -2261,9 +2261,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                         $f_10_1_n_8 = $elemento['FactorDeEdadElementoAccesorio'];
                         $calc_f_10_1_n_8 = 1-($elemento['EdadElementoAccesorio'] / $elemento['VidaUtilTotalElementoAccesorio']);
 
-                        if((truncate($calc_f_10_1_n_8,2) != truncate($f_10_1_n_8,2)) || $f_10_1_n_8 < 0.6){ //echo truncate($calc_f_10_1_n_8,2)." != ".truncate($f_10_1_n_8,2)."\n";
+                        /*if((truncate($calc_f_10_1_n_8,2) != truncate($f_10_1_n_8,2)) || $f_10_1_n_8 < 0.6){ //echo truncate($calc_f_10_1_n_8,2)." != ".truncate($f_10_1_n_8,2)."\n";
                             $mensajesf[] =  "f.10.1.n.8 - El cálculo de FactorDeEdadElementoAccesorio es erróneo ";
-                        }
+                        }*/
 
                         $f_10_1_n_9 = $elemento['ImporteElementoAccesorio'];
                         $calc_f_10_1_n_9 = $elemento['CantidadElementoAccesorio'] * $elemento['CostoUnitarioElementoAccesorio'] * $f_10_1_n_8;
@@ -2287,9 +2287,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                                 }else{
                                     $calc_f_10_1_n_8 = 1-($data[0]['ElementosAccesorios']['Privativas']['EdadElementoAccesorio'] / $data[0]['ElementosAccesorios']['Privativas']['VidaUtilTotalElementoAccesorio']);
                                 }                                
-                                if((truncate($calc_f_10_1_n_8,2) != truncate($f_10_1_n_8,2)) || $f_10_1_n_8 < 0.6){
+                                /*if((truncate($calc_f_10_1_n_8,2) != truncate($f_10_1_n_8,2)) || $f_10_1_n_8 < 0.6){
                                     $mensajesf[] =  "f.10.1.n.8 - El cálculo de FactorDeEdadElementoAccesorio es erróneo ";
-                                }
+                                }*/
                             }                            
                             
                             if(isset($data[0]['ElementosAccesorios']['Privativas']['ImporteElementoAccesorio'])){
@@ -2402,13 +2402,13 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             $calc_f_11_1_n_8 = (0.1 * $f_11_1_n_6 + 0.9 * ($f_11_1_n_6 - $f_11_1_n_5)) / $f_11_1_n_6;
 
                             if(in_array($elemento['ClaveObraComplementaria'],$arrUno)){
-                                if(truncate($f_11_1_n_8,2) != truncate(1,2)){
+                                /*if(truncate($f_11_1_n_8,2) != truncate(1,2)){
                                     $mensajesf[] =  "f.11.1.N.8 - El cálculo de FactorDeEdadObraComplementaria es erróneo ";
-                                }
+                                } */
                             }else{
-                                if(truncate($f_11_1_n_8,2) != truncate($calc_f_11_1_n_8,2)){
+                                /*if(truncate($f_11_1_n_8,2) != truncate($calc_f_11_1_n_8,2)){
                                     $mensajesf[] =  "f.11.1.N.8 - El cálculo de FactorDeEdadObraComplementaria es erróneo ";
-                                }
+                                }*/
                             }
                         }
                         
@@ -2436,13 +2436,13 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                                 $calc_f_11_1_n_8 = (0.1 * $f_11_1_n_6 + 0.9 * ($f_11_1_n_6 - $f_11_1_n_5)) / $f_11_1_n_6;
 
                                 if(in_array($data[0]['ObrasComplementarias']['Privativas']['ClaveObraComplementaria'],$arrUno)){
-                                    if(truncate($f_11_1_n_8,2) != truncate(1,2)){
+                                    /* if(truncate($f_11_1_n_8,2) != truncate(1,2)){
                                         $mensajesf[] =  "f.11.1.N.8 - El cálculo de FactorDeEdadObraComplementaria es erróneo ";
-                                    }
+                                    } */
                                 }else{
-                                    if(truncate($f_11_1_n_8,2) != truncate($calc_f_11_1_n_8,2)){
+                                    /* if(truncate($f_11_1_n_8,2) != truncate($calc_f_11_1_n_8,2)){
                                         $mensajesf[] =  "f.11.1.N.8 - El cálculo de FactorDeEdadObraComplementaria es erróneo ";
-                                    }
+                                    } */
                                 }
                             }
                             
@@ -2852,7 +2852,7 @@ function valida_AvaluoCaracteristicasUrbanas($data){
                     'UsoDelSuelo' => 'c.6.1', 'AreaLibreObligatoria' => 'c.6.2', 'NumeroMaximoDeNivelesAConstruir' => 'c.6.3', 'CoeficienteDeUsoDelSuelo' => 'c.6.4', 'ViasDeAccesoEImportancia' => 'c.7',
                     'RedDeDistribucionAguaPotable' => 'c.8.1', 'RedDeRecoleccionDeAguasResiduales' => 'c.8.2', 'RedDeDrenajeDeAguasPluvialesEnLaCalle' => 'c.8.3', 'RedDeDrenajeDeAguasPluvialesEnLaZona' => 'c.8.4', 'SistemaMixto' => 'c.8.5', 'SuministroElectrico' => 'c.8.7', 'AcometidaAlInmueble' => 'c.8.8', 'AlumbradoPublico' => 'c.8.9', 'Vialidades' => 'c.8.10', 'Banquetas' => 'c.8.11', 'Guarniciones' => 'c.8.12', 'NivelDeInfraestructuraEnLaZona' => 'c.8.13', 'GasNatural' => 'c.8.14', 'TelefonosSuministro' => 'c.8.15', 'AcometidaAlInmuebleTel' => 'c.8.16', 'SennalizacionDeVias' => 'c.8.17', 'NomenclaturaDeCalles' => 'c.8.18', 'DistanciaTranporteUrbano' => 'c.8.19', 'FrecuenciaTransporteUrbano' => 'c.8.20', 'DistanciaTransporteSuburbano' => 'c.8.21', 'FrecuenciaTransporteSuburbano' => 'c.8.22', 'Vigilancia' => 'c.8.23', 'RecoleccionDeBasura' => 'c.8.24', 'Templo' => 'c.8.25', 'Mercados' => 'c.8.26', 'PlazasPublicas' => 'c.8.27', 'ParquesYJardines' => 'c.8.28', 'Escuelas' => 'c.8.29', 'Hospitales' => 'c.8.30', 'Bancos' => 'c.8.31', 'EstacionDeTransporte' => 'c.8.32', 'NivelDeEquipamientoUrbano' => 'c.8.33');        
 
-    $validacionesc = array('ContaminacionAmbientalEnLaZona' => 'string_250','ClasificacionDeLaZona' => 'catClasificacionZona','IndiceDeSaturacionDeLaZona' => 'porcentaje_10','ClaseGeneralDeInmueblesDeLaZona' => 'catClasesConstruccion', 'DensidadDePoblacion' => 'catDensidadPoblacion', 'NivelSocioeconomicoDeLaZona' => 'catNivelSocioeconomico');
+    $validacionesc = array('ContaminacionAmbientalEnLaZona' => 'string_250','ClasificacionDeLaZona' => 'catClasificacionZona','IndiceDeSaturacionDeLaZona' => 'decimalPositivo','ClaseGeneralDeInmueblesDeLaZona' => 'catClasesConstruccion', 'DensidadDePoblacion' => 'catDensidadPoblacion', 'NivelSocioeconomicoDeLaZona' => 'catNivelSocioeconomico');
     $validacionesc6 = array('UsoDelSuelo' => 'nonEmptyString_50', 'AreaLibreObligatoria' => 'decimalPositivo_52', 'NumeroMaximoDeNivelesAConstruir' => 'decimalPositivo_30', 'CoeficienteDeUsoDelSuelo' => 'decimalPositivo');
     $validacionesc7 = array('ViasDeAccesoEImportancia' => 'nonEmptyString');
     $validacionesc8 = array('RedDeDistribucionAguaPotable' => 'catAguaPotable', 'RedDeRecoleccionDeAguasResiduales' => 'catDrenaje', 'RedDeDrenajeDeAguasPluvialesEnLaCalle' => 'catDrenajePluvial', 'RedDeDrenajeDeAguasPluvialesEnLaZona' => 'catDrenajePluvial', 'SistemaMixto' => 'catDrenaje', 'SuministroElectrico' => 'catSuministroElectrico', 'AcometidaAlInmueble' => 'catAcometidaInmueble', 'AlumbradoPublico' => 'catAlumbradoPublico', 'Vialidades' => 'catVialidades', 'Banquetas' => 'catBanquetas', 'Guarniciones' => 'catGuarniciones', 'NivelDeInfraestructuraEnLaZona' => 'porcentaje_04', 'GasNatural' => 'catGasNatural', 'TelefonosSuministro' => 'catSuministroTelefonico', 'AcometidaAlInmuebleTel' => 'catAcometidaInmueble', 'SennalizacionDeVias' => 'catSenalizacionVias', 'NomenclaturaDeCalles' => 'catNomenclaturaCalles', 'DistanciaTranporteUrbano' => 'decimalPositivo', 'FrecuenciaTransporteUrbano' => 'decimalPositivo', 'DistanciaTransporteSuburbano' => 'decimalPositivo', 'FrecuenciaTransporteSuburbano' => 'decimalPositivo', 'Vigilancia' => 'catVigilanciaZona', 'RecoleccionDeBasura' => 'catRecoleccionBasura', 'Templo' => 'boolean', 'Mercados' => 'boolean', 'PlazasPublicas' => 'boolean', 'ParquesYJardines' => 'boolean', 'Escuelas' => 'boolean', 'Hospitales' => 'boolean', 'Bancos' => 'boolean', 'EstacionDeTransporte' => 'boolean', 'NivelDeEquipamientoUrbano' => 'decimal');
