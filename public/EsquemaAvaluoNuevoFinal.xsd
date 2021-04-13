@@ -337,9 +337,9 @@
   <!-- DecimalPositivo24: Decimales positivos con 1 en la parte entera (0,1) y 4 decimales (No admite cadenas texto vacÃ­as) -->
   <xs:simpleType name="DecimalPositivo24">
     <xs:restriction base="DecimalPositivo">
-      <xs:totalDigits value="5" />
+      <xs:totalDigits value="6" />
       <xs:fractionDigits value="4" />
-      <xs:pattern value="[0-9]{1}(\.[0-9]{1,4})?"/>
+      <xs:pattern value="[0-9]{2}(\.[0-9]{1,4})?"/>
     </xs:restriction>
   </xs:simpleType>
 
