@@ -116,7 +116,7 @@
             <br>
             <strong>Colonia</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['propietario']['nombrecolonia']}}</span>
             <br>
-            <strong>Delegación o Municipio</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['propietario']['nombredelegacion']}}</span><span class="col-md-1"></span>
+            <strong>Alcaldía o Municipio</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['propietario']['nombredelegacion']}}</span><span class="col-md-1"></span>
             <strong>Código Postal</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['propietario']['codigopostal']}}</span>
             <br>
             <strong>Entidad Federativa</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['propietario']['entidad']}}</span><span class="col-md-1"></span>
@@ -132,7 +132,7 @@
             <strong>No. Interior</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['inmueble']['numerointerior']}}</span>
             <br>
             <strong>Colonia</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['inmueble']['nombrecolonia']}}</span><span class="col-md-1"></span>
-            <strong>Delegación</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['inmueble']['nombredelegacion']}}</span><span class="col-md-1"></span>
+            <strong>Alcaldía</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['inmueble']['nombredelegacion']}}</span><span class="col-md-1"></span>
             <strong>Código Postal</strong><span class="col-md-1"></span><span class="gris">{{$datosPDF['inmueble']['codigopostal']}}</span>
         </div>
         <br>

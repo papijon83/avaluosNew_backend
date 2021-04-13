@@ -83,6 +83,8 @@ class ReimpresionNuevo
         $arrInfoAcuse['propietario'] = $arrInfoPropietario[0];
         $infoSolicitante = DB::select("SELECT * FROM FEXAVA_DATOSPERSONAS WHERE IDAVALUO = $idavaluo AND CODTIPOFUNCION = 'S'");
         $arrInfoSolicitante = array_map("convierte_a_arreglo",$infoSolicitante);
+        $arrInfoSolicitante[0]['nombredelegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($arrInfoSolicitante[0]['iddelegacion']);
+        //echo "<pre>"; print_r($arrInfoSolicitante[0]); exit();
         $arrInfoAcuse['solicitante'] = $arrInfoSolicitante[0];
 
         $arrInfoAcuse['Ubicacion_Inmueble'] = array();
