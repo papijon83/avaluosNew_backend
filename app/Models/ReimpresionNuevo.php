@@ -81,7 +81,7 @@ class ReimpresionNuevo
         $infoPropietario = DB::select("SELECT * FROM FEXAVA_DATOSPERSONAS WHERE IDAVALUO = $idavaluo AND CODTIPOFUNCION = 'P'");
         $arrInfoPropietario = array_map("convierte_a_arreglo",$infoPropietario);
 
-        $infoPropietarioXML = $elementoPrincipal['Antecedentes']['Solicitante'];
+        $infoPropietarioXML = $elementoPrincipal['Antecedentes']['Propietario'];
         
         if(isset($infoPropietarioXML['Alcaldia']['ClaveAlcaldia']) && $infoPropietarioXML['Alcaldia']['ClaveAlcaldia'] != '018' && $infoPropietarioXML['Alcaldia']['ClaveAlcaldia'] != '18'){
             $arrInfoPropietario[0]['nombredelegacion'] = $this->modelDocumentos->ObtenerNombreDelegacionPorClave($infoPropietarioXML['Alcaldia']['ClaveAlcaldia']);
