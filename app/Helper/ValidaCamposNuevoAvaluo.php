@@ -3267,11 +3267,11 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
     
                 if($elementoPrincipal != '//Comercial' && trim($elementoPrin['Edad']) == ''){
                     $errores[] = $claveUso == 'W' ? "e.2.1.n.7 Campo obligatorio para el uso baldio" : "e.2.1.n.7 Campo obligatorio";
-                }/*else{
+                }else{
                     if($elementoPrincipal == '//Comercial' && trim($elementoPrin['Edad']) != '' && !is_numeric($elementoPrin['Edad'])){
                         $errores[] = "e.2.1.n.7 El dato no es correcto, se requiere asignar un valor.";
                     } 
-                }*/
+                }
     
                 if($elementoPrincipal != '//Comercial' && trim($elementoPrin['VidaUtilTotalDelTipo']) == ''){
                     if($claveUso != 'W'){
