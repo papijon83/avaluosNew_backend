@@ -2975,7 +2975,9 @@ class ReimpresionNuevo
                     $infoReimpresion['Construcciones_Privativas'][$control]['Edad'] = $construccionPrivativa['Edad'];
                     }
                 }
-                $infoReimpresion['Construcciones_Privativas'][$control]['Vida_Util_Total_Tipo'] = $construccionPrivativa['VidaUtilTotalDelTipo'];
+                if(isset($construccionPrivativa['VidaUtilTotalDelTipo']) && !is_array($construccionPrivativa['VidaUtilTotalDelTipo'])){
+                    $infoReimpresion['Construcciones_Privativas'][$control]['Vida_Util_Total_Tipo'] = $construccionPrivativa['VidaUtilTotalDelTipo'];
+                }                
                 if(isset($construccionPrivativa['VidaMinimaRemanente']) && !is_array($construccionPrivativa['VidaMinimaRemanente'])){
                     $infoReimpresion['Construcciones_Privativas'][$control]['Vida_Minima_Remanente'] = $construccionPrivativa['VidaMinimaRemanente'];
                 }                
