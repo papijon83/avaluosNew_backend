@@ -1668,7 +1668,7 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
         foreach($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas'] as $idElemento => $elemento){
             if(isset($elemento['@attributes']['id']) && $elemento['@attributes']['id'] == 'e.2.1'){
                 $e_2_1_n_9 = $elemento['VidaMinimaRemanente'];
-                $e_2_1_n_8 = $elemento['VidaUtilTotalDelTipo'];
+                //$e_2_1_n_8 = $elemento['VidaUtilTotalDelTipo'];
                 /*$e_2_1_n_7 = $elemento['Edad'];
                 $calc_e_2_1_n_9 = $e_2_1_n_8 - $e_2_1_n_7;
                 if(truncate($e_2_1_n_9,2) != truncate($calc_e_2_1_n_9,2)){ //echo "COIMPARACION ".truncate($e_2_1_n_9,2)." != ".truncate($calc_e_2_1_n_9,2)."\n";
@@ -1749,9 +1749,9 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
             }else{
                 if(isset($elemento['id']) && $elemento['id'] == 'e.2.1'){
                     $e_2_1_n_9 = $data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['VidaMinimaRemanente'];
-                    $e_2_1_n_8 = $data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['VidaUtilTotalDelTipo'];
+                    //$e_2_1_n_8 = $data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['VidaUtilTotalDelTipo'];
                     $e_2_1_n_7 = $data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['Edad'];
-                    $calc_e_2_1_n_9 = $e_2_1_n_8 - $e_2_1_n_7; 
+                    //$calc_e_2_1_n_9 = $e_2_1_n_8 - $e_2_1_n_7; 
                     /*if(truncate($e_2_1_n_9,2) != truncate($calc_e_2_1_n_9,2)){ //echo "OPERACION ".truncate($e_2_1_n_9,2)." != ".truncate($calc_e_2_1_n_9,2)."\n";
                         $mensajese[] =  "e.2.1.n.9 - El cálculo de VidaUtilRemanente es erróneo ";
                     }*/
