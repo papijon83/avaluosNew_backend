@@ -963,7 +963,7 @@
   <xs:complexType name="SUB-VidaUtilTipo">
     <xs:simpleContent>
       <xs:extension base="NullableDecimalPositivo">
-        <xs:attribute fixed="e.2.1.n.8" name="id" type="xs:string" use="required"/>
+        <xs:attribute fixed="e.2.1.n.8" name="id" type="xs:string"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -4737,7 +4737,7 @@
               <xs:complexType>
                 <xs:simpleContent>
                   <xs:extension base="NullableDecimalPositivo">
-                    <xs:attribute fixed="e.2.1.n.8" name="id" type="xs:string" use="required"/>
+                    <xs:attribute fixed="e.2.1.n.8" name="id" type="xs:string" />
                   </xs:extension>
                 </xs:simpleContent>
               </xs:complexType>
