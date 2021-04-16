@@ -4373,7 +4373,7 @@
                   <xs:element name="ClaveClase" type="SUB-ClaveClase" />
                   <xs:element name="Edad" type="SUB-Edad"/>
                   <xs:element name="VidaUtilTotalDelTipo" type ="SUB-VidaUtilTipo"/>
-                  <xs:element name="VidaMinimaRemanente" type="SUB-VidaUtilRemanente"/>
+                  <!-- <xs:element name="VidaMinimaRemanente" type="SUB-VidaUtilRemanente"/> -->
                   <!-- <xs:element name="ClaveConservacion" type="SUB-ClaveConservacion"/> -->
                   <xs:element name="Superficie" type="SUB-Superficie" />
                   <xs:element name="CostoUnitarioDeReposicionNuevo" type="SUB-ValorunitariodereposicionNuevo"/>
@@ -4401,7 +4401,7 @@
                   <xs:element name="PuntajeDeClasificacion" type="SUB-PuntajeDeClasificacionComunes"/>
                   <xs:element name="ClaveClase" type="SUB-ClaveClaseComunes" />
                   <xs:element name="Edad" type="SUB-EdadComunes"/>
-                  <xs:element name="VidaUtilTotalDelTipo" type ="SUB-VidaUtilTipoComunes"/>
+                  <!-- <xs:element name="VidaUtilTotalDelTipo" type ="SUB-VidaUtilTipoComunes"/> -->
                   <xs:element name="VidaMinimaRemanente" type="SUB-VidaUtilRemanenteComunes"/>
                   <!-- <xs:element name="ClaveConservacion" type="SUB-ClaveConservacionComunes"/> -->
                   <xs:element name="Superficie" type="SUB-SuperficieComunes"/>
