@@ -2657,7 +2657,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                     }else{
                         $calc_h_1_1_n_17 = 1/($elemento['Fzo'] * $elemento['Fub'] * $elemento['FFr'] * $elemento['Ffo'] * $elemento['Fsu']);
                     }*/
-                    $calc_h_1_1_n_17 = 1/($elemento['Factor1']['Valor'] * $elemento['Factor2']['Valor'] * $elemento['Factor3']['Valor'] * $elemento['Factor4']['Valor'] * $elemento['Factor5']['Valor']);
+                    $calc_h_1_1_n_17 = 1/(floatval($elemento['Factor1']['Valor']) * floatval($elemento['Factor2']['Valor']) * floatval($elemento['Factor3']['Valor']) * floatval($elemento['Factor4']['Valor']) * floatval($elemento['Factor5']['Valor']));
                     if(truncate($h_1_1_n_17,2) != truncate($calc_h_1_1_n_17,2)){ error_log(truncate($h_1_1_n_17,2)." != ".truncate($calc_h_1_1_n_17,2));
                         return  "h.1.1.n.17 - El cálculo de Fre es erróneo ";
                     }
