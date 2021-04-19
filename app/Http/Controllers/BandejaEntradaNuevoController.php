@@ -738,6 +738,8 @@ class BandejaEntradaNuevoController extends Controller
             if ($archivo) {
                 $nombreArchivo = $archivo->getClientOriginalName(); // OK WORK!
                 $nombreArchivo = str_replace(' ','_',$nombreArchivo);
+                $nombreArchivo = str_replace('(','',$nombreArchivo);
+                $nombreArchivo = str_replace(')','',$nombreArchivo);
                 $rutaArchivos = getcwd();
             }
             
@@ -760,7 +762,9 @@ class BandejaEntradaNuevoController extends Controller
         try{    
             
             $ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-    
+            
+            $nombreArchivo = str_replace('(','',$nombreArchivo);
+            $nombreArchivo = str_replace(')','',$nombreArchivo);
             $nombreComprimido = $nombreArchivo.".7z";
             
             $xmlComprimido = shell_exec("7z a $nombreComprimido $archivo");
@@ -1062,7 +1066,7 @@ class BandejaEntradaNuevoController extends Controller
                             $manzana.'-'.
                             $lote.'-'.
                             $localidad;
-                $nombreXMLAvaluo = $this->crearNombreDocumentoAv($cuentaCat,$elementoPrincipal);
+                $nombreXMLAvaluo = $this->crearNombreDocumentoAv($cuentaCat,$elementoPrincipal);                
                 $descripcionXMLAvaluo = $this->crearDescripcionDocumentoAv($cuentaCat);
                 if($elementoPrincipal == "//Catastral"){
                     $idDocumentoDigital = $this->modelDocumentos->tran_InsertAvaluo($descripcionXMLAvaluo,2,$fechaAvaluo,$idUsuario);

@@ -2632,7 +2632,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
         if(isset($data[0]['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'])){
             $f_15 = $data[0]['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'];                                   
             $calc_f_15 = $data[0]['SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas'] * $dataextra[0]['Indiviso'];
-            if(truncate($f_15,2) != truncate($calc_f_15,2)){ //error_log(truncate($f_15,2)." != ".truncate($calc_f_15,2));
+            if(truncate($f_15,2) != truncate($calc_f_15,2)){ error_log(truncate($f_15,2)." != ".truncate($calc_f_15,2));
                 $mensajesf[] =  "f.15 - El cálculo de ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas es erróneo ";
             }
         }

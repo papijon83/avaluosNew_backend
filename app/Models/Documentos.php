@@ -163,7 +163,7 @@ class Documentos
         $idficherodoc = 0;
         $rutaArchivos = getcwd();
         $nombreDes = $binarioDatos;
-
+        error_log($rutaArchivos."/".$nombreDes);
         $myfile = fopen($rutaArchivos."/".$nombreDes, "r");
         $binarioDatos = fread($myfile, filesize($rutaArchivos."/".$nombreDes));        
         fclose($myfile);  
