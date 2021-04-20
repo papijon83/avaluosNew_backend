@@ -2027,11 +2027,13 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
             $d_6 = $dataextrados[0]['Indiviso'];
             if($existe_e_2_8 == true){
                 $calc_e_2_8 = $b_6 == 2 ? $para_e_2_8 : $e_2_7 * $d_6;
+
+                if(truncate($calc_e_2_8,2) != truncate($e_2_8,2)){//echo "OPERACION ".truncate($calc_e_2_8,2)." != ".truncate($e_2_8,2)."\n";
+                    $mensajese[] =  "e.2.8 - El cálculo de ValorTotalDeLasConstruccionesComunesProIndiviso es erróneo ";
+                }
             }    
             //$calc_e_2_8 = $e_2_7 * $d_6;
-            if(truncate($calc_e_2_8,2) != truncate($e_2_8,2)){//echo "OPERACION ".truncate($calc_e_2_8,2)." != ".truncate($e_2_8,2)."\n";
-                $mensajese[] =  "e.2.8 - El cálculo de ValorTotalDeLasConstruccionesComunesProIndiviso es erróneo ";
-            }
+            
         }        
 
         
