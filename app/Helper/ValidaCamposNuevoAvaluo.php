@@ -3194,7 +3194,7 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                 }                
             }
 
-            if($claveUso != 'H' && trim($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['VidaMinimaRemanente']) == ''){                
+            if($elementoPrincipal == '//Comercial' && $claveUso != 'H' && trim($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['VidaMinimaRemanente']) == ''){                
                 $errores[] = $claveUso == 'W' ? "e.2.1.n.9 Campo obligatorio para el uso baldio" : "e.2.1.n.9 Campo obligatorio";                              
             }
 
@@ -3293,7 +3293,7 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                     }                
                 }
     
-                if($claveUso != 'H' && trim($elementoPrin['VidaMinimaRemanente']) == ''){                
+                if($elementoPrincipal == '//Comercial' && $claveUso != 'H' && trim($elementoPrin['VidaMinimaRemanente']) == ''){                
                     $errores[] = $claveUso == 'W' ? "e.2.1.n.9 Campo obligatorio para el uso baldio" : "e.2.1.n.9 Campo obligatorio";                              
                 }
     
@@ -3391,7 +3391,7 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                 }                
             }
 
-            if($claveUso != 'H' && trim($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['VidaMinimaRemanente']) == ''){                
+            if($elementoPrincipal != '//Comercial' && $claveUso != 'H' && trim($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['VidaMinimaRemanente']) == ''){                
                 $errores[] = $claveUso == 'W' ? "e.2.5.n.9 Campo obligatorio para el uso baldio" : "e.2.5.n.9 Campo obligatorio";                              
             }
 
@@ -3480,7 +3480,7 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                     }                
                 }
     
-                if($claveUso != 'H' && trim($elementoPrin['VidaMinimaRemanente']) == ''){                
+                if($elementoPrincipal != '//Comercial' && $claveUso != 'H' && trim($elementoPrin['VidaMinimaRemanente']) == ''){                
                     $errores[] = $claveUso == 'W' ? "e.2.5.n.9 Campo obligatorio para el uso baldio" : "e.2.5.n.9 Campo obligatorio";                              
                 }
     
