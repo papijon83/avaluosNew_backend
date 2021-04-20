@@ -1853,6 +1853,7 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
             $sumatoria_e_2_5_n_11 = 0;
             $sumatoria_e_2_5_n_15 = 0;
             $para_e_2_8 = 0;
+            $existe_e_2_8 = false;
             foreach($data[0]['TiposDeConstruccion']['ConstruccionesComunes'] as $idElemento => $elemento){
                 if(isset($elemento['@attributes']['id']) && $elemento['@attributes']['id'] == 'e.2.5'){
                     $e_2_5_n_9 = $elemento['VidaMinimaRemanente'];
@@ -1896,7 +1897,10 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
                             $e_2_5_n_11 = $elemento['Superficie'];
                             //$calc_e_2_5_n_15 = $e_2_5_n_12 * $e_2_5_n_14 * $e_2_5_n_11;
                             $calc_e_2_5_n_15 = $e_2_5_n_12 * $e_2_5_n_13 * $e_2_5_n_11;
-                            $para_e_2_8 = ($para_e_2_8 + ($e_2_5_n_15 * $e_2_5_n_18));
+                            if(isset($elemento['VidaUtilTotalDelTipo']) && !is_array($elemento['VidaUtilTotalDelTipo'])){
+                                $existe_e_2_8 = true;
+                                $para_e_2_8 = ($para_e_2_8 + ($e_2_5_n_15 * $e_2_5_n_18));
+                            }
 
                         }else{                        
                             $e_2_5_n_15 = $elemento['CostoDeLaFraccionN'];
@@ -1971,7 +1975,11 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
                                 $e_2_5_n_11 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['Superficie'];
                                 //$calc_e_2_5_n_15 = $e_2_5_n_12 * $e_2_5_n_14 * $e_2_5_n_11;
                                 $calc_e_2_5_n_15 = $e_2_5_n_12 * $e_2_5_n_13 * $e_2_5_n_11;
-                                $para_e_2_8 = ($para_e_2_8 + ($e_2_5_n_15 * $e_2_5_n_18));
+                                if(isset($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['VidaUtilTotalDelTipo']) && !is_array($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['VidaUtilTotalDelTipo'])){
+                                    $existe_e_2_8 = true;
+                                    $para_e_2_8 = ($para_e_2_8 + ($e_2_5_n_15 * $e_2_5_n_18));
+                                }
+                                
                             }else{
                                 
                                 $e_2_5_n_15 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['CostoDeLaFraccionN'];
@@ -2017,7 +2025,9 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
 
             $e_2_8 = $data[0]['TiposDeConstruccion']['ValorTotalDeLasConstruccionesComunesProIndiviso'];
             $d_6 = $dataextrados[0]['Indiviso'];
-            $calc_e_2_8 = $b_6 == 2 ? $para_e_2_8 : $e_2_7 * $d_6;
+            if($existe_e_2_8 == true){
+                $calc_e_2_8 = $b_6 == 2 ? $para_e_2_8 : $e_2_7 * $d_6;
+            }    
             //$calc_e_2_8 = $e_2_7 * $d_6;
             if(truncate($calc_e_2_8,2) != truncate($e_2_8,2)){//echo "OPERACION ".truncate($calc_e_2_8,2)." != ".truncate($e_2_8,2)."\n";
                 $mensajese[] =  "e.2.8 - El cálculo de ValorTotalDeLasConstruccionesComunesProIndiviso es erróneo ";
