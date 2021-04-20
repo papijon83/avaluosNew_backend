@@ -3391,7 +3391,7 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                 $errores[] = $claveUso == 'W' ? "e.2.5.n.12 Campo obligatorio para el uso baldio" : "e.2.5.n.12 Campo obligatorio";                              
             }
 
-            if((!isset($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['FactorDeEdad']) || trim($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['FactorDeEdad']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
+            if((!isset($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['IndiceDelCostoRemanente']) || trim($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['IndiceDelCostoRemanente']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
                 $errores[] = $claveUso == 'W' ? "e.2.5.n.13 Campo obligatorio para el uso baldio" : "e.2.5.n.13 Campo obligatorio";                              
             }
 
@@ -3480,7 +3480,7 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                     $errores[] = $claveUso == 'W' ? "e.2.5.n.12 Campo obligatorio para el uso baldio" : "e.2.5.n.12 Campo obligatorio";                              
                 }
     
-                if((!isset($elementoPrin['FactorDeEdad']) || trim($elementoPrin['FactorDeEdad']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
+                if((!isset($elementoPrin['IndiceDelCostoRemanente']) || trim($elementoPrin['IndiceDelCostoRemanente']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
                     $errores[] = $claveUso == 'W' ? "e.2.5.n.13 Campo obligatorio para el uso baldio" : "e.2.5.n.13 Campo obligatorio";                              
                 }
     
