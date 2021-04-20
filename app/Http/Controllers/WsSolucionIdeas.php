@@ -218,11 +218,12 @@ class WsSolucionIdeas extends Controller
         $cuenta_Catast = $request->query('Cuenta_Catast');
         $usuario = $request->query('Usuario');
         $contrasenia = $request->query('Contrasenia');
+        $proceso = $request->query('Proceso');
         
         
-        if(isset($numero_Unico) && trim($numero_Unico) != '' && isset($cuenta_Catast) && isset($usuario) && trim($usuario) != '' && isset($contrasenia) && trim($contrasenia) != '' ){
+        if(isset($numero_Unico) && trim($numero_Unico) != '' && isset($cuenta_Catast) && isset($usuario) && trim($usuario) != '' && isset($contrasenia) && trim($contrasenia) != '' && trim($proceso) != ''){
             if(base64_decode($usuario) == env('USUCONSULTAVA') && base64_decode($contrasenia) == env('PASSCONSULTAVA')){
-                $token = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia]);
+                $token = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia,'Proceso'=>$proceso]);
                 return response()->json($token, 200);
             }else{
                 return response()->json(['mensaje'=>'Usuario o contraseña incorrectos'], 404);
