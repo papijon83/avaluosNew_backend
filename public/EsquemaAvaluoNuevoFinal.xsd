@@ -1114,7 +1114,7 @@
 
   <xs:complexType name="SUB-ValorDeLaFraccionNDescInmuebleComunes">
     <xs:simpleContent>
-      <xs:extension base="NullableDecimalPositivo">
+      <xs:extension base="DecimalPositivo">
         <xs:attribute fixed="e.2.5.n.15" name="id" type="xs:string" use="required"/>
       </xs:extension>
     </xs:simpleContent>
