@@ -4495,7 +4495,7 @@
                   <xs:element name="VidaUtilTotalDelTipo" type ="SUB-VidaUtilTipo"/>
                   <xs:element name="VidaMinimaRemanente" type="SUB-VidaUtilRemanente"/>
                   <xs:element name="ClaveConservacion" type="SUB-ClaveConservacion"/>
-                  <xs:element name="Superficie" type="SUB-Superficie" />
+                  <!-- <xs:element name="Superficie" type="SUB-Superficie" /> -->
                   <xs:element name="CostoDeLaFraccionN" type="SUB-ValorDeLaFraccionNDescInmueble"/>
                   <xs:element name="ValorUnitarioCatastral" type="SUB-ValorUnitarioCatastral"/>
                   <xs:element name="DepreciacionPorEdad" type="SUB-DepreciacionPorEdad" />
