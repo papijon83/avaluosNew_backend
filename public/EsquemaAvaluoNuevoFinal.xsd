@@ -4522,9 +4522,9 @@
                   <xs:element name="ClaveClase" type="SUB-ClaveClaseComunes" />
                   <xs:element name="Edad" type="SUB-EdadComunes"/>
                   <xs:element name="VidaUtilTotalDelTipo" type ="SUB-VidaUtilTipoComunes"/>
-                  <xs:element name="VidaMinimaRemanente" type="SUB-VidaUtilRemanenteComunes"/>
+                  <!-- <xs:element name="VidaMinimaRemanente" type="SUB-VidaUtilRemanenteComunes"/> -->
                   <!-- <xs:element name="ClaveConservacion" type="SUB-ClaveConservacionComunes"/> -->
-                  <!-- <xs:element name="Superficie" type="SUB-SuperficieComunes"/> -->
+                  <xs:element name="Superficie" type="SUB-SuperficieComunes"/>
                   <xs:element name="CostoDeLaFraccionN" type="SUB-ValorDeLaFraccionNDescInmuebleComunes"/>
                   <xs:element name="ValorUnitarioCatastral" type="SUB-ValorUnitarioCatastralComunes"/>
                   <xs:element name="DepreciacionPorEdad" type="SUB-DepreciacionPorEdadComunes" />

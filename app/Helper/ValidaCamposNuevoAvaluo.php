@@ -3202,7 +3202,7 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                 $errores[] = $claveUso == 'W' ? "e.2.1.n.10 Campo obligatorio para el uso baldio" : "e.2.1.n.10 Campo obligatorio";                              
             }*/
 
-            if($elementoPrincipal == '//Comercial' && trim($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['Superficie']) == ''){                
+            if(trim($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['Superficie']) == ''){                
                 $errores[] = $claveUso == 'W' ? "e.2.1.n.11 Campo obligatorio para el uso baldio" : "e.2.1.n.11 Campo obligatorio";                              
             }
 
@@ -3301,7 +3301,7 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                     $errores[] = $claveUso == 'W' ? "e.2.1.n.10 Campo obligatorio para el uso baldio" : "e.2.1.n.10 Campo obligatorio";                              
                 }*/
     
-                if($elementoPrincipal == '//Comercial' && trim($elementoPrin['Superficie']) == ''){                
+                if(trim($elementoPrin['Superficie']) == ''){                
                     $errores[] = $claveUso == 'W' ? "e.2.1.n.11 Campo obligatorio para el uso baldio" : "e.2.1.n.11 Campo obligatorio";                              
                 }
     
