@@ -4512,7 +4512,7 @@
                   <xs:element name="CostoUnitarioDeReposicionNuevo" type="SUB-ValorunitariodereposicionNuevoComunes"/>
                   <xs:element name="IndiceDelCostoRemanente" type="SUB-IndicedelcostoRemanente5"/>
                   <!-- <xs:element name="FactorResultante" type="SUB-FactorResultanteComunes"/> -->
-                  <xs:element name="CostoDeLaFraccionN" type="SUB-ValorDeLaFraccionNDescInmuebleComunes"/>
+                  <xs:element name="CostoDeLaFraccionN" type="SUB-ValorDeLaFraccionNDescInmuebleComunes" minOccurs="1" maxOccurs="1"/>
                   <xs:element name="PorcentajeIndivisoComunes" type="SUB-PorcentajeIndivisoComunes" minOccurs="1" maxOccurs="1" />
                 </xs:sequence>
                 <xs:attribute fixed="e.2.5" name="id" type="xs:string" use="required" />
