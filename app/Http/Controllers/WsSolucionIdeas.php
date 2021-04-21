@@ -220,11 +220,13 @@ class WsSolucionIdeas extends Controller
         $contrasenia = $request->query('Contrasenia');
         $proceso = $request->query('Proceso');
         
-        
+        $res = array();
+                
         if(isset($numero_Unico) && trim($numero_Unico) != '' && isset($cuenta_Catast) && isset($usuario) && trim($usuario) != '' && isset($contrasenia) && trim($contrasenia) != '' && trim($proceso) != ''){
             if(base64_decode($usuario) == env('USUCONSULTAVA') && base64_decode($contrasenia) == env('PASSCONSULTAVA')){
-                $token = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia,'Proceso'=>$proceso]);
-                return response()->json($token, 200);
+                $res['Proceso'] = trim($proceso);
+                $res['Token'] = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia,'Proceso'=>$proceso]);
+                return response()->json($res, 200);
             }else{
                 return response()->json(['mensaje'=>'Usuario o contraseña incorrectos'], 404);
             }
