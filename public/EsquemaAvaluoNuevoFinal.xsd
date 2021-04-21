@@ -5143,7 +5143,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas" type="SUB-ImporteTotalInstalacionesAccesoriosComplementariasPrivativas" />
       <xs:element minOccurs="0" maxOccurs="1" name="SumatoriaTotalInstalacionesAccesoriosComplementariasComunes" type="SUB-ImporteTotalInstalacionesAccesoriosComplementariasComunes"/>
       <xs:element minOccurs="0" maxOccurs="1" name="ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes" type="SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes" />
-      <xs:element minOccurs="0" maxOccurs="1" name="ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas" type="SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas" />
+      <!-- <xs:element minOccurs="0" maxOccurs="1" name="ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas" type="SUB-ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas" /> -->
     </xs:sequence>
     <xs:attribute fixed="f" name="id" type="xs:string" use="required" />
   </xs:complexType>

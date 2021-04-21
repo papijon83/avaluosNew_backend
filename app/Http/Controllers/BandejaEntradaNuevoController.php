@@ -980,11 +980,31 @@ class BandejaEntradaNuevoController extends Controller
             $mensajes = array();
 
             $fechaAvaluoCompara = new Carbon($fechaAvaluo);
-            $fechaMaxima = new Carbon('2020-12-31');  
-            if($fechaAvaluoCompara->lte($fechaMaxima)){
+            //$fechaMaxima = new Carbon('2020-12-31');
+            /*****************************************/
+            $arrXML = convierte_a_arreglo($xml);
+
+            if(isset($arrXML['Comercial'])){
+                $elementoPrincipalArr = $arrXML['Comercial'];
+            }
+    
+            if(isset($arrXML['Catastral'])){
+                $elementoPrincipalArr = $arrXML['Catastral'];
+            }
+            if(isset($elementoPrincipalArr['Antecedentes']['Solicitante']['Alcaldia'])){
+                $tieneAlcaldia = true;
+            }
+            if(isset($elementoPrincipalArr['Antecedentes']['Solicitante']['Delegacion'])){
+                $tieneDelegacion = true;
+            }
+            $anioCompara = Carbon::parse($fechaAvaluoCompara)->format('Y');
+            
+            /*****************************************/
+            //if($fechaAvaluoCompara->lte($fechaMaxima)){
+            if($anioCompara == 2021 && isset($tieneAlcaldia) && $tieneAlcaldia == true){ error_log("Entre en Nuevo");
+                return $this->guardarAvaluoN($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo,$contents);                
+            }else{ error_log("Entre en Viejo");
                 return $this->guardarAvaluoV($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo,$contents);
-            }else{
-                return $this->guardarAvaluoN($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo,$contents);
             }
             
 
