@@ -223,6 +223,10 @@ class WsSolucionIdeas extends Controller
         $res = array();
                 
         if(isset($numero_Unico) && trim($numero_Unico) != '' && isset($cuenta_Catast) && isset($usuario) && trim($usuario) != '' && isset($contrasenia) && trim($contrasenia) != '' && trim($proceso) != ''){
+            error_log(base64_decode($usuario));
+            error_log(env('USUCONSULTAVA'));
+            error_log(base64_decode($contrasenia));
+            error_log(env('PASSCONSULTAVA'));
             if(base64_decode($usuario) == env('USUCONSULTAVA') && base64_decode($contrasenia) == env('PASSCONSULTAVA')){
                 $proceso = trim($proceso);
                 $token = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia]);
@@ -236,7 +240,8 @@ class WsSolucionIdeas extends Controller
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
                 $res = curl_exec($ch); 
 
-                return response()->json($res, 200);
+                //return response()->json($res, 200);
+                return $res;
             }else{
                 return response()->json(['mensaje'=>'Usuario o contraseña incorrectos'], 404);
             }
