@@ -226,6 +226,7 @@ class WsSolucionIdeas extends Controller
             if(base64_decode($usuario) == env('USUCONSULTAVA') && base64_decode($contrasenia) == env('PASSCONSULTAVA')){
                 $proceso = trim($proceso);
                 $token = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia]);
+                //error_log($token);
                 //echo env('WS_COLEGIO_NOTARIOS')."/".env('TOKEN_WS_COLEGIO_NOTARIOS')."/".$proceso."/".$token; exit();
                 $headers = array("X-Requested-Search: Token_HttpsRequest");
                 $ch = curl_init();
@@ -233,7 +234,7 @@ class WsSolucionIdeas extends Controller
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                $res = curl_exec($ch);
+                $res = curl_exec($ch); 
 
                 return response()->json($res, 200);
             }else{
