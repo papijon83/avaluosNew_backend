@@ -38,6 +38,7 @@ $router->get('/', function () use ($router) {
         $router->get('wsRecibeAvaluo/{folio}', 'ClienteWSController@sendAvaluo');
         $router->post('wsRecibeAvaluo', 'WsSolucionIdeas@wsRecibeAvaluo');
         $router->post('getToken', 'WsConsultaAvaluo@getToken');
+        $router->post('getTokenPrueba', 'WsConsultaAvaluo@getTokenPrueba');
         $router->post('webhooktoken', 'WebhookController@recibeToken');
         $router->post('wsRecibeAvaluoMi', 'WsSolucionIdeas@wsRecibeAvaluoMi');
         $router->post('tokenG', 'WsSolucionIdeas@obtenerTokenGuardado');    
