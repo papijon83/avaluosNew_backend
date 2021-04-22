@@ -224,8 +224,17 @@ class WsSolucionIdeas extends Controller
                 
         if(isset($numero_Unico) && trim($numero_Unico) != '' && isset($cuenta_Catast) && isset($usuario) && trim($usuario) != '' && isset($contrasenia) && trim($contrasenia) != '' && trim($proceso) != ''){
             if(base64_decode($usuario) == env('USUCONSULTAVA') && base64_decode($contrasenia) == env('PASSCONSULTAVA')){
-                $res['Proceso'] = trim($proceso);
-                $res['Token'] = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia,'Proceso'=>$proceso]);
+                $proceso = trim($proceso);
+                $token = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia]);
+                //echo env('WS_COLEGIO_NOTARIOS')."/".env('TOKEN_WS_COLEGIO_NOTARIOS')."/".$proceso."/".$token; exit();
+                $headers = array("X-Requested-Search: Token_HttpsRequest");
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, env('WS_COLEGIO_NOTARIOS')."/".env('TOKEN_WS_COLEGIO_NOTARIOS')."/".$proceso."/".$token);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                $res = curl_exec($ch);
+
                 return response()->json($res, 200);
             }else{
                 return response()->json(['mensaje'=>'Usuario o contraseña incorrectos'], 404);
