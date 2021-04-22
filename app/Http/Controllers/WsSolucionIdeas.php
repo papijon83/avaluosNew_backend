@@ -231,7 +231,7 @@ class WsSolucionIdeas extends Controller
                 if(base64_decode($usuario) == env('USUCONSULTAVA') && base64_decode($contrasenia) == env('PASSCONSULTAVA')){
                     $proceso = trim($proceso);
                     $token = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia]);
-                    //error_log($token);
+                    error_log($token);
                     //echo env('WS_COLEGIO_NOTARIOS')."/".env('TOKEN_WS_COLEGIO_NOTARIOS')."/".$proceso."/".$token; exit();
                     try{
 

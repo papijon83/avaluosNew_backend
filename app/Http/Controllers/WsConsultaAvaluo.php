@@ -100,6 +100,57 @@ class WsConsultaAvaluo extends Controller
 
     }
 
+    public function getToken(Request $request){
+
+        $numero_Unico = $request->query('Numero_Unico');
+        $cuenta_Catast = $request->query('Cuenta_Catast');
+        $usuario = $request->query('Usuario');
+        $contrasenia = $request->query('Contrasenia');
+        $proceso = $request->query('Proceso');
+        
+        $res = array();
+                
+        if(isset($numero_Unico) && trim($numero_Unico) != '' && isset($cuenta_Catast) && isset($usuario) && trim($usuario) != '' && isset($contrasenia) && trim($contrasenia) != '' && trim($proceso) != ''){
+            /*error_log(base64_decode($usuario));
+            error_log(env('USUCONSULTAVA'));
+            error_log(base64_decode($contrasenia));
+            error_log(env('PASSCONSULTAVA'));*/
+            
+                if(base64_decode($usuario) == env('USUCONSULTAVA') && base64_decode($contrasenia) == env('PASSCONSULTAVA')){
+                    $proceso = trim($proceso);
+                    $token = Crypt::encrypt(['Numero_Unico'=>$numero_Unico,'Cuenta_Catast'=>$cuenta_Catast,'Usuario'=>$usuario,'Contrasenia'=>$contrasenia]);
+                    error_log($token);
+                    //echo env('WS_COLEGIO_NOTARIOS')."/".env('TOKEN_WS_COLEGIO_NOTARIOS')."/".$proceso."/".$token; exit();
+                    try{
+
+                        $headers = array("X-Requested-Search: Token_HttpsRequest");
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, env('WS_COLEGIO_NOTARIOS')."/".env('TOKEN_WS_COLEGIO_NOTARIOS')."/".$proceso."/".$token);
+                        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                        $res = curl_exec($ch); 
+
+                        //return response()->json($res, 200);
+                        return $res;
+
+                    } catch (\Throwable $th) {
+                        error_log($th);
+                        
+                        return response()->json(['mensaje' => 'Error al entregar el token'], 500);
+                    }
+                    
+                }else{
+                    return response()->json(['mensaje'=>'Usuario o contraseña incorrectos'], 404);
+                }    
+            
+        }else{
+            return response()->json(['mensaje'=>'Falta alguno de los parámetros necesario'], 404); 
+        }
+
+        
+    }
+
     public function avaluosVista($idAvaluo){
         
         $infoAValuoVista = DB::select("SELECT * FROM FEXAVA.FEXAVA_AVALUOS_V WHERE IDAVALUO = $idAvaluo");
