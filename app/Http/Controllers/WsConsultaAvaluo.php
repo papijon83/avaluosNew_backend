@@ -183,7 +183,7 @@ class WsConsultaAvaluo extends Controller
                         $res = curl_exec($ch); 
 
                         //return response()->json($res, 200);
-                        return $token;
+                        return $res;
 
                     } catch (\Throwable $th) {
                         error_log($th);
