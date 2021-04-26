@@ -819,9 +819,9 @@ class BandejaEntradaNuevoController extends Controller
             $fechaMaxima = new Carbon('2020-12-31');  
             if($fechaAvaluoCompara->lte($fechaMaxima)){
                 if(isset($arrXML[$elementoPrincipal]['EnfoqueDeMercado']['Terrenos']['TerrenosDirectos']) && isset($arrXML[$elementoPrincipal]['EnfoqueDeMercado']['Terrenos']['TerrenosResidual'])){
-                    $xsd = 'EsquemaAvaluoMixtoFinal.xsd';
+                    $xsd = 'EsquemaAvaluoMixtoFinal.xsd'; error_log("ENTRE EN MIXTO VIEJO");
                 }else{
-                    $xsd = 'EsquemaAvaluoFinal.xsd';
+                    $xsd = 'EsquemaAvaluoFinal.xsd'; error_log("ENTRE EN NORMAL VIEJO");
                 }
             }else{
                 if(isset($arrXML[$elementoPrincipal]['EnfoqueDeMercado']['Terrenos']['TerrenosDirectos']) && isset($arrXML[$elementoPrincipal]['EnfoqueDeMercado']['Terrenos']['TerrenosResidual'])){
