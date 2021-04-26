@@ -900,7 +900,7 @@ class BandejaEntradaNuevoController extends Controller
         "Character content other than whitespace is not allowed because the content type is 'element-only'" => "No se permite contenido de caracteres que no sean espacios en blanco porque el tipo de contenido es 'element-only'",
         "attribute" => "atributo",
         "does not match the fixed value constraint" => "no coincide con la restricción de valor fijo",
-        "f.15 - Línea 483 Elemento 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementoosAccesoriosPrivativas': Este elemento no se espera." => "f.15 - Línea 483 Elemento 'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementoosAccesoriosPrivativas': no válido. Lista esperada de elementos posibles: ConsideracionesPreviasAlAvaluo");
+        "'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementoosAccesoriosPrivativas': Este elemento no se espera." => "'ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementoosAccesoriosPrivativas': no válido. Lista esperada de elementos posibles: ConsideracionesPreviasAlAvaluo");
 
         foreach($cadenas as $en => $es){
             $relacionErrores = str_replace($en,$es,$relacionErrores);
