@@ -1594,6 +1594,9 @@ function valida_Calculos_eV($data, $dataextra = false, $dataextrados = false, $b
                 $e_2_1_n_8 = $elemento['VidaUtilTotalDelTipo'];
                 $e_2_1_n_7 = $elemento['Edad'];
                 $calc_e_2_1_n_9 = $e_2_1_n_8 - $e_2_1_n_7;
+                if($calc_e_2_1_n_9 < 0){
+                    $calc_e_2_1_n_9 = 0;
+                }
                 if(truncate($e_2_1_n_9,2) != truncate($calc_e_2_1_n_9,2)){ //error_log(truncate($e_2_1_n_9,2)." != ".truncate($calc_e_2_1_n_9,2));
                     $mensajese[] = "e.2.1.n.9 - El cálculo de VidaUtilRemanente es erróneo ";
                 }
@@ -1671,7 +1674,10 @@ function valida_Calculos_eV($data, $dataextra = false, $dataextrados = false, $b
                     $e_2_1_n_9 = $data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['VidaUtilRemanente'];
                     $e_2_1_n_8 = $data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['VidaUtilTotalDelTipo'];
                     $e_2_1_n_7 = $data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['Edad'];
-                    $calc_e_2_1_n_9 = $e_2_1_n_8 - $e_2_1_n_7; 
+                    $calc_e_2_1_n_9 = $e_2_1_n_8 - $e_2_1_n_7;
+                    if($calc_e_2_1_n_9 < 0){
+                        $calc_e_2_1_n_9 = 0;
+                    }
                     if(truncate($e_2_1_n_9,2) != truncate($calc_e_2_1_n_9,2)){ //error_log(truncate($e_2_1_n_9,2)." != ".truncate($calc_e_2_1_n_9,2));
                         $mensajese[] =  "e.2.1.n.9 - El cálculo de VidaUtilRemanente es erróneo ";
                     }
