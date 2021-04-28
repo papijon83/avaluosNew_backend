@@ -5825,7 +5825,9 @@ class BandejaEntradaNuevoController extends Controller
         if(isset(($arrGeneral['arrIds']['j']))){
 
             $datae23 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//TiposDeConstruccion[@id="e.2"]//ValorTotalDeConstruccionesPrivativas[@id="e.2.3"]');
+            //error_log("EL e.2.3 ".json_encode($datae23));
             $datae27 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]//TiposDeConstruccion[@id="e.2"]//ValorTotalDeConstruccionesComunes[@id="e.2.7"]');
+            //error_log("EL e.2.7 ".json_encode($datae27));
             $datab6 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//RegimenDePropiedad[@id="b.6"]');
             $datad6 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//Terreno[@id="d"]//Indiviso[@id="d.6"]');
             $datad13 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//Terreno[@id="d"]//ValorTotalDelTerrenoProporcional[@id="d.13"]');

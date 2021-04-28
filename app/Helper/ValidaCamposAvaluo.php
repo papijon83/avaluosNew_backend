@@ -2757,7 +2757,7 @@ function valida_Calculos_jV($data, $letra, $datae23, $datae27, $datab6, $datad6,
     if(isset($data[0]['ImporteInstalacionesEspeciales']) && isset($data[0]['ImporteTotalValorCatastral']) && isset($data[0]['ImporteTotalValorCatastralObraEnProceso'])){
         $j_4 = $data[0]['ImporteInstalacionesEspeciales'];
 
-        if($existef9 === FALSE || $existef10 === FALSE || $existef11 === FALSE){
+        if($existef9 === FALSE && $existef10 === FALSE && $existef11 === FALSE){
             $calc_j_4 = 0;
         }else{
             if($b_6 == 2){
@@ -2766,7 +2766,7 @@ function valida_Calculos_jV($data, $letra, $datae23, $datae27, $datab6, $datad6,
                 $calc_j_4 = ($e_2_3 + $e_2_7) * 0.08;
             }
         }
-        error_log(truncate($j_4,2)." != ".truncate($calc_j_4,2));
+        error_log("COMPARA J.4 ".truncate($j_4,2)." != ".truncate($calc_j_4,2));
         if(truncate($j_4,2) != truncate($calc_j_4,2)){ //echo "OPERACION ".round($j_4,6)." != ".round($calc_j_4,6)."\n";
             $mensajesj[] =  "j.4 - El cálculo de ImporteInstalacionesEspeciales es erróneo ";
         }

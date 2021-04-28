@@ -2855,23 +2855,23 @@ function valida_Calculos_i($data,$letra, $datad13, $datae2, $dataf12, $dataf14){
 
 }
 
-function valida_Calculos_j($data, $letra, $datae23, $datae27, $datab6, $datad6, $datad13, $existef9, $existef10, $existef11, $elementoPrincipal = false){
+function valida_Calculos_j($data, $letra, $datae23, $datae27, $datab6, $datad6, $datad13, $existef9, $existef10, $existef11){
     $mensajesj = array();
     $datae23 = array_map("convierte_a_arreglo",$datae23);
     $datae27 = array_map("convierte_a_arreglo",$datae27);
     $datab6 = array_map("convierte_a_arreglo",$datab6);
     $datad6 = array_map("convierte_a_arreglo",$datad6);
     $datad13 = array_map("convierte_a_arreglo",$datad13);
-    $e_2_3 = $datae23[0][0];
-    $e_2_7 = $datae27[0][0];
-    $b_6 = $datab6[0][0];
+    $e_2_3 = $datae23[0][0]; error_log("EL e.2.3 ".$e_2_3);
+    $e_2_7 = $datae27[0][0]; error_log("EL e.2.7 ".$e_2_7);
+    $b_6 = $datab6[0][0];   error_log("EL b.6 ".$b_6);
     $d_6 = $datad6[0][0];
     $d_13 = $datad13[0][0];
 
     if(isset($data[0]['ImporteInstalacionesEspeciales']) && isset($data[0]['ImporteTotalValorCatastral']) && isset($data[0]['ImporteTotalValorCatastralObraEnProceso'])){
         $j_4 = $data[0]['ImporteInstalacionesEspeciales'];
 
-        if($existef9 === FALSE || $existef10 === FALSE || $existef11 === FALSE){
+        if($existef9 === FALSE && $existef10 === FALSE && $existef11 === FALSE){
             $calc_j_4 = 0;
         }else{
             if($b_6 == 2){
@@ -2880,7 +2880,7 @@ function valida_Calculos_j($data, $letra, $datae23, $datae27, $datab6, $datad6, 
                 $calc_j_4 = ($e_2_3 + $e_2_7) * 0.08;
             }
         }
-        error_log(truncate($j_4,2)." != ".truncate($calc_j_4,2));
+        error_log("COMPARA J.4 NUEVO ".truncate($j_4,2)." != ".truncate($calc_j_4,2));
         if(truncate($j_4,2) != truncate($calc_j_4,2)){ //echo "OPERACION ".round($j_4,6)." != ".round($calc_j_4,6)."\n";
             $mensajesj[] =  "j.4 - El cálculo de ImporteInstalacionesEspeciales es erróneo ";
         }
@@ -4545,7 +4545,7 @@ function valida_AvaluoEnfoqueCostosCatastral($data, $elementoPrincipal, $datae23
     $errores = array(); 
     $data = array_map("convierte_a_arreglo",$data);
 
-    $resValidaCalculo = valida_Calculos_j($data,'j', $datae23, $datae27, $datab6, $datad6, $datad13, $existef9, $existef10, $existef11, $elementoPrincipal);
+    $resValidaCalculo = valida_Calculos_j($data,'j', $datae23, $datae27, $datab6, $datad6, $datad13, $existef9, $existef10, $existef11);
     if($resValidaCalculo != "Correcto"){
         $errores[] = $resValidaCalculo;
     }
