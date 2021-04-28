@@ -946,7 +946,7 @@
 
   <xs:complexType name="SUB-Edad">
     <xs:simpleContent>
-      <xs:extension base="NullableDecimalPositivo">
+      <xs:extension base="DecimalPositivo">
         <xs:attribute fixed="e.2.1.n.7" name="id" type="xs:string" use="required"/>
       </xs:extension>
     </xs:simpleContent>
@@ -4475,7 +4475,7 @@
                   <xs:element name="ClaveRangoDeNiveles" type="SUB-ClaveRangoDeNiveles" />
                   <xs:element name="PuntajeDeClasificacion" type="SUB-PuntajeDeClasificacion"/>
                   <xs:element name="ClaveClase" type="SUB-ClaveClase" />
-                  <xs:element name="Edad" type="SUB-Edad"/>
+                  <xs:element name="Edad" type="SUB-Edad" minOccurs="1"/>
                   <!-- <xs:element name="VidaUtilTotalDelTipo" type ="SUB-VidaUtilTipo" minOccurs="0"/> -->
                   <xs:element name="VidaMinimaRemanente" type="SUB-VidaUtilRemanente"/>
                   <!-- <xs:element name="ClaveConservacion" type="SUB-ClaveConservacion"/> -->
@@ -4595,7 +4595,7 @@
                   <xs:element name="ClaveRangoDeNiveles" type="SUB-ClaveRangoDeNiveles" />
                   <xs:element name="PuntajeDeClasificacion" type="SUB-PuntajeDeClasificacion"/>
                   <xs:element name="ClaveClase" type="SUB-ClaveClase" />
-                  <xs:element name="Edad" type="SUB-Edad"/>
+                  <xs:element name="Edad" type="SUB-Edad" minOccurs="1"/>
                   <xs:element name="VidaUtilTotalDelTipo" type ="SUB-VidaUtilTipo"/>
                   <!-- <xs:element name="VidaMinimaRemanente" type="SUB-VidaUtilRemanente"/> -->
                   <!-- <xs:element name="ClaveConservacion" type="SUB-ClaveConservacion"/> -->
@@ -4727,7 +4727,7 @@
             <xs:element name="Edad">
               <xs:complexType>
                 <xs:simpleContent>
-                  <xs:extension base="NullableDecimalPositivo">
+                  <xs:extension base="DecimalPositivo">
                     <xs:attribute fixed="e.2.1.n.7" name="id" type="xs:string" use="required"/>
                   </xs:extension>
                 </xs:simpleContent>

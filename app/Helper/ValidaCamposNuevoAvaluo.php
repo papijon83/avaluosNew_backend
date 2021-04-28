@@ -530,7 +530,7 @@ function val_porcentaje_tipo($valor, $tipo){
     if($tipo == '02'){               
         if($pos === TRUE || $pos === 1){
             $arrVals = explode('.',$valor);
-            if(strlen($arrVals[1]) > 2){
+            if(mb_strlen($arrVals[1]) > 2){
                 return "no corresponde a un formato valido para este campo";
             }
         }
@@ -539,7 +539,7 @@ function val_porcentaje_tipo($valor, $tipo){
     if($tipo == '04'){               
         if($pos === TRUE || $pos === 1){
             $arrVals = explode('.',$valor);
-            if(strlen($arrVals[1]) > 4){
+            if(mb_strlen($arrVals[1]) > 4){
                 return "no corresponde a un formato valido para este campo";
             }
         }
@@ -548,7 +548,7 @@ function val_porcentaje_tipo($valor, $tipo){
     if($tipo == '10'){              
         if($pos === TRUE || $pos === 1){
             $arrVals = explode('.',$valor);
-            if(strlen($arrVals[1]) > 10){
+            if(mb_strlen($arrVals[1]) > 10){
                 return "no corresponde a un formato valido para este campo";
             }
         }
@@ -576,7 +576,7 @@ function val_vacio_longitud($valor, $longitud){
         return "no puede estar vacio";
     }
 
-    if(strlen($valor) > $longitud){
+    if(mb_strlen($valor) > $longitud){
         return "excede la longitud permitida de ".$longitud;
     }
     return $estado;
@@ -618,7 +618,7 @@ function val_longitud($valor, $longitud){
         
     }
 
-    if(strlen($valor) > $longitud && trim($valor) != ''){
+    if(mb_strlen($valor) > $longitud && trim($valor) != ''){ error_log("EL VALOR '".$valor."' ".mb_strlen(trim($valor)));
         return "excede la longitud permitida de ".$longitud;
     }
     return $estado;
@@ -869,7 +869,7 @@ function val_decimal_positivo_tipo($valor, $tipo){
         if($res == 'correcto'){            
            if($pos === TRUE || $pos === 1){
                 $arrVals = explode('.',$valor);
-                if($arrVals[0] != 0 || strlen($arrVals[1]) > 6){
+                if($arrVals[0] != 0 || mb_strlen($arrVals[1]) > 6){
                     return "no corresponde a un formato valido para este campo";
                 }
            }
@@ -925,7 +925,7 @@ function val_decimal_positivo_tipo($valor, $tipo){
         if($res == 'correcto'){
             if($pos === TRUE || $pos === 1){
                 $elementosCantidad = explode('.',$valor);
-                if((strlen($elementosCantidad[0])+strlen($elementosCantidad[1])) > 3){
+                if((mb_strlen($elementosCantidad[0])+mb_strlen($elementosCantidad[1])) > 3){
                     return " contiene mas de 3 digitos";
                 }
                 $patron = '/\d{1}+.\d{1,2}/';
@@ -949,7 +949,7 @@ function val_decimal_positivo_tipo($valor, $tipo){
             if($res == 'correcto'){
                 if($pos === TRUE || $pos === 1){
                     $elementosCantidad = explode('.',$valor);
-                    if((strlen($elementosCantidad[0])+strlen($elementosCantidad[1])) > 5){
+                    if((mb_strlen($elementosCantidad[0])+mb_strlen($elementosCantidad[1])) > 5){
                         return " contiene mas de 5 digitos";
                     }
                     $patron = '/\d{1,3}+.\d{1,2}/';
@@ -973,7 +973,7 @@ function val_decimal_positivo_tipo($valor, $tipo){
             if($res == 'correcto'){
                 if($pos === TRUE || $pos === 1){
                     $elementosCantidad = explode('.',$valor);
-                    if((strlen($elementosCantidad[0])+strlen($elementosCantidad[1])) > 5){
+                    if((mb_strlen($elementosCantidad[0])+mb_strlen($elementosCantidad[1])) > 5){
                         return " contiene mas de 5 digitos";
                     }
                     $patron = '/\d{1}+.\d{1,4}/';
@@ -998,7 +998,7 @@ function val_decimal_positivo_tipo($valor, $tipo){
             if($res == 'correcto'){                                             
                 if($pos === TRUE || $pos === 1){                    
                     $elementosCantidad = explode('.',$valor);
-                    if((strlen($elementosCantidad[0])+strlen($elementosCantidad[1])) > 9){
+                    if((mb_strlen($elementosCantidad[0])+mb_strlen($elementosCantidad[1])) > 9){
                         return " contiene mas de 9 digitos";
                     }                   
                     $patron = '/\d{1}+.\d{1,8}/';
@@ -1023,7 +1023,7 @@ function val_decimal_positivo_tipo($valor, $tipo){
             if($res == 'correcto'){                                             
                 if($pos === TRUE || $pos === 1){                    
                     $elementosCantidad = explode('.',$valor);
-                    if((strlen($elementosCantidad[0])+strlen($elementosCantidad[1])) > 22){
+                    if((mb_strlen($elementosCantidad[0])+mb_strlen($elementosCantidad[1])) > 22){
                         return " contiene mas de 22 digitos";
                     }                   
                     $patron = '/\d{1,19}+.\d{1,3}/';
@@ -1048,7 +1048,7 @@ function val_decimal_positivo_tipo($valor, $tipo){
             if($res == 'correcto'){                                             
                 if($pos === TRUE || $pos === 1){                    
                     $elementosCantidad = explode('.',$valor);
-                    if((strlen($elementosCantidad[0])+strlen($elementosCantidad[1])) > 22){
+                    if((mb_strlen($elementosCantidad[0])+mb_strlen($elementosCantidad[1])) > 22){
                         return " contiene mas de 22 digitos";
                     }                   
                     $patron = '/\d{1,20}+.\d{1,2}/';
@@ -3333,8 +3333,8 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
     
                 if($elementoPrincipal != '//Comercial' && trim($elementoPrin['Edad']) == ''){
                     $errores[] = $claveUso == 'W' ? "e.2.1.n.7 Campo obligatorio para el uso baldio" : "e.2.1.n.7 Campo obligatorio";
-                }else{
-                    if($elementoPrincipal == '//Comercial' && trim($elementoPrin['Edad']) != '' && !is_numeric($elementoPrin['Edad'])){
+                }else{ error_log(json_encode($elementoPrin['Edad']));
+                    if(($elementoPrincipal == '//Comercial' && is_array($elementoPrin['Edad'])) || ($elementoPrincipal == '//Comercial' && trim($elementoPrin['Edad']) != '' && !is_numeric($elementoPrin['Edad']))){
                         $errores[] = "e.2.1.n.7 El dato no es correcto, se requiere asignar un valor.";
                     } 
                 }
@@ -4807,15 +4807,28 @@ function valida_AvaluoAnexoFotografico($data, $elementoPrincipal){ //print_r($da
                 }
     
                 foreach($validacionesq2n2 as $etiqueta => $validacion){
-                    if(!isset($elementoPrincipal['FotosInmuebleAvaluo'][$etiqueta]) || isset($elementoPrincipal['FotosInmuebleAvaluo'][$etiqueta]['@attributes'])){
-                        $errores[] = "Falta ".$etiqueta." en ComparableRentas (FotosInmuebleAvaluo)";
-                    }else{
-                        
-                        $resValidacion = define_validacion($validacion, $elementoPrincipal['FotosInmuebleAvaluo'][$etiqueta]);                
-                        if($resValidacion != 'correcto'){
-                            $errores[] = "El campo q.2.n.2 ".$etiqueta." ".$resValidacion;
+                    if(isset($elementoPrincipal['FotosInmuebleAvaluo'][0])){
+                        if(!isset($elementoPrincipal['FotosInmuebleAvaluo'][0][$etiqueta]) || isset($elementoPrincipal['FotosInmuebleAvaluo'][0][$etiqueta]['@attributes'])){
+                            $errores[] = "q.2.n.2 .- Falta ".$etiqueta." en ComparableRentas (FotosInmuebleAvaluo)";
+                        }else{
+                            
+                            $resValidacion = define_validacion($validacion, $elementoPrincipal['FotosInmuebleAvaluo'][0][$etiqueta]);                
+                            if($resValidacion != 'correcto'){
+                                $errores[] = "El campo q.2.n.2 ".$etiqueta." ".$resValidacion;
+                            }
                         }
-                    }
+                    }else{
+                        if(!isset($elementoPrincipal['FotosInmuebleAvaluo'][$etiqueta]) || isset($elementoPrincipal['FotosInmuebleAvaluo'][$etiqueta]['@attributes'])){
+                            $errores[] = "q.2.n.2 .- Falta ".$etiqueta." en ComparableRentas (FotosInmuebleAvaluo)";
+                        }else{
+                            
+                            $resValidacion = define_validacion($validacion, $elementoPrincipal['FotosInmuebleAvaluo'][$etiqueta]);                
+                            if($resValidacion != 'correcto'){
+                                $errores[] = "El campo q.2.n.2 ".$etiqueta." ".$resValidacion;
+                            }
+                        }
+                    }    
+                    
                 }            
             }
         }
@@ -5096,7 +5109,7 @@ function tofloat($num) {
 
     return floatval(
         preg_replace("/[^0-9]/", "", substr($num, 0, $sep)) . '.' .
-        preg_replace("/[^0-9]/", "", substr($num, $sep+1, strlen($num)))
+        preg_replace("/[^0-9]/", "", substr($num, $sep+1, mb_strlen($num)))
     );
 }
 
