@@ -2855,7 +2855,7 @@ function valida_Calculos_i($data,$letra, $datad13, $datae2, $dataf12, $dataf14){
 
 }
 
-function valida_Calculos_j($data, $letra, $datae23, $datae27, $datab6, $datad6, $datad13, $existef9, $existef10, $existef11){
+function valida_Calculos_j($data, $letra, $datae23, $datae27, $datab6, $datad6, $datad13, $existef9, $existef10, $existef11, $elementoPrincipal = false){
     $mensajesj = array();
     $datae23 = array_map("convierte_a_arreglo",$datae23);
     $datae27 = array_map("convierte_a_arreglo",$datae27);
@@ -2867,40 +2867,45 @@ function valida_Calculos_j($data, $letra, $datae23, $datae27, $datab6, $datad6, 
     $b_6 = $datab6[0][0];
     $d_6 = $datad6[0][0];
     $d_13 = $datad13[0][0];
-    $j_4 = $data[0]['ImporteInstalacionesEspeciales'];
 
-    if($existef9 === FALSE || $existef10 === FALSE || $existef11 === FALSE){
-        $calc_j_4 = 0;
-    }else{
-        if($b_6 == 2){
-            $calc_j_4 = ($e_2_3 + ($e_2_7 * $d_6)) * 0.08;
+    if(isset($data[0]['ImporteInstalacionesEspeciales']) && isset($data[0]['ImporteTotalValorCatastral']) && isset($data[0]['ImporteTotalValorCatastralObraEnProceso'])){
+        $j_4 = $data[0]['ImporteInstalacionesEspeciales'];
+
+        if($existef9 === FALSE || $existef10 === FALSE || $existef11 === FALSE){
+            $calc_j_4 = 0;
         }else{
-            $calc_j_4 = ($e_2_3 + $e_2_7) * 0.08;
+            if($b_6 == 2){
+                $calc_j_4 = ($e_2_3 + ($e_2_7 * $d_6)) * 0.08;
+            }else{
+                $calc_j_4 = ($e_2_3 + $e_2_7) * 0.08;
+            }
+        }
+        error_log(truncate($j_4,6)." != ".truncate($calc_j_4,6));
+        if(truncate($j_4,6) != truncate($calc_j_4,6)){ //echo "OPERACION ".round($j_4,6)." != ".round($calc_j_4,6)."\n";
+            $mensajesj[] =  "j.4 - El cálculo de ImporteInstalacionesEspeciales es erróneo ";
+        }
+        
+        $j_5 = $data[0]['ImporteTotalValorCatastral'];
+        if($b_6 == 2){
+            $calc_j_5 = $d_13 + $e_2_3 + ($e_2_7 * $d_6) + $j_4;
+        }else{        
+            $calc_j_5 = $d_13 + $e_2_3 + $e_2_7 + $j_4;
+        }
+
+        if(truncate($j_5,2) !== truncate($calc_j_5,2)){ error_log(truncate($j_5,2)." != ".truncate($calc_j_5,2));
+            $mensajesj[] =  "j.5 - El cálculo de ImporteTotalValorCatastral es erróneo ";
+        }
+
+        $j_7 = $data[0]['ImporteTotalValorCatastralObraEnProceso'];
+        $j_6 = $data[0]['AvanceDeObra'];
+        $calc_j_7 = $j_5 * $j_6;
+
+        if(truncate($j_7,2) != truncate($calc_j_7,2)){ //echo "OPERACION ".round($j_7,6)." != ".round($calc_j_7,6)."\n";
+            $mensajesj[] =  "j.7 - El cálculo de ImporteTotalValorCatastralObraEnProceso es erróneo ";
         }
     }
-    error_log(truncate($j_4,6)." != ".truncate($calc_j_4,6));
-    if(truncate($j_4,6) != truncate($calc_j_4,6)){ //echo "OPERACION ".round($j_4,6)." != ".round($calc_j_4,6)."\n";
-        $mensajesj[] =  "j.4 - El cálculo de ImporteInstalacionesEspeciales es erróneo ";
-    }
-    
-    $j_5 = $data[0]['ImporteTotalValorCatastral'];
-    if($b_6 == 2){
-        $calc_j_5 = $d_13 + $e_2_3 + ($e_2_7 * $d_6) + $j_4;
-    }else{        
-        $calc_j_5 = $d_13 + $e_2_3 + $e_2_7 + $j_4;
-    }
 
-    if(truncate($j_5,2) !== truncate($calc_j_5,2)){ error_log(truncate($j_5,2)." != ".truncate($calc_j_5,2));
-        $mensajesj[] =  "j.5 - El cálculo de ImporteTotalValorCatastral es erróneo ";
-    }
     
-    $j_7 = $data[0]['ImporteTotalValorCatastralObraEnProceso'];
-    $j_6 = $data[0]['AvanceDeObra'];
-    $calc_j_7 = $j_5 * $j_6;
-
-    if(truncate($j_7,2) != truncate($calc_j_7,2)){ //echo "OPERACION ".round($j_7,6)." != ".round($calc_j_7,6)."\n";
-        $mensajesj[] =  "j.7 - El cálculo de ImporteTotalValorCatastralObraEnProceso es erróneo ";
-    }
 
     if(count($mensajesj) > 0){
         return $mensajesj;
@@ -4540,7 +4545,7 @@ function valida_AvaluoEnfoqueCostosCatastral($data, $elementoPrincipal, $datae23
     $errores = array(); 
     $data = array_map("convierte_a_arreglo",$data);
 
-    $resValidaCalculo = valida_Calculos_j($data,'j', $datae23, $datae27, $datab6, $datad6, $datad13, $existef9, $existef10, $existef11);
+    $resValidaCalculo = valida_Calculos_j($data,'j', $datae23, $datae27, $datab6, $datad6, $datad13, $existef9, $existef10, $existef11, $elementoPrincipal);
     if($resValidaCalculo != "Correcto"){
         $errores[] = $resValidaCalculo;
     }

@@ -2748,40 +2748,42 @@ function valida_Calculos_jV($data, $letra, $datae23, $datae27, $datab6, $datad6,
     $b_6 = $datab6[0][0];
     $d_6 = $datad6[0][0];
     $d_13 = $datad13[0][0];
-    $j_4 = $data[0]['ImporteInstalacionesEspeciales'];
+    if(isset($data[0]['ImporteInstalacionesEspeciales']) && isset($data[0]['ImporteTotalValorCatastral']) && isset($data[0]['ImporteTotalValorCatastralObraEnProceso'])){
+        $j_4 = $data[0]['ImporteInstalacionesEspeciales'];
 
-    if($existef9 === FALSE || $existef10 === FALSE || $existef11 === FALSE){
-        $calc_j_4 = 0;
-    }else{
-        if($b_6 == 2){
-            $calc_j_4 = ($e_2_3 + ($e_2_7 * $d_6)) * 0.08;
+        if($existef9 === FALSE || $existef10 === FALSE || $existef11 === FALSE){
+            $calc_j_4 = 0;
         }else{
-            $calc_j_4 = ($e_2_3 + $e_2_7) * 0.08;
+            if($b_6 == 2){
+                $calc_j_4 = ($e_2_3 + ($e_2_7 * $d_6)) * 0.08;
+            }else{
+                $calc_j_4 = ($e_2_3 + $e_2_7) * 0.08;
+            }
         }
-    }
-    //echo "OPERACION ".truncate($j_4,6)." != ".truncate($calc_j_4,6)."\n"; exit();
-    if(truncate($j_4,6) != truncate($calc_j_4,6)){ //echo "OPERACION ".round($j_4,6)." != ".round($calc_j_4,6)."\n";
-        $mensajesj[] =  "j.4 - El cálculo de ImporteInstalacionesEspeciales es erróneo ";
-    }
-    
-    $j_5 = $data[0]['ImporteTotalValorCatastral'];
-    if($b_6 == 2){
-        $calc_j_5 = $d_13 + $e_2_3 + ($e_2_7 * $d_6) + $j_4;
-    }else{        
-        $calc_j_5 = $d_13 + $e_2_3 + $e_2_7 + $j_4;
-    }
+        //echo "OPERACION ".truncate($j_4,6)." != ".truncate($calc_j_4,6)."\n"; exit();
+        if(truncate($j_4,6) != truncate($calc_j_4,6)){ //echo "OPERACION ".round($j_4,6)." != ".round($calc_j_4,6)."\n";
+            $mensajesj[] =  "j.4 - El cálculo de ImporteInstalacionesEspeciales es erróneo ";
+        }
+        
+        $j_5 = $data[0]['ImporteTotalValorCatastral'];
+        if($b_6 == 2){
+            $calc_j_5 = $d_13 + $e_2_3 + ($e_2_7 * $d_6) + $j_4;
+        }else{        
+            $calc_j_5 = $d_13 + $e_2_3 + $e_2_7 + $j_4;
+        }
 
-    if(truncate($j_5,2) !== truncate($calc_j_5,2)){ //echo "OPERACION ".truncate($j_5,2)." != ".truncate($calc_j_5,2)."\n";
-        $mensajesj[] =  "j.5 - El cálculo de ImporteTotalValorCatastral es erróneo ";
-    }
-    
-    $j_7 = $data[0]['ImporteTotalValorCatastralObraEnProceso'];
-    $j_6 = $data[0]['AvanceDeObra'];
-    $calc_j_7 = $j_5 * $j_6;
+        if(truncate($j_5,2) !== truncate($calc_j_5,2)){ //echo "OPERACION ".truncate($j_5,2)." != ".truncate($calc_j_5,2)."\n";
+            $mensajesj[] =  "j.5 - El cálculo de ImporteTotalValorCatastral es erróneo ";
+        }
+        
+        $j_7 = $data[0]['ImporteTotalValorCatastralObraEnProceso'];
+        $j_6 = $data[0]['AvanceDeObra'];
+        $calc_j_7 = $j_5 * $j_6;
 
-    if(truncate($j_7,2) != truncate($calc_j_7,2)){ //echo "OPERACION ".round($j_7,6)." != ".round($calc_j_7,6)."\n";
-        $mensajesj[] =  "j.7 - El cálculo de ImporteTotalValorCatastralObraEnProceso es erróneo ";
-    }
+        if(truncate($j_7,2) != truncate($calc_j_7,2)){ //echo "OPERACION ".round($j_7,6)." != ".round($calc_j_7,6)."\n";
+            $mensajesj[] =  "j.7 - El cálculo de ImporteTotalValorCatastralObraEnProceso es erróneo ";
+        }
+    }    
 
     if(count($mensajesj) > 0){
         return $mensajesj;

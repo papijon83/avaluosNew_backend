@@ -814,7 +814,7 @@ class BandejaEntradaNuevoController extends Controller
                 $elementoPrincipal = "Catastral";
             }
             //error_log($elementoPrincipal);            
-            $fechaAvaluo = $arrXML[$elementoPrincipal]['Identificacion']['FechaAvaluo']; 
+            $fechaAvaluo = $arrXML[$elementoPrincipal]['Identificacion']['FechaAvaluo']; //error_log("LA FECHA AVALUO ".$fechaAvaluo);
             $fechaAvaluoCompara = new Carbon($fechaAvaluo);
             $fechaMaxima = new Carbon('2020-12-31');  
             if($fechaAvaluoCompara->lte($fechaMaxima)){
@@ -999,7 +999,7 @@ class BandejaEntradaNuevoController extends Controller
                 $tieneDelegacion = true;
             }
             $anioCompara = Carbon::parse($fechaAvaluoCompara)->format('Y');
-            
+            error_log("EL AÑO A COMPARAR ".$anioCompara);
             /*****************************************/
             //if($fechaAvaluoCompara->lte($fechaMaxima)){
             if($anioCompara == 2021 && isset($tieneAlcaldia) && $tieneAlcaldia == true){ error_log("Entre en Nuevo");
