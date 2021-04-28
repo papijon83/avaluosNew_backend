@@ -2880,8 +2880,8 @@ function valida_Calculos_j($data, $letra, $datae23, $datae27, $datab6, $datad6, 
                 $calc_j_4 = ($e_2_3 + $e_2_7) * 0.08;
             }
         }
-        error_log(truncate($j_4,6)." != ".truncate($calc_j_4,6));
-        if(truncate($j_4,6) != truncate($calc_j_4,6)){ //echo "OPERACION ".round($j_4,6)." != ".round($calc_j_4,6)."\n";
+        error_log(truncate($j_4,2)." != ".truncate($calc_j_4,2));
+        if(truncate($j_4,2) != truncate($calc_j_4,2)){ //echo "OPERACION ".round($j_4,6)." != ".round($calc_j_4,6)."\n";
             $mensajesj[] =  "j.4 - El cálculo de ImporteInstalacionesEspeciales es erróneo ";
         }
         
