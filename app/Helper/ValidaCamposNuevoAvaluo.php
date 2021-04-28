@@ -3262,13 +3262,13 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                 $errores[] = $claveUso == 'W' ? "e.2.1.n.12 Campo obligatorio para el uso baldio" : "e.2.1.n.12 Campo obligatorio";                              
             }
 
-            if((!isset($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['FactorDeEdad'])  || trim($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['FactorDeEdad']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
+            if((!isset($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['IndiceDelCostoRemanente'])  || trim($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['IndiceDelCostoRemanente']) == '' || is_array($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['IndiceDelCostoRemanente'])) && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
                 $errores[] = $claveUso == 'W' ? "e.2.1.n.13 Campo obligatorio para el uso baldio" : "e.2.1.n.13 Campo obligatorio";                              
             }
 
-            if((!isset($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['FactorResultante'])  || trim($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['FactorResultante']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
+            /*if((!isset($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['FactorResultante'])  || trim($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['FactorResultante']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
                 $errores[] = $claveUso == 'W' ? "e.2.1.n.14 Campo obligatorio para el uso baldio" : "e.2.1.n.14 Campo obligatorio";                              
-            }
+            }*/
 
             if(trim($data[0]['TiposDeConstruccion']['ConstruccionesPrivativas']['CostoDeLaFraccionN']) == ''){              
                 $errores[] = $claveUso == 'W' ? "e.2.1.n.15 Campo obligatorio para el uso baldio" : "e.2.1.n.15 Campo obligatorio";                              
@@ -3361,13 +3361,13 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                     $errores[] = $claveUso == 'W' ? "e.2.1.n.12 Campo obligatorio para el uso baldio" : "e.2.1.n.12 Campo obligatorio";                              
                 }
     
-                if((!isset($elementoPrin['CostoUnitarioDeReposicionNuevo']) || trim($elementoPrin['IndiceDelCostoRemanente']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
+                if((!isset($elementoPrin['IndiceDelCostoRemanente']) || trim($elementoPrin['IndiceDelCostoRemanente']) == '' || is_array($elementoPrin['IndiceDelCostoRemanente'])) && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
                     $errores[] = $claveUso == 'W' ? "e.2.1.n.13 Campo obligatorio para el uso baldio" : "e.2.1.n.13 Campo obligatorio";                              
                 }
     
-                if(!isset($elementoPrin['CostoUnitarioDeReposicionNuevo']) && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
+                /*if(!isset($elementoPrin['CostoUnitarioDeReposicionNuevo']) && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
                     $errores[] = $claveUso == 'W' ? "e.2.1.n.14 Campo obligatorio para el uso baldio" : "e.2.1.n.14 Campo obligatorio";                              
-                }
+                }*/
     
                 if(trim($elementoPrin['CostoDeLaFraccionN']) == ''){              
                     $errores[] = $claveUso == 'W' ? "e.2.1.n.15 Campo obligatorio para el uso baldio" : "e.2.1.n.15 Campo obligatorio";                              
