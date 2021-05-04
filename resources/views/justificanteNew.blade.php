@@ -680,7 +680,7 @@
                         </table>
 
 
-                    <h4 style="margin-top: 4%;">MEDIDAS Y COLINDANCIAS:</h4>
+                    <h4 style="margin-top: 2%;">FUENTE DE INFORMACIÓN LEGAL:</h4>
                    
                         <table>
                             <tr>
@@ -729,6 +729,8 @@
                             </tr>
                         </table>
 
+
+                        <h4 style="margin-top: 4%;">MEDIDAS Y COLINDANCIAS:</h4>
 
                         <table class="tabla_cabeza_gris">
                             <thead>
