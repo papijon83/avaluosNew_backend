@@ -134,7 +134,8 @@ class BandejaEntradaNuevoController extends Controller
                 }
                 elseif(isset($fi) && $year->gt($fi)){
 
-                    $idPerito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+                    //$idPerito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+                    $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona'];
 
                     /*if ($idPerito) {
                         $table->where('FEXAVA_AVALUO.idpersonaperito', $idPerito);
@@ -170,7 +171,9 @@ class BandejaEntradaNuevoController extends Controller
                         } else {
                             return response()->json(['mensaje' => 'Formato de cuenta predial incorrecta'], 400);
                         }
-                        $idPerito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+                        //$idPerito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+                        $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona'];
+                        
                         /*if ($idPerito) {
                             $table->where('FEXAVA_AVALUO.idpersonaperito', $idPerito);
                         }*/
@@ -181,7 +184,8 @@ class BandejaEntradaNuevoController extends Controller
                 
             }
 
-            $idPerito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+            //$idPerito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+            $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona'];
 
             /* if ($idPerito) {
                 $table->where('FEXAVA_AVALUO.idpersonaperito', $idPerito);
@@ -319,8 +323,8 @@ class BandejaEntradaNuevoController extends Controller
                 elseif(isset($fi) && $year->gt($fi)){
 
                     //$idPerito = 264; 
-                    $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; 
-
+                    $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona'];
+                    
                     if ($idPerito) {
                         $table->where('FEXAVA_AVALUO.idpersonaperito', $idPerito);
                     }
@@ -357,6 +361,7 @@ class BandejaEntradaNuevoController extends Controller
                             return response()->json(['mensaje' => 'Formato de cuenta predial incorrecta'], 400);
                         }
                         $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona'];
+                        
                         if ($idPerito) {
                             $table->where('FEXAVA_AVALUO.idpersonaperito', $idPerito);
                         }
@@ -369,7 +374,7 @@ class BandejaEntradaNuevoController extends Controller
 
             //$idPerito = 264;
             $idPerito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; error_log("EL ID ANTERIOR ".$resToken['id_persona']." EL ID USUARIO ".$resToken['id_usuario']);
-
+            
             //$table->where('FEXAVA_AVALUO.idpersonaperito', $resToken['id_anterior']);
             //COMENTADO PRQUE YA ESTA ABAJO $table->where('FEXAVA_AVALUO.idpersonaperito', $idPerito);
             
@@ -456,7 +461,7 @@ class BandejaEntradaNuevoController extends Controller
         }
     }
 
-    public function avaluosProximos(Request $request)
+    public function avaluosProximosRES(Request $request)
     {
         try{
             $authToken = $request->header('Authorization');
@@ -465,7 +470,10 @@ class BandejaEntradaNuevoController extends Controller
                 } 
                 $resToken = Crypt::decrypt($authToken);
                 
-                $id_persona_perito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior']; 
+                //$id_persona_perito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+                $id_persona_perito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona'];
+                
+                $codestadoavaluo = $request->query('codestadoavaluo');
 
             $numero_unico = $request->query('no_unico');
             $this->modelDocumentos = new Documentos();
@@ -479,9 +487,71 @@ class BandejaEntradaNuevoController extends Controller
             $page = $request->query('page');
             $sortexpression = 'IDAVALUO';
 
+            $procedure = 'BEGIN        
+                FEXAVA.FEXAVA_AVALUOS_PKG.FEXAVA_SEL_V_BUSQUEDA_PROXIMID(
+                    :PAR_IDAVALUO,
+                    :PAR_CODESTADOAVALUO,
+                    :PAGE_SIZE,
+                    :PAGE,
+                    :SORTEXPRESSION,
+                    :C_AVALUOS
+                ); END;';
+            $conn = oci_connect(env("DB_USERNAME"), env("DB_PASSWORD"), env("DB_TNS"));
+            $stmt = oci_parse($conn, $procedure);
+            oci_bind_by_name($stmt, ':PAR_IDAVALUO', $id_avaluo);
+            oci_bind_by_name($stmt, ':PAR_CODESTADOAVALUO', $codestadoavaluo, 300);
+            oci_bind_by_name($stmt, ':PAGE_SIZE', $page_size, 300);
+            oci_bind_by_name($stmt, ':PAGE', $page, 300);
+            oci_bind_by_name($stmt, ':SORTEXPRESSION', $sortexpression);
+            $cursor = oci_new_cursor($conn);
+            oci_bind_by_name($stmt, ":C_AVALUOS", $cursor, -1, OCI_B_CURSOR);
+            oci_execute($stmt, OCI_COMMIT_ON_SUCCESS);
+            oci_execute($cursor, OCI_COMMIT_ON_SUCCESS);
+            oci_free_statement($stmt);
+            oci_close($conn);
+            oci_fetch_all($cursor, $avaluos, 0, -1, OCI_FETCHSTATEMENT_BY_ROW + OCI_ASSOC);
+            oci_free_cursor($cursor); //Log::info($avaluos);
+
+            $offset = ($page * $page_size) - $page_size;
+            $data = array_slice($avaluos, $offset, $page_size, true);
+            $avaluos = new \Illuminate\Pagination\LengthAwarePaginator($data, count($data), $page_size, $page);
+
+            if (count($avaluos) > 0) {
+                return response()->json($avaluos, 200);
+            } else {
+                return response()->json(['mensaje' => 'No se encontraron registros'], 500);
+            }
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+        }
+    }
+
+    public function avaluosProximos(Request $request)
+    { 
+        try{
+            $authToken = $request->header('Authorization');
+                if (!$authToken) {
+                    return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+                } 
+                $resToken = Crypt::decrypt($authToken);
+                
+                //$id_persona_perito = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+                $id_persona_perito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; 
+
+            $numero_unico = $request->query('no_unico');
+            $this->modelDocumentos = new Documentos();
+                
+            $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico); 
+            $page_size = $request->query('page_size');
+            $page = $request->query('page');
+            $sortexpression = 'IDAVALUO';
+            error_log($id_avaluo." ".$id_persona_perito." ".$page_size." ".$page." ".$sortexpression);
+            //echo $id_avaluo." ".$id_persona_perito." ".$page_size." ".$page." ".$sortexpression; exit();
             $procedure = 'BEGIN
                 FEXAVA.FEXAVA_AVALUOS_PKG.FEXAVA_SEL_V_PROXIMID_PERITO_P(
-                    :PAR_ID_AVALUO,
+                    :PAR_IDAVALUO,
                     :PAR_IDPERSONAPERITO,
                     :PAGE_SIZE,
                     :PAGE,
@@ -490,8 +560,69 @@ class BandejaEntradaNuevoController extends Controller
                 ); END;';
             $conn = oci_connect(env("DB_USERNAME"), env("DB_PASSWORD"), env("DB_TNS"));
             $stmt = oci_parse($conn, $procedure);
-            oci_bind_by_name($stmt, ':PAR_ID_AVALUO', $id_avaluo);
+            oci_bind_by_name($stmt, ':PAR_IDAVALUO', $id_avaluo);
             oci_bind_by_name($stmt, ':PAR_IDPERSONAPERITO', $id_persona_perito, 300);
+            oci_bind_by_name($stmt, ':PAGE_SIZE', $page_size, 300);
+            oci_bind_by_name($stmt, ':PAGE', $page, 300);
+            oci_bind_by_name($stmt, ':SORTEXPRESSION', $sortexpression);
+            $cursor = oci_new_cursor($conn);
+            oci_bind_by_name($stmt, ":C_AVALUOS", $cursor, -1, OCI_B_CURSOR);
+            oci_execute($stmt, OCI_COMMIT_ON_SUCCESS);
+            oci_execute($cursor, OCI_COMMIT_ON_SUCCESS);
+            oci_free_statement($stmt);
+            oci_close($conn);
+            oci_fetch_all($cursor, $avaluos, 0, -1, OCI_FETCHSTATEMENT_BY_ROW + OCI_ASSOC);
+            oci_free_cursor($cursor); //Log::info($avaluos);
+
+            $offset = ($page * $page_size) - $page_size;
+            $data = array_slice($avaluos, $offset, $page_size, true);
+            $avaluos = new \Illuminate\Pagination\LengthAwarePaginator($data, count($data), $page_size, $page);
+
+            if (count($avaluos) > 0) {
+                return response()->json($avaluos, 200);
+            } else {
+                return response()->json(['mensaje' => 'No se encontraron registros'], 500);
+            }
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+        }
+    }
+
+    public function avaluosProximosSoci(Request $request)
+    {
+        try{
+            $authToken = $request->header('Authorization');
+                if (!$authToken) {
+                    return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+                } 
+                $resToken = Crypt::decrypt($authToken);
+                
+                //$id_persona_sociedad = empty($resToken['id_anterior']) ? $resToken['id_usuario']: $resToken['id_anterior'];
+                $id_persona_perito = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; 
+
+            $numero_unico = $request->query('no_unico');
+            $this->modelDocumentos = new Documentos();
+                
+            $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);
+            $page_size = $request->query('page_size');
+            $page = $request->query('page');
+            $sortexpression = 'IDAVALUO';
+
+            $procedure = 'BEGIN
+                FEXAVA.FEXAVA_AVALUOS_PKG.FEXAVA_SEL_V_PROXIMID_SOCI_P(           
+                    :PAR_IDAVALUO,
+                    :PAR_IDPERSONASOCIEDAD,
+                    :PAGE_SIZE,
+                    :PAGE,
+                    :SORTEXPRESSION,
+                    :C_AVALUOS
+                ); END;';
+            $conn = oci_connect(env("DB_USERNAME"), env("DB_PASSWORD"), env("DB_TNS"));
+            $stmt = oci_parse($conn, $procedure);
+            oci_bind_by_name($stmt, ':PAR_ID_AVALUO', $id_avaluo);
+            oci_bind_by_name($stmt, ':PAR_IDPERSONASOCIEDAD', $id_persona_sociedad, 300);
             oci_bind_by_name($stmt, ':PAGE_SIZE', $page_size, 300);
             oci_bind_by_name($stmt, ':PAGE', $page, 300);
             oci_bind_by_name($stmt, ':SORTEXPRESSION', $sortexpression);
@@ -933,7 +1064,7 @@ class BandejaEntradaNuevoController extends Controller
             $resToken = Crypt::decrypt($authToken);
             
             $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; //$idPersona = 264;
-
+           
             $file = $request->file('files');
 
             $myfile = fopen($file, "r");
@@ -7055,6 +7186,17 @@ class BandejaEntradaNuevoController extends Controller
             error_log($th);
             return response()->json(['mensaje' => 'Error al obtener la información del avalúo'], 500);
         }    
+    }
+
+    public function getToken(Request $request){ 
+
+        $idPersona = $request->query('id_persona');        
+        
+        $res = array();           
+                   
+        $token = Crypt::encrypt(['id_persona'=>$idPersona]);
+        //error_log($token);          
+        echo $token;
     }
 
 }
