@@ -128,8 +128,8 @@ class Informes
         return $colonias;
     }
     
-    public function getTipos($idDelegacion){
-        $colonias = DB::select("SELECT * FROM CAS.CAS_COLONIA WHERE IDDELEGACION = '$idDelegacion'");
+    public function getTiposComparable(){
+        $colonias = DB::select("SELECT * FROM FEXAVA_CATTIPOCOMPARABLE");
         return $colonias;
     }
 }

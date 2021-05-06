@@ -85,7 +85,11 @@ class DatosExtrasAvaluo
     }
 
     public function ObtenerIdDelegacionPorClave($codDelegacion)
-    {        
+    {    
+        if(strlen($codDelegacion) == 3){
+            $codDelegacion = substr($codDelegacion,1,2);
+        }
+
         $rowsDelegaciones = DB::select("SELECT * FROM CAS.CAS_DELEGACION WHERE CLAVE = '$codDelegacion'");
 
         if (count($rowsDelegaciones) > 0)

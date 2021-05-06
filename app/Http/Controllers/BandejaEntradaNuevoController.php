@@ -5209,6 +5209,7 @@ class BandejaEntradaNuevoController extends Controller
                     $controlElemento = $controlElemento + 1;
 
                     if(isset($arrInvestigacionProductosComparables['arrIds'][$i]['h.2.1.n.1'])){
+                        $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][0]['FEXAVA_INVESTPRODUCTOSCOMP'][$controlElemento]['CODTIPOCOMPARABLE'] = 'V';
                         $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][0]['FEXAVA_INVESTPRODUCTOSCOMP'][$controlElemento]['CALLE'] = (String)($arrInvestigacionProductosComparables['arrElementos'][$i][$arrInvestigacionProductosComparables['arrIds'][$i]['h.2.1.n.1']]);
                     }
 
@@ -5329,6 +5330,7 @@ class BandejaEntradaNuevoController extends Controller
                         $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i] = array();
     
                         if(isset($arrInvestigacionProductoscomparables['arrIds'][$i]['h.4.1.n.1'])){
+                            $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i]['CODTIPOCOMPARABLE'] = 'R';
                             $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i]['CALLE'] = (String)($arrInvestigacionProductoscomparables['arrElementos'][$i][$arrInvestigacionProductoscomparables['arrIds'][$i]['h.4.1.n.1']]);
                         }
     

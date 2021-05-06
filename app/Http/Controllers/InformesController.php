@@ -120,4 +120,24 @@ class InformesController extends Controller
         }
     }
 
+    public function GetTiposComparable(Request $request){
+        try{
+
+            $authToken = $request->header('Authorization');
+            if (!$authToken) {
+                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+            } 
+            $resToken = Crypt::decrypt($authToken);
+            
+            $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; //$idPersona = 264;                            
+            
+           $res = $this->modelInformes->getTiposComparable();
+           return response()->json([$res], 200);
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);           
+            return response()->json(['mensaje' => 'Error al obtener la Información'], 500);    
+        }
+    }
+
 }
