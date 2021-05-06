@@ -119,7 +119,7 @@ class Informes
     }
 
     public function getDelegaciones(){
-        $delegaciones = DB::select("SELECT * FROM CAS.CAS_DELEGACION");
+        $delegaciones = DB::select("SELECT * FROM CAS.CAS_DELEGACION WHERE IDDELEGACION != 0");
         return $delegaciones;
     }
 
@@ -128,4 +128,8 @@ class Informes
         return $colonias;
     }
     
+    public function getTipos($idDelegacion){
+        $colonias = DB::select("SELECT * FROM CAS.CAS_COLONIA WHERE IDDELEGACION = '$idDelegacion'");
+        return $colonias;
+    }
 }

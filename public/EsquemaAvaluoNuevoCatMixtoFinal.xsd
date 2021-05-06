@@ -4737,7 +4737,7 @@
               <xs:complexType>
                 <xs:simpleContent>
                   <xs:extension base="NullableDecimalPositivo">
-                    <xs:attribute fixed="e.2.1.n.8" name="id" type="xs:string"/>
+                    <xs:attribute fixed="e.2.1.n.8" name="id" type="xs:string" />
                   </xs:extension>
                 </xs:simpleContent>
               </xs:complexType>
@@ -5663,7 +5663,7 @@
   </xs:complexType>
   <xs:complexType name="SUB-FactorDeEdadInstalacionEspecial">
     <xs:simpleContent>
-      <xs:extension base="DecimalPositivo06">
+      <xs:extension base="DecimalPositivo">
         <xs:attribute fixed="f.9.1.n.8" name="id" type="xs:string" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -5677,7 +5677,7 @@
   </xs:complexType>
   <xs:complexType name="SUB-FactorDeEdadInstalacionEspecialComunes">
     <xs:simpleContent>
-      <xs:extension base="DecimalPositivo06">
+      <xs:extension base="DecimalPositivo">
         <xs:attribute fixed="f.9.2.n.8" name="id" type="xs:string" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -5819,7 +5819,7 @@
   </xs:complexType>
   <xs:complexType  name="SUB-FactorDeEdadElementoAccesorio">
     <xs:simpleContent>
-      <xs:extension base="DecimalPositivo06">
+      <xs:extension base="DecimalPositivo">
         <xs:attribute fixed="f.10.1.n.8" name="id" type="xs:string" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -5910,7 +5910,7 @@
   </xs:complexType>
   <xs:complexType name="SUB-FactorDeEdadElementoAccesorioComunes">
     <xs:simpleContent>
-      <xs:extension base="DecimalPositivo06">
+      <xs:extension base="DecimalPositivo">
         <xs:attribute fixed="f.10.2.n.8" name="id" type="xs:string" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -6002,7 +6002,7 @@
   </xs:complexType>
   <xs:complexType name="SUB-FactorDeEdadObraComplementaria-Privativas" >
     <xs:simpleContent>
-      <xs:extension base="DecimalPositivo06">
+      <xs:extension base="DecimalPositivo">
         <xs:attribute fixed="f.11.1.n.8" name="id" type="xs:string" use="required" />
       </xs:extension>
     </xs:simpleContent>
@@ -6093,7 +6093,7 @@
   </xs:complexType>
   <xs:complexType name="SUB-FactorDeEdadObraComplementaria-Comunes">
     <xs:simpleContent>
-      <xs:extension base="DecimalPositivo06">
+      <xs:extension base="DecimalPositivo">
         <xs:attribute fixed="f.11.2.n.8" name="id" type="xs:string" use="required" />
       </xs:extension>
     </xs:simpleContent>
