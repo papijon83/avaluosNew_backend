@@ -5312,7 +5312,7 @@ class BandejaEntradaNuevoController extends Controller
                 $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['IDMODOCONSTRUCCION'] = 'R';
             }
 
-            if ($this->esTerrenoValdio($infoXmlElementosConst, $elementoPrincipal) == TRUE){
+            if ($this->esTerrenoValdio($infoXmlElementosConst, $elementoPrincipal) == FALSE){
                 if(isset($arrConstruccionesEnRenta['arrIds']['h.4.1'])){
                 
                     /*if(!isset($camposFexavaAvaluo['FEXAVA_INVESTPRODUCTOSCOMP'])){
@@ -5799,7 +5799,7 @@ class BandejaEntradaNuevoController extends Controller
                 $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['IDMODOCONSTRUCCION'] = 'R';
             }
 
-            if ($this->esTerrenoValdio($infoXmlElementosConst, $elementoPrincipal) == TRUE){
+            if ($this->esTerrenoValdio($infoXmlElementosConst, $elementoPrincipal) == FALSE){
                 if(isset($arrConstruccionesEnRenta['arrIds']['h.4.1'])){
                 
                     /*if(!isset($camposFexavaAvaluo['FEXAVA_INVESTPRODUCTOSCOMP'])){
@@ -5817,6 +5817,7 @@ class BandejaEntradaNuevoController extends Controller
                         $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i] = array();
     
                         if(isset($arrInvestigacionProductoscomparables['arrIds'][$i]['h.4.1.n.1'])){
+                            $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i]['CODTIPOCOMPARABLE'] = 'R';
                             $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i]['CALLE'] = (String)($arrInvestigacionProductoscomparables['arrElementos'][$i][$arrInvestigacionProductoscomparables['arrIds'][$i]['h.4.1.n.1']]);
                         }
     
@@ -6027,7 +6028,7 @@ class BandejaEntradaNuevoController extends Controller
             }
         }
 
-        if($this->esTerrenoValdio($xmlEnfoqueDeIngresos, $elementoPrincipal) == TRUE){
+        if($this->esTerrenoValdio($xmlEnfoqueDeIngresos, $elementoPrincipal) == FALSE){
 
            
             if(isset($enfoqueDeIngresos)){
@@ -6546,12 +6547,21 @@ class BandejaEntradaNuevoController extends Controller
             $descripcionDelInmueble = $data->xpath($elementoPrincipal.'//'.$arrGeneral['arrIds']['e'].'[@id="e"]//TiposDeConstruccion[@id="e.2"]');
             $arrDescripcionDelInmueble = $this->obtenElementos($descripcionDelInmueble);
             
-            if(isset($arrDescripcionDelInmueble['arrIds'][0]['e.2.1']) && isset($arrDescripcionDelInmueble['arrIds'][0]['e.2.5']) && count($arrDescripcionDelInmueble['arrElementos'][0][$arrDescripcionDelInmueble['arrIds'][0]['e.2.1']]) > 0 &&  count($arrDescripcionDelInmueble['arrElementos'][0][$arrDescripcionDelInmueble['arrIds'][0]['e.2.5']]) > 0){
-                
+            if(isset($arrDescripcionDelInmueble['arrIds'][0]['e.2.1']) && count($arrDescripcionDelInmueble['arrElementos'][0][$arrDescripcionDelInmueble['arrIds'][0]['e.2.1']]) > 0){
+                $tienePrivativas = TRUE;
+            }
+
+            if(isset($arrDescripcionDelInmueble['arrIds'][0]['e.2.5']) && count($arrDescripcionDelInmueble['arrElementos'][0][$arrDescripcionDelInmueble['arrIds'][0]['e.2.5']]) > 0){
+                $tieneComunes = TRUE;                     
+            
+            }
+
+            if(!isset($tienePrivativas) && !isset($tieneComunes)){
                 return TRUE;
             }else{
                 return FALSE;
             }
+
         }else{
             return $resultado;
         }
