@@ -77,6 +77,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
             $router->get('query', 'PruebaDoc@ejecutaQuery');
 
             $router->post('getInvestigacionMercado', 'InformesController@GetInvestigacionMercado');
+            $router->get('getDelegaciones', 'InformesController@GetDelegaciones');
+            $router->get('getColonias', 'InformesController@GetColonias');
         });
 
         

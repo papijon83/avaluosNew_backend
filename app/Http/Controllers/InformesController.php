@@ -41,7 +41,78 @@ class InformesController extends Controller
             
             
            $res = $this->modelInformes->getInvestigacionMercado($region,$manzana,$tipo,$delegacion,$colonia,$fechainicio,$fechafin);
+           return response()->json([$res], 200);
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);           
+            return response()->json(['mensaje' => 'Error al obtener la Información'], 500);    
+        }
+    }
 
+    public function GetCuentasDuplicadas(Request $request){
+        try{
+
+            $authToken = $request->header('Authorization');
+            if (!$authToken) {
+                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+            } 
+            $resToken = Crypt::decrypt($authToken);
+            
+            $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; //$idPersona = 264;
+
+            $fechaInicio = trim($request->query('fechainicio')) == '' ? NULL : trim($request->query('fechainicio'));
+            $fechaFin = trim($request->query('fechafin')) == '' ? NULL : trim($request->query('fechafin'));
+            $region = trim($request->query('region')) == '' ? NULL : trim($request->query('region'));
+            $manzana = trim($request->query('manzana')) == '' ? NULL : trim($request->query('manzana'));
+            $lote = trim($request->query('lote')) == '' ? NULL : trim($request->query('lote'));
+            $unidad = trim($request->query('unidad')) == '' ? NULL : trim($request->query('unidad'));
+            $registro = trim($request->query('registro')) == '' ? NULL : trim($request->query('registro'));
+            $completa = trim($request->query('completa')) == '' ? NULL : trim($request->query('completa'));
+                
+            
+           $res = $this->modelInformes->getCuentasDuplicadas($fechaInicio, $fechaFin, $region, $manzana, $lote, $unidad, $registro, $completa);
+           return response()->json([$res], 200);
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);           
+            return response()->json(['mensaje' => 'Error al obtener la Información'], 500);    
+        }
+    }
+
+    public function GetDelegaciones(Request $request){
+        try{
+
+            $authToken = $request->header('Authorization');
+            if (!$authToken) {
+                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+            } 
+            $resToken = Crypt::decrypt($authToken);
+            
+            $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; //$idPersona = 264;                            
+            
+           $res = $this->modelInformes->getDelegaciones();
+           return response()->json([$res], 200);
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);           
+            return response()->json(['mensaje' => 'Error al obtener la Información'], 500);    
+        }
+    }
+
+    public function GetColonias(Request $request){
+        try{
+
+            $authToken = $request->header('Authorization');
+            if (!$authToken) {
+                return response()->json(['mensaje' => 'Sin acceso a la aplicación'], 403);
+            } 
+            $resToken = Crypt::decrypt($authToken);
+            
+            $idPersona = empty($resToken['id_persona']) ? $resToken['id_usuario']: $resToken['id_persona']; //$idPersona = 264;           
+            $idDelegacion = trim($request->query('idDelegacion')) == '' ? NULL : trim($request->query('idDelegacion'));
+            
+           $res = $this->modelInformes->getColonias($idDelegacion);
+           return response()->json([$res], 200);
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);           
