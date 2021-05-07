@@ -2754,7 +2754,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
         $k_1 = $data[0]['RentaBrutaMensual'];
         $calc_k_2_13 = ($k_2_12 / $k_1) / 100;
 
-        if(truncate($k_2_13,4) != truncate($calc_k_2_13,4)){ //echo truncate($k_2_13,4)." != ".truncate($calc_k_2_13,4)."\n";
+        if(truncate($k_2_13,4) != truncate($calc_k_2_13,4)){ // error_log(truncate($k_2_13,4)." != ".truncate($calc_k_2_13,4));
             $mensajesk[] = "k.2.13 - El cálculo de PorcentajeDeduccionesMensuales es erróneo ";
         }
 

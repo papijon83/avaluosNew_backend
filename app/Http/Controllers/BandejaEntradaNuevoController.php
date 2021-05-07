@@ -5330,7 +5330,7 @@ class BandejaEntradaNuevoController extends Controller
                         $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i] = array();
     
                         if(isset($arrInvestigacionProductoscomparables['arrIds'][$i]['h.4.1.n.1'])){
-                            $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i]['CODTIPOCOMPARABLE'] = 'R';
+                            $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$contro Elemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i]['CODTIPOCOMPARABLE'] = 'R';
                             $camposFexavaAvaluo['FEXAVA_CONSTRUCCIONESMER'][$controlElemento]['FEXAVA_INVESTPRODUCTOSCOMP'][$i]['CALLE'] = (String)($arrInvestigacionProductoscomparables['arrElementos'][$i][$arrInvestigacionProductoscomparables['arrIds'][$i]['h.4.1.n.1']]);
                         }
     
