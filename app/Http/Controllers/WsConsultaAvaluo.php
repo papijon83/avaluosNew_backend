@@ -87,8 +87,8 @@ class WsConsultaAvaluo extends Controller
             //print_r($infoAvaluos); exit();
             unset($infoAvaluos[0]['FOLIO_REAL']);
             unset($infoAvaluos[0]['ANTECEDENTE_REGISTRAL']);
-            $arrayRes['AVALUOS_CONSULTA_GETAVALUOS_p'] = $infoAvaluos;
-            $arrayRes['AVALUO'] = $infoDatos;    
+            //$arrayRes['AVALUOS_CONSULTA_GETAVALUOS_p'] = $this->limpiaConsulta($infoAvaluos);
+            $arrayRes['AVALUOS'] = $this->limpiarAvaluos($infoDatos,$infoAvaluos[0]['CUENTA']);
             
             return response()->json($arrayRes, 200); 
         } catch (\Throwable $th) {
@@ -98,6 +98,39 @@ class WsConsultaAvaluo extends Controller
         } 
         
 
+    }
+
+    public function limpiaConsulta($info){
+        //print_r($info);
+        $arrMostrar = array('CUENTA');
+        foreach($info[0] as $llave => $valor){
+            if(!in_array($llave, $arrMostrar)){
+                unset($info[0][$llave]);
+            }else{
+                $info[0][$llave] = trim($valor); 
+            }
+        }
+        return $info;
+    }
+
+    public function limpiarAvaluos($info,$cuenta){
+        $arrMostrar = array('NUMERO_UNICO_AVALUO','MONTO_AVALUO');
+        //print_r($info);
+        foreach($info as $llaveP => $valP){
+            foreach($valP as $llaveD => $valD){
+                if(!in_array($llaveD, $arrMostrar)){
+                    unset($info[$llaveP][$llaveD]);
+                }else{
+                    $info[$llaveP][$llaveD] = trim($valD);
+                }
+            }
+            $info[$llaveP]['CUENTA'] = $cuenta;            
+        }
+
+        foreach($info as $llaveP => $valP){
+            $info[$llaveP] = array_reverse($valP);
+        }
+        return $info;
     }
 
     public function getToken(Request $request){
