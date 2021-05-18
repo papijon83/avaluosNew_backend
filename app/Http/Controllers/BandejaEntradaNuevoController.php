@@ -6600,6 +6600,7 @@ class BandejaEntradaNuevoController extends Controller
         try{
 
             $numero_unico = trim($request->query('no_unico'));
+            $format = trim($request->query('formato'));
 
             $this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);
@@ -6667,10 +6668,16 @@ class BandejaEntradaNuevoController extends Controller
                 }else{
                     $formato = view('justificante_com', compact("infoAvaluo"))->render();
                 }
-                $pdf = PDF::loadHTML($formato);
-                $pdf->setOptions(['chroot' => 'public']);
-                Storage::put('formato.pdf', $pdf->output());
-                return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
+
+                if($format == 'PDF'){
+                    $pdf = PDF::loadHTML($formato);
+                    $pdf->setOptions(['chroot' => 'public']);
+                    Storage::put('formato.pdf', $pdf->output());
+                    return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
+                } else {
+                    return response()->json(['mensaje' => 'formato DOC'], 500);
+                }
+                
                     
             /*$this->modelReimpresion = new ReimpresionNuevo();
             $infoAvaluo = $this->modelReimpresion->infoAvaluo($id_avaluo);
@@ -6694,10 +6701,15 @@ class BandejaEntradaNuevoController extends Controller
                     Log::info(json_encode("ABAJO DE VIEW"));
                 }
 
-                $pdf = PDF::loadHTML($formato);
-                $pdf->setOptions(['chroot' => 'public']);
-                Storage::put('formato.pdf', $pdf->output());
-                return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
+                if($format == 'PDF'){
+                    $pdf = PDF::loadHTML($formato);
+                    $pdf->setOptions(['chroot' => 'public']);
+                    Storage::put('formato.pdf', $pdf->output());
+                    return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
+                } else {
+                    return response()->json(['mensaje' => 'formato DOC'], 500);
+                }
+                
                 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
