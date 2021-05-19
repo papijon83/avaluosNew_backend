@@ -6675,7 +6675,15 @@ class BandejaEntradaNuevoController extends Controller
                     Storage::put('formato.pdf', $pdf->output());
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    return response()->json(['mensaje' => 'formato DOC'], 500);
+                    $pathdoc = storage_path('app/formato.docx');
+                    $phpWord = new \PhpOffice\PhpWord\PhpWord();
+                    if($tipo_avaluo == 'A-CAT'){
+                        $document = $phpWord->loadTemplate(base_path('public/templatesDOCX/templateCAT.docx'));
+                    }else{
+                        $document = $phpWord->loadTemplate(base_path('public/templatesDOCX/templateCOM.docx'));
+                    }
+                    $document->saveAs($pathdoc);
+                    return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }
                 
                     
@@ -6707,7 +6715,15 @@ class BandejaEntradaNuevoController extends Controller
                     Storage::put('formato.pdf', $pdf->output());
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    return response()->json(['mensaje' => 'formato DOC'], 500);
+                    $pathdoc = storage_path('app/formato.docx');
+                    $phpWord = new \PhpOffice\PhpWord\PhpWord();
+                    if($tipo_avaluo == 'A-CAT'){
+                        $document = $phpWord->loadTemplate(base_path('public/templatesDOCX/templateCAT.docx'));
+                    }else{
+                        $document = $phpWord->loadTemplate(base_path('public/templatesDOCX/templateCOM.docx'));
+                    }
+                    $document->saveAs($pathdoc);
+                    return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }
                 
                 
