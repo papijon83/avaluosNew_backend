@@ -6663,13 +6663,14 @@ class BandejaEntradaNuevoController extends Controller
                 }
 
                 $tipo_avaluo = substr($infoAvaluo['Encabezado']['No_Unico'], 0, 5);
-                if($tipo_avaluo == 'A-CAT'){
-                    $formato = view('justificante', compact("infoAvaluo"))->render();
-                }else{
-                    $formato = view('justificante_com', compact("infoAvaluo"))->render();
-                }
 
                 if($format == 'PDF'){
+                    if($tipo_avaluo == 'A-CAT'){
+                        $formato = view('justificante', compact("infoAvaluo"))->render();
+                    }else{
+                        $formato = view('justificante_com', compact("infoAvaluo"))->render();
+                    }
+                    
                     $pdf = PDF::loadHTML($formato);
                     $pdf->setOptions(['chroot' => 'public']);
                     Storage::put('formato.pdf', $pdf->output());
@@ -6701,15 +6702,16 @@ class BandejaEntradaNuevoController extends Controller
                     return $infoAvaluo;
                 }                
                 $tipo_avaluo = substr($infoAvaluo['Encabezado']['No_Unico'], 0, 5);
-                if($tipo_avaluo == 'A-CAT'){
-                    $formato = view('justificanteNew', compact("infoAvaluo"))->render();
-                }else{
-                    //Log::info(json_encode($infoAvaluo));                    
-                    $formato = view('justificanteNew_com', compact("infoAvaluo"))->render();
-                    Log::info(json_encode("ABAJO DE VIEW"));
-                }
 
                 if($format == 'PDF'){
+                    if($tipo_avaluo == 'A-CAT'){
+                        $formato = view('justificanteNew', compact("infoAvaluo"))->render();
+                    }else{
+                        //Log::info(json_encode($infoAvaluo));                    
+                        $formato = view('justificanteNew_com', compact("infoAvaluo"))->render();
+                        Log::info(json_encode("ABAJO DE VIEW"));
+                    }
+                    
                     $pdf = PDF::loadHTML($formato);
                     $pdf->setOptions(['chroot' => 'public']);
                     Storage::put('formato.pdf', $pdf->output());
