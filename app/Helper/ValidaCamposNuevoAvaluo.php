@@ -2530,7 +2530,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                             $f_11_2_n_8 = $elemento['FactorDeEdadObraComplementaria'];
                             $f_11_2_n_6 = $elemento['VidaUtilTotalObraComplementaria'];
                             $f_11_2_n_5 = $elemento['EdadObraComplementaria'];
-                            $calc_f_11_2_n_8 = (0.1 * $f_11_2_n_6 + 0.9 * ($f_11_2_n_6 - $f_11_2_n_5)) / $f_11_2_n_6;
+                            //$calc_f_11_2_n_8 = (0.1 * $f_11_2_n_6 + 0.9 * ($f_11_2_n_6 - $f_11_2_n_5)) / $f_11_2_n_6;
 
                             /* if(in_array($elemento['ClaveObraComplementaria'],$arrUno)){
                                 if(truncate($f_11_2_n_8,2) != truncate(1,2)){ //echo truncate($f_11_2_n_8,2)." != ".truncate(1,2)."\n";
@@ -2564,7 +2564,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                                 $f_11_2_n_8 = $data[0]['ObrasComplementarias']['Comunes']['FactorDeEdadObraComplementaria'];
                                 $f_11_2_n_6 = $data[0]['ObrasComplementarias']['Comunes']['VidaUtilTotalObraComplementaria'];
                                 $f_11_2_n_5 = $data[0]['ObrasComplementarias']['Comunes']['EdadObraComplementaria'];
-                                $calc_f_11_2_n_8 = (0.1 * $f_11_2_n_6 + 0.9 * ($f_11_2_n_6 - $f_11_2_n_5)) / $f_11_2_n_6;
+                                //$calc_f_11_2_n_8 = (0.1 * $f_11_2_n_6 + 0.9 * ($f_11_2_n_6 - $f_11_2_n_5)) / $f_11_2_n_6;
 
                                 /* if(in_array($data[0]['ObrasComplementarias']['Comunes']['ClaveObraComplementaria'],$arrUno)){
                                     if(truncate($f_11_2_n_8,2) != truncate(1,2)){

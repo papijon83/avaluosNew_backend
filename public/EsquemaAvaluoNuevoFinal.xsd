@@ -5989,7 +5989,7 @@
   </xs:complexType>
   <xs:complexType name="SUB-FactorDeEdadObraComplementaria-Comunes">
     <xs:simpleContent>
-      <xs:extension base="DecimalPositivo">
+      <xs:extension base="DoublePositivo">
         <xs:attribute fixed="f.11.2.n.8" name="id" type="xs:string" use="required" />
       </xs:extension>
     </xs:simpleContent>
