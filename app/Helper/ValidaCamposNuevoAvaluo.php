@@ -3553,9 +3553,9 @@ function valida_AvaluoDescripcionImueble($data, $elementoPrincipal, $datad = fal
                     $errores[] = $claveUso == 'W' ? "e.2.5.n.13 Campo obligatorio para el uso baldio" : "e.2.5.n.13 Campo obligatorio";                              
                 }
     
-                if((!isset($elementoPrin['FactorResultante']) || trim($elementoPrin['FactorResultante']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
+                /*if((!isset($elementoPrin['FactorResultante']) || trim($elementoPrin['FactorResultante']) == '') && $elementoPrincipal == '//Comercial' && $claveUso != 'H'){                
                     $errores[] = $claveUso == 'W' ? "e.2.5.n.14 Campo obligatorio para el uso baldio" : "e.2.5.n.14 Campo obligatorio";                              
-                }
+                }*/
     
                 if(trim($elementoPrin['CostoDeLaFraccionN']) == ''){              
                     $errores[] = $claveUso == 'W' ? "e.2.5.n.15 Campo obligatorio para el uso baldio" : "e.2.5.n.15 Campo obligatorio";                              
