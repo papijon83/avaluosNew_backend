@@ -2078,9 +2078,11 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                 $d_5_n_10 = $data[0]['SuperficieDelTerreno']['Fre'];
                 $dataextra = array_map("convierte_a_arreglo",$dataextra);
                 $h_1_4 = $dataextra[0]['Terrenos']['ValorUnitarioDeTierraAplicableAlAvaluo'];
-                $calc_d_5_n_11 = $h_1_4 * $data[0]['SuperficieDelTerreno']['SuperficieFraccionN1'] * $d_5_n_10;
-                $d_5_n_11 = $data[0]['SuperficieDelTerreno']['ValorDeLaFraccionN']; //echo truncate($calc_d_5_n_11,2)." != ".truncate($d_5_n_11,2); exit();
-                if(truncate($calc_d_5_n_11,2) != truncate($d_5_n_11,2)){
+                $calc_d_5_n_11 = ($h_1_4 * $data[0]['SuperficieDelTerreno']['SuperficieFraccionN1']) * ($d_5_n_10); error_log($h_1_4." * ".$data[0]['SuperficieDelTerreno']['SuperficieFraccionN1']." * ".$d_5_n_10);
+                $d_5_n_11 = $data[0]['SuperficieDelTerreno']['ValorDeLaFraccionN']; error_log(truncate($calc_d_5_n_11,2)." != ".truncate($d_5_n_11,2));
+                if((String)(truncate($calc_d_5_n_11,2)) != (String)(truncate($d_5_n_11,2))){
+                    //error_log(json_encode(var_dump(truncate($calc_d_5_n_11,2)))); error_log(json_encode(var_dump(truncate($d_5_n_11,2))));
+                    //error_log("ENTRE CUANDO SON DIFERENTES ".truncate($calc_d_5_n_11,2)." != ".truncate($d_5_n_11,2));
                     $mensajesd[] =  "d.5.n.11 - El cálculo de ValorDeLaFraccionN es erróneo ";
                 }
             }
@@ -2820,9 +2822,12 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
 
 function truncate($number, $decimals)
 {
+    //error_log("EL VALOR QUE LLEGA a truncate ".$number);
+
     $point_index = strrpos($number, '.');
      if($point_index === false){
-        return intval($number);
+         //error_log("ENTRE A LA COMPARACION FALSE ".$number);
+        return $number;
      }else{
          $arrCantidades = explode('.',$number);
          if($arrCantidades[1] > 0){
