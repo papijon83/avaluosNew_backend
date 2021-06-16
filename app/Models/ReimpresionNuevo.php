@@ -51,7 +51,7 @@ class ReimpresionNuevo
         $xml = simplexml_load_string($contenidoArchivo,'SimpleXMLElement', LIBXML_NOCDATA);
         $comandoRmDefault = "rm ".$rutaArchivos."/default";
         shell_exec($comandoRmDefault);
-        $arrXML = convierte_a_arreglo($xml); //echo $contenidoArchivo; exit();           
+        $arrXML = convierte_a_arreglo($xml);           
 
         if(isset($arrXML['Comercial'])){
             $elementoPrincipal = $arrXML['Comercial'];
@@ -226,7 +226,7 @@ class ReimpresionNuevo
         $xml = simplexml_load_string($contenidoArchivo,'SimpleXMLElement', LIBXML_NOCDATA);
         $comandoRmDefault = "rm ".$rutaArchivos."/default";
         shell_exec($comandoRmDefault);
-        $arrXML = convierte_a_arreglo($xml); //echo $contenidoArchivo; exit();
+        $arrXML = convierte_a_arreglo($xml); //echo "AQUI SI LLEGO "; exit();
 
         $infoFexava = DB::select("SELECT * FROM FEXAVA_AVALUO WHERE IDAVALUO = $idAvaluo");
         $arrInfoFexava = array_map("convierte_a_arreglo",$infoFexava);
@@ -351,7 +351,7 @@ class ReimpresionNuevo
         $infoReimpresion['Ubicacion_Inmueble']['Colonia'] = $ubicacionInmueble['Colonia'];
         $infoReimpresion['Ubicacion_Inmueble']['CP'] = $ubicacionInmueble['CodigoPostal'];
         $infoReimpresion['Ubicacion_Inmueble']['Delegacion'] = isset($ubicacionInmueble['Delegacion']) ? $this->modelDocumentos->ObtenerNombreDelegacionPorClave($ubicacionInmueble['Delegacion']) : $this->modelDocumentos->ObtenerNombreDelegacionPorClave($ubicacionInmueble['Alcaldia']);
-        $infoReimpresion['Ubicacion_Inmueble']['Edificio'] = "-";
+        $infoReimpresion['Ubicacion_Inmueble']['Edificio'] = isset($ubicacionInmueble['Edificio']) && !is_array($ubicacionInmueble['Edificio']) ? $ubicacionInmueble['Edificio'] : '-';;
         $infoReimpresion['Ubicacion_Inmueble']['Lote'] = isset($ubicacionInmueble['Lote']) && !is_array($ubicacionInmueble['Lote']) ? $ubicacionInmueble['Lote'] : 0;
         if(isset($ubicacionInmueble['CuentaDeAgua']) && !is_array($ubicacionInmueble['CuentaDeAgua'])){
             $infoReimpresion['Ubicacion_Inmueble']['Cuenta_agua'] = $ubicacionInmueble['CuentaDeAgua'];
@@ -2545,7 +2545,7 @@ class ReimpresionNuevo
         $xml = simplexml_load_string($contenidoArchivo,'SimpleXMLElement', LIBXML_NOCDATA);
         $comandoRmDefault = "rm ".$rutaArchivos."/default";
         shell_exec($comandoRmDefault);
-        $arrXML = convierte_a_arreglo($xml); //echo $contenidoArchivo; exit();
+        $arrXML = convierte_a_arreglo($xml); //print_r($arrXML); exit();
 
         $infoFexava = DB::select("SELECT * FROM FEXAVA_AVALUO WHERE IDAVALUO = $idAvaluo");
         $arrInfoFexava = array_map("convierte_a_arreglo",$infoFexava);
@@ -2688,7 +2688,7 @@ class ReimpresionNuevo
         $infoReimpresion['Ubicacion_Inmueble']['Colonia'] = $ubicacionInmueble['Colonia'];
         $infoReimpresion['Ubicacion_Inmueble']['CP'] = $ubicacionInmueble['CodigoPostal'];
         $infoReimpresion['Ubicacion_Inmueble']['Delegacion'] = isset($ubicacionInmueble['Delegacion']) ? $this->modelDocumentos->ObtenerNombreDelegacionPorClave($ubicacionInmueble['Delegacion']) : $this->modelDocumentos->ObtenerNombreDelegacionPorClave($ubicacionInmueble['Alcaldia']);
-        $infoReimpresion['Ubicacion_Inmueble']['Edificio'] = "-";
+        $infoReimpresion['Ubicacion_Inmueble']['Edificio'] = isset($ubicacionInmueble['Edificio']) && !is_array($ubicacionInmueble['Edificio']) ? $ubicacionInmueble['Edificio'] : '-';
         $infoReimpresion['Ubicacion_Inmueble']['Lote'] = isset($ubicacionInmueble['Lote']) && !is_array($ubicacionInmueble['Lote']) ? $ubicacionInmueble['Lote'] : 0;
         $infoReimpresion['Ubicacion_Inmueble']['Cuenta_agua'] = isset($ubicacionInmueble['CuentaDeAgua']) && !is_array($ubicacionInmueble['CuentaDeAgua']) ? $ubicacionInmueble['CuentaDeAgua'] : '';
 
@@ -4924,7 +4924,7 @@ class ReimpresionNuevo
             $infoReimpresion['Ubicacion_Inmueble']['Colonia'] = $ubicacionInmueble['Colonia'];
             $infoReimpresion['Ubicacion_Inmueble']['CP'] = $ubicacionInmueble['CodigoPostal'];
             $infoReimpresion['Ubicacion_Inmueble']['Delegacion'] = isset($ubicacionInmueble['Delegacion']) ? $this->modelDocumentos->ObtenerNombreDelegacionPorClave($ubicacionInmueble['Delegacion']) : $this->modelDocumentos->ObtenerNombreDelegacionPorClave($ubicacionInmueble['Alcaldia']);
-            $infoReimpresion['Ubicacion_Inmueble']['Edificio'] = "-";
+            $infoReimpresion['Ubicacion_Inmueble']['Edificio'] = isset($ubicacionInmueble['Edificio']) && !is_array($ubicacionInmueble['Edificio']) ? $ubicacionInmueble['Edificio'] : '-';;
             $infoReimpresion['Ubicacion_Inmueble']['Lote'] = isset($ubicacionInmueble['Lote']) && !is_array($ubicacionInmueble['Lote']) ? $ubicacionInmueble['Lote'] : 0;
             $infoReimpresion['Ubicacion_Inmueble']['Cuenta_agua'] = isset($ubicacionInmueble['CuentaDeAgua']) && !is_array($ubicacionInmueble['CuentaDeAgua']) ? $ubicacionInmueble['CuentaDeAgua'] : '';
 
