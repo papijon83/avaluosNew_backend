@@ -2672,7 +2672,11 @@ class ReimpresionNuevo
             $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']));
         }elseif(isset($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']) && !is_array($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble'])) {
             //$tipoDeInmueble = $elementoPrincipal['Antecedentes']['TipoDeInmueble'];
-            $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']));
+            if(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']) == 19){
+                $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $elementoPrincipal['Antecedentes']['TipoDeInmueble']['Otros'];    
+            }else{
+                $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']));
+            }            
         }else{
             $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = '';
         }
@@ -4907,8 +4911,12 @@ class ReimpresionNuevo
                 //$tipoDeInmueble = $elementoPrincipal['Antecedentes']['TipoDeInmueble'];
                 $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']));
             }elseif(isset($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']) && !is_array($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble'])) {
-                //$tipoDeInmueble = $elementoPrincipal['Antecedentes']['TipoDeInmueble'];
-                $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']));
+                if(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']) == 19){
+                    $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $elementoPrincipal['Antecedentes']['TipoDeInmueble']['Otros'];    
+                }else{
+                    $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = $this->cat_tipo_inmueble(intval($elementoPrincipal['Antecedentes']['TipoDeInmueble']['ClaveTipoInmueble']));
+                }
+
             }else{
                 $infoReimpresion['Sociedad_Participa']['tipoDeInmueble'] = '';
             }
