@@ -36,6 +36,7 @@ class FormatosController extends Controller
             $datosPDF = [];
 
             $datosPDF['numeroUnico'] = trim($data['numeroUnico']);
+            $datosPDF['fechaCarga'] = trim('20/12/2021');
             $datosPDF['region'] = trim($data['cuentaCatastral']['region']);
             $datosPDF['manzana'] = trim($data['cuentaCatastral']['manzana']);
             $datosPDF['lote'] = trim($data['cuentaCatastral']['lote']);
@@ -94,6 +95,7 @@ class FormatosController extends Controller
             $datosPDF = [];
 
             $datosPDF['numeroUnico'] = trim($data['numeroUnico']);
+            $datosPDF['fechaCarga'] = trim('20/12/2021');
             $datosPDF['region'] = trim($data['cuentaCatastral']['region']);
             $datosPDF['manzana'] = trim($data['cuentaCatastral']['manzana']);
             $datosPDF['lote'] = trim($data['cuentaCatastral']['lote']);
@@ -178,6 +180,7 @@ class FormatosController extends Controller
             $datosPDF = [];
 
             $datosPDF['numeroUnico'] = trim($data['numeroUnico']);
+            $datosPDF['fechaCarga'] = trim('20/12/2021');
             $datosPDF['region'] = trim($data['cuentaCatastral']['region']);
             $datosPDF['manzana'] = trim($data['cuentaCatastral']['manzana']);
             $datosPDF['lote'] = trim($data['cuentaCatastral']['lote']);
