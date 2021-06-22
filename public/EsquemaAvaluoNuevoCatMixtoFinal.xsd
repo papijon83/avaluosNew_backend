@@ -5819,7 +5819,7 @@
   </xs:complexType>
   <xs:complexType  name="SUB-FactorDeEdadElementoAccesorio">
     <xs:simpleContent>
-      <xs:extension base="DecimalPositivo">
+      <xs:extension base="DoublePositivo">
         <xs:attribute fixed="f.10.1.n.8" name="id" type="xs:string" use="required" />
       </xs:extension>
     </xs:simpleContent>
