@@ -72,7 +72,7 @@
         <br>
         <br>
         <strong>NÚMERO ÚNICO </strong><span class="gris">{{$datosPDF['numeroUnico']}}</span>
-        <span style="float: right;"><strong>FECHA DE CARGA DE SIGAPRED: </strong><span class="gris">{{$datosPDF['fechaCarga']}}</span></span>
+        <span style="float: right;"><strong>FECHA DE CARGA DE SIGAPRED: </strong><span class="gris">{{$datosPDF['fechaPresentacion']}}</span></span>
         <br>
         <br>
         <strong>I. CUENTA CATASTRAL</strong>
