@@ -65,8 +65,9 @@ class ReimpresionNuevo
         //print($elementoPrincipal); exit();
         
         $arrInfoAcuse = array(); //echo "SELECT NUMEROUNICO FROM FEXAVA_AVALUO WHERE IDAVALUO = $idavaluo"; exit();
-        $numeroUnico = DB::select("SELECT NUMEROUNICO FROM FEXAVA_AVALUO WHERE IDAVALUO = $idavaluo");
+        $numeroUnico = DB::select("SELECT NUMEROUNICO, FECHA_PRESENTACION FROM FEXAVA_AVALUO WHERE IDAVALUO = $idavaluo");
         $arrInfoAcuse['numeroUnico'] = $numeroUnico[0]->numerounico; //print_r($arrInfoAcuse); exit();
+        $arrInfoAcuse['fechaPresentacion'] = $numeroUnico[0]->fecha_presentacion;
         $camposCuentaCatastral = array('region','manzana','lote','unidadprivativa','digitoverificador');
         $infoCuentaCatastral = array();
         foreach($camposCuentaCatastral as $campoBuscar){
