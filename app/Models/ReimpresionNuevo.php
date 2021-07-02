@@ -229,6 +229,7 @@ class ReimpresionNuevo
         $comandoRmDefault = "rm ".$rutaArchivos."/default";
         shell_exec($comandoRmDefault);
         $arrXML = convierte_a_arreglo($xml); //echo "AQUI SI LLEGO "; exit();
+        //$arrXML = json_decode(json_encode($xml),true);
 
         $infoFexava = DB::select("SELECT * FROM FEXAVA_AVALUO WHERE IDAVALUO = $idAvaluo");
         $arrInfoFexava = array_map("convierte_a_arreglo",$infoFexava);
@@ -247,7 +248,9 @@ class ReimpresionNuevo
         }
 
         $identificacion = $elementoPrincipal['Identificacion'];
-        Log::info($identificacion);
+        if(trim($arrFexava['numerounico']) == 'A-COM-2021-103'){
+            Log::info(json_decode(json_encode($xml),true));
+        }
 
         $infoReimpresion['Encabezado'] = array();
 
@@ -2569,7 +2572,7 @@ class ReimpresionNuevo
 
         $identificacion = $elementoPrincipal['Identificacion'];
         if(trim($arrFexava['numerounico']) == 'A-COM-2021-31704'){
-            Log::info($identificacion);
+            Log::info(json_decode(json_encode($xml),true));
         }
 
         $infoReimpresion['Encabezado'] = array();
