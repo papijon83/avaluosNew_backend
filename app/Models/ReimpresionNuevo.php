@@ -246,13 +246,14 @@ class ReimpresionNuevo
         }
 
         $identificacion = $elementoPrincipal['Identificacion'];
+        Log::info($identificacion);
 
         $infoReimpresion['Encabezado'] = array();
 
         $infoReimpresion['Encabezado']['Fecha'] = $identificacion['FechaAvaluo'];
         $infoReimpresion['Encabezado']['Avaluo_No'] = $identificacion['NumeroDeAvaluo'];
         $infoReimpresion['Encabezado']['No_Unico'] = $arrFexava['numerounico'];
-        Log::info($identificacion);
+        
         if(isset($identificacion['ClaveSociedad']) && !is_array($identificacion['ClaveSociedad'])){
             $infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveSociedad'];
         }
