@@ -2609,7 +2609,12 @@ class ReimpresionNuevo
         $arrinfoSolicitante = array_map("convierte_a_arreglo",$infoSolicitante);
         $arrSolicitante = $arrinfoSolicitante[0];*/
 
-        $infoReimpresion['Sociedad_Participa']['Valuador'] = $identificacion['ClaveValuador'];
+        //$infoReimpresion['Sociedad_Participa']['Valuador'] = $identificacion['ClaveValuador'];
+        if(isset($identificacion['ClaveValuador']) && !is_array($identificacion['ClaveValuador'])){
+            $infoReimpresion['Sociedad_Participa']['Valuador'] = $identificacion['ClaveValuador'];
+        }else{
+            $infoReimpresion['Sociedad_Participa']['Valuador'] = '';
+        }
         $infoReimpresion['Sociedad_Participa']['Fecha_del_Avaluo'] = $identificacion['FechaAvaluo'];
         $infoReimpresion['Sociedad_Participa']['Solicitante'] = array();
         
