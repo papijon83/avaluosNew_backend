@@ -187,6 +187,7 @@ class ReimpresionNuevo
     public function infoAvaluo($idAvaluo){
 
         try{
+        Log::info($idAvaluo);
         $this->modelFis = new Fis();
         $this->modelDocumentos = new Documentos();
 
@@ -223,7 +224,7 @@ class ReimpresionNuevo
             $contenidoArchivo = fread($myfile, filesize($rutaArchivos."/default"));
             fclose($myfile);
         }
-        Log::info($idAvaluo);      
+              
         $xml = simplexml_load_string($contenidoArchivo,'SimpleXMLElement', LIBXML_NOCDATA);
         $comandoRmDefault = "rm ".$rutaArchivos."/default";
         shell_exec($comandoRmDefault);
