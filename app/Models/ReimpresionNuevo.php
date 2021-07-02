@@ -223,7 +223,7 @@ class ReimpresionNuevo
             $contenidoArchivo = fread($myfile, filesize($rutaArchivos."/default"));
             fclose($myfile);
         }
-                
+        Log::info($idAvaluo);      
         $xml = simplexml_load_string($contenidoArchivo,'SimpleXMLElement', LIBXML_NOCDATA);
         $comandoRmDefault = "rm ".$rutaArchivos."/default";
         shell_exec($comandoRmDefault);
@@ -233,7 +233,7 @@ class ReimpresionNuevo
         $arrInfoFexava = array_map("convierte_a_arreglo",$infoFexava);
         $arrFexava = $arrInfoFexava[0];
         if(trim($arrFexava['numerounico']) == 'A-COM-2021-31704'){
-            Log::info($arrXML);
+            
         }
         $infoReimpresion = array();
 
