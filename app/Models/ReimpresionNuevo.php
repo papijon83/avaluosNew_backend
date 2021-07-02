@@ -187,7 +187,7 @@ class ReimpresionNuevo
     public function infoAvaluo($idAvaluo){
 
         try{
-        Log::info($idAvaluo);
+        
         $this->modelFis = new Fis();
         $this->modelDocumentos = new Documentos();
 
@@ -233,9 +233,7 @@ class ReimpresionNuevo
         $infoFexava = DB::select("SELECT * FROM FEXAVA_AVALUO WHERE IDAVALUO = $idAvaluo");
         $arrInfoFexava = array_map("convierte_a_arreglo",$infoFexava);
         $arrFexava = $arrInfoFexava[0];
-        if(trim($arrFexava['numerounico']) == 'A-COM-2021-31704'){
-            
-        }
+        
         $infoReimpresion = array();
 
         if(isset($arrXML['Comercial'])){
@@ -2570,6 +2568,9 @@ class ReimpresionNuevo
         }
 
         $identificacion = $elementoPrincipal['Identificacion'];
+        if(trim($arrFexava['numerounico']) == 'A-COM-2021-31704'){
+            Log::info($identificacion);
+        }
 
         $infoReimpresion['Encabezado'] = array();
 
