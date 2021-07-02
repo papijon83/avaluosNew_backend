@@ -248,9 +248,9 @@ class ReimpresionNuevo
         }
 
         $identificacion = $elementoPrincipal['Identificacion'];
-        if(trim($arrFexava['numerounico']) == 'A-COM-2021-103'){
+        /*if(trim($arrFexava['numerounico']) == 'A-COM-2021-103'){
             Log::info(json_decode(json_encode($xml),true));
-        }
+        }*/
 
         $infoReimpresion['Encabezado'] = array();
 
@@ -2571,16 +2571,22 @@ class ReimpresionNuevo
         }
 
         $identificacion = $elementoPrincipal['Identificacion'];
-        if(trim($arrFexava['numerounico']) == 'A-COM-2021-31704'){
+        /*if(trim($arrFexava['numerounico']) == 'A-COM-2021-31704'){
             Log::info(json_decode(json_encode($xml),true));
-        }
+        }*/
 
         $infoReimpresion['Encabezado'] = array();
 
         $infoReimpresion['Encabezado']['Fecha'] = $identificacion['FechaAvaluo'];
         $infoReimpresion['Encabezado']['Avaluo_No'] = $identificacion['NumeroDeAvaluo'];
         $infoReimpresion['Encabezado']['No_Unico'] = $arrFexava['numerounico'];
-        $infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveValuador'];
+        //$infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveValuador'];
+        if(isset($identificacion['ClaveSociedad']) && !is_array($identificacion['ClaveSociedad'])){
+            $infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveSociedad'];
+        }
+        else{            
+            $infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveValuador'];
+        }
 
         /************************************************************************************************************************************************************************/
 
