@@ -6,6 +6,7 @@ use App\Models\Documentos;
 use App\Models\ElementosConstruccion;
 use App\Models\GuardaenBD;
 use App\Models\Reimpresion;
+use App\Models\ReimpresionNuevo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -235,6 +236,12 @@ class PruebaDoc extends Controller
     function actualizaAvaluo()
     {        
         $ficheroAvaluo = $this->modelDocumentos->tran_UpdateFicheroAvaluo(18487476, 'Avaluo-Cat-060-505-01-000.xml', null, 'Avaluo-Cat-060-505-01-000.7z','2021-02-09');
+    }
+
+    public function reimprimePrueba(){
+        $id_avaluo = 
+        $this->modelReimpresionNuevo = new ReimpresionNuevo();
+        $infoAvaluo = $this->modelReimpresionNuevo->infoAvaluoNuevo($id_avaluo);
     }
     
 }
