@@ -232,7 +232,9 @@ class ReimpresionNuevo
         $infoFexava = DB::select("SELECT * FROM FEXAVA_AVALUO WHERE IDAVALUO = $idAvaluo");
         $arrInfoFexava = array_map("convierte_a_arreglo",$infoFexava);
         $arrFexava = $arrInfoFexava[0];
-
+        if(trim($arrFexava['numerounico']) == 'A-COM-2021-31704'){
+            Log::info($arrXML);
+        }
         $infoReimpresion = array();
 
         if(isset($arrXML['Comercial'])){
