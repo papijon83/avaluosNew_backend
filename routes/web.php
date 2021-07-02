@@ -16,7 +16,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-
+    $router->get('reimprimePrueba', 'BandejaEntradaNuevoController@reimprimePrueba');
     $router->get('reimprime', 'BandejaEntradaNuevoController@reimprimeSV');
     $router->post('reimprime', 'BandejaEntradaNuevoController@reimprimeSVPost');
     $router->get('acuse', 'FormatosController@generaAcusePDFSV');

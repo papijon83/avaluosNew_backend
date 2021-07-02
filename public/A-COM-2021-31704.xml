@@ -1,0 +1,1000 @@
+<Avaluo>
+	<Comercial>
+		<Identificacion id="a">
+			<NumeroDeAvaluo id="a.1">02-07-21</NumeroDeAvaluo>
+			<FechaAvaluo id="a.2">2021-07-01</FechaAvaluo>
+			<ClaveValuador id="a.3">
+				<!--V-0625-32-->Z</ClaveValuador>
+			<ClaveSociedad id="a.4"></ClaveSociedad>
+		</Identificacion>
+		<Antecedentes id="b">
+			<Solicitante id="b.1">
+				<A.Paterno id="b.1.1">AGUILAR</A.Paterno>
+				<A.Materno id="b.1.2">MENDEZ</A.Materno>
+				<Nombre id="b.1.3">LUPITA</Nombre>
+				<Calle id="b.1.4">GENERAL JOSE MORAN</Calle>
+				<NumeroInterior id="b.1.5">DEPTO. 8</NumeroInterior>
+				<NumeroExterior id="b.1.6">110</NumeroExterior>
+				<Colonia id="b.1.7">SAN MIGUEL CHAPULTEPEC</Colonia>
+				<CodigoPostal id="b.1.8">11850</CodigoPostal>
+				<Alcaldia id="b.1.9">
+					<ClaveAlcaldia id="b.1.9.1">016</ClaveAlcaldia>
+					<Otros id="b.1.9.2"></Otros>
+				</Alcaldia>
+				<TipoPersona id="b.1.10">F</TipoPersona>
+			</Solicitante>
+			<Propietario id="b.2">
+				<A.Paterno id="b.2.1">PEREZ</A.Paterno>
+				<A.Materno id="b.2.2">CAMPUZANO</A.Materno>
+				<Nombre id="b.2.3">ARTURO FRANCISCO</Nombre>
+				<Calle id="b.2.4">-</Calle>
+				<NumeroInterior id="b.2.5">-</NumeroInterior>
+				<NumeroExterior id="b.2.6">-</NumeroExterior>
+				<Colonia id="b.2.7">CHAPULTEPEC MORALES</Colonia>
+				<CodigoPostal id="b.2.8">11580</CodigoPostal>
+				<Alcaldia id="b.2.9">
+					<ClaveAlcaldia id="b.2.9.1">016</ClaveAlcaldia>
+					<Otros id="b.2.9.2"></Otros>
+				</Alcaldia>
+				<TipoPersona id="b.2.10">F</TipoPersona>
+			</Propietario>
+			<InmuebleQueSeValua id="b.3">
+				<Calle id="b.3.1">AV. CAMPOS ELISEOS</Calle>
+				<NumeroInterior id="b.3.2">CAJÓN DE ESTACIONAMIENTO # 89</NumeroInterior>
+				<NumeroExterior id="b.3.3">414</NumeroExterior>
+				<Manzana id="b.3.4">0</Manzana>
+				<Lote id="b.3.5">0</Lote>
+				<Edificio id="b.3.6">B</Edificio>
+				<Colonia id="b.3.7">POLANCO II SECCIÓN</Colonia>
+				<CodigoPostal id="b.3.8">11000</CodigoPostal>
+				<Alcaldia id="b.3.9">016</Alcaldia>
+				<CuentaCatastral id="b.3.10">
+					<Region id="b.3.10.1">035</Region>
+					<Manzana id="b.3.10.2">044</Manzana>
+					<Lote id="b.3.10.3">29</Lote>
+					<Localidad id="b.3.10.4">137</Localidad>
+					<DigitoVerificador id="b.3.10.5">1</DigitoVerificador>
+				</CuentaCatastral>
+				<CuentaDeAgua id="b.3.11">16-43-147-836-01-016-5</CuentaDeAgua>
+			</InmuebleQueSeValua>
+			<PropositoDelAvaluo id="b.4">
+				<ClavePropositoAvaluo id="b.4.1">1</ClavePropositoAvaluo>
+				<Otros id="b.4.2"></Otros>
+			</PropositoDelAvaluo>
+			<ObjetoDelAvaluo id="b.5">DETERMINAR EL VALOR COMERCIAL DEL INMUEBLE.</ObjetoDelAvaluo>
+			<RegimenDePropiedad id="b.6">2</RegimenDePropiedad>
+			<TipoDeInmueble id="b.7">
+				<ClaveTipoInmueble id="b.7.1">6</ClaveTipoInmueble>
+				<Otros id="b.7.2"></Otros>
+			</TipoDeInmueble>
+		</Antecedentes>
+		<CaracteristicasUrbanas id="c">
+			<ContaminacionAmbientalEnLaZona id="c.0">ALTA, LA OCASIONADA POR VEHÍCULOS AUTOMOTORES.
+			</ContaminacionAmbientalEnLaZona>
+			<ClasificacionDeLaZona id="c.1">2</ClasificacionDeLaZona>
+			<IndiceDeSaturacionDeLaZona id="c.2">1</IndiceDeSaturacionDeLaZona>
+			<ClaseGeneralDeInmueblesDeLaZona id="c.3">4</ClaseGeneralDeInmueblesDeLaZona>
+			<DensidadDePoblacion id="c.4">3</DensidadDePoblacion>
+			<NivelSocioeconomicoDeLaZona id="c.5">5</NivelSocioeconomicoDeLaZona>
+			<UsoDelSuelo id="c.6">
+				<UsoDelSuelo id="c.6.1">HABITACIONAL</UsoDelSuelo>
+				<AreaLibreObligatoria id="c.6.2">30</AreaLibreObligatoria>
+				<NumeroMaximoDeNivelesAConstruir id="c.6.3">6</NumeroMaximoDeNivelesAConstruir>
+				<CoeficienteDeUsoDelSuelo id="c.6.4">4.2</CoeficienteDeUsoDelSuelo>
+			</UsoDelSuelo>
+			<ViasDeAccesoEImportancia id="c.7">AV. PRESIDENTE MASARYK, AV. HORACIO, AV. MOLIERE, AV. PASEO DE LA
+				REFORMA, AUTOPISTA URBANA NORTE Y AV. F.C. DE CUERNAVACA.</ViasDeAccesoEImportancia>
+			<ServiciosPublicosYEquipamientoUrbano id="c.8">
+				<RedDeDistribucionAguaPotable id="c.8.1">1</RedDeDistribucionAguaPotable>
+				<RedDeRecoleccionDeAguasResiduales id="c.8.2">2</RedDeRecoleccionDeAguasResiduales>
+				<RedDeDrenajeDeAguasPluvialesEnLaCalle id="c.8.3">1</RedDeDrenajeDeAguasPluvialesEnLaCalle>
+				<RedDeDrenajeDeAguasPluvialesEnLaZona id="c.8.4">1</RedDeDrenajeDeAguasPluvialesEnLaZona>
+				<SistemaMixto id="c.8.5">2</SistemaMixto>
+				<SuministroElectrico id="c.8.7">1</SuministroElectrico>
+				<AcometidaAlInmueble id="c.8.8">1</AcometidaAlInmueble>
+				<AlumbradoPublico id="c.8.9">2</AlumbradoPublico>
+				<Vialidades id="c.8.10">2</Vialidades>
+				<Banquetas id="c.8.11">1</Banquetas>
+				<Guarniciones id="c.8.12">1</Guarniciones>
+				<NivelDeInfraestructuraEnLaZona id="c.8.13">1</NivelDeInfraestructuraEnLaZona>
+				<GasNatural id="c.8.14">2</GasNatural>
+				<TelefonosSuministro id="c.8.15">1</TelefonosSuministro>
+				<AcometidaAlInmuebleTel id="c.8.16">1</AcometidaAlInmuebleTel>
+				<SennalizacionDeVias id="c.8.17">1</SennalizacionDeVias>
+				<NomenclaturaDeCalles id="c.8.18">1</NomenclaturaDeCalles>
+				<DistanciaTranporteUrbano id="c.8.19">150</DistanciaTranporteUrbano>
+				<FrecuenciaTransporteUrbano id="c.8.20">5</FrecuenciaTransporteUrbano>
+				<DistanciaTransporteSuburbano id="c.8.21">0</DistanciaTransporteSuburbano>
+				<FrecuenciaTransporteSuburbano id="c.8.22">0</FrecuenciaTransporteSuburbano>
+				<Vigilancia id="c.8.23">1</Vigilancia>
+				<RecoleccionDeBasura id="c.8.24">1</RecoleccionDeBasura>
+				<Templo id="c.8.25">0</Templo>
+				<Mercados id="c.8.26">0</Mercados>
+				<PlazasPublicas id="c.8.27">1</PlazasPublicas>
+				<ParquesYJardines id="c.8.28">1</ParquesYJardines>
+				<Escuelas id="c.8.29">1</Escuelas>
+				<Hospitales id="c.8.30">1</Hospitales>
+				<Bancos id="c.8.31">1</Bancos>
+				<EstacionDeTransporte id="c.8.32">1</EstacionDeTransporte>
+				<NivelDeEquipamientoUrbano id="c.8.33">90</NivelDeEquipamientoUrbano>
+			</ServiciosPublicosYEquipamientoUrbano>
+		</CaracteristicasUrbanas>
+		<Terreno id="d">
+			<CallesTransversalesLimitrofesYOrientacion id="d.1">PREDIO INTERMEDIO QUE DA HACIA TRES FRENTES, EL PRIMER
+				FRENTE AL NORESTE CON AV. CAMPOS ELISEOS (CALLE DE SU UBICACIÓN)., EL SEGUNDO FRENTE CON CALLE MONTE
+				ELBRUZ AL SURESTE Y EL TERCER FRENTE CON LA CALLE SÉNECA AL SURESTE.
+			</CallesTransversalesLimitrofesYOrientacion>
+			<CroquisMicroLocalizacion id="d.2">19520458</CroquisMicroLocalizacion>
+			<CroquisMacroLocalizacion id="d.3">19520459</CroquisMacroLocalizacion>
+			<MedidasYColindancias id="d.4">
+				<FuenteDeInformacionLegal id="d.4.1">
+					<Escritura id="d.4.1.1">
+						<NumeroDeEscritura id="d.4.1.1.1">46723</NumeroDeEscritura>
+						<NumeroDeVolumen id="d.4.1.1.2">1383</NumeroDeVolumen>
+						<FechaEscritura id="d.4.1.1.3">2017-04-05</FechaEscritura>
+						<NumeroNotaria id="d.4.1.1.4">102</NumeroNotaria>
+						<NombreDelNotario id="d.4.1.1.5">LIC. HORACIO AGUILAR ALVAREZ DE ALBA</NombreDelNotario>
+						<DistritoJudicialNotario id="d.4.1.1.6">NAUCALPÁN DE JUÁREZ, ESTADO DE MÉXICO.
+						</DistritoJudicialNotario>
+					</Escritura>
+				</FuenteDeInformacionLegal>
+				<Colindancias id="d.4.2">
+					<Orientacion id="d.4.2.n.2">AL NORESTE EN:</Orientacion>
+					<MedidaEnMetros id="d.4.2.n.3">2.40</MedidaEnMetros>
+					<DescripcionColindante id="d.4.2.n.4">CON ÁREA DE ESTACIONAMIENTO;</DescripcionColindante>
+				</Colindancias>
+				<Colindancias id="d.4.2">
+					<Orientacion id="d.4.2.n.2">AL SUROESTE EN:</Orientacion>
+					<MedidaEnMetros id="d.4.2.n.3">2.40</MedidaEnMetros>
+					<DescripcionColindante id="d.4.2.n.4">CON CAJÓN DE ESTACIONAMIENTO 90;</DescripcionColindante>
+				</Colindancias>
+				<Colindancias id="d.4.2">
+					<Orientacion id="d.4.2.n.2">AL SURESTE EN:</Orientacion>
+					<MedidaEnMetros id="d.4.2.n.3">5.00</MedidaEnMetros>
+					<DescripcionColindante id="d.4.2.n.4">CON CAJÓN DE ESTACIONAMIENTO 86; Y</DescripcionColindante>
+				</Colindancias>
+				<Colindancias id="d.4.2">
+					<Orientacion id="d.4.2.n.2">AL NOROESTE EN:</Orientacion>
+					<MedidaEnMetros id="d.4.2.n.3">5.00</MedidaEnMetros>
+					<DescripcionColindante id="d.4.2.n.4">CON ÁREA DE ESTACIONAMIENTO, ELEMENTO ESTRUCTURAL, CAJÓN DE
+						ESTACIONAMIENTO 92.</DescripcionColindante>
+				</Colindancias>
+			</MedidasYColindancias>
+			<SuperficieDelTerreno id="d.5">
+				<IdentificadorFraccionN1 id="d.5.n.1">1</IdentificadorFraccionN1>
+				<SuperficieFraccionN1 id="d.5.n.2">1025.19</SuperficieFraccionN1>
+				<Factor1 id="d.5.n.3">
+					<Siglas id="d.5.n.3.1">FZO</Siglas>
+					<Valor id="d.5.n.3.2">1.00</Valor>
+					<Descripcion id="d.5.n.3.3">FACTOR DE ZONA.</Descripcion>
+				</Factor1>
+				<Factor2 id="d.5.n.4">
+					<Siglas id="d.5.n.4.1">FUB</Siglas>
+					<Valor id="d.5.n.4.2">1.25</Valor>
+					<Descripcion id="d.5.n.4.3">FACTOR DE UBICACIÓN.</Descripcion>
+				</Factor2>
+				<Factor3 id="d.5.n.5">
+					<Siglas id="d.5.n.5.1">FFR</Siglas>
+					<Valor id="d.5.n.5.2">1.00</Valor>
+					<Descripcion id="d.5.n.5.3">FACTOR DE FRENTE.</Descripcion>
+				</Factor3>
+				<Factor4 id="d.5.n.6">
+					<Siglas id="d.5.n.6.1">FFO</Siglas>
+					<Valor id="d.5.n.6.2">1.00</Valor>
+					<Descripcion id="d.5.n.6.3">FACTOR DE FORMA.</Descripcion>
+				</Factor4>
+				<Factor5 id="d.5.n.7">
+					<Siglas id="d.5.n.7.1">FSU</Siglas>
+					<Valor id="d.5.n.7.2">1.00</Valor>
+					<Descripcion id="d.5.n.7.3">FACTOR DE SUPERFICIE.</Descripcion>
+				</Factor5>
+				<ClaveDeAreaDeValor id="d.5.n.8">A11053</ClaveDeAreaDeValor>
+				<Fre id="d.5.n.10">1.25</Fre>
+				<ValorDeLaFraccionN id="d.5.n.11">68867138.250000</ValorDeLaFraccionN>
+			</SuperficieDelTerreno>
+			<Indiviso id="d.6">0.00099</Indiviso>
+			<TopografiaYConfiguracion id="d.7">1</TopografiaYConfiguracion>
+			<CaracteristicasPanoramicas id="d.8">NADA EN PARTICULAR</CaracteristicasPanoramicas>
+			<DensidadHabitacional id="d.9">3</DensidadHabitacional>
+			<ServidumbresORestricciones id="d.10">LAS INDICADAS EN EL PROGRAMA DE LA ALCALDÍA MIGUEL HIDALGO DE
+				DESARROLLO URBANO DE LA CIUDAD DE MÉXICO.</ServidumbresORestricciones>
+			<SuperficieTotalDelTerreno id="d.11">1025.19</SuperficieTotalDelTerreno>
+			<ValorTotalDelTerreno id="d.12">68867138.250000</ValorTotalDelTerreno>
+			<ValorTotalDelTerrenoProporcional id="d.13">68178.46686750000</ValorTotalDelTerrenoProporcional>
+		</Terreno>
+		<DescripcionDelInmueble id="e">
+			<UsoActual id="e.1">SE OBSERVA UNA CONSTRUCCIÓN DESARROLLADA EN TRECE NIVELES SOBRE NIVEL DE BANQUETA Y DOS
+				SÓTANOS BAJO NIVEL DE BANQUETA (ESTACIONAMIENTO), A CONTINUACIÓN SE DESCRIBE SU DISTRIBUCIÓN:
+
+				SOLAMENTE SE VALUA EL CAJÓN DE ESTACIONAMIENTO NÚMERO 89, UBICADO EN EL SOTANO 2, EL CUAL PERTENECE AL
+				DEPARTAMENTO 402, EDIFICIO B.</UsoActual>
+			<TiposDeConstruccion id="e.2">
+				<ConstruccionesPrivativas id="e.2.1">
+					<Descripcion id="e.2.1.n.1">CAJÓN DE ESTACIONAMIENTO NO. 89</Descripcion>
+					<ClaveUso id="e.2.1.n.2">K</ClaveUso>
+					<NumeroDeNivelesDelTipo id="e.2.1.n.3">2</NumeroDeNivelesDelTipo>
+					<ClaveRangoDeNiveles id="e.2.1.n.4">15</ClaveRangoDeNiveles>
+					<PuntajeDeClasificacion id="e.2.1.n.5">83</PuntajeDeClasificacion>
+					<ClaveClase id="e.2.1.n.6">3</ClaveClase>
+					<Edad id="e.2.1.n.7">40</Edad>
+					<VidaMinimaRemanente id="e.2.1.n.9">40</VidaMinimaRemanente>
+					<Superficie id="e.2.1.n.11">12.00</Superficie>
+					<CostoUnitarioDeReposicionNuevo id="e.2.1.n.12">16000</CostoUnitarioDeReposicionNuevo>
+					<IndiceDelCostoRemanente id="e.2.1.n.13">0.8</IndiceDelCostoRemanente>
+					<CostoDeLaFraccionN id="e.2.1.n.15">153600</CostoDeLaFraccionN>
+				</ConstruccionesPrivativas>
+				<SuperficieTotalDeConstruccionesPrivativas id="e.2.2">12.00</SuperficieTotalDeConstruccionesPrivativas>
+				<ValorTotalDeConstruccionesPrivativas id="e.2.3">153600</ValorTotalDeConstruccionesPrivativas>
+				<SuperficieTotalDeConstruccionesComunes id="e.2.6">0</SuperficieTotalDeConstruccionesComunes>
+				<ValorTotalDeConstruccionesComunes id="e.2.7">0</ValorTotalDeConstruccionesComunes>
+				<ValorTotalDeLasConstruccionesComunesProIndiviso id="e.2.8">0
+				</ValorTotalDeLasConstruccionesComunesProIndiviso>
+			</TiposDeConstruccion>
+			<VidaMinimaRemanente id="e.3">40</VidaMinimaRemanente>
+			<VidaMinimaRemanentePonderadaDelInmueble id="e.5">70</VidaMinimaRemanentePonderadaDelInmueble>
+			<PorcentSuperfUltimNivelRespectoAnterior id="e.6">1</PorcentSuperfUltimNivelRespectoAnterior>
+		</DescripcionDelInmueble>
+		<ElementosDeLaConstruccion id="f">
+			<ObraNegra id="f.1">
+				<Cimentacion id="f.1.1">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Cimentacion>
+				<Estructura id="f.1.2">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Estructura>
+				<Muros id="f.1.3">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Muros>
+				<Entrepisos id="f.1.4">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Entrepisos>
+				<Techos id="f.1.5">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Techos>
+				<Azoteas id="f.1.6">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Azoteas>
+				<Bardas id="f.1.7">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Bardas>
+			</ObraNegra>
+			<RevestimientosYAcabadosInteriores id="f.2">
+				<Aplanados id="f.2.1">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Aplanados>
+				<Plafones id="f.2.2">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Plafones>
+				<Lambrines id="f.2.3">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Lambrines>
+				<Pisos id="f.2.4">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Pisos>
+				<Zoclos id="f.2.5">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Zoclos>
+				<Escaleras id="f.2.6">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Escaleras>
+				<Pintura id="f.2.7">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Pintura>
+				<RecubrimientosEspeciales id="f.2.8">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"
+				</RecubrimientosEspeciales>
+			</RevestimientosYAcabadosInteriores>
+			<Carpinteria id="f.3">
+				<PuertasInteriores id="f.3.1">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"
+				</PuertasInteriores>
+				<Guardaropas id="f.3.2">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Guardaropas>
+				<MueblesEmpotradosOFijos id="f.3.3">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"
+				</MueblesEmpotradosOFijos>
+			</Carpinteria>
+			<InstalacionesHidraulicasYSanitrias id="f.4">
+				<MueblesDeBanno id="f.4.1">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</MueblesDeBanno>
+				<RamaleosHidraulicos id="f.4.2">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"
+				</RamaleosHidraulicos>
+				<RamaleosSanitarios id="f.4.3">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"
+				</RamaleosSanitarios>
+			</InstalacionesHidraulicasYSanitrias>
+			<InstalacionesElectricasYAlumbrado id="f.16">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"
+			</InstalacionesElectricasYAlumbrado>
+			<PuertasYVentaneriaMetalica id="f.5">
+				<Herreria id="f.5.1">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Herreria>
+				<Ventaneria id="f.5.2">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Ventaneria>
+			</PuertasYVentaneriaMetalica>
+			<Vidreria id="f.6">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Vidreria>
+			<Cerrajeria id="f.7">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Cerrajeria>
+			<Fachadas id="f.8">VER ANEXO: "DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN"</Fachadas>
+			<ObrasComplementarias id="f.11">
+				<Privativas id="f.11.1">
+					<ClaveObraComplementaria id="f.11.1.n.1">OC17</ClaveObraComplementaria>
+					<DescripcionObraComplementaria id="f.11.1.n.2">OTROS- AREAS COMUNES (HALL, PASILLO Y ESCALERAS)
+					</DescripcionObraComplementaria>
+					<UnidadObraComplementaria id="f.11.1.n.3">M2</UnidadObraComplementaria>
+					<CantidadObraComplementaria id="f.11.1.n.4">1.95</CantidadObraComplementaria>
+					<EdadObraComplementaria id="f.11.1.n.5">40</EdadObraComplementaria>
+					<VidaUtilTotalObraComplementaria id="f.11.1.n.6">70</VidaUtilTotalObraComplementaria>
+					<CostoUnitarioObraComplementaria id="f.11.1.n.7">16000</CostoUnitarioObraComplementaria>
+					<FactorDeEdadObraComplementaria id="f.11.1.n.8">0.80</FactorDeEdadObraComplementaria>
+					<ImporteObraComplementaria id="f.11.1.n.9">24960.0000</ImporteObraComplementaria>
+				</Privativas>
+				<ImporteTotalObrasComplementariasPrivativas id="f.11.3">24960.0000
+				</ImporteTotalObrasComplementariasPrivativas>
+				<ImporteTotalObrasComplementariasComunes id="f.11.4">0</ImporteTotalObrasComplementariasComunes>
+			</ObrasComplementarias>
+			<SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas id="f.12">
+				24960.0000</SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas>
+			<SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes id="f.13">0
+			</SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes>
+			<ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes id="f.14">0
+			</ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes>
+			<ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas id="f.15">0
+			</ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas>
+		</ElementosDeLaConstruccion>
+		<ConsideracionesPreviasAlAvaluo id="g">
+			<ConsideracionesPreviasAlAvaluo id="g.1">
+				<Consideraciones id="g.1.1">SE CONSIDERAN LOS MÉTODOS FÍSICO O DIRECTO, DE INGRESOS O CAPITALIZACIÓN DE
+					RENTAS Y MÉTODO COMPARATIVO O DE MERCADO PARA ESTIMAR EL VALOR COMERCIAL DEL INMUEBLE, PARA APLICAR
+					LOS TRES ENFOQUES SE REALIZÓ LA INVESTIGACIÓN DE MERCADO DE TERRENOS EN VENTA, CAJONES DE
+					ESTACIONAMIENTO EN RENTA Y VENTA EN ZONAS SIMILARES.
+
+					PARA EL ENFOQUE DE COSTOS EL VALOR DE REPOSICIÓN NUEVO DE LAS CONSTRUCCIONES Y OBRAS
+					COMPLEMENTARIAS; SE OBTIENEN DEL MANUAL DE COSTOS PARA CONSTRUCTORES.
+
+					EN LO QUE RESPECTA A LA SUPERFICIE DE TERRENO Y CONSTRUCCIÓN SE OBTIENE DE LA ESCRITURA PÚBLICA.,
+					ASÍ COMO, EL INDIVISO QUE LE CORRESPONDE POR TRATARSE DE UN RÉGIMEN EN CONDOMINIO.</Consideraciones>
+				<MemoriaTecnicaEXPOSICIONDEMOTIVOS id="g.1.2">COMO LO INDICA EL ARTÍCULO 25 DEL MANUAL DE PROCEDIMIENTOS
+					Y LINEAMIENTOS TÉCNICOS PARA LA PRÁCTICA Y VALIDACIÓN DE AVALÚOS.
+
+					EN ESTE CASO SE APLICA EL MÉTODO FÍSICO DIRECTO, MÉTODO DE INGRESOS O CAPITALIZACIÓN DE RENTAS Y
+					MÉTODO COMPARATIVO O DE MERCADO.
+
+					LO ANTERIOR PARA OBTENER LA ESTIMACIÓN DEL VALOR COMERCIAL DEL INMUEBLE.
+				</MemoriaTecnicaEXPOSICIONDEMOTIVOS>
+				<MemoriaTecnicaDESGLOSEDEINFORMACION id="g.1.3">1.- SE DETERMINA LA INVESTIGACIÓN DIRECTA DE TERRENOS EN
+					VENTA.
+
+					2.- PARA EL SUJETO SE APLICA EL FACTOR DE UBICACIÓN, PORQUE CUENTA CON TRES VÍAS DE CIRCULACIÓN.
+					COMO SE INDICA EN EL MANUAL DE PROCEDIMIENTOS Y LINEAMIENTOS TÉCNICOS DE VALUACIÓN INMOBILIARIA DE
+					FECHA 01-DICIEMBRE-2013.
+
+					PARA LA CONSTRUCCIÓN:
+
+					1.- SE DETERMINA LA INVESTIGACIÓN DE MERCADO EN VENTA Y RENTA DE CAJONES DE ESTACIONAMIENTO.
+
+					2.- SE PROCEDE A VALUAR LA CONSTRUCCIÓN Y OBTENER LA CLASIFICACIÓN, CONFORME A LA MATRIZ DE PUNTOS,
+					RANGO DE NIVELES Y DEMERITO MEDIANTE LOS MODELOS DE VIDA MÍNIMA REMANENTE.
+
+					3.- PARA LAS OBRAS COMPLEMENTARIAS SE APLICÓ EL DEMERITO MEDIANTE LOS MODELOS DE VIDA MÍNIMA
+					REMANENTE.
+
+					4.- PARA EL CÁLCULO DE CAPITALIZACIÓN DE RENTAS, SE PROCEDE A OBTENER Y A CALCULAR LA ESTIMACIÓN DE
+					LAS DEDUCCIONES A LA RENTA BRUTA MENSUAL.
+
+					4.1.-DEDUCCIONES A CONSIDERAR (MANUAL DE PROCEDIMIENTOS Y LINEAMIENTOS TÉCNICOS DE VALUACIÓN
+					INMOBILIARIA VIGENTE).
+
+					- VACÍOS (2 MESES CADA 36 MESES).
+					- IMPUESTO PREDIAL.
+					- SERVICIO DE AGUA.
+					- CONSERVACIÓN Y MANTENIMIENTO.
+					- ADMINISTRACIÓN.
+					- ENERGÍA ELÉCTRICA.
+					- SEGUROS.
+					- OTROS.
+
+					4.2.- PARA EL CÁLCULO DE LA TASA DE CAPITALIZACIÓN, SE APLICA LA TASA CON BASE EN LA MATRIZ
+					DESARROLLADA POR EL ARQUITECTO BRAVO ARMEJO.
+
+					5.- SE OBTIENEN LOS VALORES:
+
+					- FÍSICO DIRECTO.
+					- CAPITALIZACIÓN DE RENTAS.
+					- MERCADO.
+
+					6.-DE ACUERDO A LOS COMPARABLES DE CAJONES DE ESTACIONAMIENTO EN VENTA SIMILARES AL SUJETO, SE
+					OBTIENE EL VALOR DE MERCADO DEL INMUEBLE.
+
+					7.- CONCLUYENDO ASÍ, CON EL VALOR MÁS ALTO DE LOS TRES ENFOQUES.
+				</MemoriaTecnicaDESGLOSEDEINFORMACION>
+				<MemoriaTecnicaDESCRIPCIONDECALCULOSREALIZADOS id="g.1.4">DEL DESGLOSE DE LA INFORMACIÓN SE PROCEDE A
+					LLEVAR LA HOJA DE CÁLCULO DEL AVALÚO CONSIDERANDO LO OBTENIDO.
+
+					1.- SE OBTIENE EL VALOR UNITARIO POR M2 DE SUELO. POR MEDIO DE LA INVESTIGACIÓN DE MERCADO.
+
+					2.- SE APLICA EL FACTOR DE UBICACIÓN POR TRES VÍAS DE CIRCULACIÓN.
+
+					3.- SE APLICA EL INDIVISO A LA SUPERFICIE TOTAL DEL TERRENO PARA OBTENER LA SUPERFICIE PRIVATIVA.
+
+					4.- SE MULTIPLICA LOS PUNTOS 1,2 Y 3 DANDO COMO RESULTADO EL VALOR DEL TERRENO PRIVATIVO.
+
+					RELATIVO A LA CONSTRUCCIÓN:
+
+					1.- DAR LA CLASIFICACIÓN DEL INMUEBLE (USO, RANGO DE NIVELES Y CLASE).
+
+					2.- DEMERITO DE LA CONSTRUCCIÓN.
+
+					3.- VALOR UNITARIO POR M2 DE CONSTRUCCIÓN.
+
+					4.- SUPERFICIE DE CONSTRUCCIÓN PRIVATIVA.
+
+					5.- SE MULTIPLICAN LOS PUNTOS 2, 3 Y 4; Y SE SUMA EL VALOR DE LAS ÁREAS COMUNES, DANDO COMO
+					RESULTADO EL VALOR DE LA CONSTRUCCIÓN PRIVATIVA.
+					SE PROCEDE A VALUAR LAS OBRAS COMPLEMENTARIAS.
+
+					COMO RESULTADO DE LA SUMA DEL VALOR DEL TERRENO PRIVATIVO MÁS EL VALOR DE LA CONSTRUCCIÓN PRIVATIVA
+					MÁS ÁREAS COMUNES MÁS OBRAS COMPLEMENTARIAS, SE OBTIENE EL VALOR FÍSICO O DIRECTO.
+
+					SE PROCEDE A OBTENER EL VALOR DE CAPITALIZACIÓN DE RENTAS., ASÍ COMO, EL VALOR DE MERCADO
+					CONCLUYENDO CON EL VALOR DE LOS TRES MÉTODOS, EL MÁS ALTO.
+				</MemoriaTecnicaDESCRIPCIONDECALCULOSREALIZADOS>
+				<MemoriaTecnicaOTROSPARASUSTENTO id="g.1.5">.- CÓDIGO FISCAL DE LA CIUDAD DE MÉXICO, EJERCICIO FISCAL
+					2021.
+
+					.- MANUAL DE PROCEDIMIENTOS Y LINEAMIENTOS TÉCNICO DE VALUACIÓN INMOBILIARIA DE FECHA 26- DE ENERO-
+					2021.
+
+					.- MANUAL DE PROCEDIMIENTOS Y LINEAMIENTOS TÉCNICOS DE VALUACIÓN INMOBILIARIA DE FECHA 06- DICIEMBRE
+					– 2013.
+
+					.- MANUAL DE COSTOS PARA CONSTRUCTORES.</MemoriaTecnicaOTROSPARASUSTENTO>
+			</ConsideracionesPreviasAlAvaluo>
+		</ConsideracionesPreviasAlAvaluo>
+		<EnfoqueDeMercado id="h">
+			<Terrenos id="h.1">
+				<TerrenosDirectos id="h.1.1">
+					<Calle id="h.1.1.n.1">SIERRA AMATEPEC</Calle>
+					<Colonia id="h.1.1.n.2">LOMAS DE CHAPULTEPEC</Colonia>
+					<Alcaldia id="h.1.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.1.1.n.4">11000</CodigoPostal>
+					<FuenteDeInformacion id="h.1.1.n.5">
+						<Telefono id="h.1.1.n.5.1">55-71-55-22-22</Telefono>
+						<Informante id="h.1.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelPredio id="h.1.1.n.6">TERRENO BARDEADO.</DescripcionDelPredio>
+					<UsoDelSuelo id="h.1.1.n.7">HABITACIONAL</UsoDelSuelo>
+					<CUS id="h.1.1.n.8">2.01</CUS>
+					<Superficie id="h.1.1.n.9">442.00</Superficie>
+					<Factor1 id="h.1.1.n.10">
+						<Siglas id="h.1.1.n.10.1">FZO</Siglas>
+						<Valor id="h.1.1.n.10.2">1.00</Valor>
+					</Factor1>
+					<Factor2 id="h.1.1.n.11">
+						<Siglas id="h.1.1.n.11.1">FUB</Siglas>
+						<Valor id="h.1.1.n.11.2">1.00</Valor>
+					</Factor2>
+					<Factor3 id="h.1.1.n.12">
+						<Siglas id="h.1.1.n.12.1">FFR</Siglas>
+						<Valor id="h.1.1.n.12.2">1.00</Valor>
+					</Factor3>
+					<Factor4 id="h.1.1.n.13">
+						<Siglas id="h.1.1.n.13.1">FFO</Siglas>
+						<Valor id="h.1.1.n.13.2">1.00</Valor>
+					</Factor4>
+					<Factor5 id="h.1.1.n.14">
+						<Siglas id="h.1.1.n.14.1">FSU</Siglas>
+						<Valor id="h.1.1.n.14.2">1.00</Valor>
+					</Factor5>
+					<Fre id="h.1.1.n.17">1.00</Fre>
+					<PrecioSolicitado id="h.1.1.n.15">21000000</PrecioSolicitado>
+					<FactorDeNegociacion id="h.1.1.n.16">1.00</FactorDeNegociacion>
+				</TerrenosDirectos>
+				<TerrenosDirectos id="h.1.1">
+					<Calle id="h.1.1.n.1">SIERRA FRIA</Calle>
+					<Colonia id="h.1.1.n.2">LOMAS DE CHAPULTEPEC</Colonia>
+					<Alcaldia id="h.1.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.1.1.n.4">11000</CodigoPostal>
+					<FuenteDeInformacion id="h.1.1.n.5">
+						<Telefono id="h.1.1.n.5.1">56-11-00-30-54</Telefono>
+						<Informante id="h.1.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelPredio id="h.1.1.n.6">TERRENO BALDÍO.</DescripcionDelPredio>
+					<UsoDelSuelo id="h.1.1.n.7">HABITACIONAL</UsoDelSuelo>
+					<CUS id="h.1.1.n.8">2.01</CUS>
+					<Superficie id="h.1.1.n.9">450.00</Superficie>
+					<Factor1 id="h.1.1.n.10">
+						<Siglas id="h.1.1.n.10.1">FZO</Siglas>
+						<Valor id="h.1.1.n.10.2">1.00</Valor>
+					</Factor1>
+					<Factor2 id="h.1.1.n.11">
+						<Siglas id="h.1.1.n.11.1">FUB</Siglas>
+						<Valor id="h.1.1.n.11.2">1.00</Valor>
+					</Factor2>
+					<Factor3 id="h.1.1.n.12">
+						<Siglas id="h.1.1.n.12.1">FFR</Siglas>
+						<Valor id="h.1.1.n.12.2">1.00</Valor>
+					</Factor3>
+					<Factor4 id="h.1.1.n.13">
+						<Siglas id="h.1.1.n.13.1">FFO</Siglas>
+						<Valor id="h.1.1.n.13.2">1.00</Valor>
+					</Factor4>
+					<Factor5 id="h.1.1.n.14">
+						<Siglas id="h.1.1.n.14.1">FSU</Siglas>
+						<Valor id="h.1.1.n.14.2">1.00</Valor>
+					</Factor5>
+					<Fre id="h.1.1.n.17">1.00</Fre>
+					<PrecioSolicitado id="h.1.1.n.15">22100000</PrecioSolicitado>
+					<FactorDeNegociacion id="h.1.1.n.16">1.00</FactorDeNegociacion>
+				</TerrenosDirectos>
+				<TerrenosDirectos id="h.1.1">
+					<Calle id="h.1.1.n.1">HERSCHEL</Calle>
+					<Colonia id="h.1.1.n.2">ANZURES</Colonia>
+					<Alcaldia id="h.1.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.1.1.n.4">11590</CodigoPostal>
+					<FuenteDeInformacion id="h.1.1.n.5">
+						<Telefono id="h.1.1.n.5.1">55-43-40-13-09</Telefono>
+						<Informante id="h.1.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelPredio id="h.1.1.n.6">TERRENO BARDEADO.</DescripcionDelPredio>
+					<UsoDelSuelo id="h.1.1.n.7">HABITACIONAL</UsoDelSuelo>
+					<CUS id="h.1.1.n.8">7</CUS>
+					<Superficie id="h.1.1.n.9">300.00</Superficie>
+					<Factor1 id="h.1.1.n.10">
+						<Siglas id="h.1.1.n.10.1">FZO</Siglas>
+						<Valor id="h.1.1.n.10.2">1.00</Valor>
+					</Factor1>
+					<Factor2 id="h.1.1.n.11">
+						<Siglas id="h.1.1.n.11.1">FUB</Siglas>
+						<Valor id="h.1.1.n.11.2">1.00</Valor>
+					</Factor2>
+					<Factor3 id="h.1.1.n.12">
+						<Siglas id="h.1.1.n.12.1">FFR</Siglas>
+						<Valor id="h.1.1.n.12.2">1.00</Valor>
+					</Factor3>
+					<Factor4 id="h.1.1.n.13">
+						<Siglas id="h.1.1.n.13.1">FFO</Siglas>
+						<Valor id="h.1.1.n.13.2">1.00</Valor>
+					</Factor4>
+					<Factor5 id="h.1.1.n.14">
+						<Siglas id="h.1.1.n.14.1">FSU</Siglas>
+						<Valor id="h.1.1.n.14.2">1.00</Valor>
+					</Factor5>
+					<Fre id="h.1.1.n.17">1.00</Fre>
+					<PrecioSolicitado id="h.1.1.n.15">19000000</PrecioSolicitado>
+					<FactorDeNegociacion id="h.1.1.n.16">1.00</FactorDeNegociacion>
+				</TerrenosDirectos>
+				<TerrenosDirectos id="h.1.1">
+					<Calle id="h.1.1.n.1">SIERRA PARACAIMA</Calle>
+					<Colonia id="h.1.1.n.2">LOMAS DE CHAPULTEPEC</Colonia>
+					<Alcaldia id="h.1.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.1.1.n.4">11000</CodigoPostal>
+					<FuenteDeInformacion id="h.1.1.n.5">
+						<Telefono id="h.1.1.n.5.1">55-71-60-53-34</Telefono>
+						<Informante id="h.1.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelPredio id="h.1.1.n.6">TERRENO BALDÍO.</DescripcionDelPredio>
+					<UsoDelSuelo id="h.1.1.n.7">HABITACIONAL</UsoDelSuelo>
+					<CUS id="h.1.1.n.8">2.01</CUS>
+					<Superficie id="h.1.1.n.9">400.00</Superficie>
+					<Factor1 id="h.1.1.n.10">
+						<Siglas id="h.1.1.n.10.1">FZO</Siglas>
+						<Valor id="h.1.1.n.10.2">1.00</Valor>
+					</Factor1>
+					<Factor2 id="h.1.1.n.11">
+						<Siglas id="h.1.1.n.11.1">FUB</Siglas>
+						<Valor id="h.1.1.n.11.2">1.00</Valor>
+					</Factor2>
+					<Factor3 id="h.1.1.n.12">
+						<Siglas id="h.1.1.n.12.1">FFR</Siglas>
+						<Valor id="h.1.1.n.12.2">1.00</Valor>
+					</Factor3>
+					<Factor4 id="h.1.1.n.13">
+						<Siglas id="h.1.1.n.13.1">FFO</Siglas>
+						<Valor id="h.1.1.n.13.2">1.00</Valor>
+					</Factor4>
+					<Factor5 id="h.1.1.n.14">
+						<Siglas id="h.1.1.n.14.1">FSU</Siglas>
+						<Valor id="h.1.1.n.14.2">1.00</Valor>
+					</Factor5>
+					<Fre id="h.1.1.n.17">1.00</Fre>
+					<PrecioSolicitado id="h.1.1.n.15">22000000</PrecioSolicitado>
+					<FactorDeNegociacion id="h.1.1.n.16">1.00</FactorDeNegociacion>
+				</TerrenosDirectos>
+				<ConclusionesHomologacionTerrenos id="h.1.2">
+					<ValorUnitarioDeTierraPromedio id="h.1.2.1">53738.939165409753645047762695
+					</ValorUnitarioDeTierraPromedio>
+					<ValorUnitarioDeTierraHomologadoPromedio id="h.1.2.2">53740.00
+					</ValorUnitarioDeTierraHomologadoPromedio>
+					<ValorUnitarioSinHomologarMinimo id="h.1.2.3">47511.312217194570135746606335
+					</ValorUnitarioSinHomologarMinimo>
+					<ValorUnitarioSinHomologarMaximo id="h.1.2.4">63333.333333333333333333333333
+					</ValorUnitarioSinHomologarMaximo>
+					<ValorUnitarioHomologadoMinimo id="h.1.2.5">47511.31</ValorUnitarioHomologadoMinimo>
+					<ValorUnitarioHomologadoMaximo id="h.1.2.6">63333.333333333333333333333333
+					</ValorUnitarioHomologadoMaximo>
+				</ConclusionesHomologacionTerrenos>
+				<ValorUnitarioDeTierraAplicableAlAvaluo id="h.1.4">53740.00</ValorUnitarioDeTierraAplicableAlAvaluo>
+			</Terrenos>
+			<ConstruccionesEnVenta id="h.2">
+				<InvestigacionProductosComparables id="h.2.1">
+					<Calle id="h.2.1.n.1">AV. INSURGENTES SUR</Calle>
+					<Colonia id="h.2.1.n.2">NÁPOLES</Colonia>
+					<Alcaldia id="h.2.1.n.3">014</Alcaldia>
+					<CodigoPostal id="h.2.1.n.4">03810</CodigoPostal>
+					<FuenteDeInformacion id="h.2.1.n.5">
+						<Telefono id="h.2.1.n.5.1">55-59-00-04-40</Telefono>
+						<Informante id="h.2.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelComparable id="h.2.1.n.6">CAJÓN DE ESTACIONAMIENTO UBICADO EN PLANTA BAJA.
+					</DescripcionDelComparable>
+					<SuperficieVendiblePorUnidad id="h.2.1.n.7">15.00</SuperficieVendiblePorUnidad>
+					<PrecioSolicitado id="h.2.1.n.8">420000</PrecioSolicitado>
+					<FactorDeNegociacion id="h.2.1.n.9">1.00</FactorDeNegociacion>
+					<CuentaCatastral id="h.2.1.n.10">
+						<Region id="h.2.1.n.10.1">000</Region>
+						<Manzana id="h.2.1.n.10.2">000</Manzana>
+						<Lote id="h.2.1.n.10.3">00</Lote>
+						<Localidad id="h.2.1.n.10.4">000</Localidad>
+					</CuentaCatastral>
+				</InvestigacionProductosComparables>
+				<InvestigacionProductosComparables id="h.2.1">
+					<Calle id="h.2.1.n.1">CAMPOS ELISEOS</Calle>
+					<Colonia id="h.2.1.n.2">POLANCO II SECCIÓN</Colonia>
+					<Alcaldia id="h.2.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.2.1.n.4">11000</CodigoPostal>
+					<FuenteDeInformacion id="h.2.1.n.5">
+						<Telefono id="h.2.1.n.5.1">55-86-00-37-70</Telefono>
+						<Informante id="h.2.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelComparable id="h.2.1.n.6">CAJÓN DE ESTACIONAMIENTO NO. 69, UBICADO EN SÓTANO 2.
+					</DescripcionDelComparable>
+					<SuperficieVendiblePorUnidad id="h.2.1.n.7">12.00</SuperficieVendiblePorUnidad>
+					<PrecioSolicitado id="h.2.1.n.8">480000</PrecioSolicitado>
+					<FactorDeNegociacion id="h.2.1.n.9">1.00</FactorDeNegociacion>
+					<CuentaCatastral id="h.2.1.n.10">
+						<Region id="h.2.1.n.10.1">000</Region>
+						<Manzana id="h.2.1.n.10.2">000</Manzana>
+						<Lote id="h.2.1.n.10.3">00</Lote>
+						<Localidad id="h.2.1.n.10.4">000</Localidad>
+					</CuentaCatastral>
+				</InvestigacionProductosComparables>
+				<InvestigacionProductosComparables id="h.2.1">
+					<Calle id="h.2.1.n.1">CAMPOS ELISEOS</Calle>
+					<Colonia id="h.2.1.n.2">POLANCO II SECCIÓN</Colonia>
+					<Alcaldia id="h.2.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.2.1.n.4">11000</CodigoPostal>
+					<FuenteDeInformacion id="h.2.1.n.5">
+						<Telefono id="h.2.1.n.5.1">55-86-00-37-70</Telefono>
+						<Informante id="h.2.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelComparable id="h.2.1.n.6">CAJÓN DE ESTACIONAMIENTO NO. 72, UBICADO EN SÓTANO 2.
+					</DescripcionDelComparable>
+					<SuperficieVendiblePorUnidad id="h.2.1.n.7">15.00</SuperficieVendiblePorUnidad>
+					<PrecioSolicitado id="h.2.1.n.8">500000</PrecioSolicitado>
+					<FactorDeNegociacion id="h.2.1.n.9">1.00</FactorDeNegociacion>
+					<CuentaCatastral id="h.2.1.n.10">
+						<Region id="h.2.1.n.10.1">000</Region>
+						<Manzana id="h.2.1.n.10.2">000</Manzana>
+						<Lote id="h.2.1.n.10.3">00</Lote>
+						<Localidad id="h.2.1.n.10.4">000</Localidad>
+					</CuentaCatastral>
+				</InvestigacionProductosComparables>
+				<InvestigacionProductosComparables id="h.2.1">
+					<Calle id="h.2.1.n.1">CAMPOS ELISEOS</Calle>
+					<Colonia id="h.2.1.n.2">POLANCO II SECCIÓN</Colonia>
+					<Alcaldia id="h.2.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.2.1.n.4">11000</CodigoPostal>
+					<FuenteDeInformacion id="h.2.1.n.5">
+						<Telefono id="h.2.1.n.5.1">55-45-75-59-33</Telefono>
+						<Informante id="h.2.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelComparable id="h.2.1.n.6">CAJÓN DE ESTACIONAMIENTO NO. 62, UBICADO EN SÓTANO 2.
+					</DescripcionDelComparable>
+					<SuperficieVendiblePorUnidad id="h.2.1.n.7">12.00</SuperficieVendiblePorUnidad>
+					<PrecioSolicitado id="h.2.1.n.8">480000</PrecioSolicitado>
+					<FactorDeNegociacion id="h.2.1.n.9">1.00</FactorDeNegociacion>
+					<CuentaCatastral id="h.2.1.n.10">
+						<Region id="h.2.1.n.10.1">000</Region>
+						<Manzana id="h.2.1.n.10.2">000</Manzana>
+						<Lote id="h.2.1.n.10.3">00</Lote>
+						<Localidad id="h.2.1.n.10.4">000</Localidad>
+					</CuentaCatastral>
+				</InvestigacionProductosComparables>
+				<ConclusionesHomologacionConstruccionesEnVenta id="h.2.2">
+					<ValorUnitarioPromedio id="h.2.2.1">21704.76</ValorUnitarioPromedio>
+					<ValorUnitarioHomologadoPromedio id="h.2.2.2">21710.00</ValorUnitarioHomologadoPromedio>
+					<ValorUnitarioSinHomologarMinimo id="h.2.2.3">28000</ValorUnitarioSinHomologarMinimo>
+					<ValorUnitarioSinHomologarMaximo id="h.2.2.4">40000</ValorUnitarioSinHomologarMaximo>
+					<ValorUnitarioHomologadoMinimo id="h.2.2.5">17200.00</ValorUnitarioHomologadoMinimo>
+					<ValorUnitarioHomologadoMaximo id="h.2.2.6">24571.60</ValorUnitarioHomologadoMaximo>
+					<ValorUnitarioAplicableAlAvaluo id="h.2.2.7">21710.00</ValorUnitarioAplicableAlAvaluo>
+				</ConclusionesHomologacionConstruccionesEnVenta>
+			</ConstruccionesEnVenta>
+			<ValorDeMercadoDelInmueble id="h.3">260520.00</ValorDeMercadoDelInmueble>
+			<ConstruccionesEnRenta id="h.4">
+				<InvestigacionProductosComparables id="h.4.1">
+					<Calle id="h.4.1.n.1">AV. EJERCITO NACIONAL</Calle>
+					<Colonia id="h.4.1.n.2">POLANCO II SECC.</Colonia>
+					<Alcaldia id="h.4.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.4.1.n.4">11530</CodigoPostal>
+					<FuenteDeInformacion id="h.4.1.n.5">
+						<Telefono id="h.4.1.n.5.1">55-85-34-87-83</Telefono>
+						<Informante id="h.4.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelComparable id="h.4.1.n.6">CAJÓN DE ESTACIONAMIENTO UBICADO EN PLANTA BAJA.
+					</DescripcionDelComparable>
+					<SuperficieVendiblePorUnidad id="h.4.1.n.7">12.00</SuperficieVendiblePorUnidad>
+					<PrecioSolicitado id="h.4.1.n.8">1550</PrecioSolicitado>
+					<FactorDeNegociacion id="h.4.1.n.9">1.00</FactorDeNegociacion>
+					<CuentaCatastral id="h.4.1.n.10">
+						<Region id="h.4.1.n.10.1">000</Region>
+						<Manzana id="h.4.1.n.10.2">000</Manzana>
+						<Lote id="h.4.1.n.10.3">00</Lote>
+						<Localidad id="h.4.1.n.10.4">000</Localidad>
+					</CuentaCatastral>
+				</InvestigacionProductosComparables>
+				<InvestigacionProductosComparables id="h.4.1">
+					<Calle id="h.4.1.n.1">AV. MOLIERE</Calle>
+					<Colonia id="h.4.1.n.2">POLANCO I SECC.</Colonia>
+					<Alcaldia id="h.4.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.4.1.n.4">11510</CodigoPostal>
+					<FuenteDeInformacion id="h.4.1.n.5">
+						<Telefono id="h.4.1.n.5.1">55-59-12-12-12</Telefono>
+						<Informante id="h.4.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelComparable id="h.4.1.n.6">CAJÓN DE ESTACIONAMIENTO UBICADO EN PLANTA BAJA.
+					</DescripcionDelComparable>
+					<SuperficieVendiblePorUnidad id="h.4.1.n.7">12.00</SuperficieVendiblePorUnidad>
+					<PrecioSolicitado id="h.4.1.n.8">1200</PrecioSolicitado>
+					<FactorDeNegociacion id="h.4.1.n.9">1</FactorDeNegociacion>
+					<CuentaCatastral id="h.4.1.n.10">
+						<Region id="h.4.1.n.10.1">000</Region>
+						<Manzana id="h.4.1.n.10.2">000</Manzana>
+						<Lote id="h.4.1.n.10.3">00</Lote>
+						<Localidad id="h.4.1.n.10.4">000</Localidad>
+					</CuentaCatastral>
+				</InvestigacionProductosComparables>
+				<InvestigacionProductosComparables id="h.4.1">
+					<Calle id="h.4.1.n.1">AV. EJERCITO NACIONAL</Calle>
+					<Colonia id="h.4.1.n.2">POLANCO I SECC.</Colonia>
+					<Alcaldia id="h.4.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.4.1.n.4">11510</CodigoPostal>
+					<FuenteDeInformacion id="h.4.1.n.5">
+						<Telefono id="h.4.1.n.5.1">55-38-87-56-90</Telefono>
+						<Informante id="h.4.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelComparable id="h.4.1.n.6">CAJÓN DE ESTACIONAMIENTO UBICADO EN PLANTA BAJA.
+					</DescripcionDelComparable>
+					<SuperficieVendiblePorUnidad id="h.4.1.n.7">12.00</SuperficieVendiblePorUnidad>
+					<PrecioSolicitado id="h.4.1.n.8">1500</PrecioSolicitado>
+					<FactorDeNegociacion id="h.4.1.n.9">1</FactorDeNegociacion>
+					<CuentaCatastral id="h.4.1.n.10">
+						<Region id="h.4.1.n.10.1">000</Region>
+						<Manzana id="h.4.1.n.10.2">000</Manzana>
+						<Lote id="h.4.1.n.10.3">00</Lote>
+						<Localidad id="h.4.1.n.10.4">000</Localidad>
+					</CuentaCatastral>
+				</InvestigacionProductosComparables>
+				<InvestigacionProductosComparables id="h.4.1">
+					<Calle id="h.4.1.n.1">AV. PRESIDENTE MASARYK</Calle>
+					<Colonia id="h.4.1.n.2">POLANCO IV SECC.</Colonia>
+					<Alcaldia id="h.4.1.n.3">016</Alcaldia>
+					<CodigoPostal id="h.4.1.n.4">11550</CodigoPostal>
+					<FuenteDeInformacion id="h.4.1.n.5">
+						<Telefono id="h.4.1.n.5.1">55-43-86-45-62</Telefono>
+						<Informante id="h.4.1.n.5.2">ASESOR INMOBILIARIO</Informante>
+					</FuenteDeInformacion>
+					<DescripcionDelComparable id="h.4.1.n.6">CAJÓN DE ESTACIONAMIENTO UBICADO EN PLANTA BAJA.
+					</DescripcionDelComparable>
+					<SuperficieVendiblePorUnidad id="h.4.1.n.7">12.00</SuperficieVendiblePorUnidad>
+					<PrecioSolicitado id="h.4.1.n.8">1600</PrecioSolicitado>
+					<FactorDeNegociacion id="h.4.1.n.9">1</FactorDeNegociacion>
+					<CuentaCatastral id="h.4.1.n.10">
+						<Region id="h.4.1.n.10.1">000</Region>
+						<Manzana id="h.4.1.n.10.2">000</Manzana>
+						<Lote id="h.4.1.n.10.3">00</Lote>
+						<Localidad id="h.4.1.n.10.4">000</Localidad>
+					</CuentaCatastral>
+				</InvestigacionProductosComparables>
+				<ConclusionesHomologacionConstruccionesEnVenta id="h.4.2">
+					<ValorUnitarioPromedio id="h.4.2.1">121.87500000000000000000000000</ValorUnitarioPromedio>
+					<ValorUnitarioHomologadoPromedio id="h.4.2.2">122.00</ValorUnitarioHomologadoPromedio>
+					<ValorUnitarioSinHomologarMinimo id="h.4.2.3">100</ValorUnitarioSinHomologarMinimo>
+					<ValorUnitarioSinHomologarMaximo id="h.4.2.4">133.33333333333333333333333333
+					</ValorUnitarioSinHomologarMaximo>
+					<ValorUnitarioHomologadoMinimo id="h.4.2.5">100.00</ValorUnitarioHomologadoMinimo>
+					<ValorUnitarioHomologadoMaximo id="h.4.2.6">133.33</ValorUnitarioHomologadoMaximo>
+					<ValorUnitarioAplicableAlAvaluo id="h.4.2.7">23080.00</ValorUnitarioAplicableAlAvaluo>
+				</ConclusionesHomologacionConstruccionesEnVenta>
+			</ConstruccionesEnRenta>
+		</EnfoqueDeMercado>
+		<EnfoqueDeCostos id="i">
+			<ImporteTotalDelEnfoqueDeCostos id="i.6">246738.46686750000</ImporteTotalDelEnfoqueDeCostos>
+		</EnfoqueDeCostos>
+		<EnfoqueDeIngresos id="k">
+			<RentaBrutaMensual id="k.1">1500</RentaBrutaMensual>
+			<Deducciones id="k.2">
+				<Vacios id="k.2.1">83.25</Vacios>
+				<ImpuestoPredial id="k.2.2">108.00</ImpuestoPredial>
+				<ServicioDeAgua id="k.2.3">0</ServicioDeAgua>
+				<ConservacionYMantenimiento id="k.2.4">150.00</ConservacionYMantenimiento>
+				<ServicioEnergiaElectrica id="k.2.5">90.00</ServicioEnergiaElectrica>
+				<Administracion id="k.2.6">150.00</Administracion>
+				<Seguros id="k.2.7">45.00</Seguros>
+				<DepreciacionFiscal id="k.2.8">0</DepreciacionFiscal>
+				<Otros id="k.2.9">0</Otros>
+				<DeduccionesFiscales id="k.2.10">543.00</DeduccionesFiscales>
+				<ImpuestoSobreLaRenta id="k.2.11">0</ImpuestoSobreLaRenta>
+				<DeduccionesMensuales id="k.2.12">626.25</DeduccionesMensuales>
+				<PorcentajeDeduccionesMensuales id="k.2.13">0.0042</PorcentajeDeduccionesMensuales>
+			</Deducciones>
+			<ProductoLiquidoAnual id="k.3">10485.00</ProductoLiquidoAnual>
+			<TasaDeCapitalizacionAplicable id="k.4">10</TasaDeCapitalizacionAplicable>
+			<ImporteEnfoqueDeIngresos id="k.5">104850.00</ImporteEnfoqueDeIngresos>
+		</EnfoqueDeIngresos>
+		<ConsideracionesPreviasALaConclusion id="n">
+			<ConsideracionesPreviasALaConclusion id="n.1">SE ANEXA AL PRESENTE AVALÚO: MATRIZ DE PUNTOS PARA DETERMINAR
+				LA CLASE DE LA CONSTRUCCIÓN, DESCRIPCIÓN DE LOS ELEMENTOS DE LA CONSTRUCCIÓN.
+			</ConsideracionesPreviasALaConclusion>
+		</ConsideracionesPreviasALaConclusion>
+		<ConclusionDelAvaluo id="o">
+			<ValorComercialDelInmueble id="o.1">260520.00</ValorComercialDelInmueble>
+		</ConclusionDelAvaluo>
+		<ValorReferido id="p">
+			<FechaDeValorReferido id="p.1"></FechaDeValorReferido>
+			<IndiceAntiguo id="p.2"></IndiceAntiguo>
+			<IndiceActual id="p.3"></IndiceActual>
+			<FactorDeConversion id="p.4"></FactorDeConversion>
+			<ValorReferido id="p.5"></ValorReferido>
+		</ValorReferido>
+		<AnexoFotografico id="q">
+			<Sujeto id="q.1">
+				<CuentaCatastral id="q.1.1">
+					<Region id="q.1.1.1">035</Region>
+					<Manzana id="q.1.1.2">044</Manzana>
+					<Lote id="q.1.1.3">29</Lote>
+					<Localidad id="q.1.1.4">137</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.1.2">
+					<Foto id="q.1.2.n.1">18157588</Foto>
+					<InteriorOExterior id="q.1.2.n.2">E</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+				<FotosInmuebleAvaluo id="q.1.2">
+					<Foto id="q.1.2.n.1">18157589</Foto>
+					<InteriorOExterior id="q.1.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+				<FotosInmuebleAvaluo id="q.1.2">
+					<Foto id="q.1.2.n.1">18157590</Foto>
+					<InteriorOExterior id="q.1.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+				<FotosInmuebleAvaluo id="q.1.2">
+					<Foto id="q.1.2.n.1">18157591</Foto>
+					<InteriorOExterior id="q.1.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+				<FotosInmuebleAvaluo id="q.1.2">
+					<Foto id="q.1.2.n.1">18157592</Foto>
+					<InteriorOExterior id="q.1.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+				<FotosInmuebleAvaluo id="q.1.2">
+					<Foto id="q.1.2.n.1">18157593</Foto>
+					<InteriorOExterior id="q.1.2.n.2">E</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+				<FotosInmuebleAvaluo id="q.1.2">
+					<Foto id="q.1.2.n.1">18157594</Foto>
+					<InteriorOExterior id="q.1.2.n.2">E</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+				<FotosInmuebleAvaluo id="q.1.2">
+					<Foto id="q.1.2.n.1">18157595</Foto>
+					<InteriorOExterior id="q.1.2.n.2">E</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</Sujeto>
+			<ComparableRentas id="q.2">
+				<CuentaCatastral id="q.2.n.1">
+					<Region id="q.2.n.1.n.1">000</Region>
+					<Manzana id="q.2.n.1.n.2">000</Manzana>
+					<Lote id="q.2.n.1.n.3">00</Lote>
+					<Localidad id="q.2.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.2.n.2">
+					<Foto id="q.2.n.2.n.1">18157596</Foto>
+					<InteriorOExterior id="q.2.n.2.n.2">E</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableRentas>
+			<ComparableRentas id="q.2">
+				<CuentaCatastral id="q.2.n.1">
+					<Region id="q.2.n.1.n.1">000</Region>
+					<Manzana id="q.2.n.1.n.2">000</Manzana>
+					<Lote id="q.2.n.1.n.3">00</Lote>
+					<Localidad id="q.2.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.2.n.2">
+					<Foto id="q.2.n.2.n.1">18157597</Foto>
+					<InteriorOExterior id="q.2.n.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableRentas>
+			<ComparableRentas id="q.2">
+				<CuentaCatastral id="q.2.n.1">
+					<Region id="q.2.n.1.n.1">000</Region>
+					<Manzana id="q.2.n.1.n.2">000</Manzana>
+					<Lote id="q.2.n.1.n.3">00</Lote>
+					<Localidad id="q.2.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.2.n.2">
+					<Foto id="q.2.n.2.n.1">18157598</Foto>
+					<InteriorOExterior id="q.2.n.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableRentas>
+			<ComparableRentas id="q.2">
+				<CuentaCatastral id="q.2.n.1">
+					<Region id="q.2.n.1.n.1">000</Region>
+					<Manzana id="q.2.n.1.n.2">000</Manzana>
+					<Lote id="q.2.n.1.n.3">00</Lote>
+					<Localidad id="q.2.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.2.n.2">
+					<Foto id="q.2.n.2.n.1">18157599</Foto>
+					<InteriorOExterior id="q.2.n.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableRentas>
+			<ComparableVentas id="q.3">
+				<CuentaCatastral id="q.3.n.1">
+					<Region id="q.3.n.1.n.1">000</Region>
+					<Manzana id="q.3.n.1.n.2">000</Manzana>
+					<Lote id="q.3.n.1.n.3">00</Lote>
+					<Localidad id="q.3.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.3.n.2">
+					<Foto id="q.3.n.2.n.1">18157600</Foto>
+					<InteriorOExterior id="q.3.n.2.n.2">E</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableVentas>
+			<ComparableVentas id="q.3">
+				<CuentaCatastral id="q.3.n.1">
+					<Region id="q.3.n.1.n.1">000</Region>
+					<Manzana id="q.3.n.1.n.2">000</Manzana>
+					<Lote id="q.3.n.1.n.3">00</Lote>
+					<Localidad id="q.3.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.3.n.2">
+					<Foto id="q.3.n.2.n.1">18157601</Foto>
+					<InteriorOExterior id="q.3.n.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableVentas>
+			<ComparableVentas id="q.3">
+				<CuentaCatastral id="q.3.n.1">
+					<Region id="q.3.n.1.n.1">000</Region>
+					<Manzana id="q.3.n.1.n.2">000</Manzana>
+					<Lote id="q.3.n.1.n.3">00</Lote>
+					<Localidad id="q.3.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.3.n.2">
+					<Foto id="q.3.n.2.n.1">18157602</Foto>
+					<InteriorOExterior id="q.3.n.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableVentas>
+			<ComparableVentas id="q.3">
+				<CuentaCatastral id="q.3.n.1">
+					<Region id="q.3.n.1.n.1">000</Region>
+					<Manzana id="q.3.n.1.n.2">000</Manzana>
+					<Lote id="q.3.n.1.n.3">00</Lote>
+					<Localidad id="q.3.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.3.n.2">
+					<Foto id="q.3.n.2.n.1">18157603</Foto>
+					<InteriorOExterior id="q.3.n.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableVentas>
+			<ComparableVentas id="q.3">
+				<CuentaCatastral id="q.3.n.1">
+					<Region id="q.3.n.1.n.1">000</Region>
+					<Manzana id="q.3.n.1.n.2">000</Manzana>
+					<Lote id="q.3.n.1.n.3">00</Lote>
+					<Localidad id="q.3.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.3.n.2">
+					<Foto id="q.3.n.2.n.1">18157604</Foto>
+					<InteriorOExterior id="q.3.n.2.n.2">I</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableVentas>
+			<ComparableVentas id="q.3">
+				<CuentaCatastral id="q.3.n.1">
+					<Region id="q.3.n.1.n.1">000</Region>
+					<Manzana id="q.3.n.1.n.2">000</Manzana>
+					<Lote id="q.3.n.1.n.3">00</Lote>
+					<Localidad id="q.3.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.3.n.2">
+					<Foto id="q.3.n.2.n.1">18157605</Foto>
+					<InteriorOExterior id="q.3.n.2.n.2">E</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableVentas>
+			<ComparableVentas id="q.3">
+				<CuentaCatastral id="q.3.n.1">
+					<Region id="q.3.n.1.n.1">000</Region>
+					<Manzana id="q.3.n.1.n.2">000</Manzana>
+					<Lote id="q.3.n.1.n.3">00</Lote>
+					<Localidad id="q.3.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.3.n.2">
+					<Foto id="q.3.n.2.n.1">18157606</Foto>
+					<InteriorOExterior id="q.3.n.2.n.2">E</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableVentas>
+			<ComparableVentas id="q.3">
+				<CuentaCatastral id="q.3.n.1">
+					<Region id="q.3.n.1.n.1">000</Region>
+					<Manzana id="q.3.n.1.n.2">000</Manzana>
+					<Lote id="q.3.n.1.n.3">00</Lote>
+					<Localidad id="q.3.n.1.n.4">000</Localidad>
+				</CuentaCatastral>
+				<FotosInmuebleAvaluo id="q.3.n.2">
+					<Foto id="q.3.n.2.n.1">18157607</Foto>
+					<InteriorOExterior id="q.3.n.2.n.2">E</InteriorOExterior>
+				</FotosInmuebleAvaluo>
+			</ComparableVentas>
+		</AnexoFotografico>
+	</Comercial>
+</Avaluo>
