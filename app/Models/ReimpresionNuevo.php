@@ -2584,8 +2584,13 @@ class ReimpresionNuevo
         if(isset($identificacion['ClaveSociedad']) && !is_array($identificacion['ClaveSociedad'])){
             $infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveSociedad'];
         }
-        else{            
-            $infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveValuador'];
+        else{
+            if(isset($identificacion['ClaveValuador']) && !is_array($identificacion['ClaveValuador'])){
+                $infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveValuador'];
+            }else{
+                $infoReimpresion['Encabezado']['Registro_TDF'] = '';
+            }           
+            
         }
 
         /************************************************************************************************************************************************************************/
