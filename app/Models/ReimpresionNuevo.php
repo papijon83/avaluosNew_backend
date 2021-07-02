@@ -256,6 +256,7 @@ class ReimpresionNuevo
             $infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveSociedad'];
         }
         else{
+            Log::info($identificacion);
             $infoReimpresion['Encabezado']['Registro_TDF'] = $identificacion['ClaveValuador'];
         }
 
