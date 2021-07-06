@@ -1733,7 +1733,7 @@ class BandejaEntradaController extends Controller
                 $camposFexavaAvaluo['FEXAVA_CONTRATOPRIVADO'] = array();
     
                 if(isset($arrIdsContratoPrivado['d.4.1.3.2']) and trim($arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.3.2']]) != ''){
-                    $camposFexavaAvaluo['FEXAVA_CONTRATOPRIVADO']['NOMBREADQUIRIENTE'] = $arrSentencia[$arrIdsContratoPrivado['d.4.1.3.2']];
+                    $camposFexavaAvaluo['FEXAVA_CONTRATOPRIVADO']['NOMBREADQUIRIENTE'] = $arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.3.2']];
                 }
     
                 if(isset($arrIdsContratoPrivado['d.4.1.2.3']) and trim($arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.2.3']]) != ''){

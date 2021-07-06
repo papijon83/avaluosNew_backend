@@ -2510,7 +2510,7 @@ class ReimpresionNuevo
     }
 
     public function infoAvaluoNuevo($idAvaluo){
-        Log::info($idAvaluo);
+        
         try{
         $this->modelFis = new Fis();
         $this->modelDocumentos = new Documentos();

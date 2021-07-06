@@ -2529,14 +2529,18 @@ class BandejaEntradaNuevoController extends Controller
         
         //xpath($elementoPrincipal.'//Terreno[@id="d"]//CroquisMicroLocalizacion[@id="d.2"]');        
         $infoXmlEscritura = $infoXmlTerreno->xpath($elementoPrincipal.'//Terreno[@id="d"]//MedidasYColindancias[@id="d.4"]//FuenteDeInformacionLegal[@id="d.4.1"]//Escritura[@id="d.4.1.1"]');
+        
         $arrEscritura = array();
         $controlElemntos = 0;
-        foreach($infoXmlEscritura[0] as $llave => $elemento){
-            $arrEscritura[$llave] =(String)($elemento);
-            if(trim($arrEscritura[$llave]) != ''){
-                $controlElemntos = $controlElemntos+1;
-            }
-        } //print_r($infoXmlEscritura); echo "SOY controlElemntos ".$controlElemntos; exit();
+        if($infoXmlEscritura){
+            foreach($infoXmlEscritura[0] as $llave => $elemento){
+                $arrEscritura[$llave] =(String)($elemento);
+                if(trim($arrEscritura[$llave]) != ''){
+                    $controlElemntos = $controlElemntos+1;
+                }
+            } //print_r($infoXmlEscritura); echo "SOY controlElemntos ".$controlElemntos; exit();
+        }
+        
         if($controlElemntos > 0){
             $camposFexavaAvaluo['FEXAVA_FUENTEINFORMACIONLEG'] = array();
             $camposFexavaAvaluo['FEXAVA_FUENTEINFORMACIONLEG']['CODTIPOFUENTEINFORMACION'] = '1';
@@ -2616,7 +2620,7 @@ class BandejaEntradaNuevoController extends Controller
                     $arrIdsContratoPrivado[(String)($elemento['id'])] = $llave;
                     $arrContratoPrivado[$llave] =(String)($elemento);                
                 }
-    
+                error_log("EL arrIdsContratoPrivado".json_encode($arrIdsContratoPrivado['d.4.1.3.2'])); error_log("la info de arrIdsContratoPrivado ".json_encode($arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.3.2']]));
                 $camposFexavaAvaluo['FEXAVA_FUENTEINFORMACIONLEG']['CODTIPOFUENTEINFORMACION'] = '3';                
     
                 if(isset($arrIdsContratoPrivado['d.4.1.3.1']) and trim($arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.3.1']]) != ''){
@@ -2626,7 +2630,7 @@ class BandejaEntradaNuevoController extends Controller
                 $camposFexavaAvaluo['FEXAVA_CONTRATOPRIVADO'] = array();
     
                 if(isset($arrIdsContratoPrivado['d.4.1.3.2']) and trim($arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.3.2']]) != ''){
-                    $camposFexavaAvaluo['FEXAVA_CONTRATOPRIVADO']['NOMBREADQUIRIENTE'] = $arrSentencia[$arrIdsContratoPrivado['d.4.1.3.2']];
+                    $camposFexavaAvaluo['FEXAVA_CONTRATOPRIVADO']['NOMBREADQUIRIENTE'] = $arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.3.2']];
                 }
     
                 if(isset($arrIdsContratoPrivado['d.4.1.2.3']) and trim($arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.2.3']]) != ''){
@@ -2938,7 +2942,7 @@ class BandejaEntradaNuevoController extends Controller
                 $camposFexavaAvaluo['FEXAVA_CONTRATOPRIVADO'] = array();
     
                 if(isset($arrIdsContratoPrivado['d.4.1.3.2']) and trim($arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.3.2']]) != ''){
-                    $camposFexavaAvaluo['FEXAVA_CONTRATOPRIVADO']['NOMBREADQUIRIENTE'] = $arrSentencia[$arrIdsContratoPrivado['d.4.1.3.2']];
+                    $camposFexavaAvaluo['FEXAVA_CONTRATOPRIVADO']['NOMBREADQUIRIENTE'] = $arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.3.2']];
                 }
     
                 if(isset($arrIdsContratoPrivado['d.4.1.2.3']) and trim($arrContratoPrivado[$arrIdsContratoPrivado['d.4.1.2.3']]) != ''){

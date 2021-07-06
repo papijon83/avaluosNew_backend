@@ -54,15 +54,18 @@ class ReimpresionPrueba
         } */
         
         $rutaArchivos = getcwd();
-        $myfile = fopen($rutaArchivos."/default", "r");
+        $myfile = fopen($rutaArchivos."/A-COM-2021-31704.xml", "r");
         $contenidoArchivo = fread($myfile, filesize($rutaArchivos."/A-COM-2021-31704.xml"));
         fclose($myfile);
-
+        //echo $contenidoArchivo; exit();
         /*
         $xml = simplexml_load_string($contenidoArchivo,'SimpleXMLElement', LIBXML_NOCDATA);
         $comandoRmDefault = "rm ".$rutaArchivos."/default";
         shell_exec($comandoRmDefault);
         */
+        $xml = simplexml_load_string($contenidoArchivo,'SimpleXMLElement', LIBXML_NOCDATA);
+        echo "<pre>"; print_r($xml); exit();
+
         $arrXML = convierte_a_arreglo($xml); //print_r($arrXML); exit();
 
         $infoFexava = DB::select("SELECT * FROM FEXAVA_AVALUO WHERE IDAVALUO = $idAvaluo");

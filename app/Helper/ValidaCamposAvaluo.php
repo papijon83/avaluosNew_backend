@@ -2923,17 +2923,19 @@ function valida_AvaluoTerrenoV($data, $elementoPrincipal, $datah = false){
             }
         }
         
-        
-        foreach($validacionesd411 as $etiqueta => $validacion){
-            if(!isset($data[0]['MedidasYColindancias']['FuenteDeInformacionLegal']['Escritura'][$etiqueta])){
-                $errores[] = "Falta ".$etiqueta." en MedidasYColindancias (Escritura)";
-            }else{
-                $resValidacion = define_validacion($validacion, $data[0]['MedidasYColindancias']['FuenteDeInformacionLegal']['Escritura'][$etiqueta]);                             
-                if($resValidacion != 'correcto'){
-                    $errores[] = "El campo ".$etiqueta." ".$resValidacion;
+        if(isset($data[0]['MedidasYColindancias']['FuenteDeInformacionLegal']['Escritura'])){
+            foreach($validacionesd411 as $etiqueta => $validacion){
+                if(!isset($data[0]['MedidasYColindancias']['FuenteDeInformacionLegal']['Escritura'][$etiqueta])){
+                    $errores[] = "Falta ".$etiqueta." en MedidasYColindancias (Escritura)";
+                }else{
+                    $resValidacion = define_validacion($validacion, $data[0]['MedidasYColindancias']['FuenteDeInformacionLegal']['Escritura'][$etiqueta]);                             
+                    if($resValidacion != 'correcto'){
+                        $errores[] = "El campo ".$etiqueta." ".$resValidacion;
+                    }
                 }
             }
         }
+        
 
         if(isset($data[0]['MedidasYColindancias']['FuenteDeInformacionLegal']['Sentencia'])){
             foreach($validacionesd412 as $etiqueta => $validacion){
