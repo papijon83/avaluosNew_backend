@@ -2105,9 +2105,24 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                     $calc_d_5_n_10 = $data[0]['SuperficieDelTerreno']['Fzo'] * $data[0]['SuperficieDelTerreno']['Fub'] * $data[0]['SuperficieDelTerreno']['FFr'] * $data[0]['SuperficieDelTerreno']['Ffo'] * $data[0]['SuperficieDelTerreno']['Fsu'];
                 }*/
                 $calc_d_5_n_10 = $data[0]['SuperficieDelTerreno']['Factor1']['Valor'] * $data[0]['SuperficieDelTerreno']['Factor2']['Valor'] * $data[0]['SuperficieDelTerreno']['Factor3']['Valor'] * $data[0]['SuperficieDelTerreno']['Factor4']['Valor'] * $data[0]['SuperficieDelTerreno']['Factor5']['Valor'];
-                if(truncate($d_5_n_10,2) > truncate($calc_d_5_n_10,2)){
-                    $mensajesd[] =  "d.5.n.10 - El cálculo de Fre es erróneo ";
+                
+                if(truncate($d_5_n_10,2) < 0.6 || truncate($d_5_n_10,2) > 2){
+                    $mensajesd[] =  "d.5.n.10 - Fre. Valor no permitido ";
+                }else{
+                    if(truncate($d_5_n_10,2) >= 0.60 && truncate($d_5_n_10,2) <= 2){
+                        if($d_5_n_10 == 0.6 && truncate($calc_d_5_n_10,2) < 0.6){
+
+                        }else{
+                            if(truncate($d_5_n_10,2) != truncate($calc_d_5_n_10,2)){
+                                $mensajesd[] =  "d.5.n.10 - Fre. Error al validar el cálculo ";
+                            }
+                        }   
+                    }
                 }
+
+                /*if(truncate($d_5_n_10,2) != truncate($calc_d_5_n_10,2)){
+                    $mensajesd[] =  "d.5.n.10 - El cálculo de Fre es erróneo ";
+                }*/
             }
             
             if(isset($dataextra) && $dataextra != false){
@@ -2761,7 +2776,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                     //COmentado el 06/07/2021
                     //$calc_h_1_1_n_17 = 1/(floatval($elemento['Factor1']['Valor']) * floatval($elemento['Factor2']['Valor']) * floatval($elemento['Factor3']['Valor']) * floatval($elemento['Factor4']['Valor']) * floatval($elemento['Factor5']['Valor']));
                     $calc_h_1_1_n_17 = (floatval($elemento['Factor1']['Valor']) * floatval($elemento['Factor2']['Valor']) * floatval($elemento['Factor3']['Valor']) * floatval($elemento['Factor4']['Valor']) * floatval($elemento['Factor5']['Valor']));
-                    if(truncate($h_1_1_n_17,2) != truncate($calc_h_1_1_n_17,2)){ error_log(truncate($h_1_1_n_17,2)." != ".truncate($calc_h_1_1_n_17,2));
+                    if(truncate($h_1_1_n_17,2) != truncate($calc_h_1_1_n_17,2)){ error_log("h.1.1.n.17 ".truncate($h_1_1_n_17,2)." != ".truncate($calc_h_1_1_n_17,2));
                         return  "h.1.1.n.17 - El cálculo de Fre es erróneo ";
                     }
                 }
