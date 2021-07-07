@@ -2443,7 +2443,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><b>TASA DE CAPITALIZACIÓN APLICALE:</b></td>
+                                <td><b>TASA DE CAPITALIZACIÓN APLICABLE:</b></td>
                                 <td>
                                 @isset($infoAvaluo['Analisis_Deducciones']['Totales']['Tasa_Capitalizacion_Aplicable'])
                                     <span class="grises">{{ number_format($infoAvaluo['Analisis_Deducciones']['Totales']['Tasa_Capitalizacion_Aplicable'],2) }}%</span>
