@@ -520,5 +520,11 @@ class Documentos
         DB::reconnect();    
         return $resCod." ".$resDesc;
     }
+
+    public function getTopografia($cod){
+        $info = DB::select("SELECT DESCRIPCION FROM FEXAVA.FEXAVA_CATTOPOGRAFIA WHERE CODTOPOGRAFIA = $cod");
+        $arrInfo = json_decode(json_encode($info),true);
+        return $arrInfo[0]['descripcion'];
+    }
     
 }
