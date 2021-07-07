@@ -1918,15 +1918,31 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
                     }
 
                     if($dataextra == '//Catastral'){
-                        if(isset($elemento['DepreciacionPorEdad'])){
-                            $e_2_5_n_17 = $elemento['DepreciacionPorEdad'];
-                            $e_2_5_n_7 = $elemento['Edad'];
-                            //$calc_e_2_5_n_17 = (100-min(50,$e_2_5_n_7 * 1)) / 100; //echo "COMPARACION DepreciacionPorEdad ".truncate($e_2_5_n_17,2)." != ".truncate($calc_e_2_5_n_17,2)."\n";
-                            $calc_e_2_5_n_17 = $e_2_5_n_7 >= 50 ? (100-(50 * 0.8)) / 100 : (100-(0.8 * $e_2_5_n_7)) / 100;
-                            if(truncate($e_2_5_n_17,2) != truncate($calc_e_2_5_n_17,2)){
-                                $mensajese[] =  "e.2.5.n.17 - El cálculo de DepreciacionPorEdad es erróneo ";
+                        $e_2_5_n_6 = $elemento['ClaveClase'];
+                        $e_2_5_n_2 = $elemento['ClaveUso'];
+                        $usos_1 = array('PE','PC','J','P');
+                        if(in_array($e_2_5_n_2,$usos_1) && $e_2_5_n_6 == 'U'){
+                            
+                            if(isset($elemento['DepreciacionPorEdad'])){
+                                $e_2_5_n_17 = $elemento['DepreciacionPorEdad'];    
+                                $calc_e_2_5_n_17 = 1;
+                                if(truncate($e_2_5_n_17,2) != truncate($calc_e_2_5_n_17,2)){
+                                    $mensajese[] =  "e.2.5.n.17 - El cálculo de DepreciacionPorEdad es erróneo ";
+                                }
+                            }
+
+                        }else{
+                            if(isset($elemento['DepreciacionPorEdad'])){
+                                $e_2_5_n_17 = $elemento['DepreciacionPorEdad'];
+                                $e_2_5_n_7 = $elemento['Edad'];
+                                //$calc_e_2_5_n_17 = (100-min(50,$e_2_5_n_7 * 1)) / 100; //echo "COMPARACION DepreciacionPorEdad ".truncate($e_2_5_n_17,2)." != ".truncate($calc_e_2_5_n_17,2)."\n";
+                                $calc_e_2_5_n_17 = $e_2_5_n_7 >= 50 ? (100-(50 * 0.8)) / 100 : (100-(0.8 * $e_2_5_n_7)) / 100;
+                                if(truncate($e_2_5_n_17,2) != truncate($calc_e_2_5_n_17,2)){
+                                    $mensajese[] =  "e.2.5.n.17 - El cálculo de DepreciacionPorEdad es erróneo ";
+                                }
                             }
                         }
+                        
                     }
                     
                     
@@ -1997,15 +2013,35 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
                         }
 
                         if($dataextra == '//Catastral'){
-                            if(isset($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['DepreciacionPorEdad'])){
-                                $e_2_5_n_17 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['DepreciacionPorEdad'];
-                                $e_2_5_n_7 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['Edad'];
-                                //$calc_e_2_5_n_17 = (100-min(40,$e_2_5_n_7 * 1)) / 100; //echo "COMPARACION DepreciacionPorEdad ".truncate($e_2_1_n_17,2)." != ".truncate($calc_e_2_1_n_17,2)."\n";
-                                $calc_e_2_5_n_17 = $e_2_5_n_7 >= 50 ? (100-(50 * 0.8)) / 100 : (100-(0.8 * $e_2_5_n_7)) / 100;
-                                if(truncate($e_2_5_n_17,2) != truncate($calc_e_2_5_n_17,2)){
-                                    $mensajese[] =  "e.2.5.n.17 - El cálculo de DepreciacionPorEdad es erróneo ";
+                            $e_2_5_n_6 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['ClaveClase'];
+                            $e_2_5_n_2 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['ClaveUso'];
+                            $usos_1 = array('PE','PC','J','P');
+                            
+                            if(in_array($e_2_5_n_2,$usos_1) && $e_2_5_n_6 == 'U'){
+                            
+                                if(isset($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['DepreciacionPorEdad'])){
+                                    $e_2_5_n_17 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['DepreciacionPorEdad'];    
+                                    $calc_e_2_5_n_17 = 1;
+                                    if(truncate($e_2_5_n_17,2) != truncate($calc_e_2_5_n_17,2)){
+                                        $mensajese[] =  "e.2.5.n.17 - El cálculo de DepreciacionPorEdad es erróneo ";
+                                    }
                                 }
+    
+                            }else{
+
+                                if(isset($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['DepreciacionPorEdad'])){
+                                    $e_2_5_n_17 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['DepreciacionPorEdad'];
+                                    $e_2_5_n_7 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['Edad'];
+                                    //$calc_e_2_5_n_17 = (100-min(40,$e_2_5_n_7 * 1)) / 100; //echo "COMPARACION DepreciacionPorEdad ".truncate($e_2_1_n_17,2)." != ".truncate($calc_e_2_1_n_17,2)."\n";
+                                    $calc_e_2_5_n_17 = $e_2_5_n_7 >= 50 ? (100-(50 * 0.8)) / 100 : (100-(0.8 * $e_2_5_n_7)) / 100;
+                                    if(truncate($e_2_5_n_17,2) != truncate($calc_e_2_5_n_17,2)){
+                                        $mensajese[] =  "e.2.5.n.17 - El cálculo de DepreciacionPorEdad es erróneo ";
+                                    }
+                                }
+
                             }
+
+                            
                         }
                         
                     }

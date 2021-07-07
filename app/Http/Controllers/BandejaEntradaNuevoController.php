@@ -230,7 +230,7 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '1. Error en el servidor'], 500);
         }
     }
 
@@ -423,7 +423,7 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '2. Error en el servidor'], 500);
         }
     }
 
@@ -457,7 +457,7 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '3. Error en el servidor'], 500);
         }
     }
 
@@ -524,7 +524,7 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '4. Error en el servidor'], 500);
         }
     }
 
@@ -586,7 +586,7 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '5. Error en el servidor'], 500);
         }
     }
 
@@ -647,7 +647,7 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '6. Error en el servidor'], 500);
         }
     }
 
@@ -749,7 +749,7 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error al obtener notario'], 500);
+            return response()->json(['mensaje' => '7. Error al obtener notario'], 500);
         }    
 
     
@@ -788,12 +788,13 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '8. Error en el servidor'], 500);
         }
     }
     
     function descomprimirCualquierFormato($archivo){
-        //var_dump($request);
+        try{
+            //var_dump($request);
         //$archivo = $request->file('files');        
         if($this->validarTamanioFichero(filesize($archivo)) == FALSE){
             $res = response()->json(['mensaje' => 'El tamaño del fichero es muy grande.'], 500);
@@ -862,6 +863,12 @@ class BandejaEntradaNuevoController extends Controller
         }
 
         return $res;
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '9. Error en el servidor'], 500);
+        }
+        
     }
 
     function comprimir($archivo){
@@ -884,7 +891,7 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error al comprimir archivo'], 500);
+            return response()->json(['mensaje' => '10. Error al comprimir archivo'], 500);
         }
         
     }
@@ -904,19 +911,26 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error al comprimir archivo'], 500);
+            return response()->json(['mensaje' => '11. Error al comprimir archivo'], 500);
         }
         
     }
 
     function validarTamanioFichero($bytesXmlAvaluo)
     {
-        $tamanioMaximo = 4194304;
-        if ($tamanioMaximo < $bytesXmlAvaluo) {
-            return FALSE;
-        } else {
-            return TRUE;
+        try{
+            $tamanioMaximo = 4194304;
+            if ($tamanioMaximo < $bytesXmlAvaluo) {
+                return FALSE;
+            } else {
+                return TRUE;
+            }
+        }catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '12. Error al comprimir archivo'], 500);
         }
+        
     }
     
     function esValidoEsquema($contents){
@@ -1002,7 +1016,7 @@ class BandejaEntradaNuevoController extends Controller
         }catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            //return response()->json(['mensaje' => 'Error al comprimir archivo'], 500);
+            return response()->json(['mensaje' => '13. Error al comprimir archivo'], 500);
             return $th;
         }
         
@@ -1149,7 +1163,7 @@ class BandejaEntradaNuevoController extends Controller
                 $arrError[] = $this->traduceErrorFormato($th[0]);
                 return response()->json(['mensaje' => $arrError], 500);
             }else{
-                return response()->json(['mensaje' => 'Error al guardar el Avalúo'], 500);
+                return response()->json(['mensaje' => '14. Error al guardar el Avalúo'], 500);
             }
         }
     }
@@ -1244,7 +1258,7 @@ class BandejaEntradaNuevoController extends Controller
         catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '15. Error en el servidor'], 500);
         } 
     }
 
@@ -1384,7 +1398,7 @@ class BandejaEntradaNuevoController extends Controller
                 $arrError[] = $this->traduceErrorFormato($th[0]);
                 return response()->json(['mensaje' => $arrError], 500);
             }else{
-                return response()->json(['mensaje' => 'Error al guardar el Avalúo'], 500);
+                return response()->json(['mensaje' => '16. Error al guardar el Avalúo'], 500);
             }
         }
         
@@ -1432,7 +1446,7 @@ class BandejaEntradaNuevoController extends Controller
             } catch (\Throwable $th) {
                 error_log($th);
                 
-                return response()->json(['mensaje' => 'Error al consumir el servicio'], 500);
+                return response()->json(['mensaje' => '17. Error al consumir el servicio'], 500);
             }
         } else {
             return response()->json($response->getBody(), $response->getStatusCode());
@@ -1572,7 +1586,7 @@ class BandejaEntradaNuevoController extends Controller
         } catch (\Throwable $th) {
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '18. Error en el servidor'], 500);
         }    
     }
 
@@ -1685,793 +1699,828 @@ class BandejaEntradaNuevoController extends Controller
            return $arrCamposFexavaAvaluo;
            
         } catch (\Throwable $th) {
-            //Log::info($th);
+            Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '19. Error en el servidor'], 500);
         }
     }
 
     public function guardarAvaluoIdentificacion($infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal){
-        $errores = valida_AvaluoIdentificacion($infoXmlIdentificacion);
+        try{
+            $errores = valida_AvaluoIdentificacion($infoXmlIdentificacion);
         
-        if(count($errores) > 0){
-            $camposFexavaAvaluo['ERRORES'][] = $errores;
-            //return array('ERROR' => $errores);
-        }
-        $arrIdentificacion = array();
-        foreach($infoXmlIdentificacion[0] as $llave => $elemento){
-            $arrIdentificacion[$llave] = (String)($elemento);
-        }
-        //$errores = array(0 => "LOS IDS ".$idPersona." ".$this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($arrIdentificacion['ClaveValuador'], '',true)); $camposFexavaAvaluo['ERRORES'][] = $errores; return $camposFexavaAvaluo;
-        if($idPersona != $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($arrIdentificacion['ClaveValuador'], '',true)){
-            /*$errores = array(0 => "LOS IDS ".$idPersona." ".$this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($arrIdentificacion['ClaveValuador'], '',true)); 
-            $camposFexavaAvaluo['ERRORES'][] = $errores;*/
-            $errores = array(0 => 'Un perito no puede subir avalúos a nombre de otro perito');
-            $camposFexavaAvaluo['ERRORES'][] = $errores;
-            //return array('ERROR' => $errores);
-        }//exit();
+            if(count($errores) > 0){
+                $camposFexavaAvaluo['ERRORES'][] = $errores;
+                //return array('ERROR' => $errores);
+            }
+            $arrIdentificacion = array();
+            foreach($infoXmlIdentificacion[0] as $llave => $elemento){
+                $arrIdentificacion[$llave] = (String)($elemento);
+            }
+            //$errores = array(0 => "LOS IDS ".$idPersona." ".$this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($arrIdentificacion['ClaveValuador'], '',true)); $camposFexavaAvaluo['ERRORES'][] = $errores; return $camposFexavaAvaluo;
+            if($idPersona != $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($arrIdentificacion['ClaveValuador'], '',true)){
+                /*$errores = array(0 => "LOS IDS ".$idPersona." ".$this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($arrIdentificacion['ClaveValuador'], '',true)); 
+                $camposFexavaAvaluo['ERRORES'][] = $errores;*/
+                $errores = array(0 => 'Un perito no puede subir avalúos a nombre de otro perito');
+                $camposFexavaAvaluo['ERRORES'][] = $errores;
+                //return array('ERROR' => $errores);
+            }//exit();
 
-        $resExiste = $this->modelDocumentos->valida_existencia($arrIdentificacion['NumeroDeAvaluo'],$idPersona);
+            $resExiste = $this->modelDocumentos->valida_existencia($arrIdentificacion['NumeroDeAvaluo'],$idPersona);
 
-        if($resExiste == TRUE){
-            $errores = array(0 => 'a.1 - Ya existe un avalúo registrado con n° avalúo: '.$arrIdentificacion['NumeroDeAvaluo']);
-            $camposFexavaAvaluo['ERRORES'][] = $errores;
-            //return array('ERROR' => $errores);
+            if($resExiste == TRUE){
+                $errores = array(0 => 'a.1 - Ya existe un avalúo registrado con n° avalúo: '.$arrIdentificacion['NumeroDeAvaluo']);
+                $camposFexavaAvaluo['ERRORES'][] = $errores;
+                //return array('ERROR' => $errores);
+            }
+            
+            if($arrIdentificacion['NumeroDeAvaluo'] != ''){            
+                $camposFexavaAvaluo['NUMEROAVALUO'] = $arrIdentificacion['NumeroDeAvaluo'];
+            } 
+            if($arrIdentificacion['FechaAvaluo'] != ''){            
+                $camposFexavaAvaluo['FECHAAVALUO'] = $arrIdentificacion['FechaAvaluo'];
+            }
+            if($arrIdentificacion['ClaveValuador'] != ''){            
+                $registroPerito = $arrIdentificacion['ClaveValuador'];
+                $camposFexavaAvaluo['IDPERSONAPERITO'] = $idPersona;
+            }
+            if($arrIdentificacion['ClaveSociedad'] != ''){            
+                $registroSoci = $arrIdentificacion['ClaveSociedad'];
+                /*$camposFexavaAvaluo['IDPERSONAPERITO'] = $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($idPersona, true);//aqui se usa IdPeritoSociedadByRegistro(registroPerito, string.Empty, true);
+                $camposFexavaAvaluo['IDPERSONASOCIEDAD'] = $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($idPersona, false);//aqui se usa IdPeritoSociedadByRegistro(registroPerito, registroSoci, false);*/
+                $camposFexavaAvaluo['IDPERSONAPERITO'] = $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($registroPerito, '',true);//aqui se usa IdPeritoSociedadByRegistro(registroPerito, string.Empty, true);
+                $camposFexavaAvaluo['IDPERSONASOCIEDAD'] = $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($registroPerito, $registroSoci, false);//aqui se usa IdPeritoSociedadByRegistro(registroPerito, registroSoci, false);*
+            }
+            
+            if($camposFexavaAvaluo['CODTIPOTRAMITE'] == 2){
+                $tipo = "CAT";
+            }else if($camposFexavaAvaluo['CODTIPOTRAMITE'] == 1){
+                $tipo = "COM";
+            }
+            $camposFexavaAvaluo['NUMEROUNICO'] = $this->obtenerNumUnicoAv($tipo);      
+            return $camposFexavaAvaluo;
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '20. Error en el servidor'], 500);
         }
         
-        if($arrIdentificacion['NumeroDeAvaluo'] != ''){            
-            $camposFexavaAvaluo['NUMEROAVALUO'] = $arrIdentificacion['NumeroDeAvaluo'];
-        } 
-        if($arrIdentificacion['FechaAvaluo'] != ''){            
-            $camposFexavaAvaluo['FECHAAVALUO'] = $arrIdentificacion['FechaAvaluo'];
-        }
-        if($arrIdentificacion['ClaveValuador'] != ''){            
-            $registroPerito = $arrIdentificacion['ClaveValuador'];
-            $camposFexavaAvaluo['IDPERSONAPERITO'] = $idPersona;
-        }
-        if($arrIdentificacion['ClaveSociedad'] != ''){            
-            $registroSoci = $arrIdentificacion['ClaveSociedad'];
-            /*$camposFexavaAvaluo['IDPERSONAPERITO'] = $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($idPersona, true);//aqui se usa IdPeritoSociedadByRegistro(registroPerito, string.Empty, true);
-            $camposFexavaAvaluo['IDPERSONASOCIEDAD'] = $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($idPersona, false);//aqui se usa IdPeritoSociedadByRegistro(registroPerito, registroSoci, false);*/
-            $camposFexavaAvaluo['IDPERSONAPERITO'] = $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($registroPerito, '',true);//aqui se usa IdPeritoSociedadByRegistro(registroPerito, string.Empty, true);
-            $camposFexavaAvaluo['IDPERSONASOCIEDAD'] = $this->modelDatosExtrasAvaluo->IdPeritoSociedadByRegistro($registroPerito, $registroSoci, false);//aqui se usa IdPeritoSociedadByRegistro(registroPerito, registroSoci, false);*
-        }
-        
-        if($camposFexavaAvaluo['CODTIPOTRAMITE'] == 2){
-            $tipo = "CAT";
-        }else if($camposFexavaAvaluo['CODTIPOTRAMITE'] == 1){
-            $tipo = "COM";
-        }
-        $camposFexavaAvaluo['NUMEROUNICO'] = $this->obtenerNumUnicoAv($tipo);      
-        return $camposFexavaAvaluo;
     }
 
     public function guardarAvaluoAntecedentes($infoXmlAntecedentes, $camposFexavaAvaluo,$elementoPrincipal){
-                
-        $infoXmlSolicitante = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//Solicitante[@id="b.1"]');
-        $errores = valida_AvaluoAntecedentes($infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]'), $elementoPrincipal);
-        if(count($errores) > 0){
-            //return array('ERROR' => $errores);
-            $camposFexavaAvaluo['ERRORES'][] = $errores;
-        }
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante'] = array();
-        foreach($infoXmlSolicitante[0] as $llave => $elemento){            
-            if($llave == 'Alcaldia'){
-                $arrSolicitante[$llave] = convierte_a_arreglo($elemento);
-            }else{
-                $arrSolicitante[$llave] = (String)($elemento);
+        try{
+            $infoXmlSolicitante = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//Solicitante[@id="b.1"]');
+            $errores = valida_AvaluoAntecedentes($infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]'), $elementoPrincipal);
+            if(count($errores) > 0){
+                //return array('ERROR' => $errores);
+                $camposFexavaAvaluo['ERRORES'][] = $errores;
             }
-        }
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante'] = array();
+            foreach($infoXmlSolicitante[0] as $llave => $elemento){            
+                if($llave == 'Alcaldia'){
+                    $arrSolicitante[$llave] = convierte_a_arreglo($elemento);
+                }else{
+                    $arrSolicitante[$llave] = (String)($elemento);
+                }
+            }
 
-        $this->Documentos = new Documentos();
+            $this->Documentos = new Documentos();
 
-        if(trim($arrSolicitante['A.Paterno']) != ''){
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['APELLIDOPATERNO'] = $arrSolicitante['A.Paterno'];
-        }
-        if(trim($arrSolicitante['A.Materno']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['APELLIDOMATERNO'] = $arrSolicitante['A.Materno'];
-        }
-        if(trim($arrSolicitante['Nombre']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBRE'] = $arrSolicitante['Nombre'];
-        }
-        if(trim($arrSolicitante['Calle']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CALLE'] = $arrSolicitante['Calle'];
-        }
-        if(trim($arrSolicitante['NumeroInterior']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NUMEROINTERIOR'] = $arrSolicitante['NumeroInterior'];
-        }
-        if(trim($arrSolicitante['NumeroExterior']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NUMEROEXTERIOR'] = $arrSolicitante['NumeroExterior'];
-        }
-        if(trim($arrSolicitante['CodigoPostal']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CODIGOPOSTAL'] = $arrSolicitante['CodigoPostal'];
-        } //error_log("EN JSON ".json_encode($arrSolicitante));
-        if(is_int($arrSolicitante['Alcaldia']['ClaveAlcaldia'])){
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = $arrSolicitante['Alcaldia']['ClaveAlcaldia'];
-            if($arrSolicitante['Alcaldia']['ClaveAlcaldia'] == '018'){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia']['Otros'];
+            if(trim($arrSolicitante['A.Paterno']) != ''){
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['APELLIDOPATERNO'] = $arrSolicitante['A.Paterno'];
+            }
+            if(trim($arrSolicitante['A.Materno']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['APELLIDOMATERNO'] = $arrSolicitante['A.Materno'];
+            }
+            if(trim($arrSolicitante['Nombre']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBRE'] = $arrSolicitante['Nombre'];
+            }
+            if(trim($arrSolicitante['Calle']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CALLE'] = $arrSolicitante['Calle'];
+            }
+            if(trim($arrSolicitante['NumeroInterior']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NUMEROINTERIOR'] = $arrSolicitante['NumeroInterior'];
+            }
+            if(trim($arrSolicitante['NumeroExterior']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NUMEROEXTERIOR'] = $arrSolicitante['NumeroExterior'];
+            }
+            if(trim($arrSolicitante['CodigoPostal']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CODIGOPOSTAL'] = $arrSolicitante['CodigoPostal'];
+            } //error_log("EN JSON ".json_encode($arrSolicitante));
+            if(is_int($arrSolicitante['Alcaldia']['ClaveAlcaldia'])){
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = $arrSolicitante['Alcaldia']['ClaveAlcaldia'];
+                if($arrSolicitante['Alcaldia']['ClaveAlcaldia'] == '018'){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia']['Otros'];
+                }else{
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $this->Documentos->ObtenerNombreDelegacionPorClave($arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                }
+                
             }else{
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $this->Documentos->ObtenerNombreDelegacionPorClave($arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                //aqui se obtendria el iddelegacion por el nombre
+                /*$idDelegacion = $this->modelDatosExtrasAvaluo->ObtenerIdDelegacionPorNombre($arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                if($idDelegacion != -1){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = $idDelegacion;
+                }
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia'];*/            
+
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = intval($arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                if($arrSolicitante['Alcaldia']['ClaveAlcaldia'] == '018'){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia']['Otros'];
+                }else{
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $this->Documentos->ObtenerNombreDelegacionPorClave($arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                }
+            }
+            if(trim($arrSolicitante['Colonia']) != ''){
+                if($arrSolicitante['Alcaldia']['ClaveAlcaldia'] == '018'){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDCOLONIA'] = '';
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBRECOLONIA'] = '';
+                }else{
+                    //aqui se obtendria el idColonia por el nombre
+                    $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                    if($idColonia != -1){
+                        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDCOLONIA'] = $idColonia;
+                    }
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBRECOLONIA'] = $arrSolicitante['Colonia'];
+                }
+                
+            }
+
+            if(trim($arrSolicitante['TipoPersona']) != ''){
+                if(strtoupper($arrSolicitante['TipoPersona']) == 'F'){
+                    if(!isset($arrSolicitante['A.Paterno']) || trim($arrSolicitante['A.Paterno']) == ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona física debe contener el apellido paterno (b.1.1)";                    
+                    }
+                }
+
+                if(strtoupper($arrSolicitante['TipoPersona']) == 'M'){
+                    if(isset($arrSolicitante['A.Paterno']) && trim($arrSolicitante['A.Paterno']) != ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona moral no puede tener apellido paterno (b.1.1)";                    
+                    }
+
+                    if(isset($arrSolicitante['A.Materno']) && trim($arrSolicitante['A.Materno']) != ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona moral no puede tener apellido materno (b.1.2)";                    
+                    }
+                }
+
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['TIPOPERSONA'] = $arrSolicitante['TipoPersona'];
+            }
+
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CODTIPOFUNCION'] = "S";
+
+            /************************************************************/
+
+            $infoXmlPropietario = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//Propietario[@id="b.2"]');
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario'] = array();
+            foreach($infoXmlPropietario[0] as $llave => $elemento){           
+                if($llave == 'Alcaldia'){
+                    $arrPropietario[$llave] = convierte_a_arreglo($elemento);
+                }else{
+                    $arrPropietario[$llave] = (String)($elemento);
+                }
+            }
+            if(trim($arrPropietario['A.Paterno']) != ''){
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['APELLIDOPATERNO'] = $arrPropietario['A.Paterno'];
+            }
+            if(trim($arrPropietario['A.Materno']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['APELLIDOMATERNO'] = $arrPropietario['A.Materno'];
+            }
+            if(trim($arrPropietario['Nombre']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRE'] = $arrPropietario['Nombre'];
+            }
+            if(trim($arrPropietario['Calle']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CALLE'] = $arrPropietario['Calle'];
+            }
+            if(trim($arrPropietario['NumeroInterior']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NUMEROINTERIOR'] = $arrPropietario['NumeroInterior'];
+            }
+            if(trim($arrPropietario['NumeroExterior']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NUMEROEXTERIOR'] = $arrPropietario['NumeroExterior'];
+            }
+            if(trim($arrPropietario['CodigoPostal']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CODIGOPOSTAL'] = $arrPropietario['CodigoPostal'];
+            }
+            if(is_int($arrPropietario['Alcaldia'])){
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $arrPropietario['Alcaldia']['ClaveAlcaldia'];
+                if($arrPropietario['Alcaldia']['ClaveAlcaldia'] == '018'){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia']['Otros'];
+                }else{
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $this->Documentos->ObtenerNombreDelegacionPorClave($arrPropietario['Alcaldia']['ClaveAlcaldia']);
+                }
+                
+            }else{
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $arrPropietario['Alcaldia']['ClaveAlcaldia'];
+                if($arrPropietario['Alcaldia']['ClaveAlcaldia'] == '018'){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia']['Otros'];
+                }else{
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $this->Documentos->ObtenerNombreDelegacionPorClave($arrPropietario['Alcaldia']['ClaveAlcaldia']);
+                }
+                //aqui se obtendria el iddelegacion por el nombre
+                /*$idDelegacion = $this->modelDatosExtrasAvaluo->ObtenerIdDelegacionPorNombre($arrSolicitante['Alcaldia']);
+                if($idDelegacion != -1){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $idDelegacion;
+                }
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $arrPropietario['Alcaldia'];*/
+            }
+            if(trim($arrPropietario['Colonia']) != ''){
+                if($arrPropietario['Alcaldia']['ClaveAlcaldia'] == '018'){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDCOLONIA'] = '';
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRECOLONIA'] = '';
+                }else{
+                    //aqui se obtendria el idColonia por el nombre
+                    $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                    if($idColonia != -1){
+                        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDCOLONIA'] = $idColonia;
+                    }
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRECOLONIA'] = $arrPropietario['Colonia'];
+                }
+                
+            }
+
+            if(trim($arrPropietario['TipoPersona']) != ''){
+
+                if(strtoupper($arrPropietario['TipoPersona']) == 'F'){
+                    if(!isset($arrPropietario['A.Paterno']) || trim($arrPropietario['A.Paterno']) == ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona física debe contener el apellido paterno (b.2.1)";                    
+                    }
+                }
+
+                if(strtoupper($arrPropietario['TipoPersona']) == 'M'){
+                    if(isset($arrPropietario['A.Paterno']) && trim($arrPropietario['A.Paterno']) != ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona moral no puede tener apellido paterno (b.2.1)";                    
+                    }
+
+                    if(isset($arrPropietario['A.Materno']) && trim($arrPropietario['A.Materno']) != ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona moral no puede tener apellido materno (b.2.2)";                    
+                    }
+                }
+
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['TIPOPERSONA'] = $arrPropietario['TipoPersona'];
             }
             
-        }else{
-            //aqui se obtendria el iddelegacion por el nombre
-            /*$idDelegacion = $this->modelDatosExtrasAvaluo->ObtenerIdDelegacionPorNombre($arrSolicitante['Alcaldia']['ClaveAlcaldia']);
-            if($idDelegacion != -1){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = $idDelegacion;
-            }
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia'];*/            
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CODTIPOFUNCION'] = "P";
 
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = intval($arrSolicitante['Alcaldia']['ClaveAlcaldia']);
-            if($arrSolicitante['Alcaldia']['ClaveAlcaldia'] == '018'){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia']['Otros'];
-            }else{
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $this->Documentos->ObtenerNombreDelegacionPorClave($arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+            /************************************************************/
+
+            $infoXmlCuentaCatastral = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//InmuebleQueSeValua[@id="b.3"]//CuentaCatastral[@id="b.3.10"]');
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['CuentaCatastral'] = array();
+            foreach($infoXmlCuentaCatastral[0] as $llave => $elemento){
+                $arrCuentaCatastral[$llave] = (String)($elemento);
             }
-        }
-        if(trim($arrSolicitante['Colonia']) != ''){
-            if($arrSolicitante['Alcaldia']['ClaveAlcaldia'] == '018'){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDCOLONIA'] = '';
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBRECOLONIA'] = '';
+            
+            if(trim($arrCuentaCatastral['Region'] != '')){
+                $camposFexavaAvaluo['REGION'] = $arrCuentaCatastral['Region'];
+            }
+
+            if(trim($arrCuentaCatastral['Manzana'] != '')){
+                $camposFexavaAvaluo['MANZANA'] = $arrCuentaCatastral['Manzana'];
+            }
+
+            if(trim($arrCuentaCatastral['Lote'] != '')){
+                $camposFexavaAvaluo['LOTE'] = $arrCuentaCatastral['Lote'];
+            }
+
+            if(trim($arrCuentaCatastral['Localidad'] != '')){
+                $camposFexavaAvaluo['UNIDADPRIVATIVA'] = $arrCuentaCatastral['Localidad'];
+            }
+
+            if(trim($arrCuentaCatastral['DigitoVerificador'] != '')){
+                $camposFexavaAvaluo['DIGITOVERIFICADOR'] = $arrCuentaCatastral['DigitoVerificador'];
+            }
+
+            /************************************************************/
+
+            $infoXmlPropositoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//PropositoDelAvaluo[@id="b.4"]');
+            $infoXmlPropositoDelAvaluo = convierte_a_arreglo($infoXmlPropositoDelAvaluo); //print_r($infoXmlPropositoDelAvaluo); exit();
+            if(isset($infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo']) && $infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo'] == 4){
+                $camposFexavaAvaluo['PROPOSITO'] = $infoXmlPropositoDelAvaluo[0]['Otros'];
+            }else{    
+                $camposFexavaAvaluo['PROPOSITO'] = getPropositoAvaluo($infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo']);
+                //$camposFexavaAvaluo['PROPOSITO'] = (String)($infoXmlPropositoDelAvaluo[0]);
+            }
+                    
+            //print_r($camposFexavaAvaluo); exit();
+            /************************************************************/
+
+            $infoXmlObjetoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//ObjetoDelAvaluo[@id="b.5"]');        
+            $camposFexavaAvaluo['OBJETO'] = (String)($infoXmlObjetoDelAvaluo[0]);
+
+
+            $arrAntecedentes = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]');
+            
+            $datab = array_map("convierte_a_arreglo",$arrAntecedentes);
+            if(isset($datab[0]['RegimenDePropiedad'])){
+                $camposFexavaAvaluo['CODREGIMENPROPIEDAD'] = $datab[0]['RegimenDePropiedad'];
+            }
+
+            if(isset($datab[0]['TipoDeInmueble'])){
+                if($datab[0]['TipoDeInmueble']['ClaveTipoInmueble'] == 19){
+                    $camposFexavaAvaluo['TIPOCONDOMINIO'] = $datab[0]['TipoDeInmueble']['Otros'];
+                }else{
+                    $camposFexavaAvaluo['TIPOCONDOMINIO'] = getTipoDeInmueble(trim($datab[0]['TipoDeInmueble']['ClaveTipoInmueble']));
+                }
+                
+            }
+
+            return $camposFexavaAvaluo;
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '22. Error en el servidor'], 500);
+        }        
+        
+    }
+
+    public function guardaDatosExtra($infoXmlAntecedentes,$elementoPrincipal,$idAvaluo){
+        try{
+            $infoEstra = convierte_a_arreglo($infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]'));
+        
+            $cuenta_agua = !is_array($infoEstra[0]['InmuebleQueSeValua']['CuentaDeAgua']) ? $infoEstra[0]['InmuebleQueSeValua']['CuentaDeAgua'] : '';
+            $folio_real = 'Definir';
+            $antecedente_registral = 'Definir';
+            $calle = !is_array($infoEstra[0]['InmuebleQueSeValua']['Calle']) ? $infoEstra[0]['InmuebleQueSeValua']['Calle'] : '';
+            $manzana = !is_array($infoEstra[0]['InmuebleQueSeValua']['Manzana']) ? $infoEstra[0]['InmuebleQueSeValua']['Manzana'] : '';
+            $lote = !is_array($infoEstra[0]['InmuebleQueSeValua']['Lote']) ? $infoEstra[0]['InmuebleQueSeValua']['Lote'] : '';
+            $numero_exterior = !is_array($infoEstra[0]['InmuebleQueSeValua']['NumeroExterior']) ? $infoEstra[0]['InmuebleQueSeValua']['NumeroExterior'] : '';
+            $numero_interior = !is_array($infoEstra[0]['InmuebleQueSeValua']['NumeroInterior']) ? $infoEstra[0]['InmuebleQueSeValua']['NumeroInterior'] : '';
+            $colonia = !is_array($infoEstra[0]['InmuebleQueSeValua']['Colonia']) ? $infoEstra[0]['InmuebleQueSeValua']['Colonia'] : '';
+            $codigo_postal = !is_array($infoEstra[0]['InmuebleQueSeValua']['CodigoPostal']) ? $infoEstra[0]['InmuebleQueSeValua']['CodigoPostal'] : '';
+            $alcaldia_municipio = !is_array($infoEstra[0]['InmuebleQueSeValua']['Alcaldia']) ? $infoEstra[0]['InmuebleQueSeValua']['Alcaldia'] : '';
+
+            $p_cod = '';
+            $p_desc = '';
+
+            $procedure = 'BEGIN
+            FEXAVA.FEXAVA_AVALUOS_PKG.FEXAVA_INSERT_INFODGPC_P(
+                :PAR_IDAVALUO,
+                :PAR_CUENTA_AGUA,
+                :PAR_FOLIO_REAL,
+                :PAR_ANTECEDENTE_REGISTRAL,        
+                :PAR_CALLE,
+                :PAR_MANZANA,
+                :PAR_LOTE,
+                :PAR_NUMERO_EXTERIOR,
+                :PAR_NUMERO_INTERIOR,
+                :PAR_COLONIA,
+                :PAR_CODIGO_POSTAL,
+                :PAR_ALCALDIA_MUNICIPIO,
+                :P_COD,
+                :P_DESC
+            ); END;';
+            $pdo = DB::getPdo();
+            $stmt = $pdo->prepare($procedure);
+            $stmt->bindParam(':PAR_IDAVALUO', $idAvaluo, \PDO::PARAM_INT,20);
+            $stmt->bindParam(':PAR_CUENTA_AGUA',$cuenta_agua,\PDO::PARAM_STR,50);
+            $stmt->bindParam(':PAR_FOLIO_REAL',$folio_real, \PDO::PARAM_STR,20);
+            $stmt->bindParam(':PAR_ANTECEDENTE_REGISTRAL',$antecedente_registral,\PDO::PARAM_STR,50);        
+            $stmt->bindParam(':PAR_CALLE',$calle,\PDO::PARAM_STR,50);
+            $stmt->bindParam(':PAR_MANZANA',$manzana,\PDO::PARAM_STR,50);
+            $stmt->bindParam(':PAR_LOTE',$lote,\PDO::PARAM_STR,50);
+            $stmt->bindParam(':PAR_NUMERO_EXTERIOR',$numero_exterior,\PDO::PARAM_STR,25);
+            $stmt->bindParam(':PAR_NUMERO_INTERIOR',$numero_interior,\PDO::PARAM_STR,30);
+            $stmt->bindParam(':PAR_COLONIA',$colonia,\PDO::PARAM_STR,50);
+            $stmt->bindParam(':PAR_CODIGO_POSTAL',$codigo_postal,\PDO::PARAM_STR,5);
+            $stmt->bindParam(':PAR_ALCALDIA_MUNICIPIO',$alcaldia_municipio,\PDO::PARAM_STR,50);
+            $stmt->bindParam(':P_COD',$p_cod,\PDO::PARAM_INT,20);
+            $stmt->bindParam(':P_DESC',$p_desc,\PDO::PARAM_STR,200);
+            $stmt->execute();
+            $stmt->closeCursor();
+            $pdo->commit();
+            $pdo->close();
+            DB::commit();
+            DB::reconnect();
+            if($p_cod != '' && $p_desc != ''){
+                return true;
             }else{
+                return false;
+            }
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '22. Error en el servidor'], 500);
+        }
+        
+    }
+
+    public function guardarAvaluoAntecedentesV($infoXmlAntecedentes, $camposFexavaAvaluo,$elementoPrincipal){
+        try{
+            $infoXmlSolicitante = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//Solicitante[@id="b.1"]');
+            $errores = valida_AvaluoAntecedentesV($infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]'), $elementoPrincipal);
+            if(count($errores) > 0){
+                //return array('ERROR' => $errores);
+                $camposFexavaAvaluo['ERRORES'][] = $errores;
+            }
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante'] = array();
+            foreach($infoXmlSolicitante[0] as $llave => $elemento){
+                $arrSolicitante[$llave] = (String)($elemento);
+            }
+
+            if(trim($arrSolicitante['A.Paterno']) != ''){
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['APELLIDOPATERNO'] = $arrSolicitante['A.Paterno'];
+            }
+            if(trim($arrSolicitante['A.Materno']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['APELLIDOMATERNO'] = $arrSolicitante['A.Materno'];
+            }
+            if(trim($arrSolicitante['Nombre']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBRE'] = $arrSolicitante['Nombre'];
+            }
+            if(trim($arrSolicitante['Calle']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CALLE'] = $arrSolicitante['Calle'];
+            }
+            if(trim($arrSolicitante['NumeroInterior']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NUMEROINTERIOR'] = $arrSolicitante['NumeroInterior'];
+            }
+            if(trim($arrSolicitante['NumeroExterior']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NUMEROEXTERIOR'] = $arrSolicitante['NumeroExterior'];
+            }
+            if(trim($arrSolicitante['CodigoPostal']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CODIGOPOSTAL'] = $arrSolicitante['CodigoPostal'];
+            }
+            if(is_int($arrSolicitante['Delegacion'])){
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = $arrSolicitante['Delegacion'];
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = '';
+            }else{
+                //aqui se obtendria el iddelegacion por el nombre
+                $idDelegacion = $this->modelDatosExtrasAvaluo->ObtenerIdDelegacionPorNombre($arrSolicitante['Delegacion']);
+                if($idDelegacion != -1){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = $idDelegacion;
+                }
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $arrSolicitante['Delegacion'];
+            }
+            if(trim($arrSolicitante['Colonia']) != ''){
                 //aqui se obtendria el idColonia por el nombre
-                $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Delegacion']);
                 if($idColonia != -1){
                     $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDCOLONIA'] = $idColonia;
                 }
                 $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBRECOLONIA'] = $arrSolicitante['Colonia'];
             }
-            
-        }
 
-        if(trim($arrSolicitante['TipoPersona']) != ''){
-            if(strtoupper($arrSolicitante['TipoPersona']) == 'F'){
-                if(!isset($arrSolicitante['A.Paterno']) || trim($arrSolicitante['A.Paterno']) == ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona física debe contener el apellido paterno (b.1.1)";                    
+            if(trim($arrSolicitante['TipoPersona']) != ''){
+                if(strtoupper($arrSolicitante['TipoPersona']) == 'F'){
+                    if(!isset($arrSolicitante['A.Paterno']) || trim($arrSolicitante['A.Paterno']) == ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona física debe contener el apellido paterno (b.1.1)";                    
+                    }
                 }
+
+                if(strtoupper($arrSolicitante['TipoPersona']) == 'M'){
+                    if(isset($arrSolicitante['A.Paterno']) && trim($arrSolicitante['A.Paterno']) != ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona moral no puede tener apellido paterno (b.1.1)";                    
+                    }
+
+                    if(isset($arrSolicitante['A.Materno']) && trim($arrSolicitante['A.Materno']) != ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona moral no puede tener apellido materno (b.1.2)";                    
+                    }
+                }
+
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['TIPOPERSONA'] = $arrSolicitante['TipoPersona'];
             }
 
-            if(strtoupper($arrSolicitante['TipoPersona']) == 'M'){
-                if(isset($arrSolicitante['A.Paterno']) && trim($arrSolicitante['A.Paterno']) != ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona moral no puede tener apellido paterno (b.1.1)";                    
-                }
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CODTIPOFUNCION'] = "S";
 
-                if(isset($arrSolicitante['A.Materno']) && trim($arrSolicitante['A.Materno']) != ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona moral no puede tener apellido materno (b.1.2)";                    
-                }
-            }
+            /************************************************************/
 
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['TIPOPERSONA'] = $arrSolicitante['TipoPersona'];
-        }
-
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CODTIPOFUNCION'] = "S";
-
-        /************************************************************/
-
-        $infoXmlPropietario = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//Propietario[@id="b.2"]');
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario'] = array();
-        foreach($infoXmlPropietario[0] as $llave => $elemento){           
-            if($llave == 'Alcaldia'){
-                $arrPropietario[$llave] = convierte_a_arreglo($elemento);
-            }else{
+            $infoXmlPropietario = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//Propietario[@id="b.2"]');
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario'] = array();
+            foreach($infoXmlPropietario[0] as $llave => $elemento){
                 $arrPropietario[$llave] = (String)($elemento);
             }
-        }
-        if(trim($arrPropietario['A.Paterno']) != ''){
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['APELLIDOPATERNO'] = $arrPropietario['A.Paterno'];
-        }
-        if(trim($arrPropietario['A.Materno']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['APELLIDOMATERNO'] = $arrPropietario['A.Materno'];
-        }
-        if(trim($arrPropietario['Nombre']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRE'] = $arrPropietario['Nombre'];
-        }
-        if(trim($arrPropietario['Calle']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CALLE'] = $arrPropietario['Calle'];
-        }
-        if(trim($arrPropietario['NumeroInterior']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NUMEROINTERIOR'] = $arrPropietario['NumeroInterior'];
-        }
-        if(trim($arrPropietario['NumeroExterior']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NUMEROEXTERIOR'] = $arrPropietario['NumeroExterior'];
-        }
-        if(trim($arrPropietario['CodigoPostal']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CODIGOPOSTAL'] = $arrPropietario['CodigoPostal'];
-        }
-        if(is_int($arrPropietario['Alcaldia'])){
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $arrPropietario['Alcaldia']['ClaveAlcaldia'];
-            if($arrPropietario['Alcaldia']['ClaveAlcaldia'] == '018'){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia']['Otros'];
-            }else{
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $this->Documentos->ObtenerNombreDelegacionPorClave($arrPropietario['Alcaldia']['ClaveAlcaldia']);
+            if(trim($arrPropietario['A.Paterno']) != ''){
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['APELLIDOPATERNO'] = $arrPropietario['A.Paterno'];
             }
-            
-        }else{
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $arrPropietario['Alcaldia']['ClaveAlcaldia'];
-            if($arrPropietario['Alcaldia']['ClaveAlcaldia'] == '018'){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $arrSolicitante['Alcaldia']['Otros'];
-            }else{
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $this->Documentos->ObtenerNombreDelegacionPorClave($arrPropietario['Alcaldia']['ClaveAlcaldia']);
+            if(trim($arrPropietario['A.Materno']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['APELLIDOMATERNO'] = $arrPropietario['A.Materno'];
             }
-            //aqui se obtendria el iddelegacion por el nombre
-            /*$idDelegacion = $this->modelDatosExtrasAvaluo->ObtenerIdDelegacionPorNombre($arrSolicitante['Alcaldia']);
-            if($idDelegacion != -1){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $idDelegacion;
+            if(trim($arrPropietario['Nombre']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRE'] = $arrPropietario['Nombre'];
             }
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $arrPropietario['Alcaldia'];*/
-        }
-        if(trim($arrPropietario['Colonia']) != ''){
-            if($arrPropietario['Alcaldia']['ClaveAlcaldia'] == '018'){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDCOLONIA'] = '';
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRECOLONIA'] = '';
+            if(trim($arrPropietario['Calle']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CALLE'] = $arrPropietario['Calle'];
+            }
+            if(trim($arrPropietario['NumeroInterior']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NUMEROINTERIOR'] = $arrPropietario['NumeroInterior'];
+            }
+            if(trim($arrPropietario['NumeroExterior']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NUMEROEXTERIOR'] = $arrPropietario['NumeroExterior'];
+            }
+            if(trim($arrPropietario['CodigoPostal']) != ''){
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CODIGOPOSTAL'] = $arrPropietario['CodigoPostal'];
+            }
+            if(is_int($arrPropietario['Delegacion'])){
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $arrPropietario['Delegacion'];
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = '';
             }else{
+                //aqui se obtendria el iddelegacion por el nombre
+                $idDelegacion = $this->modelDatosExtrasAvaluo->ObtenerIdDelegacionPorNombre($arrSolicitante['Delegacion']);
+                if($idDelegacion != -1){
+                    $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $idDelegacion;
+                }
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $arrPropietario['Delegacion'];
+            }
+            if(trim($arrPropietario['Colonia']) != ''){
                 //aqui se obtendria el idColonia por el nombre
-                $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Alcaldia']['ClaveAlcaldia']);
+                $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Delegacion']);
                 if($idColonia != -1){
                     $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDCOLONIA'] = $idColonia;
                 }
                 $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRECOLONIA'] = $arrPropietario['Colonia'];
             }
-            
-        }
 
-        if(trim($arrPropietario['TipoPersona']) != ''){
+            if(trim($arrPropietario['TipoPersona']) != ''){
 
-            if(strtoupper($arrPropietario['TipoPersona']) == 'F'){
-                if(!isset($arrPropietario['A.Paterno']) || trim($arrPropietario['A.Paterno']) == ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona física debe contener el apellido paterno (b.2.1)";                    
-                }
-            }
-
-            if(strtoupper($arrPropietario['TipoPersona']) == 'M'){
-                if(isset($arrPropietario['A.Paterno']) && trim($arrPropietario['A.Paterno']) != ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona moral no puede tener apellido paterno (b.2.1)";                    
+                if(strtoupper($arrPropietario['TipoPersona']) == 'F'){
+                    if(!isset($arrPropietario['A.Paterno']) || trim($arrPropietario['A.Paterno']) == ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona física debe contener el apellido paterno (b.2.1)";                    
+                    }
                 }
 
-                if(isset($arrPropietario['A.Materno']) && trim($arrPropietario['A.Materno']) != ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona moral no puede tener apellido materno (b.2.2)";                    
+                if(strtoupper($arrPropietario['TipoPersona']) == 'M'){
+                    if(isset($arrPropietario['A.Paterno']) && trim($arrPropietario['A.Paterno']) != ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona moral no puede tener apellido paterno (b.2.1)";                    
+                    }
+
+                    if(isset($arrPropietario['A.Materno']) && trim($arrPropietario['A.Materno']) != ''){
+                        $validadoSol = false;
+                        $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona moral no puede tener apellido materno (b.2.2)";                    
+                    }
                 }
-            }
 
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['TIPOPERSONA'] = $arrPropietario['TipoPersona'];
-        }
-        
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CODTIPOFUNCION'] = "P";
-
-        /************************************************************/
-
-        $infoXmlCuentaCatastral = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//InmuebleQueSeValua[@id="b.3"]//CuentaCatastral[@id="b.3.10"]');
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['CuentaCatastral'] = array();
-        foreach($infoXmlCuentaCatastral[0] as $llave => $elemento){
-            $arrCuentaCatastral[$llave] = (String)($elemento);
-        }
-        
-        if(trim($arrCuentaCatastral['Region'] != '')){
-            $camposFexavaAvaluo['REGION'] = $arrCuentaCatastral['Region'];
-        }
-
-        if(trim($arrCuentaCatastral['Manzana'] != '')){
-            $camposFexavaAvaluo['MANZANA'] = $arrCuentaCatastral['Manzana'];
-        }
-
-        if(trim($arrCuentaCatastral['Lote'] != '')){
-            $camposFexavaAvaluo['LOTE'] = $arrCuentaCatastral['Lote'];
-        }
-
-        if(trim($arrCuentaCatastral['Localidad'] != '')){
-            $camposFexavaAvaluo['UNIDADPRIVATIVA'] = $arrCuentaCatastral['Localidad'];
-        }
-
-        if(trim($arrCuentaCatastral['DigitoVerificador'] != '')){
-            $camposFexavaAvaluo['DIGITOVERIFICADOR'] = $arrCuentaCatastral['DigitoVerificador'];
-        }
-
-        /************************************************************/
-
-        $infoXmlPropositoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//PropositoDelAvaluo[@id="b.4"]');
-        $infoXmlPropositoDelAvaluo = convierte_a_arreglo($infoXmlPropositoDelAvaluo); //print_r($infoXmlPropositoDelAvaluo); exit();
-        if(isset($infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo']) && $infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo'] == 4){
-            $camposFexavaAvaluo['PROPOSITO'] = $infoXmlPropositoDelAvaluo[0]['Otros'];
-        }else{    
-            $camposFexavaAvaluo['PROPOSITO'] = getPropositoAvaluo($infoXmlPropositoDelAvaluo[0]['ClavePropositoAvaluo']);
-            //$camposFexavaAvaluo['PROPOSITO'] = (String)($infoXmlPropositoDelAvaluo[0]);
-        }
-                
-        //print_r($camposFexavaAvaluo); exit();
-        /************************************************************/
-
-        $infoXmlObjetoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//ObjetoDelAvaluo[@id="b.5"]');        
-        $camposFexavaAvaluo['OBJETO'] = (String)($infoXmlObjetoDelAvaluo[0]);
-
-
-        $arrAntecedentes = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]');
-        
-        $datab = array_map("convierte_a_arreglo",$arrAntecedentes);
-        if(isset($datab[0]['RegimenDePropiedad'])){
-            $camposFexavaAvaluo['CODREGIMENPROPIEDAD'] = $datab[0]['RegimenDePropiedad'];
-        }
-
-        if(isset($datab[0]['TipoDeInmueble'])){
-            if($datab[0]['TipoDeInmueble']['ClaveTipoInmueble'] == 19){
-                $camposFexavaAvaluo['TIPOCONDOMINIO'] = $datab[0]['TipoDeInmueble']['Otros'];
-            }else{
-                $camposFexavaAvaluo['TIPOCONDOMINIO'] = getTipoDeInmueble(trim($datab[0]['TipoDeInmueble']['ClaveTipoInmueble']));
+                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['TIPOPERSONA'] = $arrPropietario['TipoPersona'];
             }
             
-        }
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CODTIPOFUNCION'] = "P";
 
-        return $camposFexavaAvaluo;
-    }
+            /************************************************************/
 
-    public function guardaDatosExtra($infoXmlAntecedentes,$elementoPrincipal,$idAvaluo){
-        $infoEstra = convierte_a_arreglo($infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]'));
+            $infoXmlCuentaCatastral = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//InmuebleQueSeValua[@id="b.3"]//CuentaCatastral[@id="b.3.10"]');
+            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['CuentaCatastral'] = array();
+            foreach($infoXmlCuentaCatastral[0] as $llave => $elemento){
+                $arrCuentaCatastral[$llave] = (String)($elemento);
+            }
+            
+            if(trim($arrCuentaCatastral['Region'] != '')){
+                $camposFexavaAvaluo['REGION'] = $arrCuentaCatastral['Region'];
+            }
+
+            if(trim($arrCuentaCatastral['Manzana'] != '')){
+                $camposFexavaAvaluo['MANZANA'] = $arrCuentaCatastral['Manzana'];
+            }
+
+            if(trim($arrCuentaCatastral['Lote'] != '')){
+                $camposFexavaAvaluo['LOTE'] = $arrCuentaCatastral['Lote'];
+            }
+
+            if(trim($arrCuentaCatastral['Localidad'] != '')){
+                $camposFexavaAvaluo['UNIDADPRIVATIVA'] = $arrCuentaCatastral['Localidad'];
+            }
+
+            if(trim($arrCuentaCatastral['DigitoVerificador'] != '')){
+                $camposFexavaAvaluo['DIGITOVERIFICADOR'] = $arrCuentaCatastral['DigitoVerificador'];
+            }
+
+            /************************************************************/
+
+            $infoXmlPropositoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//PropositoDelAvaluo[@id="b.4"]');
+            $camposFexavaAvaluo['PROPOSITO'] = (String)($infoXmlPropositoDelAvaluo[0]);        
+
+            /************************************************************/
+
+            $infoXmlObjetoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//ObjetoDelAvaluo[@id="b.5"]');        
+            $camposFexavaAvaluo['OBJETO'] = (String)($infoXmlObjetoDelAvaluo[0]);
+
+
+            $arrAntecedentes = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]');
+            
+            $datab = array_map("convierte_a_arreglo",$arrAntecedentes);
+            if(isset($datab[0]['RegimenDePropiedad'])){
+                $camposFexavaAvaluo['CODREGIMENPROPIEDAD'] = $datab[0]['RegimenDePropiedad'];
+            }
+
+            return $camposFexavaAvaluo;
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '24. Error en el servidor'], 500);
+        }   
         
-        $cuenta_agua = !is_array($infoEstra[0]['InmuebleQueSeValua']['CuentaDeAgua']) ? $infoEstra[0]['InmuebleQueSeValua']['CuentaDeAgua'] : '';
-        $folio_real = 'Definir';
-        $antecedente_registral = 'Definir';
-        $calle = !is_array($infoEstra[0]['InmuebleQueSeValua']['Calle']) ? $infoEstra[0]['InmuebleQueSeValua']['Calle'] : '';
-        $manzana = !is_array($infoEstra[0]['InmuebleQueSeValua']['Manzana']) ? $infoEstra[0]['InmuebleQueSeValua']['Manzana'] : '';
-        $lote = !is_array($infoEstra[0]['InmuebleQueSeValua']['Lote']) ? $infoEstra[0]['InmuebleQueSeValua']['Lote'] : '';
-        $numero_exterior = !is_array($infoEstra[0]['InmuebleQueSeValua']['NumeroExterior']) ? $infoEstra[0]['InmuebleQueSeValua']['NumeroExterior'] : '';
-        $numero_interior = !is_array($infoEstra[0]['InmuebleQueSeValua']['NumeroInterior']) ? $infoEstra[0]['InmuebleQueSeValua']['NumeroInterior'] : '';
-        $colonia = !is_array($infoEstra[0]['InmuebleQueSeValua']['Colonia']) ? $infoEstra[0]['InmuebleQueSeValua']['Colonia'] : '';
-        $codigo_postal = !is_array($infoEstra[0]['InmuebleQueSeValua']['CodigoPostal']) ? $infoEstra[0]['InmuebleQueSeValua']['CodigoPostal'] : '';
-        $alcaldia_municipio = !is_array($infoEstra[0]['InmuebleQueSeValua']['Alcaldia']) ? $infoEstra[0]['InmuebleQueSeValua']['Alcaldia'] : '';
-
-        $p_cod = '';
-        $p_desc = '';
-
-        $procedure = 'BEGIN
-        FEXAVA.FEXAVA_AVALUOS_PKG.FEXAVA_INSERT_INFODGPC_P(
-            :PAR_IDAVALUO,
-            :PAR_CUENTA_AGUA,
-            :PAR_FOLIO_REAL,
-            :PAR_ANTECEDENTE_REGISTRAL,        
-            :PAR_CALLE,
-            :PAR_MANZANA,
-            :PAR_LOTE,
-            :PAR_NUMERO_EXTERIOR,
-            :PAR_NUMERO_INTERIOR,
-            :PAR_COLONIA,
-            :PAR_CODIGO_POSTAL,
-            :PAR_ALCALDIA_MUNICIPIO,
-            :P_COD,
-            :P_DESC
-        ); END;';
-        $pdo = DB::getPdo();
-        $stmt = $pdo->prepare($procedure);
-        $stmt->bindParam(':PAR_IDAVALUO', $idAvaluo, \PDO::PARAM_INT,20);
-        $stmt->bindParam(':PAR_CUENTA_AGUA',$cuenta_agua,\PDO::PARAM_STR,50);
-        $stmt->bindParam(':PAR_FOLIO_REAL',$folio_real, \PDO::PARAM_STR,20);
-        $stmt->bindParam(':PAR_ANTECEDENTE_REGISTRAL',$antecedente_registral,\PDO::PARAM_STR,50);        
-        $stmt->bindParam(':PAR_CALLE',$calle,\PDO::PARAM_STR,50);
-        $stmt->bindParam(':PAR_MANZANA',$manzana,\PDO::PARAM_STR,50);
-        $stmt->bindParam(':PAR_LOTE',$lote,\PDO::PARAM_STR,50);
-        $stmt->bindParam(':PAR_NUMERO_EXTERIOR',$numero_exterior,\PDO::PARAM_STR,25);
-        $stmt->bindParam(':PAR_NUMERO_INTERIOR',$numero_interior,\PDO::PARAM_STR,30);
-        $stmt->bindParam(':PAR_COLONIA',$colonia,\PDO::PARAM_STR,50);
-        $stmt->bindParam(':PAR_CODIGO_POSTAL',$codigo_postal,\PDO::PARAM_STR,5);
-        $stmt->bindParam(':PAR_ALCALDIA_MUNICIPIO',$alcaldia_municipio,\PDO::PARAM_STR,50);
-        $stmt->bindParam(':P_COD',$p_cod,\PDO::PARAM_INT,20);
-        $stmt->bindParam(':P_DESC',$p_desc,\PDO::PARAM_STR,200);
-        $stmt->execute();
-        $stmt->closeCursor();
-        $pdo->commit();
-        $pdo->close();
-        DB::commit();
-        DB::reconnect();
-        if($p_cod != '' && $p_desc != ''){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public function guardarAvaluoAntecedentesV($infoXmlAntecedentes, $camposFexavaAvaluo,$elementoPrincipal){    
-        $infoXmlSolicitante = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//Solicitante[@id="b.1"]');
-        $errores = valida_AvaluoAntecedentesV($infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]'), $elementoPrincipal);
-        if(count($errores) > 0){
-            //return array('ERROR' => $errores);
-            $camposFexavaAvaluo['ERRORES'][] = $errores;
-        }
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante'] = array();
-        foreach($infoXmlSolicitante[0] as $llave => $elemento){
-            $arrSolicitante[$llave] = (String)($elemento);
-        }
-
-        if(trim($arrSolicitante['A.Paterno']) != ''){
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['APELLIDOPATERNO'] = $arrSolicitante['A.Paterno'];
-        }
-        if(trim($arrSolicitante['A.Materno']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['APELLIDOMATERNO'] = $arrSolicitante['A.Materno'];
-        }
-        if(trim($arrSolicitante['Nombre']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBRE'] = $arrSolicitante['Nombre'];
-        }
-        if(trim($arrSolicitante['Calle']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CALLE'] = $arrSolicitante['Calle'];
-        }
-        if(trim($arrSolicitante['NumeroInterior']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NUMEROINTERIOR'] = $arrSolicitante['NumeroInterior'];
-        }
-        if(trim($arrSolicitante['NumeroExterior']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NUMEROEXTERIOR'] = $arrSolicitante['NumeroExterior'];
-        }
-        if(trim($arrSolicitante['CodigoPostal']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CODIGOPOSTAL'] = $arrSolicitante['CodigoPostal'];
-        }
-        if(is_int($arrSolicitante['Delegacion'])){
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = $arrSolicitante['Delegacion'];
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = '';
-        }else{
-            //aqui se obtendria el iddelegacion por el nombre
-            $idDelegacion = $this->modelDatosExtrasAvaluo->ObtenerIdDelegacionPorNombre($arrSolicitante['Delegacion']);
-            if($idDelegacion != -1){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDDELEGACION'] = $idDelegacion;
-            }
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBREDELEGACION'] = $arrSolicitante['Delegacion'];
-        }
-        if(trim($arrSolicitante['Colonia']) != ''){
-            //aqui se obtendria el idColonia por el nombre
-            $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Delegacion']);
-            if($idColonia != -1){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['IDCOLONIA'] = $idColonia;
-            }
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['NOMBRECOLONIA'] = $arrSolicitante['Colonia'];
-        }
-
-        if(trim($arrSolicitante['TipoPersona']) != ''){
-            if(strtoupper($arrSolicitante['TipoPersona']) == 'F'){
-                if(!isset($arrSolicitante['A.Paterno']) || trim($arrSolicitante['A.Paterno']) == ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona física debe contener el apellido paterno (b.1.1)";                    
-                }
-            }
-
-            if(strtoupper($arrSolicitante['TipoPersona']) == 'M'){
-                if(isset($arrSolicitante['A.Paterno']) && trim($arrSolicitante['A.Paterno']) != ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona moral no puede tener apellido paterno (b.1.1)";                    
-                }
-
-                if(isset($arrSolicitante['A.Materno']) && trim($arrSolicitante['A.Materno']) != ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.1.10 - Error en el tipo de persona: La persona moral no puede tener apellido materno (b.1.2)";                    
-                }
-            }
-
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['TIPOPERSONA'] = $arrSolicitante['TipoPersona'];
-        }
-
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Solicitante']['CODTIPOFUNCION'] = "S";
-
-        /************************************************************/
-
-        $infoXmlPropietario = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//Propietario[@id="b.2"]');
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario'] = array();
-        foreach($infoXmlPropietario[0] as $llave => $elemento){
-            $arrPropietario[$llave] = (String)($elemento);
-        }
-        if(trim($arrPropietario['A.Paterno']) != ''){
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['APELLIDOPATERNO'] = $arrPropietario['A.Paterno'];
-        }
-        if(trim($arrPropietario['A.Materno']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['APELLIDOMATERNO'] = $arrPropietario['A.Materno'];
-        }
-        if(trim($arrPropietario['Nombre']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRE'] = $arrPropietario['Nombre'];
-        }
-        if(trim($arrPropietario['Calle']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CALLE'] = $arrPropietario['Calle'];
-        }
-        if(trim($arrPropietario['NumeroInterior']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NUMEROINTERIOR'] = $arrPropietario['NumeroInterior'];
-        }
-        if(trim($arrPropietario['NumeroExterior']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NUMEROEXTERIOR'] = $arrPropietario['NumeroExterior'];
-        }
-        if(trim($arrPropietario['CodigoPostal']) != ''){
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CODIGOPOSTAL'] = $arrPropietario['CodigoPostal'];
-        }
-        if(is_int($arrPropietario['Delegacion'])){
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $arrPropietario['Delegacion'];
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = '';
-        }else{
-            //aqui se obtendria el iddelegacion por el nombre
-            $idDelegacion = $this->modelDatosExtrasAvaluo->ObtenerIdDelegacionPorNombre($arrSolicitante['Delegacion']);
-            if($idDelegacion != -1){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDDELEGACION'] = $idDelegacion;
-            }
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBREDELEGACION'] = $arrPropietario['Delegacion'];
-        }
-        if(trim($arrPropietario['Colonia']) != ''){
-            //aqui se obtendria el idColonia por el nombre
-            $idColonia = $this->modelDatosExtrasAvaluo->ObtenerIdColoniaPorNombreyDelegacion(trim($arrSolicitante['Colonia']), $arrSolicitante['Delegacion']);
-            if($idColonia != -1){
-                $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['IDCOLONIA'] = $idColonia;
-            }
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['NOMBRECOLONIA'] = $arrPropietario['Colonia'];
-        }
-
-        if(trim($arrPropietario['TipoPersona']) != ''){
-
-            if(strtoupper($arrPropietario['TipoPersona']) == 'F'){
-                if(!isset($arrPropietario['A.Paterno']) || trim($arrPropietario['A.Paterno']) == ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona física debe contener el apellido paterno (b.2.1)";                    
-                }
-            }
-
-            if(strtoupper($arrPropietario['TipoPersona']) == 'M'){
-                if(isset($arrPropietario['A.Paterno']) && trim($arrPropietario['A.Paterno']) != ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona moral no puede tener apellido paterno (b.2.1)";                    
-                }
-
-                if(isset($arrPropietario['A.Materno']) && trim($arrPropietario['A.Materno']) != ''){
-                    $validadoSol = false;
-                    $camposFexavaAvaluo['ERRORES'][] = "b.2.10 - Error en el tipo de persona: La persona moral no puede tener apellido materno (b.2.2)";                    
-                }
-            }
-
-            $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['TIPOPERSONA'] = $arrPropietario['TipoPersona'];
-        }
-        
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['Propietario']['CODTIPOFUNCION'] = "P";
-
-        /************************************************************/
-
-        $infoXmlCuentaCatastral = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//InmuebleQueSeValua[@id="b.3"]//CuentaCatastral[@id="b.3.10"]');
-        $camposFexavaAvaluo['FEXAVA_DATOSPERSONAS']['CuentaCatastral'] = array();
-        foreach($infoXmlCuentaCatastral[0] as $llave => $elemento){
-            $arrCuentaCatastral[$llave] = (String)($elemento);
-        }
-        
-        if(trim($arrCuentaCatastral['Region'] != '')){
-            $camposFexavaAvaluo['REGION'] = $arrCuentaCatastral['Region'];
-        }
-
-        if(trim($arrCuentaCatastral['Manzana'] != '')){
-            $camposFexavaAvaluo['MANZANA'] = $arrCuentaCatastral['Manzana'];
-        }
-
-        if(trim($arrCuentaCatastral['Lote'] != '')){
-            $camposFexavaAvaluo['LOTE'] = $arrCuentaCatastral['Lote'];
-        }
-
-        if(trim($arrCuentaCatastral['Localidad'] != '')){
-            $camposFexavaAvaluo['UNIDADPRIVATIVA'] = $arrCuentaCatastral['Localidad'];
-        }
-
-        if(trim($arrCuentaCatastral['DigitoVerificador'] != '')){
-            $camposFexavaAvaluo['DIGITOVERIFICADOR'] = $arrCuentaCatastral['DigitoVerificador'];
-        }
-
-        /************************************************************/
-
-        $infoXmlPropositoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//PropositoDelAvaluo[@id="b.4"]');
-        $camposFexavaAvaluo['PROPOSITO'] = (String)($infoXmlPropositoDelAvaluo[0]);        
-
-        /************************************************************/
-
-        $infoXmlObjetoDelAvaluo = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//ObjetoDelAvaluo[@id="b.5"]');        
-        $camposFexavaAvaluo['OBJETO'] = (String)($infoXmlObjetoDelAvaluo[0]);
-
-
-        $arrAntecedentes = $infoXmlAntecedentes->xpath($elementoPrincipal.'//Antecedentes[@id="b"]');
-        
-        $datab = array_map("convierte_a_arreglo",$arrAntecedentes);
-        if(isset($datab[0]['RegimenDePropiedad'])){
-            $camposFexavaAvaluo['CODREGIMENPROPIEDAD'] = $datab[0]['RegimenDePropiedad'];
-        }
-
-        return $camposFexavaAvaluo;
     }
 
     public function guardarAvaluoCaracteristicasUrbanas($infoXmlCaracteristicas, $camposFexavaAvaluo,$elementoPrincipal){
-        $infoXmlCaracteristicasUrbanas = $infoXmlCaracteristicas->xpath($elementoPrincipal.'//CaracteristicasUrbanas[@id="c"]');
+        try{
+            $infoXmlCaracteristicasUrbanas = $infoXmlCaracteristicas->xpath($elementoPrincipal.'//CaracteristicasUrbanas[@id="c"]');
 
-        $errores = valida_AvaluoCaracteristicasUrbanas($infoXmlCaracteristicasUrbanas);   
-        if(count($errores) > 0){
-            //return array('ERROR' => $errores);
-            $camposFexavaAvaluo['ERRORES'][] = $errores;
-        }
-        //$camposFexavaAvaluo['CaracteristicasUrbanas'] = array();
-        foreach($infoXmlCaracteristicasUrbanas[0] as $llave => $elemento){
-            $arrCaracteristicasUrbanas[$llave] = (String)($elemento);
-        }
-        if(trim($arrCaracteristicasUrbanas['ClasificacionDeLaZona']) != ''){
-            $camposFexavaAvaluo['CUCODCLASIFICACIONZONA'] = $arrCaracteristicasUrbanas['ClasificacionDeLaZona'];
-        }
-
-        if(trim($arrCaracteristicasUrbanas['IndiceDeSaturacionDeLaZona']) != ''){
-            $camposFexavaAvaluo['CUINDICESATURACIONZONA'] = $arrCaracteristicasUrbanas['IndiceDeSaturacionDeLaZona'];
-        }
-
-        $fechaAvaluo = $camposFexavaAvaluo['FECHAAVALUO'];
-        if(trim($arrCaracteristicasUrbanas['ClaseGeneralDeInmueblesDeLaZona']) != ''){
-            $codClase = $arrCaracteristicasUrbanas['ClaseGeneralDeInmueblesDeLaZona'];
-            if(esFechaValida($fechaAvaluo) == true){
-                $idClaseEjercicio = $this->modelDatosExtrasAvaluo->SolicitarObtenerIdClasesByCodeAndAno(darFormatoFechaXML($fechaAvaluo), $codClase); //No se si el query sea el correcto ya que obtiene por fecha pero no hay fecha en la tabla
-            }else{
-                $idClaseEjercicio = 0;
+            $errores = valida_AvaluoCaracteristicasUrbanas($infoXmlCaracteristicasUrbanas);   
+            if(count($errores) > 0){
+                //return array('ERROR' => $errores);
+                $camposFexavaAvaluo['ERRORES'][] = $errores;
+            }
+            //$camposFexavaAvaluo['CaracteristicasUrbanas'] = array();
+            foreach($infoXmlCaracteristicasUrbanas[0] as $llave => $elemento){
+                $arrCaracteristicasUrbanas[$llave] = (String)($elemento);
+            }
+            if(trim($arrCaracteristicasUrbanas['ClasificacionDeLaZona']) != ''){
+                $camposFexavaAvaluo['CUCODCLASIFICACIONZONA'] = $arrCaracteristicasUrbanas['ClasificacionDeLaZona'];
             }
 
-            
-            $camposFexavaAvaluo['CUCODCLASESCONSTRUCCION'] = $idClaseEjercicio;
-        }
+            if(trim($arrCaracteristicasUrbanas['IndiceDeSaturacionDeLaZona']) != ''){
+                $camposFexavaAvaluo['CUINDICESATURACIONZONA'] = $arrCaracteristicasUrbanas['IndiceDeSaturacionDeLaZona'];
+            }
 
-        if(trim($arrCaracteristicasUrbanas['DensidadDePoblacion']) != ''){
-            $camposFexavaAvaluo['CUCODDENSIDADPOBLACION'] = $arrCaracteristicasUrbanas['DensidadDePoblacion'];
-        }
+            $fechaAvaluo = $camposFexavaAvaluo['FECHAAVALUO'];
+            if(trim($arrCaracteristicasUrbanas['ClaseGeneralDeInmueblesDeLaZona']) != ''){
+                $codClase = $arrCaracteristicasUrbanas['ClaseGeneralDeInmueblesDeLaZona'];
+                if(esFechaValida($fechaAvaluo) == true){
+                    $idClaseEjercicio = $this->modelDatosExtrasAvaluo->SolicitarObtenerIdClasesByCodeAndAno(darFormatoFechaXML($fechaAvaluo), $codClase); //No se si el query sea el correcto ya que obtiene por fecha pero no hay fecha en la tabla
+                }else{
+                    $idClaseEjercicio = 0;
+                }
 
-        if(trim($arrCaracteristicasUrbanas['NivelSocioeconomicoDeLaZona']) != ''){
-            $camposFexavaAvaluo['CUCODNIVELSOCIOECONOMICO'] = $arrCaracteristicasUrbanas['NivelSocioeconomicoDeLaZona'];
-        }
+                
+                $camposFexavaAvaluo['CUCODCLASESCONSTRUCCION'] = $idClaseEjercicio;
+            }
 
-        /********************************Uso del Suelo**********************************/
-        $infoXmlUsoDelSuelo = $infoXmlCaracteristicas->xpath($elementoPrincipal.'//CaracteristicasUrbanas[@id="c"]//UsoDelSuelo[@id="c.6"]');        
-        foreach($infoXmlUsoDelSuelo[0] as $llave => $elemento){
-            $arrUsoDelSuelos[$llave] = (String)($elemento);
-        }
+            if(trim($arrCaracteristicasUrbanas['DensidadDePoblacion']) != ''){
+                $camposFexavaAvaluo['CUCODDENSIDADPOBLACION'] = $arrCaracteristicasUrbanas['DensidadDePoblacion'];
+            }
 
-        if(trim($arrUsoDelSuelos['UsoDelSuelo']) != ''){
-            $camposFexavaAvaluo['CUUSO'] = $arrUsoDelSuelos['UsoDelSuelo'];
-        }
+            if(trim($arrCaracteristicasUrbanas['NivelSocioeconomicoDeLaZona']) != ''){
+                $camposFexavaAvaluo['CUCODNIVELSOCIOECONOMICO'] = $arrCaracteristicasUrbanas['NivelSocioeconomicoDeLaZona'];
+            }
 
-        if(trim($arrUsoDelSuelos['AreaLibreObligatoria']) != ''){
-            $camposFexavaAvaluo['CUAREALIBREOBLIGATORIO'] = $arrUsoDelSuelos['AreaLibreObligatoria'];
-        }
+            /********************************Uso del Suelo**********************************/
+            $infoXmlUsoDelSuelo = $infoXmlCaracteristicas->xpath($elementoPrincipal.'//CaracteristicasUrbanas[@id="c"]//UsoDelSuelo[@id="c.6"]');        
+            foreach($infoXmlUsoDelSuelo[0] as $llave => $elemento){
+                $arrUsoDelSuelos[$llave] = (String)($elemento);
+            }
 
-        if(trim($arrUsoDelSuelos['NumeroMaximoDeNivelesAConstruir']) != ''){
-            $camposFexavaAvaluo['CUNUMMAXNIVELESACONSTRUIR'] = $arrUsoDelSuelos['NumeroMaximoDeNivelesAConstruir'];
-        }
+            if(trim($arrUsoDelSuelos['UsoDelSuelo']) != ''){
+                $camposFexavaAvaluo['CUUSO'] = $arrUsoDelSuelos['UsoDelSuelo'];
+            }
 
-        if(trim($arrUsoDelSuelos['CoeficienteDeUsoDelSuelo']) != ''){
-            $camposFexavaAvaluo['CUCOEFICIENTE'] = $arrUsoDelSuelos['CoeficienteDeUsoDelSuelo'];
-        }
+            if(trim($arrUsoDelSuelos['AreaLibreObligatoria']) != ''){
+                $camposFexavaAvaluo['CUAREALIBREOBLIGATORIO'] = $arrUsoDelSuelos['AreaLibreObligatoria'];
+            }
 
-        /***************************************Servicios públicos y equipamiento urbano*************/
+            if(trim($arrUsoDelSuelos['NumeroMaximoDeNivelesAConstruir']) != ''){
+                $camposFexavaAvaluo['CUNUMMAXNIVELESACONSTRUIR'] = $arrUsoDelSuelos['NumeroMaximoDeNivelesAConstruir'];
+            }
 
-        $infoXmlServiciosPublicosYEquipamientoUrbano = $infoXmlCaracteristicas->xpath($elementoPrincipal.'//CaracteristicasUrbanas[@id="c"]//ServiciosPublicosYEquipamientoUrbano[@id="c.8"]');        
-        foreach($infoXmlServiciosPublicosYEquipamientoUrbano[0] as $llave => $elemento){
-            $arrServiciosPublicosYEquipamientoUrbanos[$llave] = (String)($elemento);
-        }
-        //print_r($arrServiciosPublicosYEquipamientoUrbanos); exit();
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['RedDeDistribucionAguaPotable']) != ''){
-            $camposFexavaAvaluo['CUCODAGUAPOTABLE'] = $arrServiciosPublicosYEquipamientoUrbanos['RedDeDistribucionAguaPotable'];
-        }
+            if(trim($arrUsoDelSuelos['CoeficienteDeUsoDelSuelo']) != ''){
+                $camposFexavaAvaluo['CUCOEFICIENTE'] = $arrUsoDelSuelos['CoeficienteDeUsoDelSuelo'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['RedDeRecoleccionDeAguasResiduales']) != ''){
-            $camposFexavaAvaluo['CUCODAGUAPOTABLERESIDUAL'] = $arrServiciosPublicosYEquipamientoUrbanos['RedDeRecoleccionDeAguasResiduales'];
-        }
+            /***************************************Servicios públicos y equipamiento urbano*************/
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['RedDeDrenajeDeAguasPluvialesEnLaCalle']) != ''){
-            $camposFexavaAvaluo['CUCODDRENAJEPLUVIALCALLE'] = $arrServiciosPublicosYEquipamientoUrbanos['RedDeDrenajeDeAguasPluvialesEnLaCalle'];
-        }
+            $infoXmlServiciosPublicosYEquipamientoUrbano = $infoXmlCaracteristicas->xpath($elementoPrincipal.'//CaracteristicasUrbanas[@id="c"]//ServiciosPublicosYEquipamientoUrbano[@id="c.8"]');        
+            foreach($infoXmlServiciosPublicosYEquipamientoUrbano[0] as $llave => $elemento){
+                $arrServiciosPublicosYEquipamientoUrbanos[$llave] = (String)($elemento);
+            }
+            //print_r($arrServiciosPublicosYEquipamientoUrbanos); exit();
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['RedDeDistribucionAguaPotable']) != ''){
+                $camposFexavaAvaluo['CUCODAGUAPOTABLE'] = $arrServiciosPublicosYEquipamientoUrbanos['RedDeDistribucionAguaPotable'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['RedDeDrenajeDeAguasPluvialesEnLaZona']) != ''){
-            $camposFexavaAvaluo['CUCODDRENAJEPLUVIALZONA'] = $arrServiciosPublicosYEquipamientoUrbanos['RedDeDrenajeDeAguasPluvialesEnLaZona'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['RedDeRecoleccionDeAguasResiduales']) != ''){
+                $camposFexavaAvaluo['CUCODAGUAPOTABLERESIDUAL'] = $arrServiciosPublicosYEquipamientoUrbanos['RedDeRecoleccionDeAguasResiduales'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['SistemaMixto']) != ''){
-            $camposFexavaAvaluo['CUCODDRENAJEINMUEBLE'] = $arrServiciosPublicosYEquipamientoUrbanos['SistemaMixto'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['RedDeDrenajeDeAguasPluvialesEnLaCalle']) != ''){
+                $camposFexavaAvaluo['CUCODDRENAJEPLUVIALCALLE'] = $arrServiciosPublicosYEquipamientoUrbanos['RedDeDrenajeDeAguasPluvialesEnLaCalle'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['SuministroElectrico']) != ''){
-            $camposFexavaAvaluo['CUCODSUMINISTROELECTRICO'] = $arrServiciosPublicosYEquipamientoUrbanos['SuministroElectrico'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['RedDeDrenajeDeAguasPluvialesEnLaZona']) != ''){
+                $camposFexavaAvaluo['CUCODDRENAJEPLUVIALZONA'] = $arrServiciosPublicosYEquipamientoUrbanos['RedDeDrenajeDeAguasPluvialesEnLaZona'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['AcometidaAlInmueble']) != ''){
-            $camposFexavaAvaluo['CUCODACOMETIDAINMUEBLE'] = $arrServiciosPublicosYEquipamientoUrbanos['AcometidaAlInmueble'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['SistemaMixto']) != ''){
+                $camposFexavaAvaluo['CUCODDRENAJEINMUEBLE'] = $arrServiciosPublicosYEquipamientoUrbanos['SistemaMixto'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['AlumbradoPublico']) != ''){
-            $camposFexavaAvaluo['CUCODALUMBRADOPUBLICO'] = $arrServiciosPublicosYEquipamientoUrbanos['AlumbradoPublico'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['SuministroElectrico']) != ''){
+                $camposFexavaAvaluo['CUCODSUMINISTROELECTRICO'] = $arrServiciosPublicosYEquipamientoUrbanos['SuministroElectrico'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['Vialidades']) != ''){
-            $camposFexavaAvaluo['CUCODVIALIDADES'] = $arrServiciosPublicosYEquipamientoUrbanos['Vialidades'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['AcometidaAlInmueble']) != ''){
+                $camposFexavaAvaluo['CUCODACOMETIDAINMUEBLE'] = $arrServiciosPublicosYEquipamientoUrbanos['AcometidaAlInmueble'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['Banquetas']) != ''){
-            $camposFexavaAvaluo['CUCODBANQUETAS'] = $arrServiciosPublicosYEquipamientoUrbanos['Banquetas'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['AlumbradoPublico']) != ''){
+                $camposFexavaAvaluo['CUCODALUMBRADOPUBLICO'] = $arrServiciosPublicosYEquipamientoUrbanos['AlumbradoPublico'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['Guarniciones']) != ''){
-            $camposFexavaAvaluo['CUCODGUARNICIONES'] = $arrServiciosPublicosYEquipamientoUrbanos['Guarniciones'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['Vialidades']) != ''){
+                $camposFexavaAvaluo['CUCODVIALIDADES'] = $arrServiciosPublicosYEquipamientoUrbanos['Vialidades'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['NivelDeInfraestructuraEnLaZona']) != ''){
-            $camposFexavaAvaluo['CUPORCENTAJEINFRAESTRUCTURA'] = $arrServiciosPublicosYEquipamientoUrbanos['NivelDeInfraestructuraEnLaZona'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['Banquetas']) != ''){
+                $camposFexavaAvaluo['CUCODBANQUETAS'] = $arrServiciosPublicosYEquipamientoUrbanos['Banquetas'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['GasNatural']) != ''){
-            $camposFexavaAvaluo['CUCODGASNATURAL'] = $arrServiciosPublicosYEquipamientoUrbanos['GasNatural'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['Guarniciones']) != ''){
+                $camposFexavaAvaluo['CUCODGUARNICIONES'] = $arrServiciosPublicosYEquipamientoUrbanos['Guarniciones'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['TelefonosSuministro']) != ''){
-            $camposFexavaAvaluo['CUCODSUMINISTROTELEFONICA'] = $arrServiciosPublicosYEquipamientoUrbanos['TelefonosSuministro'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['NivelDeInfraestructuraEnLaZona']) != ''){
+                $camposFexavaAvaluo['CUPORCENTAJEINFRAESTRUCTURA'] = $arrServiciosPublicosYEquipamientoUrbanos['NivelDeInfraestructuraEnLaZona'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['AcometidaAlInmuebleTel']) != ''){
-            $camposFexavaAvaluo['CUCODACOMETIDAINMUEBLETEL'] = $arrServiciosPublicosYEquipamientoUrbanos['AcometidaAlInmuebleTel'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['GasNatural']) != ''){
+                $camposFexavaAvaluo['CUCODGASNATURAL'] = $arrServiciosPublicosYEquipamientoUrbanos['GasNatural'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['SennalizacionDeVias']) != ''){
-            $camposFexavaAvaluo['CUCODSENALIZACIONVIAS'] = $arrServiciosPublicosYEquipamientoUrbanos['SennalizacionDeVias'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['TelefonosSuministro']) != ''){
+                $camposFexavaAvaluo['CUCODSUMINISTROTELEFONICA'] = $arrServiciosPublicosYEquipamientoUrbanos['TelefonosSuministro'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['NomenclaturaDeCalles']) != ''){
-            $camposFexavaAvaluo['CUCODNOMENCLATURACALLE'] = $arrServiciosPublicosYEquipamientoUrbanos['NomenclaturaDeCalles'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['AcometidaAlInmuebleTel']) != ''){
+                $camposFexavaAvaluo['CUCODACOMETIDAINMUEBLETEL'] = $arrServiciosPublicosYEquipamientoUrbanos['AcometidaAlInmuebleTel'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['DistanciaTranporteUrbano']) != ''){
-            $camposFexavaAvaluo['CUDISTANCIATRANSPORTEURBANO'] = $arrServiciosPublicosYEquipamientoUrbanos['DistanciaTranporteUrbano'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['SennalizacionDeVias']) != ''){
+                $camposFexavaAvaluo['CUCODSENALIZACIONVIAS'] = $arrServiciosPublicosYEquipamientoUrbanos['SennalizacionDeVias'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['FrecuenciaTransporteUrbano']) != ''){
-            $camposFexavaAvaluo['CUFRECUENCIATRANSPORTEURBANO'] = $arrServiciosPublicosYEquipamientoUrbanos['FrecuenciaTransporteUrbano'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['NomenclaturaDeCalles']) != ''){
+                $camposFexavaAvaluo['CUCODNOMENCLATURACALLE'] = $arrServiciosPublicosYEquipamientoUrbanos['NomenclaturaDeCalles'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['DistanciaTransporteSuburbano']) != ''){
-            $camposFexavaAvaluo['CUDISTANCIATRANSPORTESUBURB'] = $arrServiciosPublicosYEquipamientoUrbanos['DistanciaTransporteSuburbano'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['DistanciaTranporteUrbano']) != ''){
+                $camposFexavaAvaluo['CUDISTANCIATRANSPORTEURBANO'] = $arrServiciosPublicosYEquipamientoUrbanos['DistanciaTranporteUrbano'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['FrecuenciaTransporteSuburbano']) != ''){
-            $camposFexavaAvaluo['CUFRECUENCIATRANSPORTESUBURB'] = $arrServiciosPublicosYEquipamientoUrbanos['FrecuenciaTransporteSuburbano'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['FrecuenciaTransporteUrbano']) != ''){
+                $camposFexavaAvaluo['CUFRECUENCIATRANSPORTEURBANO'] = $arrServiciosPublicosYEquipamientoUrbanos['FrecuenciaTransporteUrbano'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['Vigilancia']) != ''){
-            $camposFexavaAvaluo['CUCODVIGILANCIAZONA'] = $arrServiciosPublicosYEquipamientoUrbanos['Vigilancia'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['DistanciaTransporteSuburbano']) != ''){
+                $camposFexavaAvaluo['CUDISTANCIATRANSPORTESUBURB'] = $arrServiciosPublicosYEquipamientoUrbanos['DistanciaTransporteSuburbano'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['RecoleccionDeBasura']) != ''){
-            $camposFexavaAvaluo['CUCODRECOLECCIONBASURA'] = $arrServiciosPublicosYEquipamientoUrbanos['RecoleccionDeBasura'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['FrecuenciaTransporteSuburbano']) != ''){
+                $camposFexavaAvaluo['CUFRECUENCIATRANSPORTESUBURB'] = $arrServiciosPublicosYEquipamientoUrbanos['FrecuenciaTransporteSuburbano'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['Templo']) != ''){
-            $camposFexavaAvaluo['CUEXISTEIGLESIA'] = $arrServiciosPublicosYEquipamientoUrbanos['Templo'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['Vigilancia']) != ''){
+                $camposFexavaAvaluo['CUCODVIGILANCIAZONA'] = $arrServiciosPublicosYEquipamientoUrbanos['Vigilancia'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['Mercados']) != ''){
-            $camposFexavaAvaluo['CUEXISTEMERCADOS'] = $arrServiciosPublicosYEquipamientoUrbanos['Mercados'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['RecoleccionDeBasura']) != ''){
+                $camposFexavaAvaluo['CUCODRECOLECCIONBASURA'] = $arrServiciosPublicosYEquipamientoUrbanos['RecoleccionDeBasura'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['PlazasPublicas']) != ''){
-            $camposFexavaAvaluo['CUEXISTEPLAZASPUBLICOS'] = $arrServiciosPublicosYEquipamientoUrbanos['PlazasPublicas'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['Templo']) != ''){
+                $camposFexavaAvaluo['CUEXISTEIGLESIA'] = $arrServiciosPublicosYEquipamientoUrbanos['Templo'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['ParquesYJardines']) != ''){
-            $camposFexavaAvaluo['CUEXISTEPARQUESJARDINES'] = $arrServiciosPublicosYEquipamientoUrbanos['ParquesYJardines'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['Mercados']) != ''){
+                $camposFexavaAvaluo['CUEXISTEMERCADOS'] = $arrServiciosPublicosYEquipamientoUrbanos['Mercados'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['Escuelas']) != ''){
-            $camposFexavaAvaluo['CUEXISTEESCUELAS'] = $arrServiciosPublicosYEquipamientoUrbanos['Escuelas'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['PlazasPublicas']) != ''){
+                $camposFexavaAvaluo['CUEXISTEPLAZASPUBLICOS'] = $arrServiciosPublicosYEquipamientoUrbanos['PlazasPublicas'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['Hospitales']) != ''){
-            $camposFexavaAvaluo['CUEXISTEHOSPITALES'] = $arrServiciosPublicosYEquipamientoUrbanos['Hospitales'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['ParquesYJardines']) != ''){
+                $camposFexavaAvaluo['CUEXISTEPARQUESJARDINES'] = $arrServiciosPublicosYEquipamientoUrbanos['ParquesYJardines'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['Bancos']) != ''){
-            $camposFexavaAvaluo['CUEXISTEBANCOS'] = $arrServiciosPublicosYEquipamientoUrbanos['Bancos'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['Escuelas']) != ''){
+                $camposFexavaAvaluo['CUEXISTEESCUELAS'] = $arrServiciosPublicosYEquipamientoUrbanos['Escuelas'];
+            }
 
-        if(trim($arrServiciosPublicosYEquipamientoUrbanos['EstacionDeTransporte']) != ''){
-            $camposFexavaAvaluo['CUEXISTEESTACIONTRANSPORTE'] = $arrServiciosPublicosYEquipamientoUrbanos['EstacionDeTransporte'];
-        }
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['Hospitales']) != ''){
+                $camposFexavaAvaluo['CUEXISTEHOSPITALES'] = $arrServiciosPublicosYEquipamientoUrbanos['Hospitales'];
+            }
 
-        return $camposFexavaAvaluo;
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['Bancos']) != ''){
+                $camposFexavaAvaluo['CUEXISTEBANCOS'] = $arrServiciosPublicosYEquipamientoUrbanos['Bancos'];
+            }
+
+            if(trim($arrServiciosPublicosYEquipamientoUrbanos['EstacionDeTransporte']) != ''){
+                $camposFexavaAvaluo['CUEXISTEESTACIONTRANSPORTE'] = $arrServiciosPublicosYEquipamientoUrbanos['EstacionDeTransporte'];
+            }
+
+            return $camposFexavaAvaluo;
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '25. Error en el servidor'], 500);
+        }
+        
     }   
 
-    public function guardarAvaluoTerreno($infoXmlTerreno, $camposFexavaAvaluo,$elementoPrincipal,$idDocumentoDigital){        
+    public function guardarAvaluoTerreno($infoXmlTerreno, $camposFexavaAvaluo,$elementoPrincipal,$idDocumentoDigital){
+        try{      
         $datah = $infoXmlTerreno->xpath($elementoPrincipal.'//EnfoqueDeMercado[@id="h"]'); 
         if($elementoPrincipal == '//Comercial'){
             if(isset($datah)){
@@ -2785,9 +2834,15 @@ class BandejaEntradaNuevoController extends Controller
         }       
 
         return $camposFexavaAvaluo;
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '26. Error en el servidor'], 500);
+        }
     }
 
     public function guardarAvaluoTerrenoV($infoXmlTerreno, $camposFexavaAvaluo,$elementoPrincipal,$idDocumentoDigital){
+        try{
         $datah = $infoXmlTerreno->xpath($elementoPrincipal.'//EnfoqueDeMercado[@id="h"]'); 
         if($elementoPrincipal == '//Comercial'){
             if(isset($datah)){
@@ -3177,10 +3232,15 @@ class BandejaEntradaNuevoController extends Controller
         }       
 
         return $camposFexavaAvaluo;
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '27. Error en el servidor'], 500);
+        }
     }
 
     public function guardarAvaluoDescripcionImueble($infoXmlTerreno, $camposFexavaAvaluo,$elementoPrincipal){
-
+        try{
         $errores = valida_AvaluoDescripcionImueble($infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]'), $elementoPrincipal, $infoXmlTerreno->xpath($elementoPrincipal.'//Terreno[@id="d"]'), $infoXmlTerreno->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//RegimenDePropiedad[@id="b.6"]')); 
         
         if(count($errores) > 0){
@@ -3334,6 +3394,8 @@ class BandejaEntradaNuevoController extends Controller
                             $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$i]['VIDAUTILREMANENTE'] = (String)($arrConstruccionesPrivativas['arrElementos'][$i][$arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.9']]);
                            }                               
                         
+                       }else{
+                            $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$i]['VIDAUTILREMANENTE'] = '0';
                        }
         
                        /*if(isset($arrConstruccionesPrivativas['arrIds'][$i]['e.2.1.n.10'])){                               
@@ -3493,6 +3555,8 @@ class BandejaEntradaNuevoController extends Controller
                     }
                     if(isset($arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.9'])){
                         $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['VIDAUTILREMANENTE'] = (String)($arrConstruccionesComunes['arrElementos'][$i][$arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.9']]);
+                    }else{
+                        $camposFexavaAvaluo['FEXAVA_TIPOCONSTRUCCION'][$controlElemento]['VIDAUTILREMANENTE'] = '0';
                     }
 
                     if(isset($arrConstruccionesComunes['arrIds'][$i]['e.2.5.n.10'])){
@@ -3603,11 +3667,16 @@ class BandejaEntradaNuevoController extends Controller
         }
 
         return $camposFexavaAvaluo;
+        } catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '28. Error en el servidor'], 500);
+        }
 
     }
 
     public function guardarAvaluoDescripcionImuebleV($infoXmlTerreno, $camposFexavaAvaluo,$elementoPrincipal){
-
+        try{
         $errores = valida_AvaluoDescripcionImuebleV($infoXmlTerreno->xpath($elementoPrincipal.'//DescripcionDelInmueble[@id="e"]'), $elementoPrincipal, $infoXmlTerreno->xpath($elementoPrincipal.'//Terreno[@id="d"]'), $infoXmlTerreno->xpath($elementoPrincipal.'//Antecedentes[@id="b"]//RegimenDePropiedad[@id="b.6"]')); 
         
         if(count($errores) > 0){
@@ -4019,11 +4088,16 @@ class BandejaEntradaNuevoController extends Controller
         }
 
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '29. Error en el servidor'], 500);
+    }
 
     }
 
     public function guardarAvaluoElementosConstruccion($infoXmlElementosConst, $camposFexavaAvaluo,$elementoPrincipal){
-
+        try{
         $camposFexavaAvaluo['FEXAVA_ELEMENTOSCONST'] = array();
 
         $elementosConst = $infoXmlElementosConst->xpath($elementoPrincipal.'//ElementosDeLaConstruccion[@id="f"]');
@@ -4466,11 +4540,16 @@ class BandejaEntradaNuevoController extends Controller
 
 
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '30. Error en el servidor'], 500);
+    }
 
     }
 
     public function guardarAvaluoElementosConstruccionV($infoXmlElementosConst, $camposFexavaAvaluo,$elementoPrincipal){
-
+        try{
         $camposFexavaAvaluo['FEXAVA_ELEMENTOSCONST'] = array();
 
         $elementosConst = $infoXmlElementosConst->xpath($elementoPrincipal.'//ElementosDeLaConstruccion[@id="f"]');
@@ -4913,10 +4992,16 @@ class BandejaEntradaNuevoController extends Controller
 
 
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '31. Error en el servidor'], 500);
+    }
 
     }
 
     public function guardarAvaluoEnfoqueMercado($infoXmlElementosConst, $camposFexavaAvaluo,$elementoPrincipal){
+        try{
         $camposFexavaAvaluo['FEXAVA_TERRENOMERCADO'] = array();
 
         $enfoqueDeMercado = $infoXmlElementosConst->xpath($elementoPrincipal.'//EnfoqueDeMercado[@id="h"]');
@@ -5401,10 +5486,16 @@ class BandejaEntradaNuevoController extends Controller
         }
         
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '32. Error en el servidor'], 500);
+    }
         
     }
 
     public function guardarAvaluoEnfoqueMercadoV($infoXmlElementosConst, $camposFexavaAvaluo,$elementoPrincipal){
+        try{
         $camposFexavaAvaluo['FEXAVA_TERRENOMERCADO'] = array();
 
         $enfoqueDeMercado = $infoXmlElementosConst->xpath($elementoPrincipal.'//EnfoqueDeMercado[@id="h"]');
@@ -5888,6 +5979,11 @@ class BandejaEntradaNuevoController extends Controller
         }
         
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '33. Error en el servidor'], 500);
+    }
         
     }
 
@@ -5899,7 +5995,7 @@ class BandejaEntradaNuevoController extends Controller
         /// comerciales.</param>
         
     public function guardarAvaluoEnfoqueCostosComercial($xmlEnfoqueDeCostos, $camposFexavaAvaluo,$elementoPrincipal){
-
+        try{
         $arrCostos = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]');
 
         if(count($arrCostos) == 0){
@@ -5919,10 +6015,15 @@ class BandejaEntradaNuevoController extends Controller
 
         $camposFexavaAvaluo['IMPORTETOTALENFCOSTOS'] = (String)($enfoqueDeCostos[0]);
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '34. Error en el servidor'], 500);
+    }
     }
 
     public function guardarAvaluoEnfoqueCostosComercialV($xmlEnfoqueDeCostos, $camposFexavaAvaluo,$elementoPrincipal){
-
+        try{
         $arrCostos = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]');
 
         if(count($arrCostos) == 0){
@@ -5942,6 +6043,11 @@ class BandejaEntradaNuevoController extends Controller
 
         $camposFexavaAvaluo['IMPORTETOTALENFCOSTOS'] = (String)($enfoqueDeCostos[0]);
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '35. Error en el servidor'], 500);
+    }
     }
 
     /// <summary>
@@ -5951,7 +6057,7 @@ class BandejaEntradaNuevoController extends Controller
         /// <param name="enfoqueCostosCatastral">Elemento xml con los datos de enfoque de costos
         /// catastrales.</param>
     public function guardarAvaluoEnfoqueCostosCatastral($xmlEnfoqueDeCostos, $camposFexavaAvaluo,$elementoPrincipal){
-        
+        try{
         if(count($xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="j"]')) == 0){
             return $camposFexavaAvaluo;
         }
@@ -6014,6 +6120,11 @@ class BandejaEntradaNuevoController extends Controller
             
         }
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '36. Error en el servidor'], 500);
+    }
     }
 
     /// <summary>
@@ -6021,6 +6132,7 @@ class BandejaEntradaNuevoController extends Controller
     /// </summary>
     /// <param name="enfoqueIngresos">Elemento xml con los datos de enfoque de ingresos.</param>
     public function guardarAvaluoEnfoqueIngresos($xmlEnfoqueDeIngresos, $camposFexavaAvaluo,$elementoPrincipal){
+        try{
         $enfoqueDeIngresos = $xmlEnfoqueDeIngresos->xpath($elementoPrincipal.'//EnfoqueDeIngresos[@id="k"]');
 
         if(!isset($enfoqueDeIngresos[0]) || count($enfoqueDeIngresos) == 0){
@@ -6061,7 +6173,12 @@ class BandejaEntradaNuevoController extends Controller
                 $camposFexavaAvaluo['EIIMPORTE'] = (String)($arrEnfoqueDeIngresos['arrElementos'][$arrEnfoqueDeIngresos['arrIds']['k.5']]);
             }
         }
-        return $camposFexavaAvaluo;        
+        return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '37. Error en el servidor'], 500);
+    }        
 
     }
 
@@ -6071,6 +6188,7 @@ class BandejaEntradaNuevoController extends Controller
         /// </summary>
         /// <param name="conclusionAvaluo">Elemento xml con los datos de la conclusion del avaluo.</param>
     public function guardarAvaluoResumenConclusionAvaluo($xmlConclusionAvaluo, $camposFexavaAvaluo, $elementoPrincipal){
+        try{
         $conclusionAvaluo = $xmlConclusionAvaluo->xpath($elementoPrincipal.'//ConclusionDelAvaluo[@id="o"]');
         
         $arrConclusionAvaluo = $this->obtenElementosPrincipal($conclusionAvaluo);
@@ -6096,6 +6214,11 @@ class BandejaEntradaNuevoController extends Controller
         }
 
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '38. Error en el servidor'], 500);
+    }
     }
 
     /// <summary>
@@ -6104,6 +6227,7 @@ class BandejaEntradaNuevoController extends Controller
         /// </summary>
         /// <param name="valorReferido">Elemento xml con los datos del valor referido del avaluo.</param>
     public function guardarAvaluoValorReferido($xmlValorReferido, $camposFexavaAvaluo, $elementoPrincipal){
+        try{
         $valorReferido = $xmlValorReferido->xpath($elementoPrincipal.'//ValorReferido[@id="p"]');
         $datao1 = $xmlValorReferido->xpath($elementoPrincipal.'//ConclusionDelAvaluo[@id="o"]//ValorComercialDelInmueble[@id="o.1"]');        
         if(count($valorReferido) > 0){
@@ -6126,6 +6250,11 @@ class BandejaEntradaNuevoController extends Controller
             }    
         }
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '39. Error en el servidor'], 500);
+    }
         
     }
 
@@ -6136,6 +6265,7 @@ class BandejaEntradaNuevoController extends Controller
         /// <param name="transactionHelper">La transacción ayudante.</param>
         /// <param name="anexoFotografico">Elemento xml con los datos del anexo fotografico del avaluo.</param>
     public function guardarAvaluoAnexoFotografico($xmlAnexoFotografico, $camposFexavaAvaluo, $elementoPrincipal){
+        try{
         $cuentaCatastralStr = '';
         $indiceCuentaCatastral = '1';
         $anexoFotografico = $xmlAnexoFotografico->xpath($elementoPrincipal.'//AnexoFotografico[@id="q"]');
@@ -6484,6 +6614,11 @@ class BandejaEntradaNuevoController extends Controller
         }
         //print_r($this->fileXML); exit();
         return $camposFexavaAvaluo;
+    } catch (\Throwable $th) {
+        Log::info($th);
+        error_log($th);
+        return response()->json(['mensaje' => '39. Error en el servidor'], 500);
+    }
     }
     
     public function obtenElementosPrincipal($arrPrincipal){
@@ -6543,6 +6678,7 @@ class BandejaEntradaNuevoController extends Controller
     }
 
     public function esTerrenoValdio($data, $elementoPrincipal){
+        try{
         $resultado = FALSE;
         $general = $data->xpath($elementoPrincipal);        
         $arrGeneral = $this->obtenElementosPrincipal($general);
@@ -6568,6 +6704,11 @@ class BandejaEntradaNuevoController extends Controller
 
         }else{
             return $resultado;
+        }
+    }catch (\Throwable $th) {
+            Log::info($th);
+            error_log($th);
+            return response()->json(['mensaje' => '40. Error en el servidor'], 500);
         }
         
     }
@@ -6596,7 +6737,7 @@ class BandejaEntradaNuevoController extends Controller
         }catch (\Throwable $th) {
             //Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error en el servidor'], 500);
+            return response()->json(['mensaje' => '41. Error en el servidor'], 500);
         }    
     }
 
@@ -6745,7 +6886,7 @@ class BandejaEntradaNuevoController extends Controller
             //Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error al obtener la información del avalúo'], 500);
+            return response()->json(['mensaje' => '42. Error al obtener la información del avalúo'], 500);
         }    
     }
 
@@ -6952,7 +7093,7 @@ class BandejaEntradaNuevoController extends Controller
             //Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error al obtener la información del avalúo'], 500);
+            return response()->json(['mensaje' => '43. Error al obtener la información del avalúo'], 500);
         }    
     }
 
@@ -7093,7 +7234,7 @@ class BandejaEntradaNuevoController extends Controller
             //Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error al obtener la información del avalúo'], 500);
+            return response()->json(['mensaje' => '44. Error al obtener la información del avalúo'], 500);
         }    
     }
 
@@ -7230,7 +7371,7 @@ class BandejaEntradaNuevoController extends Controller
             //Log::info("n° unico: ".$numero_unico."\nerror: ".$th->getMessage()."\narchivo: ".$th->getFile()."\nlinea: ".$th->getLine());
             Log::info($th);
             error_log($th);
-            return response()->json(['mensaje' => 'Error al obtener la información del avalúo'], 500);
+            return response()->json(['mensaje' => '45. Error al obtener la información del avalúo'], 500);
         }    
     }
 
