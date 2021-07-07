@@ -799,9 +799,17 @@
                         </div>
 
 
-                    <h4 style="margin-top: 4%;">TOPOGRAFÍA Y CONFIGURACIÓN:</h4>
+                    <!-- <h4 style="margin-top: 4%;">TOPOGRAFÍA Y CONFIGURACIÓN:</h4> -->
                    
                         <table>
+                            <tr>
+                                <td><b>TOPOGRAFÍA Y CONFIGURACIÓN:</b></td>
+                                <td>
+                                @isset($infoAvaluo['Topografia_Configuracion']['Topografia_Configuracion'])
+                                    <span class="grises">{{$infoAvaluo['Topografia_Configuracion']['Topografia_Configuracion']}}</span>
+                                @endisset
+                                </td>
+                            </tr>
                             <tr>
                                 <td><b>CARACTERÍSTICAS PANORÁMICAS:</b></td>
                                 <td>
