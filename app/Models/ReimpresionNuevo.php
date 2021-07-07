@@ -2740,7 +2740,7 @@ class ReimpresionNuevo
         if(isset($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona']) && !is_array($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona'])){
             $infoReimpresion['Uso_Suelo'] = $arrFexava['cuuso'];
         }
-        if(isset($caracterisiticasUrbanas['cuarealibreobligatorio']) && !is_array($caracterisiticasUrbanas['cuarealibreobligatorio'])){
+        if(isset($arrFexava['cuarealibreobligatorio']) && !is_array($arrFexava['cuarealibreobligatorio'])){
             $infoReimpresion['Area_Libre_Obligatoria'] = $arrFexava['cuarealibreobligatorio'];
         }
         if(isset($caracterisiticasUrbanas['ViasDeAccesoEImportancia']) && !is_array($caracterisiticasUrbanas['ViasDeAccesoEImportancia'])){
@@ -4817,7 +4817,7 @@ class ReimpresionNuevo
 
             $infoFexava = DB::select("SELECT * FROM FEXAVA_AVALUO WHERE IDAVALUO = $idAvaluo");
             $arrInfoFexava = array_map("convierte_a_arreglo",$infoFexava);
-            $arrFexava = $arrInfoFexava[0];
+            $arrFexava = $arrInfoFexava[0]; //echo "<pre>"; print_r($arrFexava);
 
             $infoReimpresion = array();
 
@@ -4967,7 +4967,7 @@ class ReimpresionNuevo
             $infoReimpresion['Clasificacion_de_la_zona'] = $this->modelDocumentos->get_clasificacion_zona($arrFexava['cucodclasificacionzona']);
             $infoReimpresion['Indice_Saturacion_Zona'] = $arrFexava['cuindicesaturacionzona'] <= 1 ? $arrFexava['cuindicesaturacionzona'] * 100 : $arrFexava['cuindicesaturacionzona'];
             
-            $caracterisiticasUrbanas = $elementoPrincipal['CaracteristicasUrbanas'];
+            $caracterisiticasUrbanas = $elementoPrincipal['CaracteristicasUrbanas']; //echo "<pre>"; print_r($caracterisiticasUrbanas); exit();
             $infoReimpresion['Tipo_Construccion_Dominante'] = $this->modelFis->getClase($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona']);
             $infoReimpresion['Densidad_Poblacion'] = $this->modelDocumentos->get_densidad_poblacion($arrFexava['cucoddensidadpoblacion']);
             $infoReimpresion['Nivel_Socioeconomico_Zona'] = $this->modelDocumentos->get_nivel_socioeconomico_zona($arrFexava['cucodnivelsocioeconomico']);
@@ -4981,7 +4981,7 @@ class ReimpresionNuevo
             if(isset($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona']) && !is_array($caracterisiticasUrbanas['ClaseGeneralDeInmueblesDeLaZona'])){
                 $infoReimpresion['Uso_Suelo'] = $arrFexava['cuuso'];
             }
-            if(isset($caracterisiticasUrbanas['cuarealibreobligatorio']) && !is_array($caracterisiticasUrbanas['cuarealibreobligatorio'])){
+            if(isset($arrFexava['cuarealibreobligatorio']) && !is_array($arrFexava['cuarealibreobligatorio'])){
                 $infoReimpresion['Area_Libre_Obligatoria'] = $arrFexava['cuarealibreobligatorio'];
             }
             if(isset($caracterisiticasUrbanas['ViasDeAccesoEImportancia']) && !is_array($caracterisiticasUrbanas['ViasDeAccesoEImportancia'])){
