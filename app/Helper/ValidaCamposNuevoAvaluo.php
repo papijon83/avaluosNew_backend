@@ -2016,7 +2016,7 @@ function valida_Calculos_e($data, $dataextra = false, $dataextrados = false, $b_
                             $e_2_5_n_6 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['ClaveClase'];
                             $e_2_5_n_2 = $data[0]['TiposDeConstruccion']['ConstruccionesComunes']['ClaveUso'];
                             $usos_1 = array('PE','PC','J','P');
-                            
+
                             if(in_array($e_2_5_n_2,$usos_1) && $e_2_5_n_6 == 'U'){
                             
                                 if(isset($data[0]['TiposDeConstruccion']['ConstruccionesComunes']['DepreciacionPorEdad'])){
@@ -2758,7 +2758,9 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                     }else{
                         $calc_h_1_1_n_17 = 1/($elemento['Fzo'] * $elemento['Fub'] * $elemento['FFr'] * $elemento['Ffo'] * $elemento['Fsu']);
                     }*/
-                    $calc_h_1_1_n_17 = 1/(floatval($elemento['Factor1']['Valor']) * floatval($elemento['Factor2']['Valor']) * floatval($elemento['Factor3']['Valor']) * floatval($elemento['Factor4']['Valor']) * floatval($elemento['Factor5']['Valor']));
+                    //COmentado el 06/07/2021
+                    //$calc_h_1_1_n_17 = 1/(floatval($elemento['Factor1']['Valor']) * floatval($elemento['Factor2']['Valor']) * floatval($elemento['Factor3']['Valor']) * floatval($elemento['Factor4']['Valor']) * floatval($elemento['Factor5']['Valor']));
+                    $calc_h_1_1_n_17 = (floatval($elemento['Factor1']['Valor']) * floatval($elemento['Factor2']['Valor']) * floatval($elemento['Factor3']['Valor']) * floatval($elemento['Factor4']['Valor']) * floatval($elemento['Factor5']['Valor']));
                     if(truncate($h_1_1_n_17,2) != truncate($calc_h_1_1_n_17,2)){ error_log(truncate($h_1_1_n_17,2)." != ".truncate($calc_h_1_1_n_17,2));
                         return  "h.1.1.n.17 - El cálculo de Fre es erróneo ";
                     }

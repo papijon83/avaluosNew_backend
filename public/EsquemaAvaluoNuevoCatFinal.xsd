@@ -1359,7 +1359,7 @@
                     <xs:element name="Valor">
                       <xs:complexType>
                         <xs:simpleContent>
-                          <xs:extension base="DecimalPositivo12">
+                          <xs:extension base="DoublePositivo">
                             <xs:attribute fixed="h.1.1.n.10.2" name="id" type="xs:string" use="required" />
                           </xs:extension>
                         </xs:simpleContent>
@@ -1385,7 +1385,7 @@
                     <xs:element name="Valor">
                       <xs:complexType>
                         <xs:simpleContent>
-                          <xs:extension base="DecimalPositivo12">
+                          <xs:extension base="DoublePositivo">
                             <xs:attribute fixed="h.1.1.n.11.2" name="id" type="xs:string" use="required" />
                           </xs:extension>
                         </xs:simpleContent>
@@ -1411,7 +1411,7 @@
                     <xs:element name="Valor">
                       <xs:complexType>
                         <xs:simpleContent>
-                          <xs:extension base="DecimalPositivo12">
+                          <xs:extension base="DoublePositivo">
                             <xs:attribute fixed="h.1.1.n.12.2" name="id" type="xs:string" use="required" />
                           </xs:extension>
                         </xs:simpleContent>
@@ -1437,7 +1437,7 @@
                     <xs:element name="Valor">
                       <xs:complexType>
                         <xs:simpleContent>
-                          <xs:extension base="DecimalPositivo12">
+                          <xs:extension base="DoublePositivo">
                             <xs:attribute fixed="h.1.1.n.13.2" name="id" type="xs:string" use="required" />
                           </xs:extension>
                         </xs:simpleContent>
@@ -1463,7 +1463,7 @@
                     <xs:element name="Valor">
                       <xs:complexType>
                         <xs:simpleContent>
-                          <xs:extension base="DecimalPositivo12">
+                          <xs:extension base="DoublePositivo">
                             <xs:attribute fixed="h.1.1.n.14.2" name="id" type="xs:string" use="required" />
                           </xs:extension>
                         </xs:simpleContent>
