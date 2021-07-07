@@ -669,6 +669,10 @@
                         
                         <table style="width: 100%;">
                             <tr>
+                                <td style="text-align: center;">MICROLOCALIZACIÓN</td>
+                                <td style="text-align: center;">MACROLOCALIZACIÓN</td>
+                            </tr>
+                            <tr>
                                 <td style="width: 50%; padding: 10px;" class="centrado"><img style="max-width: 320px;" src="data:image/png;base64,{{$infoAvaluo['Croquis_Localizacion']['Microlocalizacion']}}"></td>
                                 <td style="width: 50%; padding: 10px;" class="centrado"><img style="max-width: 320px;" src="data:image/png;base64,{{$infoAvaluo['Croquis_Localizacion']['Macrolocalizacion']}}"></td>
                             </tr>
