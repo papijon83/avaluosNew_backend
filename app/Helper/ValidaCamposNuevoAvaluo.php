@@ -2105,7 +2105,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                     $calc_d_5_n_10 = $data[0]['SuperficieDelTerreno']['Fzo'] * $data[0]['SuperficieDelTerreno']['Fub'] * $data[0]['SuperficieDelTerreno']['FFr'] * $data[0]['SuperficieDelTerreno']['Ffo'] * $data[0]['SuperficieDelTerreno']['Fsu'];
                 }*/
                 $calc_d_5_n_10 = $data[0]['SuperficieDelTerreno']['Factor1']['Valor'] * $data[0]['SuperficieDelTerreno']['Factor2']['Valor'] * $data[0]['SuperficieDelTerreno']['Factor3']['Valor'] * $data[0]['SuperficieDelTerreno']['Factor4']['Valor'] * $data[0]['SuperficieDelTerreno']['Factor5']['Valor'];
-                
+                error_log("d.5.n.10 ".truncate($d_5_n_10,2)." != ".truncate($calc_d_5_n_10,2));
                 if($d_5_n_10 < 0.6 || $d_5_n_10 > 2){
                     $mensajesd[] =  "d.5.n.10 - Fre. Valor no permitido ";
                 }else{
@@ -2776,16 +2776,18 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                     //COmentado el 06/07/2021
                     //$calc_h_1_1_n_17 = 1/(floatval($elemento['Factor1']['Valor']) * floatval($elemento['Factor2']['Valor']) * floatval($elemento['Factor3']['Valor']) * floatval($elemento['Factor4']['Valor']) * floatval($elemento['Factor5']['Valor']));
                     $calc_h_1_1_n_17 = (floatval($elemento['Factor1']['Valor']) * floatval($elemento['Factor2']['Valor']) * floatval($elemento['Factor3']['Valor']) * floatval($elemento['Factor4']['Valor']) * floatval($elemento['Factor5']['Valor']));
-
+                    error_log(floatval($elemento['Factor1']['Valor'])." * ".floatval($elemento['Factor2']['Valor'])." * ".floatval($elemento['Factor3']['Valor'])." * ".floatval($elemento['Factor4']['Valor'])." * ".floatval($elemento['Factor5']['Valor']));
+                    error_log("h.1.1.n.17 ".truncate($h_1_1_n_17,2)." != ".truncate($calc_h_1_1_n_17,2));
                     if($h_1_1_n_17 < 0.6 || $h_1_1_n_17 > 2){
-                        $mensajesd[] =  "h.1.1.n.17 - Fre. Valor no permitido ";
+                        return $mensajesd[] =  "h.1.1.n.17 - Fre. Valor no permitido ";
+                        error_log(json_encode($mensajesd));
                     }else{
                         if($h_1_1_n_17 >= 0.6 && $h_1_1_n_17 <= 2){
                             if($h_1_1_n_17 == 0.6 && $calc_h_1_1_n_17 < 0.6){
     
                             }else{
                                 if(truncate($h_1_1_n_17,2) != truncate($calc_h_1_1_n_17,2)){
-                                    $mensajesd[] =  "h.1.1.n.17 - Fre. Error al validar el cálculo ";
+                                    return $mensajesd[] =  "h.1.1.n.17 - Fre. Error al validar el cálculo ";
                                 }
                             }   
                         }
@@ -2822,7 +2824,12 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
 
         $k_2_13 = $data[0]['Deducciones']['PorcentajeDeduccionesMensuales'];
         $k_1 = $data[0]['RentaBrutaMensual'];
-        $calc_k_2_13 = ($k_2_12 / $k_1) / 100;
+
+        if($k_2_12 == 0 || $k_1 == 0){
+            $calc_k_2_13 = 0;
+        }else{
+            $calc_k_2_13 = ($k_2_12 / $k_1) / 100;
+        }     
 
         if(truncate($k_2_13,4) != truncate($calc_k_2_13,4)){ // error_log(truncate($k_2_13,4)." != ".truncate($calc_k_2_13,4));
             $mensajesk[] = "k.2.13 - El cálculo de PorcentajeDeduccionesMensuales es erróneo ";
@@ -2837,7 +2844,11 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
 
         $k_5 = $data[0]['ImporteEnfoqueDeIngresos'];
         $k_4 = $data[0]['TasaDeCapitalizacionAplicable'];
-        $calc_k_5 = $k_3 / ($k_4 / 100);
+        if($k_3 == 0 || $k_4 == 0){
+            $calc_k_5 = 0;
+        }else{
+            $calc_k_5 = $k_3 / ($k_4 / 100);
+        }        
 
         if(truncate($k_5,2) != truncate($calc_k_5,2)){ //echo truncate($k_5,2)." != ".truncate($calc_k_5,2)."\n";
             $mensajesk[] = "k.5 - El cálculo de ImporteEnfoqueDeIngresos es erróneo ";
@@ -2855,7 +2866,12 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
         $p_3 = $data[0]['IndiceActual'];
         $p_4 = $data[0]['FactorDeConversion'];
         //$calc_p_4 = $p_2 / $p_3;
-        $calc_p_4 = $p_3 / $p_2;
+        if($p_2 == 0){
+            $calc_p_4 = 0;
+        }else{
+            $calc_p_4 = $p_3 / $p_2;
+        }
+        
 
         if(truncate($p_4,2) != truncate($calc_p_4,2)){
             $mensajesp[] = "p.4 - El cálculo de FactorDeConversion es erróneo ";
@@ -2869,9 +2885,18 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
         $o_1 = $datao1[0][0];
 
         if($fechaComparar->gt($fechaMinima)){
-            $calc_p_5 = $o_1/$p_4; 
+            if($p_4 == 0){
+                $calc_p_5 = 0;
+            }else{
+                $calc_p_5 = $o_1/$p_4; 
+            }
+            
         }else{
-            $calc_p_5 = $o_1/$p_4*1000;
+            if($p_4 == 0){
+                $calc_p_5 = 0;
+            }else{
+                $calc_p_5 = $o_1/$p_4*1000;
+            }            
         }
         //$calc_p_5 = $p_4 * $o_1;
 

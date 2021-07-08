@@ -223,13 +223,17 @@ class GuardaenBD
        
     }
 
+    public function escapaComilla($valor){
+        return str_replace("'","''",$valor); 
+    }
+
     public function insertDatos($tabla,$elementosTabla,$idAvaluo){    
         $iniQuery = "INSERT INTO ".$tabla;
         $campos = '(IDAVALUO,';
         $valores = '('.$idAvaluo.",";
         foreach($elementosTabla as $idElemento => $elemento){
             $campos .= $idElemento.",";
-            $valores .= "'".$elemento."',";
+            $valores .= "'".$this->escapaComilla($elemento)."',";
         }
         $campos = substr($campos,0,strlen($campos) - 1);
         $valores = substr($valores,0,strlen($valores) - 1);
@@ -252,7 +256,7 @@ class GuardaenBD
             if($idElemento == 'FECHA_PRESENTACION'){
                 $valores .= "SYSDATE,";
             }else{
-                $valores .= "'".$elemento."',";
+                $valores .= "'".$this->escapaComilla($elemento)."',";
             }
            
         }
@@ -270,7 +274,7 @@ class GuardaenBD
         $valores = '(';
         foreach($elementosTabla as $idElemento => $elemento){
             $campos .= $idElemento.",";
-            $valores .= "'".$elemento."',";
+            $valores .= "'".$this->escapaComilla($elemento)."',";
         }
         $campos = substr($campos,0,strlen($campos) - 1);
         $valores = substr($valores,0,strlen($valores) - 1);
@@ -285,7 +289,7 @@ class GuardaenBD
         $valores = '(';
         foreach($elementosTabla as $idElemento => $elemento){
             $campos .= $idElemento.",";
-            $valores .= "'".$elemento."',";
+            $valores .= "'".$this->escapaComilla($elemento)."',";
         }
         $campos = substr($campos,0,strlen($campos) - 1);
         $valores = substr($valores,0,strlen($valores) - 1);
@@ -306,7 +310,7 @@ class GuardaenBD
              
             foreach($elemento as $id => $dato){
                 $campos .= $id.",";
-                $valores .= "'".$dato."',";
+                $valores .= "'".$this->escapaComilla($dato)."',";
             }
             $campos = substr($campos,0,strlen($campos) - 1);
             $valores = substr($valores,0,strlen($valores) - 1);
@@ -646,7 +650,7 @@ class GuardaenBD
             $valores = '(';
             foreach($elementosTabla as $idElemento => $elemento){
                 $campos .= $idElemento.",";                
-                $valores .= "'".$elemento."',";    
+                $valores .= "'".$this->escapaComilla($elemento)."',";    
             }
             $campos = substr($campos,0,strlen($campos) - 1);
             $valores = substr($valores,0,strlen($valores) - 1);
