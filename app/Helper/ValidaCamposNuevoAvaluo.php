@@ -2763,7 +2763,7 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
 
     if($letra == 'h'){
         if(isset($data[0]['Terrenos'])){
-
+            $mensajesd = array();
             foreach($data[0]['Terrenos']['TerrenosDirectos'] as $idElemento => $elemento){
                 if(isset($elemento['@attributes']['id']) && $elemento['@attributes']['id'] == 'h.1.1'){
                     $h_1_1_n_17 = $elemento['Fre'];
@@ -2779,15 +2779,16 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                     error_log(floatval($elemento['Factor1']['Valor'])." * ".floatval($elemento['Factor2']['Valor'])." * ".floatval($elemento['Factor3']['Valor'])." * ".floatval($elemento['Factor4']['Valor'])." * ".floatval($elemento['Factor5']['Valor']));
                     error_log("h.1.1.n.17 ".truncate($h_1_1_n_17,2)." != ".truncate($calc_h_1_1_n_17,2));
                     if($h_1_1_n_17 < 0.6 || $h_1_1_n_17 > 2){
-                        return $mensajesd[] =  "h.1.1.n.17 - Fre. Valor no permitido ";
-                        error_log(json_encode($mensajesd));
+                        $mensajesh[] =  "h.1.1.n.17 - Fre. Valor no permitido ";
+                        error_log(json_encode($mensajesh));
                     }else{
                         if($h_1_1_n_17 >= 0.6 && $h_1_1_n_17 <= 2){
                             if($h_1_1_n_17 == 0.6 && $calc_h_1_1_n_17 < 0.6){
     
                             }else{
                                 if(truncate($h_1_1_n_17,2) != truncate($calc_h_1_1_n_17,2)){
-                                    return $mensajesd[] =  "h.1.1.n.17 - Fre. Error al validar el cálculo ";
+                                    $mensajesh[] =  "h.1.1.n.17 - Fre. Error al validar el cálculo ";
+                                    error_log(json_encode($mensajesh));
                                 }
                             }   
                         }
@@ -2796,7 +2797,12 @@ function valida_Calculos($data, $letra, $dataextra = false, $dataextrados = fals
                     /*if(truncate($h_1_1_n_17,2) != truncate($calc_h_1_1_n_17,2)){ error_log("h.1.1.n.17 ".truncate($h_1_1_n_17,2)." != ".truncate($calc_h_1_1_n_17,2));
                         return  "h.1.1.n.17 - El cálculo de Fre es erróneo ";
                     }*/
+                    
                 }
+            }
+
+            if(isset($mensajesh) && count($mensajesh) > 0){
+                return $mensajesh;
             }
 
         }
