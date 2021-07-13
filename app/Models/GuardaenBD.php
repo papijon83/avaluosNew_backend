@@ -249,8 +249,10 @@ class GuardaenBD
 
     public function insertDatosFexavaAvaluo($tabla,$elementosTabla,$idAvaluo){    
         $iniQuery = "INSERT INTO ".$tabla;
-        $campos = '(IDAVALUO,CUIDCLASESEJERCICIO,';
-        $valores = '('.$idAvaluo.",391,";
+        $campos = '(IDAVALUO,';
+        //$campos = '(IDAVALUO,CUIDCLASESEJERCICIO,';
+        //$valores = '('.$idAvaluo.",391,";
+        $valores = '('.$idAvaluo.",";
         foreach($elementosTabla as $idElemento => $elemento){
             $campos .= $idElemento.",";
             if($idElemento == 'FECHA_PRESENTACION'){

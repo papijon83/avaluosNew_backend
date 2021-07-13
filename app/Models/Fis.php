@@ -113,4 +113,38 @@ class Fis
         return $arrInfo->clase;
     }
 
+    public function getClaseEjercicio($codClaseGeneral){
+        
+        try{
+            //$anio = date('Y');
+            $fecha = Carbon::today()->format('Y/m/d'); error_log("LA FECHA   ".$fecha);
+            $valUno = '1';
+            $procedure = 'BEGIN
+            fis.fis_clasesejercicio_pkg.fis_select_byanocod_p(            
+                TO_DATE(:par_fecha,\'YYYY-MM-DD\'),
+                :par_codtipo,
+                :idrango
+            ); END;';
+            $conn = oci_connect(env("DB_USERNAME_FIS"), env("DB_PASSWORD_FIS"), env("DB_TNS"));
+            //oci_execute(oci_parse($conn,"ALTER SESSION SET NLS_NUMERIC_CHARACTERS = '.,'"));
+            $stmt = oci_parse($conn, $procedure);
+            oci_bind_by_name($stmt, ':par_fecha', $fecha, 20);
+            oci_bind_by_name($stmt, ':par_codtipo', $codClaseGeneral, 10);
+            oci_bind_by_name($stmt, ':idrango', $cuidclasesejercicio, 10);  
+            oci_execute($stmt, OCI_COMMIT_ON_SUCCESS);   
+            oci_free_statement($stmt);
+            oci_close($conn);
+                  
+           return $cuidclasesejercicio;
+
+        }catch (\Throwable $th){
+
+            error_log($th);
+            Log::info($th);
+            return 'Error al obtener la desviación estandar.';
+            
+        }         
+
+    }
+
 }

@@ -1756,7 +1756,8 @@ class BandejaEntradaNuevoController extends Controller
                 $tipo = "CAT";
             }else if($camposFexavaAvaluo['CODTIPOTRAMITE'] == 1){
                 $tipo = "COM";
-            }
+            }    
+
             $camposFexavaAvaluo['NUMEROUNICO'] = $this->obtenerNumUnicoAv($tipo);      
             return $camposFexavaAvaluo;
         } catch (\Throwable $th) {
@@ -2328,6 +2329,11 @@ class BandejaEntradaNuevoController extends Controller
             foreach($infoXmlCaracteristicasUrbanas[0] as $llave => $elemento){
                 $arrCaracteristicasUrbanas[$llave] = (String)($elemento);
             }
+
+            if(trim($arrCaracteristicasUrbanas['ClaseGeneralDeInmueblesDeLaZona']) != ''){
+                $camposFexavaAvaluo['CUIDCLASESEJERCICIO'] = $this->modelFis->getClaseEjercicio($arrCaracteristicasUrbanas['ClaseGeneralDeInmueblesDeLaZona']);
+            }
+
             if(trim($arrCaracteristicasUrbanas['ClasificacionDeLaZona']) != ''){
                 $camposFexavaAvaluo['CUCODCLASIFICACIONZONA'] = $arrCaracteristicasUrbanas['ClasificacionDeLaZona'];
             }

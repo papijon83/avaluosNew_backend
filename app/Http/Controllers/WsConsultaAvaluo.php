@@ -89,8 +89,8 @@ class WsConsultaAvaluo extends Controller
             unset($infoAvaluos[0]['ANTECEDENTE_REGISTRAL']);
             //$arrayRes['AVALUOS_CONSULTA_GETAVALUOS_p'] = $this->limpiaConsulta($infoAvaluos);
             $arrayRes['AVALUOS'] = $this->limpiarAvaluos($infoDatos,$infoAvaluos[0]['CUENTA']);
-            return response()->json(['mensaje' => 'No se ha encontrado ningún dato'], 500);
-            //return response()->json($arrayRes, 200); 
+            //return response()->json(['mensaje' => 'No se ha encontrado ningún dato'], 500);
+            return response()->json($arrayRes, 200); 
         } catch (\Throwable $th) {
             error_log($th);
             Log::info($th);            
