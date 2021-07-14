@@ -88,7 +88,7 @@ class WsSolucionIdeas extends Controller
                     
                 } catch (\Throwable $th) {
                     error_log($th);
-                    
+                    $response = $this->modelDocumentos->guardaResultado($idAvaluo, $idUsuario, 0, 'El avalúo no pudo ser entregado');
                     return response()->json(['mensaje' => 'Error al consumir el servicio'], 500);
                 }
             } else {
