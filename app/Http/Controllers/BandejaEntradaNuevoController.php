@@ -6827,8 +6827,10 @@ class BandejaEntradaNuevoController extends Controller
                 if($format == 'PDF'){
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    shell_exec('rm '. base_path('public/templatesDOCX/*.docx'));
-                    shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.base_path('public/templatesDOCX/formato.docx'));
+                    Log::info('rm '. base_path('public/templatesDOCX/*.docx'));
+                    Log::info('pdf2docx convert '.storage_path('app/formato.pdf').' '.base_path('public/templatesDOCX/formato.docx'));
+                    //shell_exec('rm '. base_path('public/templatesDOCX/*.docx'));
+                    //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.base_path('public/templatesDOCX/formato.docx'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
@@ -6860,8 +6862,10 @@ class BandejaEntradaNuevoController extends Controller
                 if($format == 'PDF'){
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    shell_exec('rm '. base_path('public/templatesDOCX/*.docx'));
-                    shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.base_path('public/templatesDOCX/formato.docx'));
+                    Log::info('rm '. base_path('public/templatesDOCX/*.docx'));
+                    Log::info('pdf2docx convert '.storage_path('app/formato.pdf').' '.base_path('public/templatesDOCX/formato.docx'));
+                    //shell_exec('rm '. base_path('public/templatesDOCX/*.docx'));
+                    //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.base_path('public/templatesDOCX/formato.docx'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
