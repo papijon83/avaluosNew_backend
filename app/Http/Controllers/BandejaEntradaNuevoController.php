@@ -6828,7 +6828,10 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec('pdf2docx convert '.Storage::get('formato.pdf').' '.storage_path('app/formato.docx'));
+                    $pathPDF = storage_path('app/formato.pdf');
+                    $pathDOC = storage_path('app/formato.docx');
+                    file_put_contents($pathPDF, $pdf->output());
+                    shell_exec('pdf2docx convert '.$pathPDF.' '.$pathDOC);
                     return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
@@ -6860,8 +6863,11 @@ class BandejaEntradaNuevoController extends Controller
                 if($format == 'PDF'){
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    shell_exec('rm '. storage_path('app/*.doc'));
-                    shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
+                    shell_exec('rm '. storage_path('app/*.docx'));
+                    $pathPDF = storage_path('app/formato.pdf');
+                    $pathDOC = storage_path('app/formato.docx');
+                    file_put_contents($pathPDF, $pdf->output());
+                    shell_exec('pdf2docx convert '.$pathPDF.' '.$pathDOC);
                     return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
