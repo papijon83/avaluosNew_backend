@@ -6827,7 +6827,7 @@ class BandejaEntradaNuevoController extends Controller
                 if($format == 'PDF'){
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    //shell_exec('rm '. storage_path('app/*.docx'));
+                    shell_exec('rm '. storage_path('app/*.docx'));
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
@@ -6860,7 +6860,7 @@ class BandejaEntradaNuevoController extends Controller
                 if($format == 'PDF'){
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    //shell_exec('rm '. storage_path('app/*.doc'));
+                    shell_exec('rm '. storage_path('app/*.docx'));
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 } 
