@@ -6828,7 +6828,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm ' . storage_path('app/*.docx'));
-                    shell_exec('pdf2docx convert ' . storage_path('app/formato.pdf'));
+                    shell_exec('libreoffice --headless --infilter="writer_pdf_import" --convert-to docx  --outdir '. storage_path('app/formato.pdf'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.doc')), 'nombre' =>  $numero_unico . '.doc'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
@@ -6861,7 +6861,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm ' . storage_path('app/*.docx'));
-                    shell_exec('pdf2docx convert ' . storage_path('app/formato.pdf'));
+                    shell_exec('libreoffice --headless --infilter="writer_pdf_import" --convert-to docx  --outdir '. storage_path('app/formato.pdf'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.doc')), 'nombre' =>  $numero_unico . '.doc'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
