@@ -6829,7 +6829,7 @@ class BandejaEntradaNuevoController extends Controller
                 } else {
                     shell_exec('rm ' . storage_path('app/*.docx'));
                     shell_exec('soffice --infilter="writer_pdf_import" --convert-to docx ' . storage_path('app/formato.pdf'));
-                    //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
+                    //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.doc')), 'nombre' =>  $numero_unico . '.doc'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
             $infoAvaluo = $this->modelReimpresion->infoAvaluo($id_avaluo);
@@ -6862,7 +6862,7 @@ class BandejaEntradaNuevoController extends Controller
                 } else {
                     shell_exec('rm ' . storage_path('app/*.docx'));
                     shell_exec('soffice --infilter="writer_pdf_import" --convert-to docx ' . storage_path('app/formato.pdf'));
-                    //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
+                    //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.doc')), 'nombre' =>  $numero_unico . '.doc'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
