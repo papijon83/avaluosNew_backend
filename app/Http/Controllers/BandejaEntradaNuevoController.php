@@ -6829,7 +6829,7 @@ class BandejaEntradaNuevoController extends Controller
                 } else {
                     $output = [];
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec('pdf2docx convert /var/www/html/avaluosNew_backend/storage/app/formato.pdf  /var/www/html/avaluosNew_backend/storage/app/formato.docx', $output);
+                    exec('pdf2docx convert /var/www/html/avaluosNew_backend/storage/app/formato.pdf  /var/www/html/avaluosNew_backend/storage/app/formato.docx', $output);
                     Log::info(json_encode($output));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.doc')), 'nombre' =>  $numero_unico . '.doc'], 200);
                 }     
@@ -6864,7 +6864,7 @@ class BandejaEntradaNuevoController extends Controller
                 } else {
                     $output = [];
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec('pdf2docx convert /var/www/html/avaluosNew_backend/storage/app/formato.pdf  /var/www/html/avaluosNew_backend/storage/app/formato.docx', $output);
+                    exec('pdf2docx convert /var/www/html/avaluosNew_backend/storage/app/formato.pdf  /var/www/html/avaluosNew_backend/storage/app/formato.docx', $output);
                     Log::info(json_encode($output));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.doc')), 'nombre' =>  $numero_unico . '.doc'], 200);
                 } 
