@@ -6823,7 +6823,7 @@ class BandejaEntradaNuevoController extends Controller
                 
                 $pdf = PDF::loadHTML($formato);
                 $pdf->setOptions(['chroot' => 'public']);
-                Storage::put('formato.pdf', $pdf->output());
+                file_put_contents('formato.pdf', $pdf->output());
                 if($format == 'PDF'){
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
