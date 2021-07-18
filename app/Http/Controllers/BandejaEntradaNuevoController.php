@@ -6828,8 +6828,8 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.doc'));
-                    //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
-                    //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
+                    shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
+                    return response()->json(['docxbase64' => base64_encode(Storage::get('formato.doc')), 'nombre' =>  $numero_unico . '.doc'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
             $infoAvaluo = $this->modelReimpresion->infoAvaluo($id_avaluo);
@@ -6861,8 +6861,8 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.doc'));
-                    //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
-                    //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
+                    shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
+                    return response()->json(['docxbase64' => base64_encode(Storage::get('formato.doc')), 'nombre' =>  $numero_unico . '.doc'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
