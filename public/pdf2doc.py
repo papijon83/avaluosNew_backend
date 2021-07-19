@@ -6,7 +6,5 @@ from pdf2docx import Converter
 pdf_file = sys.argv[0]
 docx_file = sys.argv[1]
 
-# convert pdf to docx
-cv = Converter(pdf_file)
-cv.convert(docx_file)      # all pages by default
-cv.close()
+print(pdf_file)
+print(docx_file)
