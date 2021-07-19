@@ -6829,7 +6829,7 @@ class BandejaEntradaNuevoController extends Controller
                 } else {
                     //Log::info('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     shell_exec('rm '. Storage::path('*.docx'));
-                    $command = 'libreoffice --headless --infilter="writer_pdf_import" --convert-to doc  --outdir '. storage_path('app/') . ' ' . storage_path('app/formato.pdf');
+                    $command = 'libreoffice --invisible --convert-to docx:"MS Word 2007 XML" '.storage_path('app/formato.pdf');
                     shell_exec($command);
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
@@ -6864,7 +6864,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. Storage::path('*.docx'));
-                    $command = 'libreoffice --headless --infilter="writer_pdf_import" --convert-to doc  --outdir '. storage_path('app/') . ' ' . storage_path('app/formato.pdf');
+                    $command = 'libreoffice --invisible --convert-to docx:"MS Word 2007 XML" '.storage_path('app/formato.pdf');
                     shell_exec($command);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
