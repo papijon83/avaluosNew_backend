@@ -6831,6 +6831,7 @@ class BandejaEntradaNuevoController extends Controller
                     shell_exec('rm '. storage_path('app/*.docx'));
                     shell_exec('python3 pdf2doc.py '.$pathpdf.' '.$pathdoc);
                     $output = shell_exec("/usr/bin/python --version");
+                    Log::info($output);
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
@@ -6866,6 +6867,7 @@ class BandejaEntradaNuevoController extends Controller
                     shell_exec('rm '. storage_path('app/*.docx'));
                     shell_exec('python3 pdf2doc.py '.$pathpdf.' '.$pathdoc);
                     $output = shell_exec("/usr/bin/python --version");
+                    Log::info($output);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
