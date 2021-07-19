@@ -8,5 +8,5 @@ docx_file = sys.argv[2]
 
 # convert pdf to docx
 cv = Converter(pdf_file)
-cv.convert(docx_file)      # all pages by default
+cv.convert(docx_file, multi_processing=True)      # all pages by default
 cv.close()
