@@ -6832,7 +6832,7 @@ class BandejaEntradaNuevoController extends Controller
                     $pathpdf = storage_path('app/' . $fileName . '.pdf');
                     $pathdoc = storage_path('app/' . $fileName . '.docx');
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec('python3 pdf2doc.py '.$pathpdf.' '.$pathdoc);
+                    shell_exec('/usr/bin/php python3 pdf2doc.py '.$pathpdf.' '.$pathdoc);
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
@@ -6869,7 +6869,7 @@ class BandejaEntradaNuevoController extends Controller
                     $pathpdf = storage_path('app/' . $fileName . '.pdf');
                     $pathdoc = storage_path('app/' . $fileName . '.docx');
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec('python3 pdf2doc.py '.$pathpdf.' '.$pathdoc);
+                    shell_exec('/usr/bin/php python3 pdf2doc.py '.$pathpdf.' '.$pathdoc);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
