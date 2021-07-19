@@ -6829,8 +6829,7 @@ class BandejaEntradaNuevoController extends Controller
                 } else {
                     //Log::info('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     shell_exec('rm '. Storage::path('*.docx'));
-                    $command = 'pdf2docx convert '.Storage::path('formato.pdf').' '.Storage::path('formato.docx');
-                    error_log($command);
+                    $command = '/hom/rcubica/.local/bin/pdf2docx convert /var/www/html/avaluosNew_backend/storage/app/formato.pdf /var/www/html/avaluosNew_backend/storage/app/formato.docx';
                     shell_exec($command);
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
@@ -6865,8 +6864,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. Storage::path('*.docx'));
-                    $command = 'pdf2docx convert '.Storage::path('formato.pdf').' '.Storage::path('formato.docx');
-                    error_log($command);
+                    $command = '/hom/rcubica/.local/bin/pdf2docx convert /var/www/html/avaluosNew_backend/storage/app/formato.pdf /var/www/html/avaluosNew_backend/storage/app/formato.docx';
                     shell_exec($command);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
