@@ -3,8 +3,10 @@
 import sys
 from pdf2docx import Converter
 
-pdf_file = sys.argv[0]
-docx_file = sys.argv[1]
+pdf_file = sys.argv[1]
+docx_file = sys.argv[2]
 
-print(pdf_file)
-print(docx_file)
+# convert pdf to docx
+cv = Converter(pdf_file)
+cv.convert(docx_file)      # all pages by default
+cv.close()
