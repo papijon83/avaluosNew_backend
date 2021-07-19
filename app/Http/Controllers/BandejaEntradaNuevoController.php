@@ -6838,7 +6838,7 @@ class BandejaEntradaNuevoController extends Controller
                     //shell_exec('rm '. storage_path('app/*.docx'));
                     //shell_exec('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.'formato.docx');
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
-                    //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
+                    return response()->json(['docxbase64' => base64_encode($pathdoc), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
             $infoAvaluo = $this->modelReimpresion->infoAvaluo($id_avaluo);
@@ -6879,6 +6879,7 @@ class BandejaEntradaNuevoController extends Controller
                     //Log::info('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     //shell_exec('rm '. storage_path('app/*.docx'));
                     //shell_exec('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.'formato.docx');
+                    return response()->json(['docxbase64' => base64_encode($pathdoc), 'nombre' =>  $numero_unico . '.docx'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
