@@ -6823,22 +6823,19 @@ class BandejaEntradaNuevoController extends Controller
                 
                 $pdf = PDF::loadHTML($formato);
                 $pdf->setOptions(['chroot' => 'public']);
-                Storage::put('formato.pdf', $pdf->output());
                 if($format == 'PDF'){
+                    Storage::put('formato.pdf', $pdf->output());
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    shell_exec('rm '. storage_path('app/*.doc'));
+                    //Log::info('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
+                    shell_exec('rm '. storage_path('app/*.docx'));
                     $fileName = 'formato';
                     $pathpdf = storage_path('app/' . $fileName . '.pdf');
-                    $pathdoc = storage_path('app/' . $fileName . '.doc');
+                    $pathdoc = storage_path('app/' . $fileName . '.docx');
                     file_put_contents($pathpdf, $pdf->output());
-                    shell_exec('libreoffice --headless --infilter="writer_pdf_import" --convert-to doc  --outdir '. storage_path('app/') . ' ' . $pathpdf);
-                    shell_exec('rm ' . $pathpdf);
-                    //Log::info('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
-                    //shell_exec('rm '. storage_path('app/*.docx'));
-                    //shell_exec('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.'formato.docx');
+                    shell_exec('python3 pdf2doc.py '.$pathpdf.' '.$pathdoc);
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
-                    return response()->json(['docxbase64' => base64_encode($pathdoc), 'nombre' =>  $numero_unico . '.doc'], 200);
+                    return response()->json(['docxbase64' => base64_encode($pathdoc), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
             $infoAvaluo = $this->modelReimpresion->infoAvaluo($id_avaluo);
@@ -6865,22 +6862,20 @@ class BandejaEntradaNuevoController extends Controller
 
                 $pdf = PDF::loadHTML($formato);
                 $pdf->setOptions(['chroot' => 'public']);
-                Storage::put('formato.pdf', $pdf->output());
                 if($format == 'PDF'){
+                    Storage::put('formato.pdf', $pdf->output());
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    shell_exec('rm '. storage_path('app/*.doc'));
+                    //Log::info('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
+                    shell_exec('rm '. storage_path('app/*.docx'));
                     $fileName = 'formato';
                     $pathpdf = storage_path('app/' . $fileName . '.pdf');
-                    $pathdoc = storage_path('app/' . $fileName . '.doc');
+                    $pathdoc = storage_path('app/' . $fileName . '.docx');
                     file_put_contents($pathpdf, $pdf->output());
-                    shell_exec('libreoffice --headless --infilter="writer_pdf_import" --convert-to doc  --outdir '. storage_path('app/') . ' ' . $pathpdf);
-                    shell_exec('rm ' . $pathpdf);
-                    //Log::info('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
-                    //shell_exec('rm '. storage_path('app/*.docx'));
-                    //shell_exec('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.'formato.docx');
-                    return response()->json(['docxbase64' => base64_encode($pathdoc), 'nombre' =>  $numero_unico . '.doc'], 200);
-                } 
+                    shell_exec('python3 pdf2doc.py '.$pathpdf.' '.$pathdoc);
+                    //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
+                    return response()->json(['docxbase64' => base64_encode($pathdoc), 'nombre' =>  $numero_unico . '.docx'], 200);
+                }     
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
             $this->modelReimpresionNuevo = new ReimpresionNuevo();
