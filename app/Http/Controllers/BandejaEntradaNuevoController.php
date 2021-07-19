@@ -6828,8 +6828,11 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     //Log::info('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
+                    $fileName = 'formato';
+                    $pathpdf = storage_path('app/' . $fileName . '.pdf');
+                    $pathdoc = storage_path('app/' . $fileName . '.docx');
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec('python3 pdf2doc.py '.escapeshellarg(storage_path('app/formato.pdf')).' '.escapeshellarg(storage_path('app/formato.docx')));
+                    shell_exec('python3 pdf2doc.py '.escapeshellarg($pathpdf).' '.escapeshellarg($pathdoc));
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
@@ -6862,8 +6865,11 @@ class BandejaEntradaNuevoController extends Controller
                 if($format == 'PDF'){
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
+                    $fileName = 'formato';
+                    $pathpdf = storage_path('app/' . $fileName . '.pdf');
+                    $pathdoc = storage_path('app/' . $fileName . '.docx');
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec('python3 pdf2doc.py '.escapeshellarg(storage_path('app/formato.pdf')).' '.escapeshellarg(storage_path('app/formato.docx')));
+                    shell_exec('python3 pdf2doc.py '.escapeshellarg($pathpdf).' '.escapeshellarg($pathdoc));
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
