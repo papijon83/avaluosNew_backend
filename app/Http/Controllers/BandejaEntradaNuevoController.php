@@ -6832,7 +6832,8 @@ class BandejaEntradaNuevoController extends Controller
                     $pathpdf = Storage::path('formato.pdf');
                     $pathdoc = Storage::path('formato.docx');
                     $command = 'pdf2docx convert '.$pathpdf.' '.$pathdoc.'';
-                    shell_exec($command);
+                    $ret_val = exec($command, $output);
+                    Log::info($ret_val);
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
@@ -6869,7 +6870,8 @@ class BandejaEntradaNuevoController extends Controller
                     $pathpdf = Storage::path('formato.pdf');
                     $pathdoc = Storage::path('formato.docx');
                     $command = 'pdf2docx convert '.$pathpdf.' '.$pathdoc.'';
-                    shell_exec($command);
+                    $ret_val = exec($command, $output);
+                    Log::info($ret_val);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
