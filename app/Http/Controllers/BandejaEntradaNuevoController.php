@@ -6829,8 +6829,7 @@ class BandejaEntradaNuevoController extends Controller
                 } else {
                     //Log::info('python3 pdf2doc.py '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     shell_exec('rm '. Storage::path('*.docx'));
-                    $pathpdf = Storage::path('formato.pdf');
-                    $pathdoc = Storage::path('formato.docx');
+                    $pathpdf = storage_path('app/formato.pdf');
                     $command = 'soffice --infilter="writer_pdf_import" --convert-to doc '.$pathpdf;
                     shell_exec($command);
                     //shell_exec('pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.doc'));
@@ -6866,8 +6865,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. Storage::path('*.docx'));
-                    $pathpdf = Storage::path('formato.pdf');
-                    $pathdoc = Storage::path('formato.docx');
+                    $pathpdf = storage_path('app/formato.pdf');
                     $command = 'soffice --infilter="writer_pdf_import" --convert-to doc '.$pathpdf;
                     shell_exec($command);
                 } 
