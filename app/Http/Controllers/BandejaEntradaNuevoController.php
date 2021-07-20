@@ -6830,6 +6830,7 @@ class BandejaEntradaNuevoController extends Controller
                     shell_exec('rm '. storage_path('app/*.docx'));
                     $command = escapeshellcmd('/usr/bin/python3 '.public_path('pdf2doc.py').' '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     $output = shell_exec($command);
+                    echo $output;
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
@@ -6864,6 +6865,7 @@ class BandejaEntradaNuevoController extends Controller
                     shell_exec('rm '. storage_path('app/*.docx'));
                     $command = escapeshellcmd('/usr/bin/python3 '.public_path('pdf2doc.py').' '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     $output = shell_exec($command);
+                    echo $output;
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
