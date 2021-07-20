@@ -6829,14 +6829,14 @@ class BandejaEntradaNuevoController extends Controller
                 if($format == 'PDF'){
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                   // shell_exec('rm '. storage_path('app/*.docx'));
-                   // shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
-                    $process = new Process(['/home/rcubica/.local/bin/pdf2docx convert ', storage_path('app/formato.pdf'), storage_path('app/formato.docx')]);
+                    shell_exec('rm '. storage_path('app/*.docx'));
+                    shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
+                    /*$process = new Process(['php', '/var/www/html/ejecutaConvierte.php']);
                     $process->run();
 
                     if (!$process->isSuccessful()) {
                         throw new ProcessFailedException($process);
-                    }
+                    }*/
                     return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
@@ -6868,15 +6868,15 @@ class BandejaEntradaNuevoController extends Controller
                 if($format == 'PDF'){
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                     // shell_exec('rm '. storage_path('app/*.docx'));
-                   // shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
-                   $process = new Process(['/home/rcubica/.local/bin/pdf2docx convert ', storage_path('app/formato.pdf'), storage_path('app/formato.docx')]);
-                   $process->run();
+                    shell_exec('rm '. storage_path('app/*.docx'));
+                    shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
+                   /* $process = new Process(['php', '/var/www/html/ejecutaConvierte.php']);
+                    $process->run();
 
-                   if (!$process->isSuccessful()) {
-                       throw new ProcessFailedException($process);
-                   }
-                   return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
+                    if (!$process->isSuccessful()) {
+                        throw new ProcessFailedException($process);
+                    }*/
+                    return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
