@@ -6830,7 +6830,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $process = new Process([escapeshellarg('/home/rcubica/.local/bin/pdf2docx'), 'convert', storage_path('app/formato.pdf'), storage_path('app/formato.docx')]);
+                    $process = new Process(['python3', 'pdf2doc.py', storage_path('app/formato.pdf'), storage_path('app/formato.docx')]);
                     $process->run();
 
                     if (!$process->isSuccessful()) {
@@ -6868,7 +6868,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $process = new Process([escapeshellarg('/home/rcubica/.local/bin/pdf2docx'), 'convert', storage_path('app/formato.pdf'), storage_path('app/formato.docx')]);
+                    $process = new Process(['python3', 'pdf2doc.py', storage_path('app/formato.pdf'), storage_path('app/formato.docx')]);
                     $process->run();
 
                     if (!$process->isSuccessful()) {
