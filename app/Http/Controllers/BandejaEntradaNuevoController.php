@@ -6828,8 +6828,8 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $command = 'pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx');
-                    pcntl_exec($command);
+                    $command = escapeshellcmd('python3 pdf2doc '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
+                    shell_exec($command);
                     return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
@@ -6862,8 +6862,8 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $command = 'pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx');
-                    pcntl_exec($command);
+                    $command = escapeshellcmd('python3 pdf2doc '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
+                    shell_exec($command);
                     return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
