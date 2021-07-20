@@ -6829,7 +6829,7 @@ class BandejaEntradaNuevoController extends Controller
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
                     $command = 'pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx');
-                    passthru($command);
+                    pcntl_exec($command);
                     return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
@@ -6863,7 +6863,7 @@ class BandejaEntradaNuevoController extends Controller
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
                     $command = 'pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx');
-                    passthru($command);
+                    pcntl_exec($command);
                     return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
