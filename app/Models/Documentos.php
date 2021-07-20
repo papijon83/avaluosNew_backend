@@ -39,6 +39,62 @@ class Documentos
 
     }*/
 
+    public function getIdInmueble($ctapredial)
+    {
+        /*return DB::transaction(function() use ($ctapredial){
+            $cod = null;
+            $desc = null;
+            $idInmueble = null;
+            $codeEstadoCuenta = null;
+            $descEstadoCuenta = null;
+            $procedure = 'BEGIN OVICA11G.OVICA11G_CONSULTAS_FIS_PKG.OVICA11G_GETESTADOCUENTA_p(
+                :p_CUENTA,
+                :p_IDINMUEBLE,
+                :P_CODESTADOCUENTA,
+                :p_DESCESTADOCUENTA,
+                :P_COD,
+                :p_DESC
+            ); END;'; 
+            $pdo = DB::getPdo();
+            $stmt = $pdo->prepare($procedure);
+        
+            $stmt->bindParam(':p_CUENTA', $ctapredial, \PDO::PARAM_STR, 20);
+            $stmt->bindParam(':p_IDINMUEBLE', $idInmueble, \PDO::PARAM_STR, 20);
+            $stmt->bindParam(':P_CODESTADOCUENTA', $codeEstadoCuenta, \PDO::PARAM_STR, 20);
+            $stmt->bindParam(':p_DESCESTADOCUENTA', $descEstadoCuenta, \PDO::PARAM_STR, 200);
+            $stmt->bindParam(':P_COD', $cod, \PDO::PARAM_STR, 20);
+            $stmt->bindParam(':p_DESC', $desc, \PDO::PARAM_STR, 200);
+            $stmt->execute();
+        
+            return ['idinmueble' => $idInmueble, 'codestadocuenta' => $codeEstadoCuenta, 'descestadocuenta' => $descEstadoCuenta];
+        });*/
+        $cod = null;
+        $desc = null;
+        $idInmueble = null;
+        $codeEstadoCuenta = null;
+        $descEstadoCuenta = null;
+        $procedure = 'BEGIN OVICA11G.OVICA11G_CONSULTAS_FIS_PKG.OVICA11G_GETESTADOCUENTA_p(
+            :p_CUENTA,
+            :p_IDINMUEBLE,
+            :P_CODESTADOCUENTA,
+            :p_DESCESTADOCUENTA,
+            :P_COD,
+            :p_DESC
+        ); END;';
+        $conn = oci_connect(env("DB_USERNAME_OV"), env("DB_PASSWORD_OV"), env("DB_TNS_OV"));
+        $stmt = oci_parse($conn, $procedure);
+        oci_bind_by_name($stmt, ':p_CUENTA', $ctapredial);
+        oci_bind_by_name($stmt, ':p_IDINMUEBLE', $idInmueble, 1000);
+        oci_bind_by_name($stmt, ':P_CODESTADOCUENTA', $ccodeEstadoCuentad, 300);
+        oci_bind_by_name($stmt, ':p_DESCESTADOCUENTA', $descEstadoCuenta, 1000);
+        oci_bind_by_name($stmt, ':P_COD', $cod);
+        oci_bind_by_name($stmt, ':p_DESC', $desc, 4000);
+        oci_execute($stmt, OCI_COMMIT_ON_SUCCESS);
+        oci_free_statement($stmt);
+        oci_close($conn);
+        return ['idinmueble' => $idInmueble, 'codestadocuenta' => $codeEstadoCuenta, 'descestadocuenta' => $descEstadoCuenta];
+    }
+
     public function tran_InsertAvaluo($descripcion,$tipoDocumentoDigital,$fecha,$idUsuario){
         try{
             $idDocumentoDigital = 0;

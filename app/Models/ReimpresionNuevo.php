@@ -4446,7 +4446,7 @@ class ReimpresionNuevo
     
                 $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $sumatoria;
     
-                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'] = $elementosConstruccion['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'];
+                $infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_IE_OC_EA_Comunes_por_indiviso'] = isset($elementosConstruccion['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes']) ? $elementosConstruccion['ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes'] : '0';
                 
                 //$infoReimpresion['Instalaciones_Especiales_Obras_Complementarias_Elementos_Accesorios']['Totales']['Total_De_Las_Instalaciones'] = $elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasPrivativas'] + $elementosConstruccion['SumatoriaTotalInstalacionesAccesoriosComplementariasComunes'];
             }

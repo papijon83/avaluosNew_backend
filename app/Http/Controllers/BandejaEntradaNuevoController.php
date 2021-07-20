@@ -1264,6 +1264,16 @@ class BandejaEntradaNuevoController extends Controller
         } 
     }
 
+    public function existeCuenta($camposFexavaAvaluo,$cuentaCatastral){        
+        $resIdInmueble = $this->modelDocumentos->getIdInmueble($cuentaCatastral); 
+        if(isset($resIdInmueble['idinmueble']) && trim($resIdInmueble['idinmueble']) != ''){ 
+            return $camposFexavaAvaluo;
+        }else{
+            $camposFexavaAvaluo['ERRORES'][] = array('La cuenta catastral no existe');
+            return $camposFexavaAvaluo;
+        }
+    }
+
     function guardarAvaluoN($file,$infoXmlIdentificacion, $camposFexavaAvaluo, $idPersona,$elementoPrincipal,$xml,$fechaAvaluo,$contents){
         try{       
             
@@ -1291,6 +1301,7 @@ class BandejaEntradaNuevoController extends Controller
                            $camposFexavaAvaluo['MANZANA'].'-'.
                            $camposFexavaAvaluo['LOTE'].'-'.
                            $camposFexavaAvaluo['UNIDADPRIVATIVA'];
+            $camposFexavaAvaluo = $this->existeCuenta($camposFexavaAvaluo,$camposFexavaAvaluo['REGION'].$camposFexavaAvaluo['MANZANA'].$camposFexavaAvaluo['LOTE'].$camposFexavaAvaluo['UNIDADPRIVATIVA'].$camposFexavaAvaluo['DIGITOVERIFICADOR']);
             $nombreXMLAvaluo = $this->crearNombreDocumentoAv($cuentaCat,$elementoPrincipal);
             $descripcionXMLAvaluo = $this->crearDescripcionDocumentoAv($cuentaCat);
             if($elementoPrincipal == "//Catastral"){
@@ -1308,7 +1319,9 @@ class BandejaEntradaNuevoController extends Controller
            
             $camposFexavaAvaluo = $this->guardarAvaluoEnfoqueMercado($xml, $camposFexavaAvaluo,$elementoPrincipal);
             $this->guardaAvance($nombreArchivo,20);
+            
             $camposFexavaAvaluo = $this->guardarAvaluoEnfoqueCostosComercial($xml, $camposFexavaAvaluo,$elementoPrincipal);
+            
             
             $camposFexavaAvaluo = $this->guardarAvaluoEnfoqueCostosCatastral($xml, $camposFexavaAvaluo,$elementoPrincipal);
             $this->guardaAvance($nombreArchivo,25);
@@ -1481,6 +1494,7 @@ class BandejaEntradaNuevoController extends Controller
                            $camposFexavaAvaluo['MANZANA'].'-'.
                            $camposFexavaAvaluo['LOTE'].'-'.
                            $camposFexavaAvaluo['UNIDADPRIVATIVA'];
+            $camposFexavaAvaluo = $this->existeCuenta($camposFexavaAvaluo,$camposFexavaAvaluo['REGION'].$camposFexavaAvaluo['MANZANA'].$camposFexavaAvaluo['LOTE'].$camposFexavaAvaluo['UNIDADPRIVATIVA'].$camposFexavaAvaluo['DIGITOVERIFICADOR']);
             $nombreXMLAvaluo = $this->crearNombreDocumentoAv($cuentaCat,$elementoPrincipal);
             $descripcionXMLAvaluo = $this->crearDescripcionDocumentoAv($cuentaCat);
             if($elementoPrincipal == "//Catastral"){
@@ -6014,15 +6028,20 @@ class BandejaEntradaNuevoController extends Controller
         $dataf12 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//ElementosDeLaConstruccion[@id="f"]//SumatoriaTotalInstalacionesEspecialesObrasComplementariasYElementosAccesoriosPrivativas[@id="f.12"]');
         $dataf14 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//ElementosDeLaConstruccion[@id="f"]//ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes[@id="f.14"]');
 
-        $errores = valida_AvaluoEnfoqueCostosComercial($xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]'), $elementoPrincipal, $datad13, $datae2, $dataf12, $dataf14);    
-        if(count($errores) > 0){
-            //return array('ERROR' => $errores);
-            $camposFexavaAvaluo['ERRORES'][] = $errores;
-        }
-        $enfoqueDeCostos = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]//ImporteTotalDelEnfoqueDeCostos[@id="i.6"]');        
+        if(isset($dataf14[0][0]) && isset($dataf12[0][0]) && isset($datad13[0][0])){
+            $errores = valida_AvaluoEnfoqueCostosComercial($xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]'), $elementoPrincipal, $datad13, $datae2, $dataf12, $dataf14);    
+            if(count($errores) > 0){
+                //return array('ERROR' => $errores);
+                $camposFexavaAvaluo['ERRORES'][] = $errores;
+            }
+            $enfoqueDeCostos = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]//ImporteTotalDelEnfoqueDeCostos[@id="i.6"]');        
 
-        $camposFexavaAvaluo['IMPORTETOTALENFCOSTOS'] = (String)($enfoqueDeCostos[0]);
-        return $camposFexavaAvaluo;
+            $camposFexavaAvaluo['IMPORTETOTALENFCOSTOS'] = (String)($enfoqueDeCostos[0]);
+            return $camposFexavaAvaluo;
+        }else{
+            return $camposFexavaAvaluo;
+        }
+        
     } catch (\Throwable $th) {
         Log::info($th);
         error_log($th);
@@ -6042,15 +6061,20 @@ class BandejaEntradaNuevoController extends Controller
         $dataf12 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//ElementosDeLaConstruccion[@id="f"]//ImporteTotalInstalacionesAccesoriosComplementariasPrivativas[@id="f.12"]');
         $dataf14 = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//ElementosDeLaConstruccion[@id="f"]//ImporteIndivisoInstalacionesEspecialesObrasComplementariasYElementosAccesoriosComunes[@id="f.14"]');
 
-        $errores = valida_AvaluoEnfoqueCostosComercialV($xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]'), $elementoPrincipal, $datad13, $datae2, $dataf12, $dataf14);    
-        if(count($errores) > 0){
-            //return array('ERROR' => $errores);
-            $camposFexavaAvaluo['ERRORES'][] = $errores;
-        }
-        $enfoqueDeCostos = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]//ImporteTotalDelEnfoqueDeCostos[@id="i.6"]');        
+        if(isset($dataf14[0][0]) && isset($dataf12[0][0]) && isset($datad13[0][0])){
+            $errores = valida_AvaluoEnfoqueCostosComercialV($xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]'), $elementoPrincipal, $datad13, $datae2, $dataf12, $dataf14);    
+            if(count($errores) > 0){
+                //return array('ERROR' => $errores);
+                $camposFexavaAvaluo['ERRORES'][] = $errores;
+            }
+            $enfoqueDeCostos = $xmlEnfoqueDeCostos->xpath($elementoPrincipal.'//EnfoqueDeCostos[@id="i"]//ImporteTotalDelEnfoqueDeCostos[@id="i.6"]');        
 
-        $camposFexavaAvaluo['IMPORTETOTALENFCOSTOS'] = (String)($enfoqueDeCostos[0]);
-        return $camposFexavaAvaluo;
+            $camposFexavaAvaluo['IMPORTETOTALENFCOSTOS'] = (String)($enfoqueDeCostos[0]);
+            return $camposFexavaAvaluo;
+        }else{
+            return $camposFexavaAvaluo;
+        }
+        
     } catch (\Throwable $th) {
         Log::info($th);
         error_log($th);
