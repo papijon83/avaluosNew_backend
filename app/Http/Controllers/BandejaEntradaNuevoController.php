@@ -6828,7 +6828,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $command = escapeshellcmd('/usr/bin/python3 '.public_path('pdf2doc.py').' '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
+                    $command = escapeshellcmd('/usr/bin/python3 '.base_path('public/pdf2doc.py').' '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     $output = shell_exec($command);
                     echo $output;
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
@@ -6863,7 +6863,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $command = escapeshellcmd('/usr/bin/python3 '.public_path('pdf2doc.py').' '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
+                    $command = escapeshellcmd('/usr/bin/python3 '.base_path('public/pdf2doc.py').' '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
                     $output = shell_exec($command);
                     echo $output;
                     //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
