@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Hamcrest\Arrays\IsArray;
 use Log;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class BandejaEntradaNuevoController extends Controller
 {
@@ -6828,9 +6830,13 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $command = escapeshellcmd('/hom/rcubica/.local/bin/pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
-                    shell_exec($command);
-                    //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
+                    $process = new Process(['/home/mdperez/.local/bin/pdf2docx', 'convert', storage_path('app/formato.pdf'), storage_path('app/formato.docx')]);
+                    $process->run();
+
+                    if (!$process->isSuccessful()) {
+                        throw new ProcessFailedException($process);
+                    }
+                    return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
             $infoAvaluo = $this->modelReimpresion->infoAvaluo($id_avaluo);
@@ -6862,9 +6868,13 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $command = escapeshellcmd('/hom/rcubica/.local/bin/pdf2docx convert '.storage_path('app/formato.pdf').' '.storage_path('app/formato.docx'));
-                    shell_exec($command);
-                    //return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
+                    $process = new Process(['/home/mdperez/.local/bin/pdf2docx', 'convert', storage_path('app/formato.pdf'), storage_path('app/formato.docx')]);
+                    $process->run();
+
+                    if (!$process->isSuccessful()) {
+                        throw new ProcessFailedException($process);
+                    }
+                    return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
                 } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
