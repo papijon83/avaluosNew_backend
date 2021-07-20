@@ -6815,30 +6815,27 @@ class BandejaEntradaNuevoController extends Controller
 
                 $tipo_avaluo = substr($infoAvaluo['Encabezado']['No_Unico'], 0, 5);
 
-                if($format == 'PDF'){
-                    if($tipo_avaluo == 'A-CAT'){
-                        $formato = view('justificante', compact("infoAvaluo"))->render();
-                    }else{
-                        $formato = view('justificante_com', compact("infoAvaluo"))->render();
-                    }
-                    
-                    $pdf = PDF::loadHTML($formato);
-                    $pdf->setOptions(['chroot' => 'public']);
-                    Storage::put('formato.pdf', $pdf->output());
-                    return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
-                } else {
-                    $pathdoc = storage_path('app/formato.docx');
-                    $phpWord = new \PhpOffice\PhpWord\PhpWord();
-                    if($tipo_avaluo == 'A-CAT'){
-                        $document = $phpWord->loadTemplate(base_path('public/templatesDOCX/templateCAT.docx'));
-                    }else{
-                        $document = $phpWord->loadTemplate(base_path('public/templatesDOCX/templateCOM.docx'));
-                    }
-                    $document->saveAs($pathdoc);
-                    return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
+                if($tipo_avaluo == 'A-CAT'){
+                    $formato = view('justificante', compact("infoAvaluo"))->render();
+                }else{
+                    $formato = view('justificante_com', compact("infoAvaluo"))->render();
                 }
                 
-                    
+                $pdf = PDF::loadHTML($formato);
+                $pdf->setOptions(['chroot' => 'public']);
+                Storage::put('formato.pdf', $pdf->output());
+                if($format == 'PDF'){
+                    return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
+                } else {
+                    shell_exec('rm '. storage_path('app/*.doc'));
+                    $fileName = 'formato';
+                    $pathpdf = storage_path('app/' . $fileName . '.pdf');
+                    $pathdoc = storage_path('app/' . $fileName . '.doc');
+                    file_put_contents($pathpdf, $pdf->output());
+                    shell_exec('libreoffice --headless --infilter="writer_pdf_import" --convert-to doc  --outdir '. storage_path('app/') . ' ' . $pathpdf);
+                    shell_exec('rm ' . $pathpdf);
+                    return response()->json(['docxbase64' => base64_encode($pathdoc), 'nombre' =>  $numero_unico . '.doc'], 200);
+                }     
             /*$this->modelReimpresion = new ReimpresionNuevo();
             $infoAvaluo = $this->modelReimpresion->infoAvaluo($id_avaluo);
             print_r($infoAvaluo); exit();*/
@@ -6853,33 +6850,30 @@ class BandejaEntradaNuevoController extends Controller
                     return $infoAvaluo;
                 }                
                 $tipo_avaluo = substr($infoAvaluo['Encabezado']['No_Unico'], 0, 5);
+               
+                if($tipo_avaluo == 'A-CAT'){
+                    $formato = view('justificanteNew', compact("infoAvaluo"))->render();
+                }else{
+                    //Log::info(json_encode($infoAvaluo));                    
+                    $formato = view('justificanteNew_com', compact("infoAvaluo"))->render();
+                    Log::info(json_encode("ABAJO DE VIEW"));
+                }
 
+                $pdf = PDF::loadHTML($formato);
+                $pdf->setOptions(['chroot' => 'public']);
+                Storage::put('formato.pdf', $pdf->output());
                 if($format == 'PDF'){
-                    if($tipo_avaluo == 'A-CAT'){
-                        $formato = view('justificanteNew', compact("infoAvaluo"))->render();
-                    }else{
-                        //Log::info(json_encode($infoAvaluo));                    
-                        $formato = view('justificanteNew_com', compact("infoAvaluo"))->render();
-                        Log::info(json_encode("ABAJO DE VIEW"));
-                    }
-                    
-                    $pdf = PDF::loadHTML($formato);
-                    $pdf->setOptions(['chroot' => 'public']);
-                    Storage::put('formato.pdf', $pdf->output());
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
-                    $pathdoc = storage_path('app/formato.docx');
-                    $phpWord = new \PhpOffice\PhpWord\PhpWord();
-                    if($tipo_avaluo == 'A-CAT'){
-                        $document = $phpWord->loadTemplate(base_path('public/templatesDOCX/templateCAT.docx'));
-                    }else{
-                        $document = $phpWord->loadTemplate(base_path('public/templatesDOCX/templateCOM.docx'));
-                    }
-                    $document->saveAs($pathdoc);
-                    return response()->json(['docxbase64' => base64_encode(Storage::get('formato.docx')), 'nombre' =>  $numero_unico . '.docx'], 200);
-                }
-                
-                
+                    shell_exec('rm '. storage_path('app/*.doc'));
+                    $fileName = 'formato';
+                    $pathpdf = storage_path('app/' . $fileName . '.pdf');
+                    $pathdoc = storage_path('app/' . $fileName . '.doc');
+                    file_put_contents($pathpdf, $pdf->output());
+                    shell_exec('libreoffice --headless --infilter="writer_pdf_import" --convert-to doc  --outdir '. storage_path('app/') . ' ' . $pathpdf);
+                    shell_exec('rm ' . $pathpdf);
+                    return response()->json(['docxbase64' => base64_encode($pathdoc), 'nombre' =>  $numero_unico . '.doc'], 200);
+                } 
                 /*$this->modelDocumentos = new Documentos();    //echo $numero_unico; exit();         
             $id_avaluo = $this->modelDocumentos->get_idavaluo_db($numero_unico);    
             $this->modelReimpresionNuevo = new ReimpresionNuevo();
