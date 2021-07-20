@@ -6830,7 +6830,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $process = new Process(['libreoffice', '--invisible --convert-to docx:"MS Word 2007 XML"', storage_path('app/formato.pdf')]);
+                    $process = new Process(['sudo', 'libreoffice --invisible --convert-to docx:"MS Word 2007 XML"', storage_path('app/formato.pdf')]);
                     $process->run();
 
                     if (!$process->isSuccessful()) {
@@ -6868,7 +6868,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    $process = new Process(['libreoffice', '--invisible --convert-to docx:"MS Word 2007 XML"', storage_path('app/formato.pdf')]);
+                    $process = new Process(['sudo', 'libreoffice --invisible --convert-to docx:"MS Word 2007 XML"', storage_path('app/formato.pdf')]);
                     $process->run();
 
                     if (!$process->isSuccessful()) {
