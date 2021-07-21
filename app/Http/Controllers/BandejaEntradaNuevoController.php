@@ -6775,7 +6775,7 @@ class BandejaEntradaNuevoController extends Controller
 
     public function infoAvaluo(Request $request){
         try{
-
+            $isCAT = false;
             $numero_unico = trim($request->query('no_unico'));
             $format = trim($request->query('formato'));
 
@@ -6843,8 +6843,10 @@ class BandejaEntradaNuevoController extends Controller
 
                 if($tipo_avaluo == 'A-CAT'){
                     $formato = view('justificante', compact("infoAvaluo"))->render();
+                    $isCAT = true;
                 }else{
                     $formato = view('justificante_com', compact("infoAvaluo"))->render();
+                    $isCAT = false;
                 }
                 
                 $pdf = PDF::loadHTML($formato);
@@ -6880,9 +6882,11 @@ class BandejaEntradaNuevoController extends Controller
                
                 if($tipo_avaluo == 'A-CAT'){
                     $formato = view('justificanteNew', compact("infoAvaluo"))->render();
+                    $isCAT = true;
                 }else{
                     //Log::info(json_encode($infoAvaluo));                    
                     $formato = view('justificanteNew_com', compact("infoAvaluo"))->render();
+                    $isCAT = false;
                     Log::info(json_encode("ABAJO DE VIEW"));
                 }
 
