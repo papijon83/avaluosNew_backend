@@ -6775,7 +6775,7 @@ class BandejaEntradaNuevoController extends Controller
 
     public function infoAvaluo(Request $request){
         try{
-            $isCAT = false;
+            $pyENV = "";
             $numero_unico = trim($request->query('no_unico'));
             $format = trim($request->query('formato'));
 
@@ -6843,10 +6843,10 @@ class BandejaEntradaNuevoController extends Controller
 
                 if($tipo_avaluo == 'A-CAT'){
                     $formato = view('justificante', compact("infoAvaluo"))->render();
-                    $isCAT = true;
+                    $pyENV = "cat-env";
                 }else{
                     $formato = view('justificante_com', compact("infoAvaluo"))->render();
-                    $isCAT = false;
+                    $pyENV = "com-env";
                 }
                 
                 $pdf = PDF::loadHTML($formato);
@@ -6856,7 +6856,8 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
+                    shell_exec("/home/rcubica/pdf2doc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'." ".$pyENV));
+                    //shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
                     /*$process = new Process(['php', '/var/www/html/ejecutaConvierte.php']);
                     $process->run();
 
@@ -6882,11 +6883,11 @@ class BandejaEntradaNuevoController extends Controller
                
                 if($tipo_avaluo == 'A-CAT'){
                     $formato = view('justificanteNew', compact("infoAvaluo"))->render();
-                    $isCAT = true;
+                    $pyENV = "cat-env";
                 }else{
                     //Log::info(json_encode($infoAvaluo));                    
                     $formato = view('justificanteNew_com', compact("infoAvaluo"))->render();
-                    $isCAT = false;
+                    $pyENV = "com-env";
                     Log::info(json_encode("ABAJO DE VIEW"));
                 }
 
@@ -6897,7 +6898,8 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
+                    shell_exec("/home/rcubica/pdf2doc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'." ".$pyENV));
+                    //shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
                    /* $process = new Process(['php', '/var/www/html/ejecutaConvierte.php']);
                     $process->run();
 
