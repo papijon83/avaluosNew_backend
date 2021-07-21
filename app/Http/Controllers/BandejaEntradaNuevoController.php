@@ -6856,7 +6856,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec("pdf2doc.exp"." ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'." ".$pyENV));
+                    shell_exec("/home/rcubica/pdf2doc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'." ".$pyENV));
                     //shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
                     /*$process = new Process(['php', '/var/www/html/ejecutaConvierte.php']);
                     $process->run();
@@ -6898,7 +6898,7 @@ class BandejaEntradaNuevoController extends Controller
                     return response()->json(['pdfbase64' => base64_encode(Storage::get('formato.pdf')), 'nombre' =>  $numero_unico . '.pdf'], 200);
                 } else {
                     shell_exec('rm '. storage_path('app/*.docx'));
-                    shell_exec("pdf2doc.exp"." ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'." ".$pyENV));
+                    shell_exec("/home/rcubica/pdf2doc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'." ".$pyENV));
                     //shell_exec("/home/rcubica/convierteAdoc.exp ".storage_path('app/formato.pdf')." ".storage_path('app/formato.docx'));
                    /* $process = new Process(['php', '/var/www/html/ejecutaConvierte.php']);
                     $process->run();
