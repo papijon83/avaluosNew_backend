@@ -6843,10 +6843,10 @@ class BandejaEntradaNuevoController extends Controller
 
                 if($tipo_avaluo == 'A-CAT'){
                     $formato = view('justificante', compact("infoAvaluo"))->render();
-                    $pyENV = "cat-env";
+                    $pyENV = base_path("public/cat-env/bin/activate");
                 }else{
                     $formato = view('justificante_com', compact("infoAvaluo"))->render();
-                    $pyENV = "com-env";
+                    $pyENV = base_path("public/com-env/bin/activate");
                 }
                 
                 $pdf = PDF::loadHTML($formato);
@@ -6883,11 +6883,11 @@ class BandejaEntradaNuevoController extends Controller
                
                 if($tipo_avaluo == 'A-CAT'){
                     $formato = view('justificanteNew', compact("infoAvaluo"))->render();
-                    $pyENV = "cat-env";
+                    $pyENV = base_path("public/cat-env/bin/activate");
                 }else{
                     //Log::info(json_encode($infoAvaluo));                    
                     $formato = view('justificanteNew_com', compact("infoAvaluo"))->render();
-                    $pyENV = "com-env";
+                    $pyENV = base_path("public/com-env/bin/activate");
                     Log::info(json_encode("ABAJO DE VIEW"));
                 }
 
