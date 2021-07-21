@@ -1,0 +1,15 @@
+#!/usr/bin/expect -f
+set rutaUno [lindex $argv 0]
+set rutaDos [lindex $argv 1]
+set rutaTres [lindex $argv 2]
+spawn su rcubica
+expect "Password:"
+send "Pr0m0c4#local\r"
+expect "rcubica"
+#send "echo Hola >> /var/www/html/avaluosNew_backend/storage/app/prueba.txt"
+send "source $rutaTres\r"
+send "pdf2docx convert $rutaUno $rutaDos\r"
+send "deactivate"
+expect "Terminated"
+send "exit\r"
+expect eof
